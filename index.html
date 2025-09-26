@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/icono.png">
+    <title>
+        PlanItOne - Inicio
+    </title>
+    <!--     Fonts and icons     -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+    <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    <style>
+        .navbar {
+            background-color: #ffffff !important;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+        }
+
+        .card {
+            transition: 0.3s;
+        }
+
+        .app-item {
+
+            align-items: center;
+            text-align: center;
+        }
+
+        .app-item img {
+            margin: 0 auto;
+            width: 250px;
+        }
+
+        .app-item h1 {
+            margin-top: 15%;
+            text-align: center;
+            font-family: 'Montserrat';
+            font-size: 1.6em;
+        }
+
+        .app-item a {
+            border: 2px solid #00594e;
+            border-radius: 30px;
+            background-color: #fff;
+            color: #00594e !important;
+            padding: 10px 30px;
+            font-size: 1em;
+            font-weight: lighter;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-family: 'Montserrat';
+        }
+
+        .app-item a:hover {
+            background-color: #00594e;
+            color: #fff !important;
+        }
+
+        .app-item a::after {
+            content: "→";
+            font-size: 1em;
+            font-weight: bolder;
+        }
+
+        .img-logo-main {
+            width: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .img-logo-main {
+                margin-top: 40%;
+                width: 300px;
+            }
+            .marginBottomMenos{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="">
+    <div class="container position-sticky z-index-sticky top-0">
+        <div class="row">
+            <div class="col-12">
+                <!-- Navbar -->
+                <nav
+                    class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
+                    <div class="container-fluid">
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3" >
+                            PlanItOne
+                        </a>
+                        <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon mt-2">
+                                <span class="navbar-toggler-bar bar1"></span>
+                                <span class="navbar-toggler-bar bar2"></span>
+                                <span class="navbar-toggler-bar bar3"></span>
+                            </span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navigation">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                                        href="polariscore/index.html">
+                                        <img src="assets/img/polariscore/icono.svg" width="18" height="18" class="me-2"
+                                            style="filter: brightness(0) saturate(100%) invert(20%); ">
+                                        PolariScore
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center me-2" href="s-plan/dashboard.html">
+                                        <img src="assets/img/s-plan/icono.svg" width="18" height="18" class="me-2"
+                                            style="filter: brightness(0) saturate(100%) invert(20%);">
+                                        S-Plan
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center me-2" href="uniproy/dashboard.html">
+                                        <img src="assets/img/uniproy/icono.svg" width="18" height="18" class="me-2"
+                                            style="filter: brightness(0) saturate(100%) invert(20%);">
+                                        UniProy
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center me-2" href="datalab/dashboard.html">
+                                        <img src="assets/img/datalab/icono.svg" width="18" height="18" class="me-2"
+                                            style="filter: brightness(0) saturate(100%) invert(20%);">
+                                        DataLab
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav d-lg-block d-none">
+                                <li class="nav-item">
+                                    <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary">Iniciar
+                                        Sesión</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content  mt-0">
+        <div class="page-header min-vh-100">
+            <div class="container">
+                <header class="header-section text-center text-white d-flex align-items-center">
+                    <div class="container">
+                        <a class="navbar-brand m-0 d-flex justify-content-center " href="index.html">
+                            <img src="assets/img/logo-ct-dark.png" class="navbar-brand-img h-100 img-logo-main" alt="main_logo">
+                        </a>
+                        <h2 class="fw-light">Gestión Estratégica e Inteligente para Unitrópico</h2>
+                        <p class="lead mt-3 text-dark marginBottomMenos">
+                            La plataforma eficiente para el seguimiento de <strong>políticas institucionales, cifras
+                                poblacionales,
+                                proyectos de inversión y el plan de desarrollo</strong>, optimizando la toma de
+                            decisiones estratégicas en Unitrópico.
+                        </p>
+                    </div>
+                </header>
+                <!-- Aplicaciones -->
+                <div class="container  mt-5" >
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3 app-item">
+                            <img src="assets/img/polariscore/logo.png" style="width: 100%; margin-bottom: 10%;">
+                            <br>
+                            <a href="polariscore/index.html" style="white-space: nowrap;"> Políticas Institucionales</a>
+                        </div>
+                        <div class="col-md-6 col-lg-3 app-item">
+                            <img src="assets/img/s-plan/logo.png" style="width: 100%; margin-bottom: 10%;">
+                            <br>
+                            <a href="s-plan/dashboard.html" style="white-space: nowrap;">PDI </a>
+                        </div>
+                        <div class="col-md-6 col-lg-3 app-item">
+                            <img src="assets/img/uniproy/logo.png" style="width: 100%; margin-bottom: 10%;">
+                            <br>
+                            <a href="uniproy/dashboard.html" style="white-space: nowrap;">Proyectos de Inversión </a>
+                        </div>
+                        <div class="col-md-6 col-lg-3 app-item">
+                            <img src="assets/img/datalab/logo.png" style="width: 100%; margin-bottom: 10%;">
+                            <br>
+                            <a href="datalab/dashboard.html" style="white-space: nowrap;">Unitrópico en cifras </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center my-4">
+                    <button onclick="scrollToSection('about')" class="btn btn-link text-dark fw-semibold"
+                        style="text-decoration: none; border: none; background: none; margin-top: 10%;">
+                        Ver más <i class="fas fa-chevron-down ms-1"></i>
+                    </button>
+                </div>
+
+                <script>
+                    function scrollToSection(id) {
+                        const target = document.getElementById(id);
+                        if (target) {
+                            target.scrollIntoView({ behavior: "smooth" });
+                        }
+                    }
+                </script>
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Características Destacadas -->
+        <section class="py-5 bg-light" id="about">
+            <div class="container">
+                <h2 class="text-center fw-bold mb-4">¿Qué te ofrece PlanItOne?</h2>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
+                        <h5 class="fw-bold">Seguimiento Eficiente</h5>
+                        <p>Monitorea en tiempo real el estado de políticas, proyectos y métricas clave de la
+                            institución.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-chart-pie fa-3x text-success mb-3"></i>
+                        <h5 class="fw-bold">Análisis de Datos</h5>
+                        <p>Visualiza el rendimiento y cumplimiento de los indicadores mediante gráficos dinámicos y
+                            reportes
+                            detallados.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-cloud-upload-alt fa-3x text-warning mb-3"></i>
+                        <h5 class="fw-bold">Acceso desde Cualquier Lugar</h5>
+                        <p>Plataforma basada en la nube para gestionar información desde cualquier dispositivo con
+                            acceso a Internet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Start -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s" style="background-color: #212121;">
+            <div class="container py-5 border-start-0 border-end-0"
+                style="border: 1px solid rgba(255, 255, 255, 0.08);">
+                <div class="row g-5 text-center text-md-start">
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="footer-item">
+                            <a href="index.html" class="p-0">
+                                <img src="assets/img/unitropico-logo.png" width="200" alt="Unitrópico Logo">
+                            </a>
+                            <p class="mb-4 text-justify" style="color: #BDBDBD;">Unitrópico es una institución
+                                comprometida con el
+                                desarrollo de la Orinoquía Colombiana, promoviendo la investigación, la educación de
+                                calidad y la proyección social para el beneficio de la comunidad.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Enlaces Rápidos</h4>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Régimen de
+                                Planeación</a>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Información
+                                Estadística</a>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Sistema Integrado de
+                                Gestión</a>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Campus</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Aplicaciones de PlanItOne</h4>
+                            <a href="PolariScore/index.html" class="footer-link"><i
+                                    class="fas fa-angle-right me-2"></i> PolariScore</a>
+                            <a href="S-Plan/dashboard.html" class="footer-link"><i class="fas fa-angle-right me-2"></i>
+                                S-Plan</a>
+                            <a href="Uniproy/dashboard.html" class="footer-link"><i class="fas fa-angle-right me-2"></i>
+                                UniProy</a>
+                            <a href="DataLab/dashboard.html" class="footer-link"><i class="fas fa-angle-right me-2"></i>
+                                DataLab</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Políticas</h4>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Política de
+                                Privacidad</a>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Términos y
+                                Condiciones</a>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Aviso Legal</a>
+                            <a href="#" class="footer-link"><i class="fas fa-angle-right me-2"></i> Soporte</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-2">
+                        <div class="footer-item">
+                            <h4 class="text-white mb-4">Información de Contacto</h4>
+                            <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+                                <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                                <p class="text-white mb-0">Cra 19 #39-40</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+                                <p class="text-white mb-0">atencionalciudadano@unitropico.edu.co</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+                                <i class="fas fa-phone-alt text-primary me-3"></i>
+                                <p class="text-white mb-0">PBX +57 (601) 9157005</p>
+                            </div>
+                            <br>
+                            <div class="d-flex justify-content-center justify-content-md-start">
+                                <ul class="list-inline footer-social-list-2">
+                                    <li class="list-inline-item"><a class="icon fa fa-facebook"
+                                            href="https://web.facebook.com/unitropico.edu.co"></a></li>
+                                    <li class="list-inline-item"><a class="icon fa fa-twitter"
+                                            href="https://x.com/unitropico?lang=es"></a></li>
+                                    <li class="list-inline-item"><a class="icon fa fa-instagram"
+                                            href="https://x.com/unitropico?lang=es"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4" style="background-color: #424242;">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white">&copy;Unitrópico</a>, Todos
+                            los derechos
+                            reservados.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-body" onclick="">
+                        Desarrollado por <a class="text-white">Oficina Asesora de Planeación - Unitrópico</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+    </main>
+
+    <!-- Modal de Confirmación de Cierre de Sesión -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>¿Estás seguro de que quieres cerrar sesión?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/core/popper.min.js"></script>
+    <script src="assets/js/core/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script type="module">
+        // Importar Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+        import { getDatabase, ref, push, set, get } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+        import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+            authDomain: "sigunitropico.firebaseapp.com",
+            projectId: "sigunitropico",
+            storageBucket: "sigunitropico.appspot.com",
+            messagingSenderId: "32992004482",
+            appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app); // ✅ Esta línea es clave
+
+        // Obtener el botón de login/logout
+        const logButton = document.getElementById("logButton");
+
+        // Variable para evitar agregar múltiples event listeners
+        let logoutListenerAdded = false;
+
+        // Escuchar cambios en el estado de autenticación
+        onAuthStateChanged(auth, (user) => {
+            console.log("Usuario autenticado:", user); // 🚀 Verifica si el usuario está autenticado
+
+            if (user) {
+                logButton.textContent = "Cerrar sesión";
+                logButton.classList.remove("btn-primary");
+                logButton.classList.add("btn-danger");
+
+                // Manejo del logout (evita agregar múltiples eventos)
+                if (!logoutListenerAdded) {
+                    logButton.addEventListener("click", () => {
+                        let logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                        logoutModal.show();
+
+                        document.getElementById("confirmLogout").addEventListener("click", () => {
+                            signOut(auth).then(() => {
+                                window.location.href = "pages/sign-in.html";
+                            }).catch((error) => {
+                                console.error("Error al cerrar sesión:", error);
+                                mostrarToast("Error al cerrar sesión.", "danger");
+                            });
+                        });
+                    });
+                    logoutListenerAdded = true;
+                }
+
+                // Obtener los roles del usuario desde Firebase Database
+                const correoSanitizado = user.email.replace(/\./g, '_');
+                const userRef = ref(database, `usuarios/${correoSanitizado}`);
+
+                get(userRef).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+                        const userRoles = Array.isArray(userData.roles) ? userData.roles : [];
+
+                        console.log(`✅ Usuario autenticado con roles: ${userRoles.join(", ")}`);
+
+                    } else {
+                        console.error("⚠️ No se encontró información del usuario en la base de datos.");
+                        mostrarToast("No se encontró la información del usuario.", "warning");
+                    }
+                }).catch((error) => {
+                    console.error("❌ Error al obtener datos del usuario:", error);
+                    mostrarToast("Error al obtener los datos del usuario.", "danger");
+                });
+
+            } else {
+                console.log("No hay usuario autenticado");
+
+                logButton.textContent = "Iniciar Sesión";
+                logButton.classList.remove("btn-danger");
+                logButton.classList.add("btn-primary");
+
+                logButton.addEventListener("click", () => {
+                    window.location.href = "pages/sign-in.html";
+                });
+
+                mostrarElementosDinamicos([]);
+            }
+        });
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+
+        // Función para mostrar una notificación (Toast)
+        function mostrarToast(mensaje, tipo = "info") {
+            const toastContainer = document.getElementById("toastContainer");
+
+            // Crear toast
+            const toast = document.createElement("div");
+            toast.className = `toast align-items-center text-white bg-${tipo} border-0 show`;
+            toast.role = "alert";
+            toast.ariaLive = "assertive";
+            toast.ariaAtomic = "true";
+            toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${mensaje}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        `;
+
+            toastContainer.appendChild(toast);
+
+            // Mostrar el toast
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+
+            // Eliminar el toast después de 5 segundos
+            setTimeout(() => {
+                bsToast.hide();
+                setTimeout(() => toast.remove(), 500);
+            }, 2000);
+        }
+    </script>
+
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
+
+</html>

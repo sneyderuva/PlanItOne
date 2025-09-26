@@ -1,0 +1,11 @@
+El lider de la política tiene que evaluar la evidencia a subir.
+
+El lider de la politica puede crear evidencias y asignar fecha limite y responsable de la evidencia.
+
+crear un rol de observador para ver las evidencias de las acciones que le competen.
+
+Al usuario responsable, observador, y evaluador debe tener un espacio donde se visualicen las políticas, las acciones y evidencias que le competen y corresponden.
+
+añadir una opción al crear la evidencia para que puedan adjuntar links.
+
+si la evidencia fue creada por la misma responsable de la política, no es necesario que el responsable de la política apruebe la entrega del cargue

@@ -1,0 +1,560 @@
+[
+  {
+    "titulo": "Política Ambiental",
+    "objetivo_general": "Promover una cultura ambiental y bioética en todos los estamentos de la comunidad educativa de la Universidad Internacional de Trópico Americano a través del: fomento de la ecopedagogía, la investigación, la responsabilidad social y la gestión de un campus sostenible que responda a las necesidades y potencialidades del entorno, acorde al buen vivir y a los compromisos ambientales globales.",
+    "objetivo_especifico": "Objetivo 1. Desarrollar la ecopedagogía como estrategia educativa de transformación que genere conocimiento, actitudes, habilidades para una consciencia ambiental de forma transversal en la comunidad académica.",
+    "importancia_objetivo": "0.15",
+    "acciones": [
+      {
+        "id": "IAP_001",
+        "accion": "1.1.1.1 Diseñar tres (3) planes de estudios de programas académicos nuevos y/o  renovaciones que incluya la formación en el área ambiental como un eje transversal.",
+        "indicador": "Planes de estudios de programas académicos nuevos y/o  renovaciones diseñados",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_002",
+        "accion": "1.1.1.2 Fomentar la implementación bienal de una (1)  práctica sustentable en el campus universitario.",
+        "indicador": "Prácticas sustentables implementadas ",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_003",
+        "accion": "1.1.2.1 Realizar dos (2)  conferencias y/o congresos anuales sobre la importancia de la naturaleza y la sostenibilidad. ",
+        "indicador": "Conferencias y/o congresos anuales realizados",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_004",
+        "accion": "1.1.2.2 Reailizar una (1) campaña ambiental anual dirigida a la comunidad educativa sobre la importancia de la conservación y protección del medio ambiente. Esto puede incluir actividades como proyección de documentales, charlas de sensibilización, programa radial, actividades de limpieza y restauración de espacios naturales, entre otros.",
+        "indicador": "Campañas ambientales realizadas",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_005",
+        "accion": "1.1.2.3 Realizar un (1) taller participativo bienal con la comunidad educativa para promover la reflexión y la construcción colectiva de conocimientos sobre medio ambiente. Estos talleres pueden incluir actividades prácticas, debates, discusiones en grupo y otras dinámicas que fomenten la participación  y el aprendizaje colaborativo.",
+        "indicador": "Talleres bienales participativos realizados",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_006",
+        "accion": "1.1.3.1 Realizar (1) una capacitación anual a los profesores sobre cómo incorporar la ecopedagogía en su práctica docente. ",
+        "indicador": "Capacitaciones realizadas anualmente",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_007",
+        "accion": "2.1.1.1 Fomentar semestralmente desde el aula el pensamiento crítico a traves de la realización de diez (10) ensayos o estudios de casos formativos en las diferentes áreas del conocimiento de los programas académicos.",
+        "indicador": "Ensayos o estudios de casos formativos realizados",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_008",
+        "accion": "2.1.2.1 Formular tres (3)  proyectos de investigación formativa que estén alineados con las necesidades socioambientales de la región.",
+        "indicador": "Proyectos de investigación formativa formulados",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_009",
+        "accion": "2.1.3.1 Establecer cuatro (4)  alianzas y/o convenios de cooperación con  organizaciones y comunidades locales, nacionales e internacionales para realizar proyectos de investigación  y la construcción de trabajo en redes.",
+        "indicador": "Alianzas y/o convenios de cooperación con  organizaciones y comunidades locales, nacionales e internacionales establecidas",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_010",
+        "accion": "2.1.4.1 Crear un observatorio de Bioética de apoyo al cumplimiento con los objetivos de desarrollo sostenible ODS-Agenda 2030",
+        "indicador": "Porcentaje de avance en la creación de un observatorio de Bioética de apoyo al cumplimiento con los objetivos de desarrollo sostenible ODS-Agenda 2030.                   ",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_011",
+        "accion": "2.1.4.2 Implementar el observatorio de Bioética.",
+        "indicador": "Porcentaje de avance en la Implementación de un observatorio de Bioética de apoyo al cumplimiento con los objetivos de desarrollo sostenible ODS-Agenda 2030",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_012",
+        "accion": "3.1.1.1 Socializar  anualmente la  Politica Ambiental Universitaria a la comunidad educativa mediante charlas, cuñas radiales, videos, entrevistas y piezas gráficas.",
+        "indicador": "Politica Ambiental Universitaria socializada anualmente",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_013",
+        "accion": "3.1.2.1 Diseñar y adoptar un SGA basado en la norma ISO 14001, que incluya la estructura organizativa, los roles y responsabilidades, los procedimientos y documentos requeridos, los indicadores de desempeño ambiental, y los mecanismos de comunicación y participación.",
+        "indicador": "SGA basado en la norma ISO 14001, que incluya la estructura organizativa, los roles y responsabilidades, los procedimientos y documentos requeridos, los indicadores de desempeño ambiental, y los mecanismos de comunicación y participación diseñado y adoptado.",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_014",
+        "accion": "3.1.2.2 Implementar el SGA en la organización, asegurando que se cumplan los requisitos de la norma ISO 14001, estableciendo los procedimientos y controles necesarios para prevenir la contaminación, gestionar los aspectos ambientales significativos, y cumplir con los objetivos ambientales establecidos.",
+        "indicador": "SGA basado en la norma ISO 1400, , que incluya la estructura organizativa, los roles y responsabilidades, los procedimientos y documentos requeridos, los indicadores de desempeño ambiental, y los mecanismos de comunicación y participación implementado",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_015",
+        "accion": "3.1.3.1 Elaborar un informe anual de sostenibilidad ambiental. ",
+        "indicador": "Informe  de sostenibilidad ambiental elaborado.",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_016",
+        "accion": "3.1.4.1 Realizar (4) cuatro investigaciónes de procesos de apropiación social del conocimiento con distintos actores sociales durante la vigencia  2023-2030.",
+        "indicador": "Investigaciónes de procesos de apropiación social del conocimiento realizadas",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_017",
+        "accion": "3.1.5.1 Realizar una (1) campaña anual de gestión de procesos productivos más limpios, eficiente gestión de residuos, promoción de programas de educación ambiental y  consumo responsable.",
+        "indicador": "Campaña de gestión de procesos productivos más limpios, eficiente gestión de residuos, promoción de programas de educación ambiental y  consumo responsable realizada.",
+        "importancia_accion": "0.01"
+      },
+      {
+        "id": "IAP_018",
+        "accion": "3.1.6.1 Formular (1) un plan institucional de ahorro y uso eficiente de papel para la Universidad Internacional del Trópico Americano.",
+        "indicador": "Plan de ahorro y uso eficiente de papel formulado",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_019",
+        "accion": "3.1.6.2 Formular e implementar   (1) un  plan de acción anual PUAEP de la Universidad Internacional del Trópico Americano. ",
+        "indicador": "Plan de accion anual del Plan de ahorro y uso eficiente de papel formulado e implementado ",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_020",
+        "accion": "3.1.7.1 Realizar una (1) convocatoria interna anual de proyectos ambientales para estudiantes, profesores e investigadores de la universidad a presentar proyectos ambientales que involucren a las comunidades locales y promuevan la innovación y creatividad.",
+        "indicador": "Convocatorias internas de proyectos ambientales para estudiantes, profesores e investigadores realizadas",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_021",
+        "accion": "4.1.1.1 Formular  una (1) Guía metodológica para definir parámetros para el desarrollo de proyectos diseños, construcción, remodelación con criterios bioclimáticos ambientalmente sostenible.",
+        "indicador": "Porcentaje de avance de la guía metodológica para definir parámetrospara el desarrollo de proyectos diseños, construcción, remodelación con criterios bioclimáticos ambientalmente sostenible.",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_022",
+        "accion": "4.1.2.1 Formular dos (2) proyectos de construcción sostenible con criterios bioclimáticos, ambientes equitativos, dinámicos, innovadores con conexión urbana con aprobación de dependencia competente.",
+        "indicador": "Proyectos de construcción sostenible con criterios bioclimáticos, ambientes equitativos, dinámicos, innovadores con conexión urbana con aprobación de dependencia competente formulados.",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_023",
+        "accion": "4.1.3.1 Realizar  dos  (2) prácticas sostenibles  anuales con la comunidad educativa y aliados estratégicos.",
+        "indicador": "Prácticas sostenibles realizadas.",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_024",
+        "accion": "4.1.4.1 Realizar el inventario de especies que habitan en el campus universitario.",
+        "indicador": "Documento con inventario de especies que habitan en el campus universitario realizado.",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_025",
+        "accion": " 4.1.4.2 Creación de un (1) semillero dedicado a la conservación y educación ambiental en el campus universitario.",
+        "indicador": " Semillero dedicado a la conservación y educación ambiental en el campus universitario creado",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_026",
+        "accion": "4.2.1.1 Formular tres (3) proyectos que fomenten la instalación y uso de energías renovables.",
+        "indicador": "Proyectos que fomenten la instalación y uso de energías renovables formulados.",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_027",
+        "accion": "4.2.2.1 Formular una (1) estrategia anual  de sensibilización que promueva la movilidad sostenible dentro del campus.  ",
+        "indicador": "Estrategia de sensibilización que promueva la movilidad sostenible dentro del campus formulada",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_028",
+        "accion": "4.2.3.1 Formular el Plan de Paisajismo de Unitrópico.",
+        "indicador": "Plan de Paisajismo de la Universidad Internacional del Trópico Americano, Unitrópico formulado",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_029",
+        "accion": "4.2.3.2 Formular e implementar el Plan de acción anual del Plan de Paisajismo de Unitrópico.",
+        "indicador": "Plan de acción anual del  Plan de Paisajismo de Unitrópico formulado e implementado.",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_030",
+        "accion": "4.3.1.1 Formular el Plan de movilidad integral Universitario",
+        "indicador": "Plan de movilidad integral Universitario formulado",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_031",
+        "accion": "4.3.1.2 Formular e implementar un plan de accion anual  para el  plan integral de movilidad Universitario.",
+        "indicador": "Plan de acción anual del Plan de movilidad integral Universitario formulado e implementado",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_032",
+        "accion": "4.3.2.1 Realizar un taller anual sobre cumplimiento de leyes y regulaciones, así como también el uso de implementos de seguridad, como cascos, luces intermitentes, chalecos reflectivos.",
+        "indicador": "Talleres anuales sobre cumplimiento de leyes y regulaciones realizados",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_033",
+        "accion": "4.4.1.1 Diagnostico Ambiental Inicial",
+        "indicador": "Diagnostico Ambiental Inicial realizado ",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_034",
+        "accion": "4.4.1.2 Identificación y evaluación de impactos ambientales",
+        "indicador": "Documento con  identificación y evaluación de impactos ambientales elaborado",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_035",
+        "accion": "4.4.1.3 Formulación del Plan Institucional de Gestión Ambiental (PIGA)",
+        "indicador": "Plan Institucional de Gestión Ambiental (PIGA) formulado",
+        "importancia_accion": "0.06"
+      },
+      {
+        "id": "IAP_036",
+        "accion": "4.4.1.4 Formular e  Implementar el Plan de Acción Anual del PIGA",
+        "indicador": "Plan de acción anual del PIGA formulado e implementado",
+        "importancia_accion": "0.06"
+      }
+    ]
+  },
+  {
+    "titulo": "Política de Gestión de la Información Estadística",
+    "objetivo_general": "Establecer el modelo de gestión de la información estadística institucional que potencialice el uso de los datos y la información, contribuyendo a la accesibilidad y confiabilidad de la información para la toma de decisiones en la Universidad Internacional del Trópico Americano.",
+    "objetivo_especifico": "Objetivo 1: Estructurar un plan institucional que oriente la producción y sistematización de información estadística, enmarcado en las directrices de la autoridad estadística en el país.",
+    "importancia_objetivo": "0.3",
+    "acciones": [
+      {
+        "id": "IAP_037",
+        "accion": "1.1 Identificar las necesidades de información estadística sujetas de aplicación del modelo del proceso estadístico, con el objeto de consolidar una batería de activos de información estadística institucional por medio de mesas de trabajo con las dependencias administrativas productoras de información primaria, con el objeto de consolidar una matriz de activos de información estadística",
+        "indicador": "Activos de Información estadística identificados y clasificados ",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_038",
+        "accion": "1.2. Diagnosticar y establecer la metodología  y requerimientos operativos y tecnológicos para el desarrollo del modelo del proceso estadístico por medio de una matriz operativa que garantice la eficiente recolección, procesamiento, análisis y difusión de los activos identificadas en la matriz de información estadística. ",
+        "indicador": "Metodología y requerimientos tecnológicos identificadas y licenciados ",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_039",
+        "accion": "1.3 Diseñar y socializar la caracterización de las operaciones estadísticas junto con sus respectivas fichas técnicas, sujetas a desarrollarse  en el periodo de aplicación del modelo del proceso estadístico con el objeto de dar apertura formal al procedimiento de recolección de información estadística en cada vigencia. ",
+        "indicador": "Directrices de caracterización para la recolección de la información estadística establecidas ",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_040",
+        "accion": "1.4 Acopiar y clasificar la información estadística  primaria identificada que desde las demás dependencias productoras de información primaria se allegue en el marco del desarrollo de la operación estadística de cada vigencia y las directrices que se definan. ",
+        "indicador": "Activos de Información estadística acopiados y clasificados",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_041",
+        "accion": "1.5 Procesar y analizar sistemáticamente los activos de información estadística primaria que desde las demás dependencias académico/administrativas se alleguen en el marco de la disposición administrativa en que se enmarque la operación estadística, con el objeto de contar con bases de datos consolidadas que den respuesta a las necesidades de información identificadas.",
+        "indicador": "Bases de datos de información estadística procesadas y analizadas para su aprovechamiento",
+        "importancia_accion": "0.045"
+      },
+      {
+        "id": "IAP_042",
+        "accion": "1.6 Graficar, difundir y socializar en los medios masivos institucionales a la comunidad universitaria y demás partes interesadas los productos y piezas estadísticas, que den cuenta, garanticen y propendan por el acceso y transparencia en la gestión de la información estadística institucional",
+        "indicador": "Piezas gráfico-estadísticos graficadas y difundidas en los canales institucionales de la Universidad",
+        "importancia_accion": "0.045"
+      },
+      {
+        "id": "IAP_043",
+        "accion": "1.7 Evaluar y esquematizar las acciones de mejora continua a los resultados e indicadores propios de la ejecución de las operación estadísticas que se desarrollen en el marco de cada vigencia, con el fin de determinar la pertinencia de la ejecución del modelo estadístico.",
+        "indicador": "Acciones de mejora evaluadas y socializadas",
+        "importancia_accion": "0.045"
+      },
+      {
+        "id": "IAP_044",
+        "accion": "1.8 Formular y estructurar estrategias preventivas y correctivas para el plan de acción de la siguiente vigencia, con base en los resultados de la evaluación, que propenda por la mejora continua en el procedimiento de recolección, procesamiento, análisis y difusión de los activos de información estadística. ",
+        "indicador": "Plan de acciones de estrategias preventivas y correctivas formulado para cada siguiente vigencia",
+        "importancia_accion": "0.045"
+      },
+      {
+        "id": "IAP_045",
+        "accion": "2.1 Diagnosticar e identificar las principales debilidades y fortalezas en términos de la gestión estadísticas y almacenamiento, así como el estado actual de los registros administrativos que  las dependencias académico/administrativas institucionales producen resultado del desarrollo de sus funciones misionales",
+        "indicador": "Registros administrativos identificados, diagnosticados y clasificados ",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_046",
+        "accion": "2.2 Adoptar mecanismos eficientes acordes al contexto normativo e institucional, que permitan el fortalecimiento y mejora continua del estado de los registros administrativos institucionales, con el propósito de mejorar la eficiencia y eficacia en la recolección de información estadística primaria en el marco del desarrollo de operaciones estadísticas ",
+        "indicador": "Mecanismos de fortalecimiento de registros administrativos adoptados ",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_047",
+        "accion": "2.3  Desarrollar capacitaciones anuales enfocadas en el desarrollo de estrategias para el fortalecimiento de los registros administrativos a nivel de dependencias académico/administrativas productoras de información estadística primaria, que permitan un mejor aprovechamiento de la información institucional sujeta de ser sistematizada y utilizada para la toma de decisiones basadas en evidencias ",
+        "indicador": "Capacitaciones de fortalecimiento de registros administrativos desarrolladas",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_048",
+        "accion": "2.4 Evaluar la eficiencia y pertinencia de los mecanismos incorporados y capacitaciones desarrolladas para el fortalecimiento de los registros administrativos institucionales en las dependencias académico/administrativas productoras de información estadística primaria y secundaria",
+        "indicador": "Evaluación de las acciones de fortalecimiento a los registros administrativos identificados",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_049",
+        "accion": "3.1 Formular y desarrollar una estrategia de fomento a la cultura del acceso y aprovechamiento de la información estadística, a través de la cual se difunda semanalmente en los canales y medios institucionales masivos de la Universidad piezas gráficas con datos e indicadores estadísticos que promuevan la toma de decisiones basadas en evidencias.",
+        "indicador": "Estrategia de fomento a la cultura estadística y aprovechamiento de la información estadística formulada y desarrollada",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_050",
+        "accion": "3.2 Desarrollar una estrategia de asistencia semanal a la Emisora de la Universidad, Unitrópico Estéreo, para promover la cultura estadística mediante la ampliación de las temáticas de la piezas estadísticas publicadas en el marco de la estrategia de fomento de la acción precedente.  ",
+        "indicador": "Asistencias a \"Unitrópico Estéreo\" para la ampliación de la estrategia de fomento a la cultura estadística formulada y desarrollada",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_051",
+        "accion": "3.3 Formular y desarrollar una estrategia de capacitaciones a los funcionarios administrativos y personal profesoral en herramientas estadísticas para la gestión y promoción eficiente de la información estadística que cada dependencia académico/administrativa genera producto del desarrollo de sus funciones sustantivas",
+        "indicador": "Estrategia de capacitaciones en herramientas estadísticas formuladas y desarrolladas ",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_052",
+        "accion": "3.4 Formular y desarrollar jornadas anuales en el manejo, uso e interpretación de la información estadística y piezas gráfico-estadísticas dispuestas en los tableros de control (dashboard) publicados en la página web de la Universidad, para promover y fomentar la toma de decisiones basadas en evidencias en la institución, fomentando el valor agregado de la información. ",
+        "indicador": "Estrategia de capacitaciones en el uso e interpretación de tableros de control y piezas estadísticas  formulada y desarrollada",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_053",
+        "accion": "3.5 Estructurar el Boletín Estadístico anual y realizar un evento anual de presentación de los resultados  del las principales cifras estadísticas de relevancia, que abarque los principales estamenos de la institución, con el objeto de promocionar el acceso y cultura estadística para la toma de decisiones basadas en evidencias entre toda la comunidad universitaria. ",
+        "indicador": "Boletín estadístico elaborado y socializado por medio de un evento de difusión masivo con la comunidad universitaria",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_054",
+        "accion": "3.6 Realizar talleres teórico-prácticos, dirigidos a la  formulación, seguimiento y evaluación de indicadores estadísticos de gestión e impacto con el objeto de fomentar la aplicación e interpretación apropiada de indicadores en la elaboración de interpretación de planes estratégicos e interpretación de piezas estadísticas",
+        "indicador": "Talleres de indicadores desarrollados ",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_055",
+        "accion": "4.1 Diagnosticar e identificar estándares de calidad estadística referentes a las operaciones estadísticas desarrolladas en consideración a la difusión de fichas técnicas y los metadatos asociados a las operaciones estadística",
+        "indicador": "Estándares de calidad estadística diagnosticados e identificados",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_056",
+        "accion": "4.2 Adoptar los estándares y/o principios establecidos en la Norma Técnica de Calidad del Proceso Estadístico 1000 (2020), del Sistema Estadístico Nacional, SEN, del Departamento Administrativo Nacional de Estadística, DANE,conforme los principios de calidad estadística y bajo la consideración de su aplicabilidad en el contexto institucional de la Universidad. ",
+        "indicador": "Estándares de Calidad del Proceso Estadístico según lo normado en la NTC-PE 1000-2020 adoptados",
+        "importancia_accion": "0.05"
+      },
+      {
+        "id": "IAP_057",
+        "accion": "4.3 Aplicar, seguir y evaluar los estándares de calidad estadística establecidos en la Política de Gestión de la Información Estadística, y demás normatividad institucional competente en la materia, con el objeto de garantizar la calidad estadística de las operaciones estadísticas desarrolladas",
+        "indicador": "Estándares de calidad estadística adoptados y evaluados de conformidad con los establecidos en la Política de Gestión de la Información Estadística de Unitrópico ",
+        "importancia_accion": "0.05"
+      },
+      {
+        "id": "IAP_058",
+        "accion": "4.4 Participar en las jornadas de Auditoría Internas y Externas relativas a los productos y resultados de la evaluación de las operaciones estadísticas desarrolladas, en el marco del plan de auditorias internas de cada vigencia, así como en auditorías externas según corresponda",
+        "indicador": "Participación y evaluación de las auditorías desarrolladas",
+        "importancia_accion": "0.06"
+      },
+      {
+        "id": "IAP_059",
+        "accion": "5.1  Realizar un diagnóstico de herramientas tecnológicas estadísticas (software) que permitan dar solución a las necesidades de gestión estadística referentes al  acopio, procesamiento, análisis, diseño y difusión de la información estadística gestionada, en el marco del desarrollo del modelo del proceso estadístico",
+        "indicador": "Soluciones tecnológicas diagnosticadas e identificadas",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_060",
+        "accion": "5.2 Licenciar y distribuir los permisos y accesos al uso de la solución tecnológica priorizada, para el desarrollo de las operaciones estadísticas identificadas, con el objeto de gestionar los permisos conforme el número de licencias adquiridas y el número de profesionales que harán uso de estas en el marco del desarrollo del modelo del proceso estadístico",
+        "indicador": "Soluciones tecnológicas licenciadas y distribuidas",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_061",
+        "accion": "5.3 Realizar seguimiento de la pertinencia de la implementación de las soluciones tecnológicas adoptadas y distribuidas para la gestión de la información estadística, con el objeto de determinar su eficiencia en términos de gestión y generación de productos estadísticos de valor agregado que orienten la toma de decisiones basadas en evidencias",
+        "indicador": "Seguimiento de la eficiencia de las soluciones tecnológicas implementadas",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_062",
+        "accion": "5.4 Evaluar y determinar  la pertinencia de la soluciones tecnológicas adoptadas en cada vigencia para el desarrollo de la gestión estadística , con el objeto de formular acciones puntuales de mejora continua en la identificación y adopción de soluciones tecnológicas para la gestión de la información estadística acorde al contexto institucional",
+        "indicador": "Aplicación evaluación de pertinencia de soluciones tecnológicas adoptadas",
+        "importancia_accion": "0.06"
+      },
+      {
+        "id": "IAP_063",
+        "accion": "5.5 Formular una guía del usuario para la optimización de procedimientos conducentes a la gestión de operaciones estadísticas por medio de herramientas tecnológicas o sistemas estadísticos eficientes que agreguen valor a los activos de información primaria o secundaria y permitan orientar la toma de decisiones basadas en evidencias entre las dependencias académico-administrativas",
+        "indicador": "Guía de aplicación de sistemas tecnológicos para el desarrollo de operaciones estadísticas formuladas ",
+        "importancia_accion": "0.02"
+      }
+    ]
+  },
+  {
+    "titulo": "Política de Transparencia y Acceso a la Información Pública y Lucha contra la Corrupción ",
+    "objetivo_general": "Establecer el acceso a la información y lucha contra la corrupción, como uno de los pilares institucionales, que brinde confianza a los ciudadanos mediante la promoción de una cultura de integridad, transparencia y prevención de la corrupción.",
+    "objetivo_especifico": "Objetivo 1:\tDefinir y divulgar los mecanismos de cumplimiento de las obligaciones legales y reglamentarias establecidas para la universidad en materia de transparencia, acceso a la información pública y lucha contra la corrupción, como sujeto obligado.",
+    "importancia_objetivo": "0.2",
+    "acciones": [
+      {
+        "id": "IAP_064",
+        "accion": "1.1 Recopilación y validación de las acciones relacionadas con la transparencia y la lucha contra la corrupción que se han realizado en la universidad. Esta acción permitirá aprovechar las iniciativas realizadas.",
+        "indicador": "Recopilación y validación de las acciones realizadas en la universidad ",
+        "importancia_accion": "0.015"
+      },
+      {
+        "id": "IAP_065",
+        "accion": "1.2 Realizar un análisis exhaustivo para identificar, diagnosticar y documentar todas las obligaciones legales y reglamentarias que son aplicables a la universidad en relación con la transparencia, el acceso a la información pública y la lucha contra la corrupción, considerándola como un sujeto obligado. Además, a partir de la caracterización de los grupos de interés se identificaran sus necesidades y expectativas en relación con la información.",
+        "indicador": "Generación del Informe de análisis a las obligaciones legales y reglamentarias",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_066",
+        "accion": "1.3 Diseñar procedimientos y mecanismos detallados para asegurar el cumplimiento de las obligaciones legales y reglamentarias relacionadas con la transparencia, el acceso a la información pública y la lucha contra la corrupción en la universidad. Estos documentos proporcionarán orientación específica sobre cómo llevar a cabo las acciones requeridas por la ley, garantizando su coherencia y reflejando las mejores prácticas en materia de transparencia y prevención de la corrupción. Esto aplicando la guía de lenguaje claro que permita que la información pueda ser entendida por todos los grupos de interés y la ciudadanía en general. ",
+        "indicador": "Diseño de procedimientos y mecanismo",
+        "importancia_accion": "0.025"
+      },
+      {
+        "id": "IAP_067",
+        "accion": "1.4 Diseñar e implementar un plan destinado a asegurar el cumplimiento de los procedimientos y mecanismos establecidos. Dentro de este plan, se establecerá un calendario de publicación proactiva, se asignarán responsables, y se definirán los procedimientos para registrar y documentar todas las acciones. Asimismo, se determinará la metodología de seguimiento y evaluación. Todo esto permitirá garantizar la divulgación proactiva de la información en cumplimiento de las obligaciones legales y reglamentarias, de manera oportuna.",
+        "indicador": "Diseño e implementación del plan para asegurar el cumplimiento de los mecanismo establecidos",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_068",
+        "accion": "1.5 Diseñar e implementar una estrategia de sensibilización y capacitación destinada a promover la difusión proactiva de la información. Esta estrategia enfatizará los roles y responsabilidades del personal en el cumplimiento de las obligaciones legales, además de informar a todos los miembros de la comunidad universitaria sobre la relevancia de la transparencia, el acceso a la información pública y la lucha contra la corrupción.",
+        "indicador": "Diseño e implementación de la estrategia de sensibilización y capacitación destinada a promover la difusión proactiva de la información.",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_069",
+        "accion": "1.6 Formular y adoptar la política de seguridad de la información y de protección de datos personales de la universidad enfocada en garantizar la confidencialidad, integridad y disponibilidad de la información en la universidad, así como para cumplir con las obligaciones legales y proteger los derechos de privacidad de las personas cuyos datos se manejan. Además, esta política deberá incluir un índice de información clasificada y reservada, así como un registro de la información activa.",
+        "indicador": "Formulación y adopción de la Política de Seguridad de la Información y de protección de Datos Personales",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_070",
+        "accion": "1.7 Elaborar el Plan de Acción y Seguimiento de la política de seguridad de la información y de protección de datos personales.",
+        "indicador": "Elaboración del Plan de Acción y seguimiento de la política",
+        "importancia_accion": "0.01"
+      },
+      {
+        "id": "IAP_071",
+        "accion": "1.8 Formular y adoptar la Política de Administración del Riesgos de la universidad estableciendo principios, directrices y procesos para evaluar, administrar y mitiga los riesgos que pueden afectar los objetivos y operaciones. La gestión de riesgos es esencial para garantizar que la universidad pueda enfrentar desafíos y tomar decisiones informadas para proteger sus activos, cumplir con sus obligaciones y promover su misión.",
+        "indicador": "Formulación y adopción de la Política de Administración del Riesgos de la universidad",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_072",
+        "accion": "1.9 Elaborar el Plan de Acción y Seguimiento de la  Política de Administración del Riesgos ",
+        "indicador": "Elaboración del Plan de Acción y Seguimiento de la política ",
+        "importancia_accion": "0.01"
+      },
+      {
+        "id": "IAP_073",
+        "accion": "2.1 Transformar el sitio web actual de la universidad en una sede electrónica, mediante la evaluación de su diseño y estructura para asegurar el cumplimiento de la normatividad y regulaciones aplicables, así como los requerimientos institucionales previamente definidos. ",
+        "indicador": "Sitio web de la universidad evaluado para su transformación en una sede electrónica",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_074",
+        "accion": "2.2 Rediseño y lanzamiento del sitio web, con un enfoque especial en asegurar una navegación sencilla, accesibilidad desde dispositivos móviles y el cumplimiento de los estándares de accesibilidad web establecidos por el MINTIC. Esto incluirá la creación de una sección específica llamada 'Transparencia en el Acceso a la Información Pública' como punto central para acceder a información relevante y documentos públicos",
+        "indicador": "Sitio web rediseñado y lanzado",
+        "importancia_accion": "0.06"
+      },
+      {
+        "id": "IAP_075",
+        "accion": "2.3 Diseño y desarrollo de la sección específica en el sitio web para \"Atención y Servicios a la Ciudadanía\", donde los ciudadanos puedan presentar PQRS (Peticiones, Quejas, Reclamos y Sugerencias), realizar trámites y acceder a servicios de manera electrónica, y sección denominada \"Participa\" que contenga información sobre oportunidades de participación ciudadana, consulta pública y foros de discusión.",
+        "indicador": "Implementación de las secciones de \"Atención y Servicios a la Ciudadanía\" y \"Participa\".",
+        "importancia_accion": "0.05"
+      },
+      {
+        "id": "IAP_076",
+        "accion": "2.4 Diseñar una metodología para llevar a cabo el monitoreo y la evaluación de la efectividad de la sede electrónica y las secciones específicas del sitio web. A través de este método, se recopilará la percepción de los usuarios con el fin de elaborar un plan de mejora en la usabilidad y la accesibilidad.",
+        "indicador": "Diseño de la metodología de monitoreo y evaluación de la efectividad  de la sede electrónica y las secciones especificas del sitio web",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_077",
+        "accion": "2.5 Diseñar e implementar una estrategia de apropiación de la cultura de transparencia y publicidad de la información pública. Esta estrategia tiene como objetivo promover una cultura de integridad, transparencia y prevención de la corrupción, de manera que la ciudadanía pueda acceder de manera oportuna a la información que la entidad genere, obtenga, adquiera o controle. La información se presentará en lenguaje claro, de manera oportuna, adecuada y veraz, a través de mecanismos accesibles.",
+        "indicador": "Estrategia para Promover una Cultura de Integridad, Transparencia y Prevención de la Corrupción a través de la Apropiación de la Cultura de Transparencia y Publicidad de la Información Pública, Diseñada e Implementada",
+        "importancia_accion": "0.06"
+      },
+      {
+        "id": "IAP_078",
+        "accion": "3.1 Realizar una evaluación y análisis de los canales de comunicación de la universidad (canal presencial, ventanilla única de radicación, correo electrónico, chat web institucional, formulario web de PQRS, línea de atención telefónica) para identificar áreas de mejora y oportunidades de fortalecimiento, verificando que todos los canales estén claramente definidos y accesibles a la comunidad.",
+        "indicador": "Evaluación y análisis de los canales de comunicación de la universidad realizados para identificar área de mejora y oportunidades de fortalecimiento",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_079",
+        "accion": "3.2 Realizar e Implementar un plan  para fortalecer los canales de comunicación dispuestos, donde se apliquen las acciones de mejora identificadas para cada uno de los canales actuales, y se creen los necesarios para que la universidad garantice el acceso a la información mediante las estrategias transparencia pasiva y transparencia activa. ",
+        "indicador": "Plan realizado e implementado para fortalecer los canales de comunicación dispuestos en la universidad",
+        "importancia_accion": "0.04"
+      },
+      {
+        "id": "IAP_080",
+        "accion": "3.3 Diseñar e implementar una estrategia de sensibilización y posicionamiento de los canales de comunicación. El objetivo es fortalecer las capacidades para la participación permanente de todos los grupos de interés de la universidad.",
+        "indicador": "Estrategia para la sensibilización y posicionamiento de los canales de comunicación.",
+        "importancia_accion": "0.05"
+      },
+      {
+        "id": "IAP_081",
+        "accion": "3.4 Desarrollar espacios de participación informada con grupos de valor (Estudiantes, profesores, entre otros.) para la identificación de oportunidades para la racionalización o simplificación de trámites y otros procedimientos administrativos.",
+        "indicador": "Espacios de participación con los grupos de valor desarrollados para la identificación de oportunidades para la racionalización  o simplificación de trámites y otros procedimientos administrativos.",
+        "importancia_accion": "0.03"
+      },
+      {
+        "id": "IAP_082",
+        "accion": "4.1 Crear la matriz de autogestión de Transparencia y Acceso a la Información, identificando la información que debe mantenerse pública.",
+        "indicador": "Matriz de Autogestión de Transparencia y Acceso a la Información Creada",
+        "importancia_accion": "0.035"
+      },
+      {
+        "id": "IAP_083",
+        "accion": "4.2 Desarrollar instrumentos de medición de satisfacción de los usuarios que accedan al menú de Transparencia y Acceso a la Información en la página web. Se deberá establecerá establecer un programa semestral de recopilación de opiniones de los ciudadanos para conocer su percepción sobre la información disponible y la facilidad de acceso.",
+        "indicador": "Instrumentos de medición de satisfacción desarrollados",
+        "importancia_accion": "0.025"
+      },
+      {
+        "id": "IAP_084",
+        "accion": "4.3 Implementar un programa semestral de medición de satisfacción de los usuarios con el menú de Transparencia y Acceso a la Información. Se analizarán las respuestas de los usuarios para identificar áreas de mejora en la información disponible y en la facilidad de acceso.",
+        "indicador": "Programa semestral de medición de satisfacción implementado ",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_085",
+        "accion": "4.4 Diseñar e implementar una estrategia de mejora para el menú de Transparencia y Acceso a la Información, con el objetivo de abordar las áreas de mejora identificadas en la medición de satisfacción. Esto incluye la actualización de la información, la optimización de la navegación en el sitio web y la promoción de la accesibilidad.",
+        "indicador": "Estrategia de mejora para el menú de transparencia y acceso a la información diseñada e implementada",
+        "importancia_accion": "0.02"
+      },
+      {
+        "id": "IAP_086",
+        "accion": "5.1 Formular el Plan Anticorrupción y de Atención al Ciudadano, basado en cinco componentes: Gestión de riesgo, Riesgo de corrupción, Racionalización de trámites, Rendición de Cuentas, Mecanismos para mejorar la atención al ciudadano y Mecanismos para Transparencia y Acceso a la Información",
+        "indicador": "Plan Anticorrupción y de Atención al Ciudadano formulado para mejorar la atención al ciudadano y Mecanismos para Transparencia y Acceso a la Información",
+        "importancia_accion": "0.1"
+      },
+      {
+        "id": "IAP_087",
+        "accion": "5.2 Diseñar e implementar un proceso continuo de monitoreo y actualización del mapa de riesgos de corrupción. Esto incluye la evaluación periódica de si los controles implementados están funcionando de manera efectiva y la identificación de nuevos riesgos.",
+        "indicador": "Proceso continuo de monitoreo y actualización del mapa de riesgos de corrupción diseñado e implementado",
+        "importancia_accion": "0.05"
+      },
+      {
+        "id": "IAP_088",
+        "accion": "5.3 Diseñar e implementar una estrategia de sensibilización y difusión en lenguaje claro sobre el Plan Anticorrupción y de Atención al Ciudadano. Esta estrategia tiene como objetivo entregar información de manera adecuada para prevenir la materialización de riesgos de corrupción y promover la participación de los diferentes grupos de interés.",
+        "indicador": "Estrategia de sensibilización y difusión en lenguaje claro diseñada e implementada",
+        "importancia_accion": "0.05"
+      },
+      {
+        "id": "IAP_089",
+        "accion": "6.1 Formular e implementar el Plan de mejoramiento con las deficiencias arrojadas de los resultados del Índice de Transparencia y Acceso a la Información-ITA ",
+        "indicador": "Plan de mejoramiento con las deficiencias arrojadas de los resultados del Índice de Transparencia y Acceso a la Información-ITA formulado e implementado ",
+        "importancia_accion": "0.1"
+      }
+    ]
+  }
+]

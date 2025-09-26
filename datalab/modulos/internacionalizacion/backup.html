@@ -1,0 +1,1318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../../../assets/img/datalab/icono.png">
+    <title>
+        DATALAB
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="../../../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+    <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+    <!-- Pantalla de Carga -->
+    <div id="loader" class="loader-container">
+        <img src="../../../assets/img/s-plan/animacion.gif" alt="S-PLAN" style="width: 40%;">
+    </div>
+
+    <style>
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999999;
+        }
+
+        .loader-img {
+            width: 35%;
+            animation: zoomIn 2s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+        }
+    </style>
+
+    <script type="module">
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 1500); // Duración exacta de la animación
+        });
+
+    </script>
+
+
+    <div class="min-height-300 position-absolute w-100"
+        style="background: url('../../../assets/img/datalab/bg-gradient.png') no-repeat center center/cover;"></div>
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+        id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0 d-flex justify-content-center" href="../../../index.html">
+                <img src="../../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <!-- Políticas -->
+                <li class="nav-item admin-only" style="display: none;">
+                    <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+                        data-bs-toggle="collapse" data-bs-target="#submenuPoliticas" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-collection text-primary text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">PolariScore</span>
+                        </div>
+                    </a>
+                    <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+                        <li class="nav-item"><a class="nav-link" href="../../../polariscore/dashboard.html"><i
+                                    class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../../../polariscore/politicas.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de
+                                    Políticas</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../polariscore/observaciones.html"><i
+                                    class="ni ni-single-copy-04 text-info"></i> <span
+                                    class="ms-1">Observaciones</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- PDI 2024-2028 -->
+                <li class="nav-item admin-only" style="display: none;">
+                    <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+                        data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="true">
+                        <!-- Cambié aria-expanded a true -->
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">S-Plan</span>
+                        </div>
+                    </a>
+                    <ul class="collapse list-unstyled ms-4" id="submenuPdi"> <!-- Agregué la clase "show" -->
+                        <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                                    class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../../../s-plan/ejes.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Ejes</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../../../s-plan/programas.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de
+                                    Programas</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                                    class="ni ni-single-copy-04 text-info"></i> <span
+                                    class="ms-1">Observaciones</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- Proyectos -->
+                <li class="nav-item admin-only" style="display: none;">
+                    <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+                        data-bs-toggle="collapse" data-bs-target="#submenuProyectos" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-archive-2 text-sm opacity-10" style="color: #003d6a;"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">UniProy</span>
+                        </div>
+                    </a>
+                    <ul class="collapse list-unstyled ms-4" id="submenuProyectos">
+                        <li class="nav-item"><a class="nav-link" href="../../../uniproy/dashboard.html"><i
+                                    class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../../../uniproy/proyectos.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de
+                                    Proyectos</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../uniproy/observaciones.html"><i
+                                    class="ni ni-single-copy-04 text-info"></i> <span
+                                    class="ms-1">Observaciones</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- DATA LAB -->
+                <li class="nav-item ">
+                    <a class="nav-link active collapsed d-flex justify-content-between align-items-center" href="#"
+                        data-bs-toggle="collapse" data-bs-target="#submenuCifras" aria-expanded="true">
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-chart-bar-32 text-secondary text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">DataLab</span>
+                        </div>
+                    </a>
+                    <ul class="collapse list-unstyled ms-4 show" id="submenuCifras">
+                        <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                                    class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de
+                                    Cifras</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                                    class="ni ni-single-copy-04 text-info"></i> <span
+                                    class="ms-1">Observaciones</span></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Cuenta</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sigunitropico.com/planeacion"
+                        onclick="window.open(this.href, '_blank'); return false;">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Planeación</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sigunitropico.com"
+                        onclick="window.open(this.href, '_blank'); return false;">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">SIG Unitrópico</span>
+                    </a>
+                </li>
+
+            </ul>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    let navLinks = document.querySelectorAll(".nav-link[data-bs-toggle='collapse']");
+
+                    navLinks.forEach(link => {
+                        link.addEventListener("click", function () {
+                            let target = document.querySelector(this.getAttribute("data-bs-target"));
+
+                            // Cierra todos los submenús excepto el que se está abriendo
+                            document.querySelectorAll(".collapse.show").forEach(openMenu => {
+                                if (openMenu !== target) {
+                                    new bootstrap.Collapse(openMenu, { toggle: false }).hide();
+                                }
+                            });
+                        });
+                    });
+                });
+            </script>
+        </div>
+        <div class="sidenav-footer mx-3 ">
+            <div class="card card-plain shadow-none" id="sidenavCard">
+                <img class="w-80 mx-auto" src="../../../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+                    alt="sidebar_illustration">
+                <div class="card-body text-center p-3 w-100 pt-0">
+                    <div class="docs-info">
+                        <h6 class="mb-0">¿Necesitas ayuda?</h6>
+                        <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+                    </div>
+                </div>
+            </div>
+            <a href="https://synariscorp.com" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+            <a class="btn btn-primary btn-sm mb-0 w-100" href="mailto:innovacionplaneacion@unitropico.edu.co"
+                type="button">Contactar al equipo técnico</a>
+        </div>
+    </aside>
+
+    <main class="main-content position-relative border-radius-lg ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+            data-scroll="false">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+                    </ol>
+                    <h6 class="font-weight-bolder text-white mb-0">última actualización <p
+                            class="font-weight-normal text-white mb-0" id="fecha_actualizacion">calculando...</p>
+                    </h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-flex align-items-center">
+                            <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary"><i
+                                    class="fa fa-user me-sm-1"></i>Iniciar
+                                sesión</button>
+                        </li>
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0">
+                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell cursor-pointer"></i>
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                                aria-labelledby="dropdownMenuButton">
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="my-auto">
+                                                <img src="../../../assets/img/team-2.jpg"
+                                                    class="avatar avatar-sm  me-3 ">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    <span class="font-weight-bold">New message</span> from Laur
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    13 minutes ago
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="my-auto">
+                                                <img src="../../../assets/img/small-logos/logo-spotify.svg"
+                                                    class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    <span class="font-weight-bold">New album</span> by Travis Scott
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    1 day
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                                                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <title>credit-card</title>
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-2169.000000, -745.000000)"
+                                                            fill="#FFFFFF" fill-rule="nonzero">
+                                                            <g transform="translate(1716.000000, 291.000000)">
+                                                                <g transform="translate(453.000000, 454.000000)">
+                                                                    <path class="color-background"
+                                                                        d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                                                        opacity="0.593633743"></path>
+                                                                    <path class="color-background"
+                                                                        d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                                    </path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    Payment successfully completed
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    2 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+
+
+
+        <!---  CONTENIDO ---->
+        <div class="container-fluid py-4">
+            <!-- Bienvenida -->
+            <div class="row mb-2">
+                <div class="col-8" style="margin: 0 auto;">
+                    <div class="card shadow-sm border-0 p-4 text-center">
+                        <h2 class="mb-3">🌎 Internacionalización</h2>
+                        <p class="lead">Registre convenios, movilidades y demás actividades estratégicas que fortalecen
+                            la
+                            proyección internacional de la Universidad Internacional del Trópico Americano.</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row mb-2">
+                <div class="col-8" style="margin: 0 auto;">
+                    <div class="card rounded-3 shadow-sm p-2">
+                        <div class="card-header bg-white border-0 pb-0">
+                            <ul class="nav nav-tabs nav-fill" id="navTabCargaMasiva" role="tablist">
+                                <li class="nav-item">
+                                    <button class="nav-link active small" id="tab-todo-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tab-todo" type="button" role="tab">Todo</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link small" id="tab-evidencias-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tab-evidencias" type="button" role="tab">Convenios</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link small" id="tab-responsables-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tab-responsables" type="button" role="tab">Movilidades</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button class="nav-link small" id="tab-seguimiento-tab" data-bs-toggle="tab"
+                                        data-bs-target="#tab-seguimiento" type="button" role="tab">Otros</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body tab-content p-3 pt-2" id="navTabCargaMasivaContent">
+                            <!-- TAB: Todo -->
+                            <div class="tab-pane fade show active" id="tab-todo" role="tabpanel">
+                                <form id="formCargaTodo">
+                                    <div class="mb-2">
+                                        <label for="archivoTodo" class="form-label small">Archivo Excel con todo
+                                            (.xlsx)</label>
+                                        <input class="form-control form-control-sm" type="file" id="archivoTodo"
+                                            accept=".xlsx,.xls">
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-sm btn-primary">Cargar Todo</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- TAB: Evidencias -->
+                            <div class="tab-pane fade" id="tab-evidencias" role="tabpanel">
+                                <!-- FORMULARIO DE EVIDENCIAS -->
+                                <form id="formCargaEvidencias">
+                                    <div class="mb-2">
+                                        <label for="archivoEvidencias" class="form-label">Archivo Excel con sólo los
+                                            convenios
+                                            (.xlsx)</label>
+                                        <input class="form-control form-control-sm" type="file" id="archivoEvidencias"
+                                            accept=".xlsx,.xls" required>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-sm btn-primary">Cargar Evidencias</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- TAB: Responsables -->
+                            <div class="tab-pane fade" id="tab-responsables" role="tabpanel">
+                                <form id="formCargaResponsables">
+                                    <div class="mb-2">
+                                        <label for="archivoResponsables" class="form-label small">Archivo Excel de
+                                            Responsables
+                                            (.xlsx)</label>
+                                        <input class="form-control form-control-sm" type="file" id="archivoResponsables"
+                                            accept=".xlsx,.xls" required>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-sm btn-primary">Cargar
+                                            Responsables</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- TAB: Seguimiento -->
+                            <div class="tab-pane fade" id="tab-seguimiento" role="tabpanel">
+                                <form id="formCargaSeguimiento">
+                                    <div class="mb-2">
+                                        <label for="archivoSeguimiento" class="form-label small">Archivo Excel del
+                                            Seguimiento
+                                            (.xlsx)</label>
+                                        <input class="form-control form-control-sm" type="file" id="archivoSeguimiento"
+                                            accept=".xlsx,.xls" required>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-sm btn-primary">Cargar
+                                            Responsables</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Overlay de arrastre -->
+            <div id="dropOverlay" style="
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        ">
+                <h1 class="text-white">¡Suelta tus archivos aquí!</h1>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-8" style="margin: 0 auto;">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-header">
+                            <h3 class="card-title text-center mb-3">📋 Resumen de Archivos Cargados</h3>
+                            <p>En este espacio obtendrás retroalimentación automática del archivo que estás intentando
+                                cargar, por
+                                favor arrastra o selecciona un archivo para iniciar.</p>
+                        </div>
+                        <div class="card-body" id="contenedorErrores">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Botón para generar el PDF -->
+            <div class="text-center my-3">
+                <button id="btnGenerarPDF" disabled="true" class="btn btn-primary text-white ">Generar Certificado
+                    PDF</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8" style="margin: 0 auto;">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header">
+                        <h5 class="card-title text-center mb-3">📋 Resumen de Archivos Cargados</h5>
+                    </div>
+                    <div class="card-body" id="contenedorInforme" style="display: none;">
+                        <!-- Aquí se llenará el informe dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--- FIN DEL CONTENIDO ---->
+
+
+
+        <footer class="footer pt-3  ">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>,
+                            desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de
+                                Planeación</a> - Unitrópico
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
+                                    target="_blank">About
+                                    Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
+                                    target="_blank">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                                    target="_blank">License</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+
+    </main>
+
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                <path
+                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+            </svg>
+        </a>
+        <div class="card shadow-lg">
+            <div class="card-header pb-0 pt-3 ">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Argon Configurator</h5>
+                    <p>See our dashboard options.</p>
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0 overflow-auto">
+                <!-- Sidebar Backgrounds -->
+                <div>
+                    <h6 class="mb-0">Sidebar Colors</h6>
+                </div>
+                <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <div class="badge-colors my-2 text-start">
+                        <span class="badge filter bg-gradient-primary active" data-color="primary"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-dark" data-color="dark"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-info" data-color="info"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-success" data-color="success"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-warning" data-color="warning"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-danger" data-color="danger"
+                            onclick="sidebarColor(this)"></span>
+                    </div>
+                </a>
+                <!-- Sidenav Type -->
+                <div class="mt-3">
+                    <h6 class="mb-0">Sidenav Type</h6>
+                    <p class="text-sm">Choose between 2 different sidenav types.</p>
+                </div>
+                <div class="d-flex">
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+                        onclick="sidebarType(this)">White</button>
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+                        onclick="sidebarType(this)">Dark</button>
+                </div>
+                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+                <!-- Navbar Fixed -->
+                <div class="d-flex my-3">
+                    <h6 class="mb-0">Navbar Fixed</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed"
+                            onclick="navbarFixed(this)">
+                    </div>
+                </div>
+                <hr class="horizontal dark my-sm-4">
+                <div class="mt-2 mb-5 d-flex">
+                    <h6 class="mb-0">Light / Dark</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
+                            onclick="darkMode(this)">
+                    </div>
+                </div>
+                <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+                    Download</a>
+                <a class="btn btn-outline-dark w-100"
+                    href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View
+                    documentation</a>
+                <div class="w-100 text-center">
+                    <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+                        data-icon="octicon-star" data-size="large" data-show-count="true"
+                        aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+                    <h6 class="mt-3">Thank you for sharing!</h6>
+                    <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+                        class="btn btn-dark mb-0 me-2" target="_blank">
+                        <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+                        class="btn btn-dark mb-0 me-2" target="_blank">
+                        <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de notificaciones (Toasts) -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+        <div id="toastContainer"></div>
+    </div>
+
+
+    <!-- Modal de Confirmación de Cierre de Sesión -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>¿Estás seguro de que quieres cerrar sesión?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes shrinkAndFade {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .shrink-fade-out {
+            animation: shrinkAndFade 0.4s ease forwards;
+        }
+    </style>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+    <!--   Core JS Files   -->
+    <script src="../../../assets/js/core/popper.min.js"></script>
+    <script src="../../../assets/js/core/bootstrap.min.js"></script>
+    <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <!-- Librería ECharts oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+    <!-- Tu theme personalizado -->
+    <script src="../../../assets/js/s-plan-charts.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+            authDomain: "sigunitropico.firebaseapp.com",
+            projectId: "sigunitropico",
+            storageBucket: "sigunitropico.appspot.com",
+            messagingSenderId: "32992004482",
+            appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+
+
+
+        function limitarTexto(texto, limite) {
+            return texto.length > max ? texto.slice(0, max) + '...' : texto;
+        }
+
+
+
+        // Función modular para mostrar Toasts
+        function mostrarToast(mensaje, tipo = "info") {
+            const toastContainer = document.getElementById("toastContainer");
+
+            const toast = document.createElement("div");
+            toast.className = `toast align-items-center text-white bg-${tipo} border-0 show`;
+            toast.role = "alert";
+            toast.ariaLive = "assertive";
+            toast.ariaAtomic = "true";
+            toast.innerHTML = `
+    <div class="d-flex">
+      <div class="toast-body">${mensaje}</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+    </div>
+  `;
+
+            toastContainer.appendChild(toast);
+
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+
+            setTimeout(() => {
+                bsToast.hide();
+                setTimeout(() => toast.remove(), 500);
+            }, 5000);
+        }
+
+        // ------------------------
+        // CONTROL DE DRAG & DROP
+        // ------------------------
+
+        let dragCounter = 0;
+
+        // Mostrar overlay al arrastrar archivo
+        document.addEventListener('dragenter', (e) => {
+            e.preventDefault();
+            dragCounter++;
+            const overlay = document.getElementById('dropOverlay');
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'auto';
+        });
+
+        // Ocultar overlay solo cuando realmente salimos
+        document.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dragCounter--;
+            if (dragCounter <= 0) {
+                const overlay = document.getElementById('dropOverlay');
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
+            }
+        });
+
+        // Mantener arrastre activo
+        document.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        // Soltar archivos
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragCounter = 0;
+            const overlay = document.getElementById('dropOverlay');
+            overlay.style.opacity = '0';
+            overlay.style.pointerEvents = 'none';
+
+            const files = e.dataTransfer.files;
+            if (!files.length) return;
+
+            const activeTab = document.querySelector('.tab-pane.active').id;
+
+            if (activeTab === 'tab-todo') {
+                handleFileDrop('archivoTodo', files);
+            } else if (activeTab === 'tab-evidencias') {
+                handleFileDrop('archivoEvidencias', files);
+            } else if (activeTab === 'tab-responsables') {
+                handleFileDrop('archivoResponsables', files);
+            } else if (activeTab === 'tab-seguimiento') {
+                handleFileDrop('archivoSeguimiento', files);
+            }
+
+            mostrarToast("✅ Archivo listo para cargar", "info");
+        });
+
+        // Función para asignar archivos al input
+        function handleFileDrop(inputId, files) {
+            const dataTransfer = new DataTransfer();
+            for (let i = 0; i < files.length; i++) {
+                dataTransfer.items.add(files[i]);
+            }
+            const input = document.getElementById(inputId);
+            input.files = dataTransfer.files;
+        }
+
+        // ------------------------
+        // LECTURA DE ARCHIVO EXCEL
+        // ------------------------
+
+        let convenios = [];
+        let movilidades = [];
+
+        document.getElementById('formCargaTodo').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+
+            const btnGenerarPDF = document.getElementById('btnGenerarPDF');
+            btnGenerarPDF.disabled = false; // Habilitado por defecto
+
+            const fileInput = document.getElementById('archivoTodo');
+            const file = fileInput.files[0];
+
+            let errores = [];
+            let conveniosTemp = [];
+            let movilidadesTemp = [];
+
+            if (!file) {
+                errores.push("❌ No se ha seleccionado ningún archivo.");
+                mostrarErrores(errores);
+                btnGenerarPDF.disabled = true;
+                return;
+            } else {
+                const extension = file.name.split('.').pop().toLowerCase();
+                if (!["xlsx", "xls"].includes(extension)) {
+                    errores.push("❌ El archivo seleccionado no es un Excel válido (.xlsx o .xls).");
+                    mostrarErrores(errores);
+                    btnGenerarPDF.disabled = true;
+                    return;
+                }
+            }
+
+            try {
+                const data = await file.arrayBuffer();
+                const workbook = XLSX.read(data);
+
+                console.log("✅ Workbook leído correctamente:", workbook);
+                console.log("📄 Hojas encontradas:", workbook.SheetNames);
+
+                const hojaConvenios = workbook.Sheets["Convenios"];
+                const hojaMovilidades = workbook.Sheets["Movilidades"];
+
+                if (!hojaConvenios) errores.push("❌ No se encontró la hoja 'Convenios'.");
+                if (!hojaMovilidades) errores.push("❌ No se encontró la hoja 'Movilidades'.");
+
+                if (hojaConvenios) {
+                    const conveniosRaw = XLSX.utils.sheet_to_json(hojaConvenios, { defval: "", raw: true, range: 4 });
+
+                    if (conveniosRaw.length === 0) {
+                        errores.push("❌ La hoja 'Convenios' no contiene registros.");
+                    } else {
+                        const columnasEsperadas = ["id_convenio", "nombre_institucion", "tipo_convenio", "objeto_convenio", "fecha_suscripcion", "fecha_expiracion", "estado", "programas", "pais", "cantidad_beneficiarios"];
+                        const columnasArchivo = Object.keys(conveniosRaw[0]);
+
+                        columnasEsperadas.forEach(columna => {
+                            if (!columnasArchivo.includes(columna)) {
+                                errores.push(`❌ La columna '${columna}' falta o está mal nombrada en la hoja 'Convenios'.`);
+                            }
+                        });
+
+                        // Si no hay errores críticos, asignar temporal
+                        if (errores.filter(err => err.includes('❌')).length === 0) {
+                            conveniosTemp = conveniosRaw.map((row) => ({
+                                id_convenio: row.id_convenio || "",
+                                nombre_institucion: row.nombre_institucion || "",
+                                tipo_convenio: row.tipo_convenio || "",
+                                objeto_convenio: row.objeto_convenio || "",
+                                fecha_suscripcion: typeof row.fecha_suscripcion === 'number' ? excelDateToJSDate(row.fecha_suscripcion) : (row.fecha_suscripcion || ""),
+                                fecha_expiracion: typeof row.fecha_expiracion === 'number' ? excelDateToJSDate(row.fecha_expiracion) : (row.fecha_expiracion || ""),
+                                estado: row.estado || "",
+                                programas: row.programas || "",
+                                pais: row.pais || "",
+                                cantidad_beneficiarios: row.cantidad_beneficiarios || ""
+                            }));
+                        }
+                    }
+                }
+
+                if (hojaMovilidades) {
+                    const movilidadesRaw = XLSX.utils.sheet_to_json(hojaMovilidades, { defval: "", raw: true, range: 4 });
+
+                    if (movilidadesRaw.length === 0) {
+                        errores.push("❌ La hoja 'Movilidades' no contiene registros.");
+                    } else {
+                        const columnasEsperadasMov = ["fecha", "duracion", "estamento", "sexo", "tipo_movilidad", "tipo_documento", "numero_documento", "pais_origen", "entidad_origen", "pais_destino", "entidad_destino", "vinculacion_origen", "vinculacion_destino", "convenio"];
+                        const columnasArchivoMov = Object.keys(movilidadesRaw[0]);
+
+                        columnasEsperadasMov.forEach(columna => {
+                            if (!columnasArchivoMov.includes(columna)) {
+                                errores.push(`❌ La columna '${columna}' falta o está mal nombrada en la hoja 'Movilidades'.`);
+                            }
+                        });
+
+                        // Si no hay errores críticos, asignar temporal
+                        if (errores.filter(err => err.includes('❌')).length === 0) {
+                            movilidadesTemp = movilidadesRaw.map((row) => ({
+                                fecha: typeof row.fecha === 'number' ? excelDateToJSDate(row.fecha) : (row.fecha || ""),
+                                duracion: row.duracion || "",
+                                estamento: row.estamento || "",
+                                sexo: row.sexo || "",
+                                tipo_movilidad: row.tipo_movilidad || "",
+                                tipo_documento: row.tipo_documento || "",
+                                numero_documento: row.numero_documento || "",
+                                pais_origen: row.pais_origen || "",
+                                entidad_origen: row.entidad_origen || "",
+                                pais_destino: row.pais_destino || "",
+                                entidad_destino: row.entidad_destino || "",
+                                vinculacion_origen: row.vinculacion_origen || "",
+                                vinculacion_destino: row.vinculacion_destino || "",
+                                convenio: row.convenio || ""
+                            }));
+                        }
+                    }
+                }
+
+                // Evaluar errores críticos
+                const erroresCriticos = errores.filter(error => error.includes('❌'));
+
+                if (erroresCriticos.length > 0) {
+                    btnGenerarPDF.disabled = true;
+                    mostrarErrores(errores);
+                    mostrarToast("❌ Se detectaron errores críticos en el archivo. Revise y corrija antes de continuar.", "danger");
+                } else {
+                    convenios = conveniosTemp;
+                    movilidades = movilidadesTemp;
+                    btnGenerarPDF.disabled = false;
+                    mostrarToast("✅ Archivo leído y validado correctamente.", "success");
+                    mostrarExito();
+                }
+
+
+            } catch (error) {
+                console.error("❌ Error al leer el archivo:", error);
+                btnGenerarPDF.disabled = true;
+                mostrarErrores(["❌ Ocurrió un error al procesar el archivo. Verifique que el formato sea válido."]);
+            }
+        });
+
+        // Función para mostrar errores o mensaje de éxito en contenedorErrores
+        function mostrarErrores(errores) {
+            const contenedor = document.getElementById('contenedorErrores');
+            const btnGenerarPDF = document.getElementById('btnGenerarPDF');
+
+            const erroresCriticos = errores.filter(error => error.includes('❌'));
+
+            contenedor.innerHTML = "";
+
+            if (errores.length > 0) {
+                if (erroresCriticos.length > 0) {
+                    btnGenerarPDF.disabled = true;
+                } else {
+                    btnGenerarPDF.disabled = false;
+                }
+
+                contenedor.innerHTML = `
+      <div class="mb-1">
+        <h5 class="text-danger mb-3" style="font-family: Arial, sans-serif;">Errores detectados en el archivo</h5>
+        <ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; padding-left: 20px;">
+          ${errores.map(error => `<li style="margin-bottom: 5px;">${error}</li>`).join('')}
+        </ul>
+        <p class="mt-4" style="font-family: Arial, sans-serif; font-size: 13px; color: #555;">
+          Por favor, corrija los errores críticos (❌) antes de generar el informe.
+        </p>
+      </div>
+    `;
+            }
+        }
+
+
+        function mostrarExito() {
+            const contenedor = document.getElementById('contenedorErrores');
+            const btnGenerarPDF = document.getElementById('btnGenerarPDF');
+
+            btnGenerarPDF.disabled = false;
+
+            contenedor.innerHTML = `
+    <div class="mb-1">
+      <h5 class="text-success mb-3" style="font-family: Arial, sans-serif;">✅ Archivo validado correctamente</h5>
+      <p style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
+        El archivo ha sido validado exitosamente y está listo para generar el informe PDF.
+      </p>
+    </div>
+  `;
+        }
+
+
+        // ------------------------
+        // GENERACIÓN DEL INFORME
+        // ------------------------
+
+        function construirInforme(convenios, movilidades) {
+            const contenedor = document.getElementById('contenedorInforme');
+            contenedor.innerHTML = `
+  <div style="margin-top: 0px; padding-top: 0px;">
+    <!-- TODO el contenido generado aquí -->
+  </div>
+`;
+
+
+            // Estilos generales
+            const estiloGeneral = 'font-family: Arial, sans-serif; font-size: 10pt; color: black;';
+
+            // Portada
+            const hoy = new Date().toLocaleDateString();
+
+            contenedor.innerHTML += `
+    <div style="${estiloGeneral} text-align: center; margin-bottom: 20px;">
+      <h1 style="margin-bottom: 10px; color: #333;">Informe de Convenios y Movilidades</h1>
+      <p style="margin: 0;">Fecha de generación: ${hoy}</p>
+    </div>
+    <hr><br>
+  `;
+
+            // Sección de Convenios
+            contenedor.innerHTML += `<h2 style="${estiloGeneral} text-align: left;">1. Convenios Firmados</h2>`;
+
+            if (convenios.length > 0) {
+                convenios.forEach((conv, idx) => {
+                    contenedor.innerHTML += `
+      <div style="${estiloGeneral} text-align: justify; margin-bottom: 15px; page-break-inside: avoid;">
+        <strong>Convenio ${idx + 1}</strong><br>
+        <b>Código:</b> ${conv.id_convenio || "-"}<br>
+        <b>Institución:</b> ${conv.nombre_institucion || "-"}<br>
+        <b>Objeto:</b> ${conv.objeto_convenio || "-"}<br>
+        <b>Fecha de Suscripción:</b> ${conv.fecha_suscripcion || "-"}<br>
+        <b>Fecha de Expiración:</b> ${conv.fecha_expiracion || "-"}<br>
+        <b>Estado:</b> ${conv.estado || "-"}<br>
+        <b>Programas:</b> ${conv.programas || "-"}<br>
+        <b>País:</b> ${conv.pais || "-"}<br>
+        <b>Cantidad de Beneficiarios:</b> ${conv.cantidad_beneficiarios || "-"}
+      </div>
+      `;
+                });
+            } else {
+                contenedor.innerHTML += `<p style="${estiloGeneral} text-align: justify;">No se registraron convenios.</p>`;
+            }
+
+            contenedor.innerHTML += `<hr><br>`;
+
+            // Sección Movilidades
+            contenedor.innerHTML += `<h2 style="${estiloGeneral} text-align: left;">2. Movilidades Reportadas</h2>`;
+
+            if (movilidades.length > 0) {
+                contenedor.innerHTML += `
+      <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse; ${estiloGeneral} page-break-inside: avoid;">
+        <thead style="background: #f0f0f0;">
+          <tr>
+            <th>Fecha</th>
+            <th>Duración</th>
+            <th>Estamento</th>
+            <th>Sexo</th>
+            <th>Tipo Movilidad</th>
+            <th>País Destino</th>
+            <th>Convenio</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${movilidades.map(mov => `
+            <tr>
+              <td>${mov.fecha || "-"}</td>
+              <td>${mov.duracion || "-"}</td>
+              <td>${mov.estamento || "-"}</td>
+              <td>${mov.sexo || "-"}</td>
+              <td>${mov.tipo_movilidad || "-"}</td>
+              <td>${mov.pais_destino || "-"}</td>
+              <td>${mov.convenio || "-"}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    `;
+            } else {
+                contenedor.innerHTML += `<p style="${estiloGeneral} text-align: justify;">No se registraron movilidades.</p>`;
+            }
+            // Sección de firmas
+            contenedor.innerHTML += `
+        <br><br>
+        <div class="row" style="text-align: center; margin-top: 40px; margin-bottom: 20px; ${estiloGeneral} page-break-inside: avoid;">
+
+          <div class="col-md-6">
+            <img src="../certificados/firmas/amanda_duenas.png" alt="Firma Amanda Dueñas" style="height: 80px;"><br>
+            <strong style="font-size: 14px;">Amanda Dueñas Cubides</strong><br>
+            <span style="font-size: 13px;">Jefe de la Oficina Asesora de Planeación</span>
+          </div>
+
+          <div class="col-md-6">
+            <img src="../certificados/firmas/wanderley_sanchez.png" alt="Firma Wanderley Sánchez" style="height: 80px;"><br>
+            <strong style="font-size: 14px;">Wanderley Sánchez Bustamante</strong><br>
+            <span style="font-size: 13px;">Profesional Universitario<br>Oficina Asesora de Planeación</span>
+          </div>
+        </div>
+        <br>
+      `;
+
+            // Frase final
+            contenedor.innerHTML += `
+        <p style="text-align: center; font-size: 12px; font-family: Arial, sans-serif; color: black;">
+          ${generarFraseCertificacion()}
+        </p>
+      `;
+
+            // Mostrar el contenedor
+            contenedor.style.display = "block";
+
+        }
+
+        // ------------------------
+        // BOTÓN PARA GENERAR PDF
+        // ------------------------
+
+        document.getElementById('btnGenerarPDF').addEventListener('click', () => {
+            const btnGenerarPDF = document.getElementById('btnGenerarPDF');
+
+            if (btnGenerarPDF.disabled) {
+                mostrarToast("❌ No se puede generar el informe debido a errores críticos. Corrija primero el archivo.", "danger");
+                return;
+            }
+
+            construirInforme(convenios, movilidades);
+
+            const contenedor = document.getElementById('contenedorInforme');
+
+            const opt = {
+                margin: [40, 30, 35, 20],
+                // Orden: [superior, izquierda, inferior, derecha]
+                filename: 'InformeConveniosMovilidades.pdf',
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'mm', format: 'letter' }
+            };
+
+            html2pdf().from(contenedor).set(opt).toPdf().get('pdf').then(function (pdf) {
+                const totalPages = pdf.internal.getNumberOfPages();
+                const pageHeight = pdf.internal.pageSize.getHeight(); // 279.4 mm para Letter
+                const pageWidth = pdf.internal.pageSize.getWidth(); // 215.9 mm para Letter
+
+                for (let i = 1; i <= totalPages; i++) {
+                    pdf.setPage(i);
+
+                    // Insertar el logo superior
+                    pdf.addImage('../certificados/unitropico-gris.png', 'PNG', 145, 10, 45, 23.43);
+                    // Insertar el footer
+                    pdf.addImage('../certificados/footer.png', 'PNG', 0, pageHeight - 30, pageWidth, 20);
+                }
+            }).save().then(() => {
+                // Mostrar Toast de éxito
+                mostrarToast("✅ Informe PDF generado exitosamente.", "success");
+            });
+        });
+
+
+
+
+
+        function excelDateToJSDate(serial) {
+            const utc_days = Math.floor(serial - 25569);
+            const utc_value = utc_days * 86400;
+            const date_info = new Date(utc_value * 1000);
+
+            const day = ('0' + date_info.getUTCDate()).slice(-2);
+            const month = ('0' + (date_info.getUTCMonth() + 1)).slice(-2);
+            const year = date_info.getUTCFullYear();
+
+            return `${day}/${month}/${year}`;
+        }
+
+
+        function generarFraseCertificacion() {
+            const fecha = new Date();
+
+            // Arrays de palabras
+            const dias = ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez",
+                "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve", "veinte",
+                "veintiuno", "veintidós", "veintitrés", "veinticuatro", "veinticinco", "veintiséis", "veintisiete", "veintiocho", "veintinueve", "treinta", "treinta y uno"];
+            const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+
+            const dia = fecha.getDate();
+            const mes = fecha.getMonth();
+            const anio = fecha.getFullYear();
+            let hora = fecha.getHours();
+            let minutos = fecha.getMinutes();
+
+            // Formato de hora am/pm
+            const ampm = hora < 12 ? "am" : "pm";
+            const hora12 = hora % 12 === 0 ? 12 : hora % 12;
+            const horaStr = hora12.toString().padStart(2, '0');
+            const minutosStr = minutos.toString().padStart(2, '0');
+
+            // Formato corto (27/04/2025 11:07 pm)
+            const fechaCorta = `${dia.toString().padStart(2, '0')}/${(mes + 1).toString().padStart(2, '0')}/${anio} ${horaStr}:${minutosStr} ${ampm}`;
+
+            // Frase completa
+            const frase = `La Oficina Asesora de Planeación a los ${dias[dia - 1]} días del mes de ${meses[mes]} del presente año (${fechaCorta}), certifica que este informe fue generado automáticamente a partir de los registros institucionales.`;
+
+            return frase;
+        }
+
+        // Ejemplo de uso
+        const fraseFinal = generarFraseCertificacion();
+        console.log(fraseFinal);
+
+
+    </script>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../../../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
+<style>
+    /* Estilo para las filas de la tabla */
+    #tablaPoliticas tr {
+        cursor: pointer;
+        /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+    }
+
+    /* Cambia el color de fondo de la fila al pasar el cursor */
+    #tablaPoliticas tr:hover {
+        background-color: hsla(214, 83%, 48%, 0.233);
+        /* Color verde oscuro al pasar el cursor */
+        color: #000;
+        font-weight: 500;
+        /* Opcional: cambia el color del texto al blanco para mejor contraste */
+    }
+
+    #tablaPoliticas2 tr:hover {
+        background-color: hsla(173, 100%, 17%, 0.233);
+        /* Color verde oscuro al pasar el cursor */
+        color: #ffffff;
+        /* Opcional: cambia el color del texto al blanco para mejor contraste */
+    }
+</style>
+
+</html>

@@ -1,0 +1,3325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../../assets/img/datalab/icono.png">
+  <title>
+    Dashboard Estudiantes y Graduados
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../../../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <!-- Pantalla de Carga -->
+  <div id="loader" class="loader-container">
+    <img src="../../../assets/img/datalab/animacion.gif" alt="S-PLAN" style="width: 40%;">
+  </div>
+
+  <style>
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999999;
+    }
+
+    .loader-img {
+      width: 35%;
+      animation: zoomIn 2s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ocultar {
+        display: none !important;
+      }
+
+      .margin-top-5 {
+        margin-top: 5%;
+      }
+    }
+  </style>
+
+  <script type="module">
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 1500); // Duración exacta de la animación
+    });
+
+  </script>
+
+
+  <div class="min-height-300 position-absolute w-100"
+    style="background: url('../../../assets/img/datalab/bg-gradient.png') no-repeat center center/cover;"></div>
+  <aside
+    class="sidenav card-glass bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0 d-flex justify-content-center" href="../../../index.html">
+        <img src="../../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- Políticas -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPoliticas" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-collection text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">PolariScore</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/politicas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Políticas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- PDI 2024-2028 -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="true">
+            <!-- Cambié aria-expanded a true -->
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">S-Plan</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi"> <!-- Agregué la clase "show" -->
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/ejes.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Ejes</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/programas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Programas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Proyectos -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuProyectos" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-archive-2 text-sm opacity-10" style="color: #003d6a;"></i>
+              </div>
+              <span class="nav-link-text ms-1">UniProy</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuProyectos">
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/proyectos.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- DATA LAB -->
+        <li class="nav-item ">
+          <a class="nav-link active collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuCifras" aria-expanded="true">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-chart-bar-32 text-secondary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">DataLab</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4 show" id="submenuCifras">
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Cifras</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Cuenta</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com/planeacion"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Planeación</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">SIG Unitrópico</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let navLinks = document.querySelectorAll(".nav-link[data-bs-toggle='collapse']");
+
+          navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+              let target = document.querySelector(this.getAttribute("data-bs-target"));
+
+              // Cierra todos los submenús excepto el que se está abriendo
+              document.querySelectorAll(".collapse.show").forEach(openMenu => {
+                if (openMenu !== target) {
+                  new bootstrap.Collapse(openMenu, { toggle: false }).hide();
+                }
+              });
+            });
+          });
+        });
+      </script>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../../../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://synariscorp.com" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="mailto:innovacionplaneacion@unitropico.edu.co"
+        type="button">Contactar al equipo técnico</a>
+    </div>
+  </aside>
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb ocultar">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white active ocultar" aria-current="page">Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0 ocultar">última actualización <p
+              class="font-weight-normal text-white mb-0 ocultar" id="fecha_actualizacion">calculando...</p>
+          </h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+
+            <li class="nav-item d-flex align-items-center ">
+              <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary ocultar"><i
+                  class="fa fa-user me-sm-1"></i>Iniciar
+                sesión</button>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center " title="Zona de Filtros">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../../../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!---  CONTENIDO ---->
+
+    <!-- DASHBOARD INTERNACIONALIZACIÓN - DISTRIBUCIÓN ELEGANTE -->
+    <div class="container mt-5">
+
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card card-glass shadow-lg border-0 rounded-4 margin-top-5">
+            <div class="card-body py-5 px-5 text-center text-md-start">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                <div class="mb-3 mb-md-0">
+                  <h2 class="text-white fw-bold mb-3" style="text-shadow: 0 1px 3px rgba(0,0,0,0.4);">
+                    <i class="fas fa-user-graduate me-2"></i> Estudiantes y Graduados
+                  </h2>
+                  <p class="lead text-dark-50 mb-0 text-justify" style="max-width: 60vw;">
+                    El presente tablero de visualización ofrece una lectura dinámica, interactiva y analítica sobre el
+                    comportamiento académico de los estudiantes de la Universidad, desde su proceso de admisión hasta su
+                    graduación.
+                  </p>
+                  <div id="resumenFiltrosAplicados" class="mt-4 d-flex flex-wrap gap-2">
+                    <!-- Rango de Semestres (siempre visible) -->
+
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        const fixedPlugin = document.querySelector(".fixed-plugin");
+
+                        document.querySelectorAll(".abrir-fixed-plugin").forEach(btn => {
+                          btn.addEventListener("click", e => {
+                            e.stopPropagation(); // para evitar que el body lo cierre inmediatamente
+                            if (fixedPlugin) {
+                              fixedPlugin.classList.toggle("show");
+                            }
+                          });
+                        });
+                      });
+                    </script>
+
+                    <span style="cursor: pointer;"
+                      class="badge rounded-pill bg-gradient-success text-white shadow-sm px-3 py-2 border d-flex align-items-center abrir-fixed-plugin cursor-pointer">
+                      <i class="fa-solid fa-filter me-1 text-white"></i>
+                      Filtros</span>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center">
+                      <i class="fa-solid fa-calendar-alt me-1 text-secondary"></i>
+                      Semestre: <span id="resumenSemestres" class="fw-semibold">2024-A</span>
+                    </span>
+
+                    <!-- Chips dinámicos de otros filtros -->
+                    <div id="chipsFiltrosDinamicos" class="d-flex flex-wrap gap-2"></div>
+                  </div>
+                  <style>
+                    #resumenFiltrosAplicados .badge {
+                      font-size: 0.875rem;
+                      cursor: default;
+                    }
+
+                    .chip-filtro {
+                      background-color: #fff;
+                      border: 1px solid #dee2e6;
+                      padding: 6px 12px;
+                      border-radius: 50px;
+                      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                      display: flex;
+                      align-items: center;
+                    }
+
+                    .chip-filtro .cerrar-chip {
+                      margin-left: 8px;
+                      color: #888;
+                      cursor: pointer;
+                    }
+
+                    .filtro-tag {
+                      background-color: white;
+                      border-radius: 2rem;
+                      padding: 0.3rem 0.9rem 0.3rem 1rem;
+                      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+                      display: inline-flex;
+                      align-items: center;
+                      font-size: 0.9rem;
+                      font-weight: 500;
+                      color: #333;
+                    }
+
+                    .filtro-tag .cerrar-filtro {
+                      margin-left: 8px;
+                      color: #888;
+                      cursor: pointer;
+                      font-weight: bold;
+                    }
+                  </style>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- KPIs principales -->
+      <div class="row mb-2">
+        <!-- Admitidos -->
+        <div class="col-md-4 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Admitidos</h6>
+              <h1 class="text-primary fw-bold" id="kpiAdmitidos">--</h1>
+              <p class="text-muted"><i class="fas fa-user-plus me-1"></i>Estudiantes admitidos</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Matriculados -->
+        <div class="col-md-4 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Matriculados</h6>
+              <h1 class="text-warning fw-bold" id="kpiMatriculados">--</h1>
+              <p class="text-muted"><i class="fas fa-user-check me-1"></i>Con matrícula registrada</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graduados -->
+        <div class="col-md-4 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Graduados</h6>
+              <h1 class="text-success fw-bold" id="kpiGraduados">--</h1>
+              <p class="text-muted"><i class="fas fa-user-graduate me-1"></i>Estudiantes titulados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfica Admitidos por semestre -->
+      <div class="row mb-4" id="filaAdmitidos">
+        <div class="col-12">
+          <div class="card card-glass shadow-sm mt-2">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <i class="fas fa-user-plus me-2"></i> Admitidos por semestre (2022-A - 2024-B)
+              </h5>
+              <div id="graficaAdmitidosPorSemestre" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-layer-group me-2"></i> Admitidos por nivel de formación
+              </h5>
+              <div id="graficaAdmitidosPorNivel" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-venus-mars me-2"></i> Admitidos por sexo</h5>
+              <div id="graficaAdmitidosPorSexo" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-university me-2"></i> Admitidos por Facultad</h5>
+              <div id="graficaAdmitidosPorFacultad" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-map-marker-alt me-2"></i> Admitidos por procedencia</h5>
+              <div id="graficaAdmitidosPorProcedencia" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <i class="fas fa-graduation-cap me-2"></i> Admitidos por Programa Académico (2022-A - 2024-B)
+              </h5>
+              <div id="graficaAdmitidosPorPrograma" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Matriculados -->
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="card card-glass shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <i class="fas fa-user-check me-2"></i> Matriculados por semestre (2022-A - 2024-B)
+              </h5>
+              <div id="graficaMatriculadosPorSemestre" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-layer-group me-2"></i> Matriculados por nivel de formación
+              </h5>
+              <div id="graficaMatriculadosPorNivel" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-venus-mars me-2"></i> Matriculados por sexo</h5>
+              <div id="graficaMatriculadosPorSexo" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-1">
+        <div class="col-lg-6 mb-1">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-university me-2"></i> Matriculados por facultad
+              </h5>
+              <div id="graficaMatriculadosPorFacultad" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-1">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-map-marker-alt me-2"></i> Matriculados por procedencia</h5>
+              <div id="graficaMatriculadosPorProcedencia" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <i class="fas fa-graduation-cap me-2"></i> Matriculados por programa
+              </h5>
+              <div id="graficaMatriculadosPorPrograma" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graduados -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <i class="fas fa-user-graduate me-2"></i> Graduados por semestre
+              </h5>
+              <div id="graficaGraduadosPorSemestre" style="height: 400px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-university me-2"></i> Graduados por facultad
+              </h5>
+              <div id="graficaGraduadosPorFacultad" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-venus-mars me-2"></i> Graduados por Sexo</h5>
+              <div id="graficaGraduadosPorSexo" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h5 class="card-title mb-2">
+                <i class="fas fa-graduation-cap me-2"></i> Graduados por programa
+              </h5>
+              <div id="graficaGraduadosPorPrograma" style="height: 450px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!--- FIN DEL CONTENIDO ---->
+
+
+
+      <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                  href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
+                    Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                    target="_blank">License</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+
+
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="fa fa-filter fixed-plugin-button-nav cursor-pointer"></i>
+    </a>
+
+    <div class="card shadow-lg">
+      <div class="d-flex justify-content-between align-items-start mt-3 px-3">
+        <div>
+          <h5 class="mb-1 text-default"><i class="fa-solid fa-sliders me-2 text-dark"></i>Zona de Filtros</h5>
+          <p class="text-sm text-muted mb-2">Personaliza la vista del dashboard de estudiantes y graduados</p>
+        </div>
+        <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+          <i class="fa fa-close"></i>
+        </button>
+      </div>
+
+      <hr class="horizontal dark my-2">
+
+      <div class="card-body pt-sm-2 pt-0 overflow-auto">
+
+        <!-- 🎓 Filtros Estudiantes -->
+        <h6 class="text-uppercase text-success mt-2"><i class="fa-solid fa-user-graduate me-2"></i>Estudiantes</h6>
+        <p class="text-sm text-muted mb-3">Filtros aplicables a gráficas de admitidos y matriculados</p>
+
+        <!-- 📅 Rango de Años -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Rango de Años</label>
+          <div id="sliderEstudiantes" style="margin: 10px 0;"></div>
+          <small class="text-muted">Años seleccionados: <span id="labelSliderEstudiantes"
+              class="fw-semibold"></span></small>
+        </div>
+
+        <!-- 🚻 Sexo -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Sexo</label>
+          <select id="filtroSexoEstudiante" class="form-select">
+            <option value="">Todos</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Masculino">Masculino</option>
+          </select>
+        </div>
+
+        <!-- 🎓 Nivel de Formación -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Nivel de Formación</label>
+          <select id="filtroNivelFormacion" class="form-select">
+            <option value="">Todos</option>
+            <option value="Pregrado">Pregrado</option>
+            <option value="Posgrado">Posgrado</option>
+          </select>
+        </div>
+
+        <!-- 🏛️ Facultad -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Facultad</label>
+          <select id="filtroFacultadEstudiante" class="form-select">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <!-- 📘 Programa Académico -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Programa Académico</label>
+          <select id="filtroProgramaEstudiante" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- 🌍 Departamento de Procedencia -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Departamento de Procedencia</label>
+          <select id="filtroDepartamentoProcedenciaEstudiante" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- Puedes agregar aquí una sección similar para GRADUADOS -->
+        <!-- con id="filtroProgramaGraduado", "filtroDepartamentoResidencia", etc -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Contenedor de notificaciones (Toasts) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+    <div id="toastContainer"></div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes shrinkAndFade {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .shrink-fade-out {
+      animation: shrinkAndFade 0.4s ease forwards;
+    }
+  </style>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+  <!--   Core JS Files   -->
+  <script src="../../../assets/js/core/popper.min.js"></script>
+  <script src="../../../assets/js/core/bootstrap.min.js"></script>
+  <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../../../assets/js/s-plan-charts.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+    // Se define el Slider General de selección de Semestre para los filtros
+    const sliderEstudiantes = document.getElementById('sliderEstudiantes');
+
+    // Verificar si el usuario está autenticado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+        // Prevenir múltiples listeners
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            const confirmBtn = document.getElementById("confirmLogout");
+            const clonedBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+
+            clonedBtn.addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "../../../pages/sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+              });
+            });
+          });
+
+          logoutListenerAdded = true;
+        }
+
+        // Buscar por correo sanitizado
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+
+            console.log("Roles del usuario:", roles);
+
+            if (roles.includes("admin")) {
+              document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+              document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+            }
+
+          } else {
+            console.warn("Usuario autenticado pero no registrado en la base de datos.");
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+        });
+
+      } else {
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.add("btn-primary");
+
+        logButton.addEventListener("click", () => {
+          window.location.href = "../../../pages/sign-in.html";
+        });
+      }
+    });
+
+    function limitarTexto(texto, limite) {
+      return texto.length > limite ? texto.slice(0, limite) + '...' : texto;
+    }
+
+    // Función para mostrar una notificación (Toast)
+    function mostrarToast(mensaje, tipo = "info") {
+      const toastContainer = document.getElementById("toastContainer");
+
+      // Crear toast
+      const toast = document.createElement("div");
+      toast.className = `toast align-items-center text-white bg-${tipo} border-0 show`;
+      toast.role = "alert";
+      toast.ariaLive = "assertive";
+      toast.ariaAtomic = "true";
+      toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${mensaje}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        `;
+
+      toastContainer.appendChild(toast);
+
+      // Mostrar el toast
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+
+      // Eliminar el toast después de 5 segundos
+      setTimeout(() => {
+        bsToast.hide();
+        setTimeout(() => toast.remove(), 500);
+      }, 5000);
+    }
+
+    // Función para convertir un número a formato "2022-A" o "2022-B"
+    function convertirAnioSemestre(valor) {
+      const anio = Math.floor(valor);
+      const decimal = valor - anio;
+      const semestre = (decimal === 0) ? 'A' : 'B';
+      return `${anio}-${semestre}`;
+    }
+
+    function convertirSemestreANumero(etiqueta) {
+      const [anio, semestre] = etiqueta.split("-");
+      return parseInt(anio) + (semestre === "B" ? 0.5 : 0);
+    }
+
+    const RUTA_BASE_ESTUDIANTES = '/DataLab/ciclos_de_carga/estudiantes';
+    const RUTA_BASE_GRADUADOS = '/DataLab/ciclos_de_carga/graduados';
+
+    let inscritosRaw = [];
+    let admitidosRaw = [];
+    let matriculadosRaw = [];
+    let graduadosRaw = [];
+
+    async function cargarDataEstudiantes() {
+      try {
+        // 🔹 1. Cargar desde ruta principal de estudiantes
+        const snapshot = await get(ref(db, RUTA_BASE_ESTUDIANTES));
+        if (snapshot.exists()) {
+          const ciclos = snapshot.val();
+          const ciclosKeys = Object.keys(ciclos);
+
+          for (const ciclo of ciclosKeys) {
+            const dataPath = `${RUTA_BASE_ESTUDIANTES}/${ciclo}/data`;
+            const dataSnap = await get(ref(db, dataPath));
+            if (!dataSnap.exists()) continue;
+
+            const data = dataSnap.val();
+
+            if (Array.isArray(data.Inscritos)) {
+              inscritosRaw.push(...data.Inscritos.map(d => ({ ...d, __ciclo: ciclo })));
+            }
+            if (Array.isArray(data.Admitidos)) {
+              admitidosRaw.push(...data.Admitidos.map(d => ({ ...d, __ciclo: ciclo })));
+            }
+            if (Array.isArray(data.Matriculados)) {
+              matriculadosRaw.push(...data.Matriculados.map(d => ({ ...d, __ciclo: ciclo })));
+            }
+
+          }
+        } else {
+          console.warn('⚠️ No hay ciclos de carga en estudiantes.');
+        }
+
+        // 🔹 2. Cargar adicionalmente desde ruta exclusiva de graduados
+        const snapshotGrad = await get(ref(db, RUTA_BASE_GRADUADOS));
+        if (snapshotGrad.exists()) {
+          const ciclosGraduados = snapshotGrad.val();
+          const ciclosKeysGrad = Object.keys(ciclosGraduados);
+
+          for (const ciclo of ciclosKeysGrad) {
+            const dataPath = `${RUTA_BASE_GRADUADOS}/${ciclo}/data`;
+            const dataSnap = await get(ref(db, dataPath));
+            if (!dataSnap.exists()) continue;
+
+            const data = dataSnap.val();
+
+            // 🔍 Aquí se accede correctamente a data.graduados
+            if (Array.isArray(data.graduados)) {
+              graduadosRaw.push(...data.graduados.map(d => ({ ...d, __ciclo: ciclo, __origen: "graduados" })));
+              console.log(`✅ Graduados añadidos desde ${ciclo}: ${data.graduados.length}`);
+            } else {
+              console.warn(`⚠️ No hay arreglo graduados en: ${dataPath}`);
+            }
+          }
+        } else {
+          console.warn('⚠️ No hay ciclos de carga en graduados.');
+        }
+
+
+        // 🔸 Consolidado
+        console.log(`✅ Inscritos cargados: ${inscritosRaw.length}`);
+        console.log(`✅ Admitidos cargados: ${admitidosRaw.length}`);
+        console.log(`✅ Matriculados cargados: ${matriculadosRaw.length}`);
+        console.log(`✅ Graduados cargados (total): ${graduadosRaw.length}`);
+
+        // KPIs
+        document.getElementById("kpiAdmitidos").innerText = admitidosRaw.length.toLocaleString("es-CO");
+        document.getElementById("kpiMatriculados").innerText = matriculadosRaw.length.toLocaleString("es-CO");
+        document.getElementById("kpiGraduados").innerText = graduadosRaw.length.toLocaleString("es-CO");
+
+        // Visualizaciones
+        generarGraficaAdmitidosPorSemestre(admitidosRaw);
+        generarGraficaAdmitidosPorNivel(admitidosRaw);
+        generarGraficaAdmitidosPorSexo(admitidosRaw);
+        generarGraficaAdmitidosPorFacultad(admitidosRaw);
+        generarGraficaAdmitidosPorPrograma(admitidosRaw);
+        generarGraficaAdmitidosPorProcedencia(admitidosRaw);
+        generarGraficaMatriculadosPorSemestre(matriculadosRaw);
+        generarGraficaMatriculadosPorNivel(matriculadosRaw);
+        generarGraficaMatriculadosPorSexo(matriculadosRaw);
+        generarGraficaMatriculadosPorFacultad(matriculadosRaw);
+        generarGraficaMatriculadosPorProcedencia(matriculadosRaw);
+        generarGraficaMatriculadosPorPrograma(matriculadosRaw);
+        generarGraficaGraduadosPorSemestre(graduadosRaw);
+        generarGraficaGraduadosPorPrograma(graduadosRaw);
+        generarGraficaGraduadosPorFacultad(graduadosRaw);
+        generarGraficaGraduadosPorSexo(graduadosRaw);
+
+        // generarTendenciaGraduados(graduadosRaw);
+
+      } catch (error) {
+        console.error('❌ Error al cargar datos de estudiantes:', error);
+      }
+    }
+
+    cargarDataEstudiantes().then(() => {
+      inicializarSliderEstudiantes();
+      cargarOpcionesFacultadYPrograma();
+    });
+
+    //FUNCIONES DE LAS GRÁFICAS
+    function generarGraficaAdmitidosPorSemestre(admitidosArray) {
+      const chart = echarts.init(document.getElementById('graficaAdmitidosPorSemestre'), 'DATALAB');
+
+      const conteoPorSemestre = {};
+
+      admitidosArray.forEach(adm => {
+        const semestre = obtenerAnioSemestre(adm.fecha_inscripcion);
+        if (semestre) {
+          if (!conteoPorSemestre[semestre]) conteoPorSemestre[semestre] = 0;
+          conteoPorSemestre[semestre]++;
+        }
+      });
+
+      const etiquetas = Object.keys(conteoPorSemestre).sort();
+      const valores = etiquetas.map(k => conteoPorSemestre[k]);
+
+      const option = {
+        title: {
+          text: 'Admitidos según semestre',
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          name: 'Semestre',
+          nameLocation: 'middle',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'value',
+          name: 'Admitidos',
+          nameGap: 35
+        },
+        series: [{
+          name: 'Admitidos',
+          type: 'line',
+          data: valores,
+          smooth: false,
+          symbol: 'circle',
+          symbolSize: 10,
+          lineStyle: {
+            width: 2
+          },
+          itemStyle: {
+            color: '#00594E'
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontWeight: 'bold',
+            fontSize: 11,
+            color: '#00594E'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path://M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcel(); // asegúrate que esta función esté definida
+              }
+            }
+          }
+        },
+        grid: {
+          left: '10%',
+          right: '10%',
+          bottom: '25%',
+          top: '25%',
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy()); // Firma institucional
+    }
+
+    //función ADMITIDOS POR NIVEL DE FORMACIÓN
+    function generarGraficaAdmitidosPorNivel(admitidosArray) {
+      const chart = echarts.init(document.getElementById('graficaAdmitidosPorNivel'), 'DATALAB');
+
+      const conteoPorNivel = {};
+
+      admitidosArray.forEach(adm => {
+        const nivel = (adm.nivel || 'Sin dato').toUpperCase().trim();
+        if (!conteoPorNivel[nivel]) conteoPorNivel[nivel] = 0;
+        conteoPorNivel[nivel]++;
+      });
+
+      const niveles = Object.keys(conteoPorNivel).sort();
+      const valores = niveles.map(n => ({ name: n, value: conteoPorNivel[n] }));
+
+      const option = {
+        title: {
+          text: 'Distribución de admitidos por nivel',
+          left: 'center'
+        },
+        color: ['#b5a160', '#00594E'], // 🎨 Paleta personalizada aplicada globalmente
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'horizontal',
+          bottom: '9%',
+          textStyle: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Admitidos',
+          type: 'pie',
+          radius: ['30%', '55%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: '{b}\n{c} ({d}%)',
+            fontSize: 10
+          },
+          labelLine: {
+            show: true
+          },
+          data: valores
+        }],
+        toolbox: {
+          top: '6%',
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path://M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelAdmitidosPorNivel(); // asegúrate de que esté definida
+              }
+            }
+          }
+        }
+      };
+
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN ADMITIDOS POR SEXO:
+    function generarGraficaAdmitidosPorSexo(admitidosArray) {
+      const chart = echarts.init(document.getElementById('graficaAdmitidosPorSexo'), 'DATALAB');
+
+      // Contar por sexo (normalizamos texto)
+      const conteo = {};
+      admitidosArray.forEach(admitido => {
+        let sexo = (admitido.sexo || 'SIN DATO').toUpperCase().trim();
+        if (sexo === '') sexo = 'SIN DATO';
+        conteo[sexo] = (conteo[sexo] || 0) + 1;
+      });
+
+      // Convertir a formato ECharts
+      const valores = Object.entries(conteo).map(([key, value]) => ({
+        name: key,
+        value
+      }));
+
+      const option = {
+        title: {
+          text: 'Distribución de admitidos por sexo',
+          left: 'center'
+        },
+        color: ['#00594E', '#B5A160', '#28E4C0'], // Paleta institucional
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'horizontal',
+          bottom: '9%',
+          textStyle: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          left: '14%',
+          right: '14%',
+          name: 'Admitidos',
+          type: 'pie',
+          radius: ['30%', '55%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: '{b}\n{c} ({d}%)',
+            fontSize: 10
+          },
+          labelLine: {
+            show: true
+          },
+          data: valores
+        }],
+        toolbox: {
+          top: '6%',
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path://M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelAdmitidosPorSexo
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN ADMITIDOS POR FACULTAD:
+    function generarGraficaAdmitidosPorFacultad(admitidosArray) {
+      const chart = echarts.init(document.getElementById('graficaAdmitidosPorFacultad'), 'DATALAB');
+
+      const conteo = {};
+      admitidosArray.forEach(admitido => {
+        let facultad = (admitido.facultad || 'Sin Dato').trim().toLowerCase();
+        if (facultad === '') facultad = 'Sin Dato';
+
+        // Capitalizar: primera letra de cada palabra
+        facultad = facultad.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+
+        conteo[facultad] = (conteo[facultad] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo).sort((a, b) => b[1] - a[1]);
+      const etiquetas = datosOrdenados.map(([facultad]) => facultad);
+      const valores = datosOrdenados.map(([_, cantidad]) => cantidad);
+
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      const escalaColor = valor => {
+        const porcentaje = (valor - min) / (max - min || 1);
+        const intensidad = Math.round(255 - porcentaje * 140);
+        return `rgb(0, ${intensidad}, ${intensidad - 30})`;
+      };
+
+      const colores = valores.map(valor => ({
+        type: 'linear',
+        x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [
+          { offset: 0, color: escalaColor(valor) },
+          { offset: 1, color: '#4B7D74' }
+        ]
+      }));
+
+      const option = {
+        title: {
+          text: 'Admitidos por Facultad',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          bottom: '25%', // más espacio para etiquetas,
+          fontSize: 8,
+          left: '20%'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          axisLabel: {
+            rotate: 15,
+            fontSize: 11,
+            interval: 0
+          }
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          name: 'Admitidos',
+          type: 'bar',
+          data: valores,
+          barWidth: '60%',
+          itemStyle: {
+            color: (params) => colores[params.dataIndex],
+            borderRadius: [4, 4, 0, 0]
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#00594e'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelAdmitidosPorFacultad
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN ADMITIDOS POR PROGRAMA:
+    function generarGraficaAdmitidosPorPrograma(admitidosArray) {
+      const chart = echarts.init(document.getElementById('graficaAdmitidosPorPrograma'), 'DATALAB');
+
+      const conteo = {};
+      admitidosArray.forEach(admitido => {
+        let programa = (admitido.programa_academico || 'SIN DATO').trim();
+        if (programa === '') programa = 'SIN DATO';
+        conteo[programa] = (conteo[programa] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo).sort((a, b) => b[1] - a[1]);
+      const etiquetas = datosOrdenados.map(([programa]) => programa);
+      const valores = datosOrdenados.map(([_, cantidad]) => cantidad);
+
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      const escalaColor = valor => {
+        const porcentaje = (valor - min) / (max - min || 1);
+        const intensidad = Math.round(255 - porcentaje * 140);
+        return `rgb(0, ${intensidad}, ${intensidad - 30})`;
+      };
+
+      const colores = valores.map(valor => ({
+        type: 'linear',
+        x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [
+          { offset: 0, color: escalaColor(valor) },
+          { offset: 1, color: '#4B7D74' }
+        ]
+      }));
+
+      const option = {
+        title: {
+          text: 'Admitidos por Programa Académico',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          bottom: '40%', // más espacio para etiquetas,
+          fontSize: 8,
+
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          axisLabel: {
+            rotate: 30,
+            fontSize: 10
+          }
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          name: 'Admitidos',
+          type: 'bar',
+          data: valores,
+          barWidth: '60%',
+          itemStyle: {
+            color: (params) => colores[params.dataIndex],
+            borderRadius: [4, 4, 0, 0]
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#00594e'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelAdmitidosPorPrograma
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN ADMITIDOS POR PROCEDENCIA:
+    function generarGraficaAdmitidosPorProcedencia(admitidosArray) {
+      const chart = echarts.init(document.getElementById('graficaAdmitidosPorProcedencia'), 'DATALAB');
+
+      const conteo = {};
+      admitidosArray.forEach(admitido => {
+        let depto = (admitido.departamento_procedencia || 'Sin dato').trim().toLowerCase();
+        if (depto === '') depto = 'Sin dato';
+
+        // Capitalizar: primera letra de cada palabra
+        depto = depto.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+
+        conteo[depto] = (conteo[depto] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo).sort((a, b) => b[1] - a[1]);
+      const etiquetas = datosOrdenados.map(([depto]) => depto);
+      const valores = datosOrdenados.map(([_, cantidad]) => cantidad);
+
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      const escalaColor = valor => {
+        const porcentaje = (valor - min) / (max - min || 1);
+        const intensidad = Math.round(255 - porcentaje * 140);
+        return `rgb(0, ${intensidad}, ${intensidad - 30})`;
+      };
+
+      const colores = valores.map(valor => ({
+        type: 'linear',
+        x: 0, y: 0, x2: 1, y2: 0,
+        colorStops: [
+          { offset: 0, color: escalaColor(valor) },
+          { offset: 1, color: '#4B7D74' }
+        ]
+      }));
+
+      const option = {
+        title: {
+          text: 'Admitidos por Departamento ',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          left: '5%',
+          right: '5%',
+          bottom: '10%',
+          top: '10%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value'
+        },
+        yAxis: {
+          type: 'category',
+          data: etiquetas,
+          axisLabel: {
+            fontSize: 11
+          }
+        },
+        series: [{
+          name: 'Admitidos',
+          type: 'bar',
+          data: valores,
+          barWidth: '60%',
+          itemStyle: {
+            color: (params) => colores[params.dataIndex],
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true,
+            position: 'right',
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#00594e'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelAdmitidosPorProcedencia
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN MATRICULADOS POR SEMESTRE
+    function generarGraficaMatriculadosPorSemestre(matriculadosArray) {
+      const chart = echarts.init(document.getElementById('graficaMatriculadosPorSemestre'), 'DATALAB');
+
+      const conteoPorSemestre = {};
+
+      matriculadosArray.forEach(matriculado => {
+        const semestre = obtenerAnioSemestre(matriculado.periodo);
+        if (semestre) {
+          conteoPorSemestre[semestre] = (conteoPorSemestre[semestre] || 0) + 1;
+        }
+      });
+
+      const etiquetas = Object.keys(conteoPorSemestre).sort();
+      const valores = etiquetas.map(k => conteoPorSemestre[k]);
+
+      const option = {
+        title: {
+          text: 'Matriculados según semestre',
+          top: -5
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          name: 'Semestre',
+          nameLocation: 'middle',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'value',
+          name: 'Matriculados',
+          nameGap: 35
+        },
+        series: [{
+          name: 'Matriculados',
+          type: 'line',
+          data: valores,
+          smooth: false,
+          symbol: 'circle',
+          symbolSize: 10,
+          lineStyle: {
+            width: 2
+          },
+          itemStyle: {
+            color: '#B5A160'
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontWeight: 'bold',
+            fontSize: 11,
+            color: '#B5A160'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelMatriculadosPorSemestre
+            }
+          }
+        },
+        grid: {
+          left: '5%',
+          right: '5%',
+          bottom: '20%',
+          top: '25%',
+          containLabel: true
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN MATRICULADOS POR NIVEL DE FORMACIÓN
+    function generarGraficaMatriculadosPorNivel(matriculadosArray) {
+      const chart = echarts.init(document.getElementById('graficaMatriculadosPorNivel'), 'DATALAB');
+
+      const conteoPorNivel = {};
+
+      matriculadosArray.forEach(matriculado => {
+        let nivel = (matriculado.nivel || 'Sin dato').trim().toUpperCase();
+        if (nivel === '') nivel = 'Sin dato';
+        conteoPorNivel[nivel] = (conteoPorNivel[nivel] || 0) + 1;
+      });
+
+      const niveles = Object.keys(conteoPorNivel).sort();
+      const valores = niveles.map(n => ({ name: n, value: conteoPorNivel[n] }));
+
+      const option = {
+        title: {
+          text: 'Distribución de matriculados por nivel',
+          left: 'center'
+        },
+        color: ['#b5a160', '#00594E', '#28E4C0'],
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'vertical',
+          left: 'left',
+          top: 'middle',
+          textStyle: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Matriculados',
+          type: 'pie',
+          radius: ['30%', '55%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: '{b}\n{c} ({d}%)',
+            fontSize: 10
+          },
+          labelLine: {
+            show: true
+          },
+          data: valores
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path://M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelMatriculadosPorNivel
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN MATRICULADOS POR SEXO
+    function generarGraficaMatriculadosPorSexo(matriculadosArray) {
+      const chart = echarts.init(document.getElementById('graficaMatriculadosPorSexo'), 'DATALAB');
+
+      const conteoPorSexo = {};
+
+      matriculadosArray.forEach(matriculado => {
+        let sexo = (matriculado.sexo || 'SIN DATO').trim().toUpperCase();
+        if (sexo === '') sexo = 'SIN DATO';
+        conteoPorSexo[sexo] = (conteoPorSexo[sexo] || 0) + 1;
+      });
+
+      const datos = Object.entries(conteoPorSexo).map(([sexo, cantidad]) => ({
+        name: sexo,
+        value: cantidad
+      }));
+
+      const option = {
+        title: {
+          text: 'Distribución de matriculados por sexo',
+          left: 'center'
+        },
+        color: ['#00594E', '#B5A160', '#28E4C0'], // Paleta institucional
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
+        },
+                legend: {
+          orient: 'horizontal',
+          bottom: '9%',
+          textStyle: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Matriculados',
+          type: 'pie',
+          radius: ['25%', '50%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: '{b}\n{c} ({d}%)',
+            fontSize: 10
+          },
+          labelLine: {
+            show: true
+          },
+          data: datos
+        }],
+        toolbox: {
+          top: '8%',
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path://M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelMatriculadosPorSexo
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN MATRICULADOS POR FACULTAD
+    function generarGraficaMatriculadosPorFacultad(matriculadosArray) {
+      const chart = echarts.init(document.getElementById('graficaMatriculadosPorFacultad'), 'DATALAB');
+
+      const conteo = {};
+      matriculadosArray.forEach(matriculado => {
+        let facultad = (matriculado.facultad || 'Sin Dato').trim().toLowerCase();
+        if (facultad === '') facultad = 'Sin Dato';
+
+        // Capitalizar: primera letra de cada palabra
+        facultad = facultad.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+
+        conteo[facultad] = (conteo[facultad] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo).sort((a, b) => b[1] - a[1]);
+      const etiquetas = datosOrdenados.map(([facultad]) => facultad);
+      const valores = datosOrdenados.map(([_, cantidad]) => cantidad);
+
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      const escalaColor = valor => {
+        const porcentaje = (valor - min) / (max - min || 1);
+        const intensidad = Math.round(255 - porcentaje * 140);
+        return `rgb(0, ${intensidad}, ${intensidad - 30})`;
+      };
+
+      const colores = valores.map(valor => ({
+        type: 'linear',
+        x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [
+          { offset: 0, color: escalaColor(valor) },
+          { offset: 1, color: '#4B7D74' }
+        ]
+      }));
+
+      const option = {
+        title: {
+          text: 'Matriculados por Facultad',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          bottom: '30%',
+          left: '15%',
+          right: '5%'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          axisLabel: {
+            rotate: 15,
+            fontSize: 11,
+            interval: 0
+          }
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          name: 'Matriculados',
+          type: 'bar',
+          data: valores,
+          barWidth: '60%',
+          itemStyle: {
+            color: (params) => colores[params.dataIndex],
+            borderRadius: [4, 4, 0, 0]
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#00594e'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelMatriculadosPorFacultad
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN MATRICULADOS POR PROCEDENCIA
+    function generarGraficaMatriculadosPorProcedencia(matriculadosArray) {
+      const chart = echarts.init(document.getElementById('graficaMatriculadosPorProcedencia'), 'DATALAB');
+
+      const conteo = {};
+      matriculadosArray.forEach(m => {
+        let depto = (m.departamento_procedencia || 'SIN DATO').trim().toUpperCase();
+        if (depto === '') depto = 'SIN DATO';
+        conteo[depto] = (conteo[depto] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo).sort((a, b) => b[1] - a[1]);
+      const etiquetas = datosOrdenados.map(([depto]) => depto);
+      const valores = datosOrdenados.map(([_, cantidad]) => cantidad);
+
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      const escalaColor = valor => {
+        const porcentaje = (valor - min) / (max - min || 1);
+        const intensidad = Math.round(255 - porcentaje * 140);
+        return `rgb(0, ${intensidad}, ${intensidad - 30})`;
+      };
+
+      const colores = valores.map(valor => ({
+        type: 'linear',
+        x: 0, y: 0, x2: 1, y2: 0,
+        colorStops: [
+          { offset: 0, color: escalaColor(valor) },
+          { offset: 1, color: '#4B7D74' }
+        ]
+      }));
+
+      const option = {
+        title: {
+          text: 'Matriculados por Departamento',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          left: '5%',
+          right: '16%',
+          bottom: '13%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          name: 'Matriculados'
+        },
+        yAxis: {
+          type: 'category',
+          data: etiquetas,
+          axisLabel: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Matriculados',
+          type: 'bar',
+          data: valores,
+          barWidth: '60%',
+          itemStyle: {
+            color: (params) => colores[params.dataIndex],
+            borderRadius: [0, 4, 4, 0]
+          },
+          label: {
+            show: true,
+            position: 'right',
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#00594E'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path://M18 16H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V6h12v2z'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelMatriculadosPorProcedencia
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN MATRICULADOS POR PROGRAMA
+    function generarGraficaMatriculadosPorPrograma(matriculadosArray) {
+      const chart = echarts.init(document.getElementById('graficaMatriculadosPorPrograma'), 'DATALAB');
+
+      const conteo = {};
+      matriculadosArray.forEach(m => {
+        let programa = (m.programa || 'SIN DATO').trim().toUpperCase();
+        if (programa === '') programa = 'SIN DATO';
+        conteo[programa] = (conteo[programa] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo).sort((a, b) => b[1] - a[1]);
+      const etiquetas = datosOrdenados.map(([programa]) => programa);
+      const valores = datosOrdenados.map(([_, cantidad]) => cantidad);
+
+      const max = Math.max(...valores);
+      const min = Math.min(...valores);
+      const escalaColor = valor => {
+        const porcentaje = (valor - min) / (max - min || 1);
+        const intensidad = Math.round(255 - porcentaje * 140);
+        return `rgb(0, ${intensidad}, ${intensidad - 30})`;
+      };
+
+      const colores = valores.map(valor => ({
+        type: 'linear',
+        x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [
+          { offset: 0, color: escalaColor(valor) },
+          { offset: 1, color: '#4B7D74' }
+        ]
+      }));
+
+      const option = {
+        title: {
+          text: 'Matriculados por Programa Académico',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        grid: {
+          bottom: '10%',
+          left: '5%',
+          right: '5%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          axisLabel: {
+            rotate: 30,
+            fontSize: 10
+          }
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          name: 'Matriculados',
+          type: 'bar',
+          data: valores,
+          barWidth: '60%',
+          itemStyle: {
+            color: (params) => colores[params.dataIndex],
+            borderRadius: [4, 4, 0, 0]
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontSize: 10,
+            fontWeight: 'bold',
+            color: '#00594e'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path://M18 16H6v-2h12v2zm0-4H6v-2h12v2zm0-4H6V6h12v2z'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: descargarExcelMatriculadosPorPrograma
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN GRADUADOS POR SEMESTRE
+    function generarGraficaGraduadosPorSemestre(graduadosArray) {
+      const chart = echarts.init(document.getElementById('graficaGraduadosPorSemestre'), 'DATALAB');
+
+      const conteoPorSemestre = {};
+
+      graduadosArray.forEach(grad => {
+        const semestre = obtenerAnioSemestre(grad.fecha_grado);
+        if (semestre) {
+          if (!conteoPorSemestre[semestre]) conteoPorSemestre[semestre] = 0;
+          conteoPorSemestre[semestre]++;
+        }
+      });
+
+      const etiquetas = Object.keys(conteoPorSemestre).sort();
+      const valores = etiquetas.map(k => conteoPorSemestre[k]);
+
+      const option = {
+        title: {
+          text: 'Graduados por semestre',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          name: 'Semestre',
+          nameLocation: 'middle',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'value',
+          name: 'Graduados',
+          nameGap: 35
+        },
+        series: [{
+          name: 'Graduados',
+          type: 'line',
+          data: valores,
+          smooth: false,
+          symbol: 'circle',
+          symbolSize: 10,
+          lineStyle: {
+            width: 2
+          },
+          itemStyle: {
+            color: '#B5A160'
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontWeight: 'bold',
+            fontSize: 11,
+            color: '#B5A160'
+          }
+        }],
+        toolbox: {
+          top: '10%',
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelGraduadosPorSemestre(); // asegúrate de definirla si la usas
+              }
+            }
+          }
+        },
+        grid: {
+          left: '5%',
+          right: '5%',
+          bottom: '15%',
+          top: '20%',
+          containLabel: true
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN GRADUADOS POR PROGRAMA
+    function generarGraficaGraduadosPorPrograma(graduadosArray) {
+      const chart = echarts.init(document.getElementById('graficaGraduadosPorPrograma'), 'DATALAB');
+
+      const conteoPorPrograma = {};
+
+      graduadosArray.forEach(grad => {
+        const programaRaw = grad.programa || 'No especificado';
+        const programa = normalizarTexto(programaRaw);
+
+        if (!conteoPorPrograma[programa]) conteoPorPrograma[programa] = 0;
+        conteoPorPrograma[programa]++;
+      });
+
+      const programas = Object.keys(conteoPorPrograma).sort((a, b) => conteoPorPrograma[b] - conteoPorPrograma[a]);
+      const valores = programas.map(p => conteoPorPrograma[p]);
+
+      const option = {
+        title: {
+          text: 'Graduados por programa',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          left: '15%',
+          right: '15%',
+          bottom: '15%',
+          top: '15%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          name: 'Graduados',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'category',
+          data: programas,
+          axisLabel: {
+            fontSize: 10
+          },
+          name: 'Programa',
+          nameLocation: 'start',
+          top: '5%',
+          nameGap: 10
+        },
+        series: [{
+          name: 'Graduados',
+          type: 'bar',
+          data: valores,
+          itemStyle: {
+            color: '#B5A160'
+          },
+          label: {
+            show: true,
+            position: 'right',
+            fontSize: 10,
+            color: '#B5A160'
+          },
+          barWidth: '60%'
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelGraduadosPorPrograma();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN GRADUADOS POR FACULTAD
+    function generarGraficaGraduadosPorFacultad(graduadosArray) {
+      const chart = echarts.init(document.getElementById('graficaGraduadosPorFacultad'), 'DATALAB');
+
+      const conteoPorFacultad = {};
+
+      graduadosArray.forEach(grad => {
+        const facultadRaw = grad.facultad || 'No especificado';
+        const facultad = normalizarTexto(facultadRaw);
+        if (!conteoPorFacultad[facultad]) conteoPorFacultad[facultad] = 0;
+        conteoPorFacultad[facultad]++;
+      });
+
+      const facultades = Object.keys(conteoPorFacultad).sort((a, b) => conteoPorFacultad[b] - conteoPorFacultad[a]);
+      const valores = facultades.map(f => conteoPorFacultad[f]);
+
+      const option = {
+        title: {
+          text: 'Graduados por facultad',
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          left: '5%',
+          right: '5%',
+          bottom: '10%',
+          top: 60,
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          name: 'Graduados',
+          nameGap: 20
+        },
+        yAxis: {
+          type: 'category',
+          data: facultades,
+          name: 'Facultad',
+          axisLabel: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Graduados',
+          type: 'bar',
+          data: valores,
+          barWidth: 20,
+          itemStyle: {
+            color: '#00594E'
+          },
+          label: {
+            show: true,
+            position: 'right',
+            color: '#00594E',
+            fontWeight: 'bold',
+            fontSize: 10
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelGraduadosPorFacultad();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN GRADUADOS POR SEXO
+    function generarGraficaGraduadosPorSexo(graduadosArray) {
+      const chart = echarts.init(document.getElementById('graficaGraduadosPorSexo'), 'DATALAB');
+
+      const conteoPorSexo = {};
+
+      graduadosArray.forEach(grad => {
+        let sexoRaw = grad.sexo || 'No especificado';
+        let sexo = sexoRaw.toUpperCase().trim();
+
+        if (sexo === 'M') sexo = 'Masculino';
+        else if (sexo === 'F') sexo = 'Femenino';
+        else if (sexo === 'FEMENINO' || sexo === 'F') sexo = 'Femenino';
+        else if (sexo === 'MASCULINO' || sexo === 'M') sexo = 'Masculino';
+        else if (sexo === '') sexo = 'No especificado';
+
+        if (!conteoPorSexo[sexo]) conteoPorSexo[sexo] = 0;
+        conteoPorSexo[sexo]++;
+      });
+
+      const sexos = Object.keys(conteoPorSexo).sort();
+      const valores = sexos.map(s => ({
+        name: s,
+        value: conteoPorSexo[s]
+      }));
+
+      const option = {
+        title: {
+          text: 'Distribución de graduados por sexo',
+          left: 'center',
+          fontSize: 7
+        },
+        color: ['#b5a160', '#00594E', '#999999'], // Dorado, verde, gris
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'horizontal',
+          bottom: '13%',
+          textStyle: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Graduados',
+          type: 'pie',
+          radius: ['25%', '35%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: '{b}\n{c} ({d}%)',
+            fontSize: 10
+          },
+          labelLine: {
+            show: true
+          },
+          data: valores
+        }],
+        toolbox: {
+          top: '7%',
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelGraduadosPorSexo();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    function obtenerFechaHoy() {
+      const hoy = new Date();
+      const dia = String(hoy.getDate()).padStart(2, '0');
+      const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+      const anio = hoy.getFullYear();
+      return `${dia}/${mes}/${anio}`;
+    }
+
+    function obtenerAnioSemestre(fechaStr) {
+      // Ejemplo de fechaStr: "05/03/2024"
+      if (!fechaStr) return null; // si está vacío o undefined
+
+      const partes = fechaStr.split('/');
+      if (partes.length !== 3) return null; // formato inesperado
+
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const anio = parseInt(partes[2], 10);
+
+      if (isNaN(dia) || isNaN(mes) || isNaN(anio)) return null; // datos inválidos
+
+      // Determinar el semestre
+      const semestre = (mes <= 6) ? 'A' : 'B';
+
+      return `${anio}-${semestre}`;
+    }
+
+    function obtenerAnioDesdeFecha(fechaStr) {
+      if (!fechaStr) return null;
+
+      const partes = fechaStr.split('/');
+      if (partes.length !== 3) return null;
+
+      const anio = parseInt(partes[2], 10);
+      return isNaN(anio) ? null : anio;
+    }
+
+    function esUnitropico(entidad) {
+      const entidadNormalizada = entidad.toUpperCase();
+
+      return entidadNormalizada.includes('UNITRÓPICO') ||
+        entidadNormalizada.includes('UNITROPICO') ||
+        entidadNormalizada.includes('UNIVERSIDAD INTERNACIONAL DEL TRÓPICO AMERICANO');
+    }
+
+    function toTitleCase(str) {
+      return str.toLowerCase().split(' ').map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }).join(' ');
+    }
+
+    //FUNCIONES PARA DESCARGAR DE EXCEL
+    function descargarExcelAdmitidos(categorias, valores) {
+      const wb = XLSX.utils.book_new();
+      const ws_data = [["Semestre", "Total Admitidos"]];
+
+      categorias.forEach((sem, i) => {
+        ws_data.push([sem, valores[i]]);
+      });
+
+      const ws = XLSX.utils.aoa_to_sheet(ws_data);
+      XLSX.utils.book_append_sheet(wb, ws, "Admitidos por semestre");
+      XLSX.writeFile(wb, "AdmitidosPorSemestre.xlsx");
+    }
+
+    function descargarExcelAdmitidosPorNivel() {
+      // Obtener la instancia del gráfico
+      const chart = echarts.getInstanceByDom(document.getElementById('graficaAdmitidosPorNivel'));
+
+      if (!chart) {
+        console.warn("⚠️ No se encontró la gráfica 'graficaAdmitidosPorNivel'");
+        return;
+      }
+
+      const option = chart.getOption();
+      const dataSerie = option.series[0].data;
+
+      const dataExcel = dataSerie.map(entry => ({
+        Nivel: entry.name,
+        Cantidad: entry.value
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(dataExcel);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'AdmitidosPorNivel');
+
+      const fecha = new Date();
+      const nombreArchivo = `DistribucionAdmitidosPorNivel_${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, '0')}.xlsx`;
+      XLSX.writeFile(workbook, nombreArchivo);
+    }
+
+    function descargarExcelAdmitidosPorSexo() {
+      const chart = echarts.getInstanceByDom(document.getElementById('graficaAdmitidosPorSexo'));
+      if (!chart) return console.warn("❌ No se encontró la gráfica de sexo");
+
+      const option = chart.getOption();
+      const data = option.series[0].data;
+
+      const datosExcel = data.map(d => ({
+        Sexo: d.name,
+        Cantidad: d.value
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(datosExcel);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'AdmitidosPorSexo');
+
+      const fecha = new Date();
+      const nombreArchivo = `DistribucionAdmitidosPorSexo_${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, '0')}.xlsx`;
+      XLSX.writeFile(workbook, nombreArchivo);
+    }
+
+    function descargarExcelAdmitidosPorFacultad() {
+      const chart = echarts.getInstanceByDom(document.getElementById('graficaAdmitidosPorFacultad'));
+      if (!chart) return console.warn("❌ No se encontró la gráfica de facultades");
+
+      const option = chart.getOption();
+      const data = option.series[0].data;
+
+      const labels = option.xAxis[0].data;
+
+      const datosExcel = labels.map((facultad, i) => ({
+        Facultad: facultad,
+        Cantidad: data[i]
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(datosExcel);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'AdmitidosPorFacultad');
+
+      const fecha = new Date();
+      const nombreArchivo = `DistribucionAdmitidosPorFacultad_${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, '0')}.xlsx`;
+      XLSX.writeFile(workbook, nombreArchivo);
+    }
+
+    function descargarExcelAdmitidosPorPrograma() {
+      if (!admitidosRaw || admitidosRaw.length === 0) {
+        alert('No hay datos disponibles para exportar.');
+        return;
+      }
+
+      const conteo = {};
+      admitidosRaw.forEach(admitido => {
+        let programa = (admitido.programa_academico || 'SIN DATO').trim();
+        if (programa === '') programa = 'SIN DATO';
+        conteo[programa] = (conteo[programa] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo)
+        .sort((a, b) => b[1] - a[1])
+        .map(([programa, cantidad]) => ({
+          'Programa Académico': programa,
+          'Cantidad de Admitidos': cantidad
+        }));
+
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(datosOrdenados);
+      XLSX.utils.book_append_sheet(wb, ws, "Admitidos por Programa");
+      XLSX.writeFile(wb, "admitidos_por_programa.xlsx");
+    }
+
+    function descargarExcelAdmitidosPorProcedencia() {
+      const conteo = {};
+      admitidosRaw.forEach(admitido => {
+        let depto = (admitido.departamento_procedencia || 'Sin dato').trim().toLowerCase();
+        if (depto === '') depto = 'Sin dato';
+
+        depto = depto.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+
+        conteo[depto] = (conteo[depto] || 0) + 1;
+      });
+
+      const datosOrdenados = Object.entries(conteo)
+        .sort((a, b) => b[1] - a[1])
+        .map(([departamento, cantidad]) => ({
+          Departamento: departamento,
+          Admitidos: cantidad
+        }));
+
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(datosOrdenados);
+      XLSX.utils.book_append_sheet(wb, ws, "Admitidos por Procedencia");
+
+      XLSX.writeFile(wb, "admitidos_por_departamento.xlsx");
+    }
+
+    function descargarExcelMatriculadosPorSemestre() {
+      if (!Array.isArray(matriculadosRaw) || matriculadosRaw.length === 0) {
+        console.warn("⚠️ No hay datos de matriculados disponibles para exportar.");
+        return;
+      }
+
+      // Contar matriculados por semestre
+      const conteo = {};
+      matriculadosRaw.forEach(matriculado => {
+        const semestre = obtenerAnioSemestre(matriculado.periodo);
+        if (semestre) {
+          conteo[semestre] = (conteo[semestre] || 0) + 1;
+        }
+      });
+
+      // Preparar datos para Excel
+      const filas = Object.entries(conteo).sort((a, b) => a[0].localeCompare(b[0])).map(([semestre, cantidad]) => ({
+        'Semestre': semestre,
+        'Total Matriculados': cantidad
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(filas);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Matriculados por Semestre");
+
+      const nombreArchivo = `matriculados_por_semestre_${obtenerFechaHoy()}.xlsx`;
+      XLSX.writeFile(wb, nombreArchivo);
+    }
+
+    function descargarExcelMatriculadosPorNivel() {
+      // Contar los matriculados por nivel
+      const conteoPorNivel = {};
+
+      matriculadosRaw.forEach(est => {
+        const nivel = (est.nivel || 'Sin dato').toUpperCase().trim();
+        conteoPorNivel[nivel] = (conteoPorNivel[nivel] || 0) + 1;
+      });
+
+      // Crear datos para Excel
+      const dataExcel = Object.entries(conteoPorNivel).map(([nivel, cantidad]) => ({
+        Nivel: nivel,
+        Matriculados: cantidad
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(dataExcel);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Matriculados por Nivel");
+
+      XLSX.writeFile(workbook, "matriculados_por_nivel.xlsx");
+    }
+
+    function descargarExcelMatriculadosPorSexo() {
+      const conteoPorSexo = {};
+
+      matriculadosRaw.forEach(matriculado => {
+        let sexo = (matriculado.sexo || 'SIN DATO').trim().toUpperCase();
+        if (sexo === '') sexo = 'SIN DATO';
+        conteoPorSexo[sexo] = (conteoPorSexo[sexo] || 0) + 1;
+      });
+
+      const data = Object.entries(conteoPorSexo).map(([sexo, cantidad]) => ({
+        Sexo: sexo,
+        Matriculados: cantidad
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'MatriculadosSexo');
+
+      XLSX.writeFile(wb, `Matriculados_por_Sexo_${obtenerFechaHoy()}.xlsx`);
+    }
+
+    function descargarExcelMatriculadosPorFacultad() {
+      // Contar la cantidad de matriculados por facultad
+      const conteo = {};
+      matriculadosRaw.forEach(matriculado => {
+        let facultad = (matriculado.facultad || 'Sin Dato').trim().toLowerCase();
+        if (facultad === '') facultad = 'Sin Dato';
+
+        facultad = facultad.split(' ').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+        conteo[facultad] = (conteo[facultad] || 0) + 1;
+      });
+
+      const dataParaExcel = Object.entries(conteo).map(([facultad, cantidad]) => ({
+        'Facultad': facultad,
+        'Cantidad de Matriculados': cantidad
+      }));
+
+      // Crear hoja y libro
+      const ws = XLSX.utils.json_to_sheet(dataParaExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Matriculados por Facultad');
+
+      // Descargar
+      const nombreArchivo = `matriculados_por_facultad_${obtenerFechaHoy()}.xlsx`;
+      const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+      saveAs(new Blob([wbout], { type: 'application/octet-stream' }), nombreArchivo);
+    }
+
+    function descargarExcelMatriculadosPorProcedencia() {
+      const conteo = {};
+
+      matriculadosRaw.forEach(m => {
+        let depto = (m.departamento_procedencia || 'SIN DATO').trim().toUpperCase();
+        if (depto === '') depto = 'SIN DATO';
+        conteo[depto] = (conteo[depto] || 0) + 1;
+      });
+
+      const datos = Object.entries(conteo).map(([departamento_procedencia, cantidad]) => ({
+        'Departamento de procedencia': departamento_procedencia,
+        'Cantidad de matriculados': cantidad
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(datos);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "MatriculadosPorProcedencia");
+
+      XLSX.writeFile(wb, "matriculados_por_procedencia.xlsx");
+    }
+
+    function descargarExcelMatriculadosPorPrograma() {
+      const conteo = {};
+      matriculadosRaw.forEach(m => {
+        let programa = (m.programa || 'SIN DATO').trim().toUpperCase();
+        if (programa === '') programa = 'SIN DATO';
+        conteo[programa] = (conteo[programa] || 0) + 1;
+      });
+
+      const datos = Object.entries(conteo).sort((a, b) => b[1] - a[1])
+        .map(([programa, cantidad]) => ({
+          'Programa Académico': programa,
+          'Cantidad de Matriculados': cantidad
+        }));
+
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(datos);
+      XLSX.utils.book_append_sheet(wb, ws, 'Matriculados por Programa');
+
+      const fecha = obtenerFechaHoy().replaceAll('/', '-');
+      XLSX.writeFile(wb, `Matriculados_por_Programa_${fecha}.xlsx`);
+    }
+
+    function descargarExcelGraduadosPorSemestre() {
+      const conteoPorSemestre = {};
+
+      graduadosRaw.forEach(grad => {
+        const semestre = obtenerAnioSemestre(grad.fecha_grado);
+        if (semestre) {
+          if (!conteoPorSemestre[semestre]) conteoPorSemestre[semestre] = 0;
+          conteoPorSemestre[semestre]++;
+        }
+      });
+
+      const etiquetas = Object.keys(conteoPorSemestre).sort();
+
+      const dataParaExcel = etiquetas.map(sem => ({
+        'Semestre': sem,
+        'Cantidad de Graduados': conteoPorSemestre[sem]
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(dataParaExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Graduados por Semestre");
+
+      XLSX.writeFile(wb, "Graduados_Por_Semestre.xlsx");
+    }
+
+    function descargarExcelGraduadosPorPrograma() {
+      const conteoPorPrograma = {};
+
+      graduadosRaw.forEach(grad => {
+        const programaRaw = grad.programa || 'No especificado';
+        const programa = normalizarTexto(programaRaw);
+
+        if (!conteoPorPrograma[programa]) conteoPorPrograma[programa] = 0;
+        conteoPorPrograma[programa]++;
+      });
+
+      const programas = Object.keys(conteoPorPrograma).sort((a, b) => conteoPorPrograma[b] - conteoPorPrograma[a]);
+
+      const dataParaExcel = programas.map(nombre => ({
+        'Programa': nombre,
+        'Cantidad de Graduados': conteoPorPrograma[nombre]
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(dataParaExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Graduados por Programa");
+
+      XLSX.writeFile(wb, "Graduados_Por_Programa.xlsx");
+    }
+
+    function descargarExcelGraduadosPorFacultad() {
+      const conteoPorFacultad = {};
+
+      graduadosRaw.forEach(grad => {
+        const facultadRaw = grad.facultad || 'No especificado';
+        const facultad = normalizarTexto(facultadRaw);
+
+        if (!conteoPorFacultad[facultad]) conteoPorFacultad[facultad] = 0;
+        conteoPorFacultad[facultad]++;
+      });
+
+      const facultades = Object.keys(conteoPorFacultad).sort((a, b) => conteoPorFacultad[b] - conteoPorFacultad[a]);
+
+      const dataParaExcel = facultades.map(nombre => ({
+        'Facultad': nombre,
+        'Cantidad de Graduados': conteoPorFacultad[nombre]
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(dataParaExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Graduados por Facultad");
+
+      XLSX.writeFile(wb, "Graduados_Por_Facultad.xlsx");
+    }
+
+    function descargarExcelGraduadosPorSexo() {
+      const conteoPorSexo = {};
+
+      graduadosRaw.forEach(grad => {
+        let sexoRaw = grad.sexo || 'No especificado';
+        let sexo = sexoRaw.toUpperCase().trim();
+
+        if (sexo === 'M') sexo = 'Masculino';
+        else if (sexo === 'F') sexo = 'Femenino';
+        else if (sexo === 'FEMENINO') sexo = 'Femenino';
+        else if (sexo === 'MASCULINO') sexo = 'Masculino';
+        else if (sexo === '') sexo = 'No especificado';
+
+        if (!conteoPorSexo[sexo]) conteoPorSexo[sexo] = 0;
+        conteoPorSexo[sexo]++;
+      });
+
+      const sexos = Object.keys(conteoPorSexo);
+
+      const dataParaExcel = sexos.map(sexo => ({
+        'Sexo': sexo,
+        'Cantidad de Graduados': conteoPorSexo[sexo]
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(dataParaExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Graduados por Sexo");
+
+      XLSX.writeFile(wb, "Graduados_Por_Sexo.xlsx");
+    }
+
+    function normalizarTexto(texto) {
+      if (!texto || typeof texto !== "string") return "No especificado";
+      return texto
+        .trim()
+        .toLowerCase()
+        .split(" ")
+        .map(palabra => {
+          if (palabra.length > 4) {
+            return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+          }
+          return palabra;
+        })
+        .join(" ");
+    }
+
+    function inicializarSliderEstudiantes() {
+      // Definir el rango de años
+      const minAnioEstudiantes = 2022;
+      const maxAnioEstudiantes = 2025;
+
+      noUiSlider.create(sliderEstudiantes, {
+        start: 2024.5, // valor único inicial
+        connect: [true, false], // conecta desde el inicio hasta el punto
+        step: 0.5,
+        range: {
+          min: minAnioEstudiantes,
+          max: maxAnioEstudiantes + 0.5
+        },
+        tooltips: true,
+        format: {
+          to: convertirAnioSemestre,
+          from: value => {
+            const [anio, semestre] = value.split('-');
+            return parseInt(anio) + (semestre === 'B' ? 0.5 : 0);
+          }
+        }
+      });
+
+      const labelSliderEstudiantes = document.getElementById('labelSliderEstudiantes');
+      //const labelSliderEstudiantes2 = document.getElementById('labelSliderEstudiantes2');
+      //const labelSliderEstudiantes3 = document.getElementById('labelSliderEstudiantes3');
+      const resumenSemestres = document.getElementById('resumenSemestres');
+
+      sliderEstudiantes.noUiSlider.on('update', function (values) {
+        const valor = values[0];
+        labelSliderEstudiantes.textContent = valor;
+        //labelSliderEstudiantes2.textContent = valor;
+        //labelSliderEstudiantes3.textContent = valor;
+        resumenSemestres.textContent = valor;
+
+        const numero = convertirSemestreANumero(valor);
+        filtrarDashboardEstudiantes();
+      });
+
+
+    }
+
+
+    function filtrarDashboardEstudiantes() {
+      try {
+        // 🎯 1. Semestre seleccionado
+        const semestreSeleccionado = sliderEstudiantes.noUiSlider.get();
+
+        // 🧩 2. Filtros adicionales
+        const sexo = document.getElementById('filtroSexoEstudiante')?.value || '';
+        const nivel = document.getElementById('filtroNivelFormacion')?.value || '';
+        const facultad = document.getElementById('filtroFacultadEstudiante')?.value || '';
+        const programa = document.getElementById('filtroProgramaEstudiante')?.value || '';
+        const departamento = document.getElementById('filtroDepartamentoProcedenciaEstudiante')?.value || '';
+
+        // 🧮 3. Filtrar datos (con semestre para KPIs y otras gráficas)
+        const admitidosFiltrados = admitidosRaw.filter(est =>
+          obtenerAnioSemestre(est.fecha_inscripcion) === semestreSeleccionado &&
+          (!sexo || est.sexo === sexo) &&
+          (!nivel || est.nivel === nivel) &&
+          (!facultad || est.facultad === facultad) &&
+          (!programa || est.programa === programa) &&
+          (!departamento || est.departamento_procedencia === departamento)
+        );
+
+        const matriculadosFiltrados = matriculadosRaw.filter(est =>
+          obtenerAnioSemestre(est.periodo) === semestreSeleccionado &&
+          (!sexo || est.sexo === sexo) &&
+          (!nivel || est.nivel === nivel) &&
+          (!facultad || est.facultad === facultad) &&
+          (!programa || est.programa === programa) &&
+          (!departamento || est.departamento_procedencia === departamento)
+        );
+
+        const graduadosFiltrados = graduadosRaw.filter(est =>
+          obtenerAnioSemestre(est.fecha_grado) === semestreSeleccionado &&
+          (!sexo || est.sexo === sexo) &&
+          (!facultad || est.facultad === facultad) &&
+          (!programa || est.programa === programa)
+        );
+
+        // 📊 4. Gráficas SIN filtro de semestre (siempre con data completa)
+        generarGraficaAdmitidosPorSemestre(admitidosRaw);
+        generarGraficaMatriculadosPorSemestre(matriculadosRaw);
+        generarGraficaGraduadosPorSemestre(graduadosRaw);
+
+        // 📊 5. Gráficas CON filtro aplicado
+        generarGraficaAdmitidosPorNivel(admitidosFiltrados);
+        generarGraficaAdmitidosPorSexo(admitidosFiltrados);
+        generarGraficaAdmitidosPorFacultad(admitidosFiltrados);
+        generarGraficaAdmitidosPorPrograma(admitidosFiltrados);
+        generarGraficaAdmitidosPorProcedencia(admitidosFiltrados);
+
+        generarGraficaMatriculadosPorNivel(matriculadosFiltrados);
+        generarGraficaMatriculadosPorSexo(matriculadosFiltrados);
+        generarGraficaMatriculadosPorFacultad(matriculadosFiltrados);
+        generarGraficaMatriculadosPorPrograma(matriculadosFiltrados);
+        generarGraficaMatriculadosPorProcedencia(matriculadosFiltrados);
+
+        generarGraficaGraduadosPorPrograma(graduadosFiltrados);
+        generarGraficaGraduadosPorFacultad(graduadosFiltrados);
+        generarGraficaGraduadosPorSexo(graduadosFiltrados);
+
+        // 🔢 6. KPIs
+        document.getElementById("kpiAdmitidos").innerText = admitidosFiltrados.length.toLocaleString("es-CO");
+        document.getElementById("kpiMatriculados").innerText = matriculadosFiltrados.length.toLocaleString("es-CO");
+        document.getElementById("kpiGraduados").innerText = graduadosFiltrados.length.toLocaleString("es-CO");
+
+        // 🧾 7. Chips visuales
+        actualizarResumenFiltrosEstudiantes();
+
+      } catch (error) {
+        console.error('❌ Error al filtrar el dashboard de estudiantes:', error);
+        mostrarToast('Ocurrió un error al aplicar los filtros.', 'danger');
+      }
+    }
+
+    function actualizarKPIsEstudiantes(estudiantesFiltrados) {
+      try {
+        // Clasificación según estado
+        const admitidosRaw = estudiantesFiltrados.filter(est => est.estado === 'ADMITIDO');
+        const matriculadosRaw = estudiantesFiltrados.filter(est => est.estado === 'MATRICULADO');
+        const graduadosRaw = estudiantesFiltrados.filter(est => est.estado === 'GRADUADO');
+
+        // Actualización de KPIs
+        document.getElementById("kpiAdmitidos").innerText = admitidosRaw.length.toLocaleString("es-CO");
+        document.getElementById("kpiMatriculados").innerText = matriculadosRaw.length.toLocaleString("es-CO");
+        document.getElementById("kpiGraduados").innerText = graduadosRaw.length.toLocaleString("es-CO");
+      } catch (error) {
+        console.error("❌ Error al actualizar KPIs de estudiantes:", error);
+      }
+    }
+
+    function actualizarResumenFiltrosEstudiantes() {
+      const contenedorChips = document.getElementById('chipsFiltrosDinamicos');
+      contenedorChips.innerHTML = ''; // Limpiar chips anteriores
+
+      // 🎓 Filtros activos
+      const sexo = document.getElementById('filtroSexoEstudiante')?.value || "";
+      const nivel = document.getElementById('filtroNivelFormacion')?.value || "";
+      const facultad = document.getElementById('filtroFacultadEstudiante')?.value || "";
+      const programa = document.getElementById('filtroProgramaEstudiante')?.value || "";
+      const departamento = document.getElementById('filtroDepartamentoProcedenciaEstudiante')?.value || "";
+
+      // 🎯 Actualiza visualmente el semestre seleccionado
+      const slider = document.getElementById('sliderEstudiantes');
+      const semestreSeleccionado = slider?.noUiSlider?.get();
+      if (semestreSeleccionado) {
+        document.getElementById("labelSliderEstudiantes").innerText = semestreSeleccionado;
+      }
+
+      // 🔧 Función auxiliar para crear cada chip
+      function crearChip(iconoFA, etiqueta, valor, resetCallback) {
+        const chip = document.createElement('span');
+        chip.className = 'badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center';
+        chip.innerHTML = `
+      <i class="fa-solid ${iconoFA} me-1 text-secondary"></i>
+      ${etiqueta}: <strong class="ms-1">${valor}</strong>
+      <button type="button" class="btn-close ms-2 text-dark font-weight-bolder" aria-label="Eliminar" style="font-size: 1rem;">x</button>
+    `;
+        chip.querySelector('.btn-close').addEventListener('click', () => {
+          resetCallback();
+          filtrarDashboardEstudiantes(); // Refresca todo
+        });
+        contenedorChips.appendChild(chip);
+      }
+
+      // 📌 Chips visibles (excepto semestre que ya se muestra arriba)
+      if (sexo) crearChip('fa-venus-mars', 'Sexo', sexo, () => document.getElementById('filtroSexoEstudiante').value = "");
+      if (nivel) crearChip('fa-layer-group', 'Nivel', nivel, () => document.getElementById('filtroNivelFormacion').value = "");
+      if (facultad) crearChip('fa-building-columns', 'Facultad', facultad, () => document.getElementById('filtroFacultadEstudiante').value = "");
+      if (programa) crearChip('fa-graduation-cap', 'Programa', programa, () => document.getElementById('filtroProgramaEstudiante').value = "");
+      if (departamento) crearChip('fa-map', 'Departamento', departamento, () => document.getElementById('filtroDepartamentoProcedenciaEstudiante').value = "");
+    }
+
+    document.getElementById('filtroSexoEstudiante')?.addEventListener('change', filtrarDashboardEstudiantes);
+    document.getElementById('filtroNivelFormacion')?.addEventListener('change', filtrarDashboardEstudiantes);
+    document.getElementById('filtroFacultadEstudiante')?.addEventListener('change', filtrarDashboardEstudiantes);
+    document.getElementById('filtroProgramaEstudiante')?.addEventListener('change', filtrarDashboardEstudiantes);
+    document.getElementById('filtroDepartamentoProcedenciaEstudiante')?.addEventListener('change', filtrarDashboardEstudiantes);
+
+    function cargarOpcionesFacultadYPrograma() {
+      try {
+        const facultadSet = new Set();
+        const programaSet = new Set();
+
+        // Consolidar data
+        const todasLasFuentes = [...admitidosRaw, ...matriculadosRaw, ...graduadosRaw];
+
+        // Recorrer y guardar facultades y programas únicos normalizados
+        todasLasFuentes.forEach(est => {
+          if (est.facultad) facultadSet.add(normalizarTexto(est.facultad));
+          if (est.programa) programaSet.add(normalizarTexto(est.programa));
+        });
+
+        // Convertir a array y ordenar
+        const facultades = Array.from(facultadSet).sort();
+        const programas = Array.from(programaSet).sort();
+
+        // Elementos del DOM
+        const selectFacultad = document.getElementById("filtroFacultadEstudiante");
+        const selectPrograma = document.getElementById("filtroProgramaEstudiante");
+
+        // Limpiar opciones anteriores (excepto la primera)
+        selectFacultad.innerHTML = '<option value="">Todas</option>';
+        selectPrograma.innerHTML = '<option value="">Todos</option>';
+
+        // Agregar nuevas opciones
+        facultades.forEach(facultad => {
+          const opt = document.createElement("option");
+          opt.value = facultad;
+          opt.textContent = facultad;
+          selectFacultad.appendChild(opt);
+        });
+
+        programas.forEach(programa => {
+          const opt = document.createElement("option");
+          opt.value = programa;
+          opt.textContent = programa;
+          selectPrograma.appendChild(opt);
+        });
+
+      } catch (error) {
+        console.error("❌ Error al cargar opciones de facultad y programa:", error);
+        mostrarToast("No se pudieron cargar las opciones de facultad y programa.", "danger");
+      }
+    }
+
+
+  </script>
+
+  <!-- noUiSlider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+  <!-- Tu theme personalizado -->
+  <script src="../../../assets/js/datalab-charts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../../../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+</body>
+<style>
+  /* Estilo para las filas de la tabla */
+  #tablaPoliticas tr {
+    cursor: pointer;
+    /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+  }
+
+  /* Cambia el color de fondo de la fila al pasar el cursor */
+  #tablaPoliticas tr:hover {
+    background-color: hsla(214, 83%, 48%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #000;
+    font-weight: 500;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+
+  #tablaPoliticas2 tr:hover {
+    background-color: hsla(173, 100%, 17%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #ffffff;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+</style>
+
+</html>

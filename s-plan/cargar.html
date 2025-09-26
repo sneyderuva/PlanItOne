@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de Evidencias - S-PLAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    <!-- Choices.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+    <style>
+        .paso-activo {
+            background-color: #fffbea;
+            border-left: 5px solid #B5A160;
+            font-weight: bold;
+        }
+
+        .paso-completado {
+            color: #4caf50;
+        }
+
+        .dropzone {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropzone.dragover {
+            background-color: #e6f7ff;
+            border-color: #007bff;
+        }
+
+        #pantallaBienvenida {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .slide {
+            display: none;
+            text-align: center;
+            animation: fade 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Modal de advertencia de inicio de sesión -->
+    <div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title text-white" id="loginRequiredModalLabel">
+                        <i class="fas fa-exclamation-triangle"></i> Inicio de sesión requerido
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    Para acceder al módulo de carga de evidencias necesitas haber iniciado sesión. Por favor, inicia
+                    sesión o vuelve al inicio.
+                </div>
+                <div class="modal-footer">
+                    <a href="dashboard.html" class="btn btn-secondary">
+                        <i class="fas fa-home"></i> Ir al inicio
+                    </a>
+                    <button id="btnIniciarSesionModal" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Pantalla de bienvenida con slider -->
+    <div id="pantallaBienvenida"
+        class="position-fixed w-100 h-100 bg-light d-flex align-items-center justify-content-center"
+        style="z-index: 9999;">
+        <div class="container text-center">
+            <!-- Logo de S-PLAN -->
+            <div class="text-center mb-4 animate__animated animate__fadeInDown">
+                <img src="../assets/img/s-plan/logo.png" alt="Logo S-PLAN" class="logo-splan">
+                <style>
+                    .logo-splan {
+                        max-width: 220px;
+                        height: auto;
+                        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+                        transition: transform 0.3s ease;
+                    }
+
+                    .logo-splan:hover {
+                        transform: scale(1.05);
+                    }
+                </style>
+            </div>
+
+            <div id="slides" class="mb-4">
+                <!-- Slide 1 (título llamativo) -->
+                <div class="slide active">
+                    <h1 class="titulo-bienvenida animate__animated animate__fadeInDown animate__faster">
+                        👋 Bienvenido al
+                        <br><span class="modulo-resaltado">Módulo de Carga de Evidencias</span>
+                    </h1>
+                    <p class="lead animate__animated animate__fadeIn animate__delay-1s">Gestiona de forma eficiente tus
+                        evidencias del plan de desarrollo institucional.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-2s">Este módulo está diseñado para
+                        facilitar la entrega de información por parte de los responsables de cada acción.</p>
+                    <style>
+                        .titulo-bienvenida {
+                            font-size: 3rem;
+                            font-weight: 700;
+                            color: #00594E;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                            line-height: 1.2;
+                        }
+
+                        .modulo-resaltado {
+                            display: inline-block;
+                            background: linear-gradient(to right, #60b5ae 0%, #fff3b0 100%);
+                            padding: 0.2em 0.4em;
+                            border-radius: 8px;
+                            box-shadow: 0 0 10px rgba(181, 161, 96, 0.4);
+                            color: #4a3f1d;
+                            font-weight: 800;
+                        }
+                    </style>
+                </div>
+
+                <div class="slide d-none">
+                    <h2>🧩 Paso 1: Selección</h2>
+                    <p class="lead">Elige la meta y la acción que tienes asignada como responsable.</p>
+                    <p>Solo verás aquellas metas y acciones vinculadas a tu perfil institucional, lo que garantiza un
+                        proceso seguro y personalizado.</p>
+                </div>
+                <div class="slide d-none">
+                    <h2>📤 Paso 2: Subida de Evidencias</h2>
+                    <p class="lead">Arrastra o selecciona los archivos que soportan tu gestión.</p>
+                    <p>Puedes subir múltiples documentos, imágenes o reportes como evidencia del avance o cumplimiento
+                        de cada acción.</p>
+                </div>
+                <div class="slide d-none">
+                    <h2>📝 Paso 3: Descripción</h2>
+                    <p class="lead">Acompaña tus archivos con una descripción clara.</p>
+                    <p>Incluye detalles como fechas, contexto, resultados esperados, responsables o dependencias
+                        involucradas.</p>
+                </div>
+                <div class="slide d-none">
+                    <h2>🚀 Paso 4: Entrega y Validación</h2>
+                    <p class="lead">Una vez revises todo, haz clic en "Entregar" para que el líder valide la evidencia.
+                    </p>
+                    <p>El sistema enviará la información al líder del área para su aprobación. Podrás hacer seguimiento
+                        de este proceso.</p>
+                    <button class="btn btn-success btn-lg mt-3" id="iniciarModulo">
+                        <i class="fas fa-play"></i> Empezar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Indicador de slides -->
+            <div class="mb-3">
+                <span class="dot bg-secondary rounded-circle d-inline-block mx-1"
+                    style="width: 12px; height: 12px;"></span>
+                <span class="dot bg-secondary rounded-circle d-inline-block mx-1"
+                    style="width: 12px; height: 12px;"></span>
+                <span class="dot bg-secondary rounded-circle d-inline-block mx-1"
+                    style="width: 12px; height: 12px;"></span>
+                <span class="dot bg-secondary rounded-circle d-inline-block mx-1"
+                    style="width: 12px; height: 12px;"></span>
+                <span class="dot bg-secondary rounded-circle d-inline-block mx-1"
+                    style="width: 12px; height: 12px;"></span>
+            </div>
+
+            <!-- Botones de navegación -->
+            <div class="d-flex justify-content-between">
+                <button id="btnAnterior" class="btn btn-outline-secondary" disabled>
+                    <i class="fas fa-arrow-left"></i> Anterior
+                </button>
+                <button id="btnSiguiente" class="btn btn-primary">
+                    Siguiente <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="contenidoModulo" class="container py-5 d-none">
+        <h2 class="mb-4">
+            🗂️ Carga de Evidencias - Responsable
+            <span id="badgePeriodoCarga" class="badge rounded-pill bg-info text-white ms-2"
+                style="font-size:1rem;">Periodo: --</span>
+        </h2>
+        <div class="row mb-4">
+            <!-- Sidebar de pasos -->
+            <div class="col-md-3">
+                <div class="list-group" id="sidebarPasos">
+                    <div class="list-group-item paso-activo" id="sidebarPaso1" style="cursor: pointer;">
+                        <i class="fas fa-upload"></i> Paso 1: Cargar evidencias
+                    </div>
+                    <div class="list-group-item" id="sidebarPaso2" style="cursor: pointer;">
+                        <i class="fas fa-eye"></i> Paso 2: Revisar y editar
+                    </div>
+                    <div class="list-group-item" id="sidebarPaso3">
+                        <i class="fas fa-paper-plane"></i> Paso 3: Entregar a líder
+                    </div>
+                </div>
+                <div class="container mt-3">
+                    <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary">
+                        <i class="fa fa-user me-sm-1"></i> Iniciar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Paso 1: Formulario de carga -->
+            <div class="col-md-9" id="paso1">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Subir evidencia para una acción</h5>
+                        <form id="formEvidencia">
+                            <div class="mb-3">
+                                <label for="selectMeta" class="form-label">Selecciona una meta asignada</label>
+                                <select class="form-select" id="selectMeta" required>
+                                    <option value="">Seleccione...</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="selectAccion" class="form-label">Selecciona una acción</label>
+                                <select class="form-select" id="selectAccion" required>
+                                    <option value="">Seleccione una meta primero</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcionEvidencia" class="form-label">Descripción de la evidencia</label>
+                                <textarea class="form-control" id="descripcionEvidencia" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subir archivos</label>
+                                <div id="dropzone" class="dropzone">
+                                    <p><i class="fas fa-cloud-upload-alt fa-2x"></i></p>
+                                    <p>Arrastra los archivos aquí o haz clic para seleccionarlos</p>
+                                    <input type="file" id="archivoEvidencia" class="form-control d-none" multiple>
+                                </div>
+                                <div id="listaArchivos" class="mt-3"></div>
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Guardar evidencia
+                            </button>
+                            <button id="btnIrPaso2" type="button" class="btn btn-primary ms-2">
+                                <i class="fas fa-eye"></i> Ir a Paso 2: Revisar y Editar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 2: Revisar y Editar Evidencias -->
+            <div class="col-md-9 d-none" id="paso2">
+                <div class="card">
+                    <div class="card-header bg-white px-4 py-3 border-0 rounded-top-3 shadow-sm">
+                        <!-- Título centrado -->
+                        <div class="d-flex flex-column align-items-center text-center mb-3">
+                            <span class="fs-5 fw-bold text-primary mb-1">
+                                <i class="fas fa-eye me-2"></i>Revisar y Editar Evidencias
+                            </span>
+                            <span class="text-muted small">Filtra, busca y administra tus archivos de evidencia
+                                subidos</span>
+                        </div>
+                        <!-- Filtros en una fila centrada -->
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <input id="buscarEvidencia" type="text"
+                                class="form-control form-control-sm rounded-3 shadow-none" style="max-width:200px"
+                                placeholder="🔎 Buscar...">
+                            <select id="filtroMeta" class="form-select form-select-sm rounded-3 shadow-none"
+                                style="min-width:150px" title="Filtrar por Meta"></select>
+                            <select id="filtroAccion" class="form-select form-select-sm rounded-3 shadow-none"
+                                style="min-width:150px" title="Filtrar por Acción"></select>
+                            <button id="btnMostrarTodas" class="btn btn-outline-primary btn-sm rounded-3 shadow-none"
+                                title="Mostrar todas las metas">
+                                <i class="fas fa-list-ul"></i> Todas
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+                        <div id="acordeonEvidencias" class="accordion"></div>
+                        <div id="sinEvidencias" class="alert alert-warning d-none mt-4 text-white">Por favor seleccione
+                            una meta.
+                        </div>
+                        <button id="btnVolverPaso1" class="btn btn-outline-secondary mt-4">
+                            <i class="fas fa-arrow-left"></i> Volver a carga
+                        </button>
+                        <button id="btnIrPaso3" class="btn btn-success mt-4 ms-2">
+                            <i class="fas fa-paper-plane"></i> Ir a Paso 3: Entregar a líder
+                        </button>
+                    </div>
+                </div>
+                <style>
+                    .badge-evidencia {
+                        font-size: 0.85em;
+                        margin-left: 5px;
+                    }
+
+                    .file-action-btn {
+                        margin-left: 6px;
+                        font-size: 1em;
+                    }
+
+                    .accordion-button[aria-expanded="true"] {
+                        background-color: #fffbea !important;
+                        font-weight: bold;
+                    }
+                </style>
+            </div>
+            <!-- Aquí iría Paso 3 si lo necesitas después -->
+        </div>
+        <div id="mensajeConfirmacion" class="alert alert-success mt-4 d-none" role="alert">
+            ✅ Evidencia guardada correctamente.
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Cierre de Sesión -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>¿Estás seguro de que quieres cerrar sesión?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contenedor de notificaciones (Toasts) -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+        <div id="toastContainer"></div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+        import { getDatabase, ref, get, update, push, remove, set } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+        import { getAuth, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+        import { getStorage, ref as refStorage, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js";
+
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+            authDomain: "sigunitropico.firebaseapp.com",
+            projectId: "sigunitropico",
+            storageBucket: "sigunitropico.appspot.com",
+            messagingSenderId: "32992004482",
+            appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+        const database = getDatabase(app); // ✅ Esta línea es clave
+        const provider = new GoogleAuthProvider();
+        const dbRT = getDatabase(app);
+        const dbFS = getFirestore(app);
+        const storage = getStorage(app);
+
+        // Variable para evitar agregar múltiples event listeners
+        let logoutListenerAdded = false;
+
+        let datosEvidencias = {};
+
+
+        const RUTA_BASE_METAS = "/S-PLAN/";
+        const RUTA_BASE_RESPONSABLES = "/responsables";
+
+        let email = "";
+
+        // Lista de roles permitidos
+        const rolesPermitidos = [
+            "admin", "admin-polariscore", "admin-datalab", "admin-s-plan", "admin-uniproy",
+            "observador", "observador-polariscore", "observador-datalab", "observador-s-plan", "observador-uniproy",
+            "responsable", "responsable-polariscore", "responsable-datalab", "responsable-s-plan", "responsable-uniproy"
+        ];
+
+        // Escuchar cambios en el estado de autenticación
+        onAuthStateChanged(auth, async (user) => {
+            console.log("Usuario autenticado:", user); // 🚀 Verifica si el usuario está autenticado
+
+            if (user) {
+
+                const correoUsuario = user.email;
+                window.correoUsuario = correoUsuario;
+
+                if (!correoUsuario) {
+                    console.error("El usuario no tiene correo.");
+                    return;
+                }
+
+                const idResponsable = await obtenerIdResponsablePorCorreoFS(dbFS, correoUsuario);
+                window.idResponsable = idResponsable;
+                if (idResponsable) {
+                    console.log("ID del responsable:", idResponsable);
+                    // Aquí puedes continuar el flujo...
+                } else {
+                    console.warn("No se encontró responsable para ese correo.");
+                }
+
+                const loginModalElement = document.getElementById("loginRequiredModal");
+                if (loginModalElement && bootstrap.Modal.getInstance(loginModalElement)) {
+                    bootstrap.Modal.getInstance(loginModalElement).hide();
+                }
+
+                logButton.textContent = "Cerrar sesión";
+                logButton.classList.remove("btn-primary");
+                logButton.classList.add("btn-danger");
+
+                // Manejo del logout (evita agregar múltiples eventos)
+                if (!logoutListenerAdded) {
+                    logButton.addEventListener("click", () => {
+                        let logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                        logoutModal.show();
+
+                        document.getElementById("confirmLogout").addEventListener("click", () => {
+                            signOut(auth).then(() => {
+                                window.location.href = "../pages/sign-in.html";
+                            }).catch((error) => {
+                                console.error("Error al cerrar sesión:", error);
+                                mostrarToast("Error al cerrar sesión.", "danger");
+                            });
+                        });
+                    });
+                    logoutListenerAdded = true;
+                }
+
+                // Obtener los roles del usuario desde Firebase Database
+                const correoSanitizado = user.email.replace(/\./g, '_');
+                const userRef = ref(db, `usuarios/${correoSanitizado}`);
+
+                get(userRef).then(async (snapshot) => {
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+                        const userRoles = Array.isArray(userData.roles) ? userData.roles : [];
+
+                        console.log(`✅ Usuario autenticado con roles: ${userRoles.join(", ")}`);
+
+
+                        // Aquí se obtiene el idResponsable SOLO si el rol es responsable
+                        let idResponsable = null;
+                        if (userRoles.includes('responsable-s-plan')) {
+                            // Lógica para obtener el código responsable, ejemplo:
+                            // Supón que ya tienes una función obtenerIdResponsablePorCorreo (Firestore o RTDB)
+                            idResponsable = await obtenerIdResponsablePorCorreo(user.email); // Implementa según tu sistema
+                            window.idResponsable = idResponsable;
+                        }
+
+                        // Reutilizable para admin o responsable
+                        const metas = await obtenerMetasPorRol(db, userRoles, idResponsable);
+                        llenarSelectMetas(metas);
+                        inicializarAutocompleteMetas();
+                        llenarFiltrosMetasYAcciones(metas);
+
+                        window.userRoles = userRoles;
+
+                        datosEvidencias = await cargarDatosEvidencias(db, userRoles, idResponsable);
+                        // ... luego renderizar con renderizarAccordionEvidencias(datosEvidencias)
+                        renderizarAccordionEvidencias(datosEvidencias);
+
+                        // Observar cambios en el DOM
+                        const observer = new MutationObserver(() => {
+                        });
+                        observer.observe(document.body, { childList: true, subtree: true });
+
+                    } else {
+                        console.error("⚠️ No se encontró información del usuario en la base de datos.");
+                        mostrarToast("No se encontró la información del usuario.", "warning");
+                    }
+                }).catch((error) => {
+                    console.error("❌ Error al obtener datos del usuario:", error);
+                    mostrarToast("Error al obtener los datos del usuario.", "danger");
+                });
+
+            } else {
+
+
+                console.log("No hay usuario autenticado");
+
+                logButton.textContent = "Iniciar Sesión";
+                logButton.classList.remove("btn-danger");
+                logButton.classList.add("btn-primary");
+
+                // Mostrar modal de advertencia
+                let loginModal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
+                loginModal.show();
+
+                // Evento para botón de iniciar sesión del modal
+                logButton.addEventListener("click", () => {
+                    signInWithPopup(auth, provider)
+                        .then((result) => {
+                            const user = result.user;
+                            mostrarToast(`¡Bienvenido, ${user.displayName}!`, "success");
+                            guardarUsuario(user.email, user.displayName);
+                        })
+                        .catch((error) => {
+                            console.error("Error al iniciar sesión con Google:", error.code, error.message);
+                            mostrarToast(obtenerMensajeError(error.code), "danger");
+                        });
+                });
+
+
+                document.getElementById("btnIniciarSesionModal").addEventListener("click", () => {
+                    signInWithPopup(auth, provider)
+                        .then((result) => {
+                            const user = result.user;
+                            mostrarToast(`¡Bienvenido, ${user.displayName}!`, "success");
+                            guardarUsuario(user.email, user.displayName);
+                        })
+                        .catch((error) => {
+                            console.error("Error al iniciar sesión con Google:", error.code, error.message);
+                            mostrarToast(obtenerMensajeError(error.code), "danger");
+                        });
+                });
+            }
+        });
+
+
+        const slides = document.querySelectorAll('#slides .slide');
+        const dots = document.querySelectorAll('.dot');
+        const btnAnterior = document.getElementById('btnAnterior');
+        const btnSiguiente = document.getElementById('btnSiguiente');
+
+        let indiceSlide = 0;
+
+        function actualizarSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('d-none', index !== indiceSlide);
+                slide.classList.toggle('active', index === indiceSlide);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('bg-dark', index === indiceSlide);
+                dot.classList.toggle('bg-secondary', index !== indiceSlide);
+            });
+
+            btnAnterior.disabled = indiceSlide === 0;
+            btnSiguiente.classList.toggle('d-none', indiceSlide === slides.length - 1);
+        }
+
+        btnAnterior.addEventListener('click', () => {
+            if (indiceSlide > 0) {
+                indiceSlide--;
+                actualizarSlide();
+            }
+        });
+
+        btnSiguiente.addEventListener('click', () => {
+            if (indiceSlide < slides.length - 1) {
+                indiceSlide++;
+                actualizarSlide();
+            }
+        });
+
+        actualizarSlide();
+
+        document.getElementById("iniciarModulo").addEventListener("click", () => {
+            iniciarModulo();
+        });
+
+        function iniciarModulo() {
+            const bienvenida = document.getElementById('pantallaBienvenida');
+            const contenido = document.getElementById('contenidoModulo');
+
+            // Animación de salida para la pantalla de bienvenida
+            bienvenida.classList.add('animate__animated', 'animate__fadeOutUp');
+
+            // Esperar a que termine la animación antes de ocultarla
+            setTimeout(() => {
+                bienvenida.classList.add('d-none');
+                contenido.classList.remove('d-none');
+                contenido.classList.add('animate__animated', 'animate__fadeIn');
+            }, 600); // Duración de la animación
+        }
+
+
+
+
+        const dropzone = document.getElementById('dropzone');
+        const archivoInput = document.getElementById('archivoEvidencia');
+        const listaArchivos = document.getElementById('listaArchivos');
+
+        dropzone.addEventListener('click', () => archivoInput.click());
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            archivoInput.files = e.dataTransfer.files;
+            mostrarArchivos();
+        });
+        archivoInput.addEventListener('change', mostrarArchivos);
+
+        function mostrarArchivos() {
+            const archivos = Array.from(archivoInput.files);
+            listaArchivos.innerHTML = archivos.map(file => `<p><i class="fas fa-file"></i> ${file.name}</p>`).join('');
+        }
+
+        function mostrarToast(mensaje, tipo = "info", tiempo = 4000) {
+            // Busca o crea el contenedor
+            let container = document.getElementById("toastContainer");
+            if (!container) {
+                container = document.createElement("div");
+                container.id = "toastContainer";
+                container.className = "toast-container position-fixed top-0 end-0 p-3";
+                container.style.zIndex = "11000";
+                document.body.appendChild(container);
+            }
+
+            // Bootstrap 5 Toast template
+            const toastDiv = document.createElement('div');
+            toastDiv.className = `toast align-items-center text-bg-${tipo} border-0 show mb-2`;
+            toastDiv.setAttribute("role", "alert");
+            toastDiv.setAttribute("aria-live", "assertive");
+            toastDiv.setAttribute("aria-atomic", "true");
+
+            toastDiv.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">${mensaje}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+
+            container.appendChild(toastDiv);
+
+            // Auto-cierre
+            setTimeout(() => {
+                toastDiv.classList.remove('show');
+                setTimeout(() => toastDiv.remove(), 500);
+            }, tiempo);
+        }
+
+        async function obtenerIdResponsablePorCorreoFS(dbFS, correoBuscado) {
+            const responsablesRef = collection(dbFS, "responsables");
+            const q = query(responsablesRef, where("correo", "==", correoBuscado));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                // Solo debería haber uno, pero si hay varios tomamos el primero
+                const doc = querySnapshot.docs[0];
+                return doc.id; // <-- Este es el ID del responsable
+            }
+            return null;
+        }
+        let mapaAccionesPorMeta = {};
+
+        async function obtenerMetasPorRol(db, userRoles, idResponsable = null) {
+            const ejesRef = ref(db, '/S-PLAN/ejes');
+            const snapshot = await get(ejesRef);
+            let metas = [];
+
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+
+                for (const idEje in data) {
+                    const eje = data[idEje];
+                    const programas = eje.programas || {};
+                    for (const idPrograma in programas) {
+                        const programa = programas[idPrograma];
+                        const proyectos = programa.proyectos || {};
+                        for (const idProyecto in proyectos) {
+                            const proyecto = proyectos[idProyecto];
+                            const metasObj = proyecto.metas || {};
+                            for (const idMeta in metasObj) {
+                                const meta = metasObj[idMeta];
+
+                                // Obtén acciones como array
+                                let accionesArray = [];
+                                if (meta.acciones && typeof meta.acciones === "object") {
+                                    accionesArray = Object.entries(meta.acciones).map(([id, a]) => ({
+                                        id: a.id_accion || id,
+                                        titulo: a.titulo_accion || a.titulo || id,
+                                        responsable: a.responsable || ""
+                                    }));
+                                }
+
+                                // Si es admin-s-plan, ve todas
+                                // Si es responsable, solo las que contengan su id en el campo 'responsable' de alguna acción
+                                let incluir = false;
+                                if (userRoles.includes("admin-s-plan")) {
+                                    incluir = true;
+                                } else if (idResponsable && accionesArray.length > 0) {
+                                    incluir = accionesArray.some(accion =>
+                                        accion.responsable &&
+                                        accion.responsable.split(',').map(s => s.trim()).includes(idResponsable)
+                                    );
+                                }
+
+                                if (incluir) {
+                                    metas.push({
+                                        id: idMeta,
+                                        titulo: meta.titulo_meta || idMeta,
+                                        idEje,
+                                        idPrograma,
+                                        idProyecto,
+                                        acciones: accionesArray // <-- ¡Las traemos aquí!
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return metas;
+        }
+
+        function llenarSelectMetas(metas) {
+            const selectMeta = document.getElementById('selectMeta');
+            selectMeta.innerHTML = '<option value="">Seleccione...</option>';
+            mapaAccionesPorMeta = {}; // Limpiar siempre
+
+            metas.forEach(meta => {
+                const option = document.createElement('option');
+                option.value = meta.id;
+                option.textContent = `[${meta.id}] ${limitarTexto(meta.titulo, 100)}`;
+                option.dataset.eje = meta.idEje;
+                option.dataset.programa = meta.idPrograma;
+                option.dataset.proyecto = meta.idProyecto;
+                selectMeta.appendChild(option);
+
+                // Guardar acciones para esa meta en el mapa
+                if (Array.isArray(meta.acciones) && meta.acciones.length > 0) {
+                    mapaAccionesPorMeta[meta.id] = meta.acciones;
+                } else {
+                    mostrarToast(`Meta ${meta.id} no tiene acciones.`, "warning");
+                }
+            });
+        }
+
+        document.getElementById('selectMeta').addEventListener('change', function () {
+            const idMeta = this.value;
+            llenarSelectAcciones(idMeta);
+        });
+
+        function llenarSelectAcciones(idMeta) {
+            const selectAccion = document.getElementById('selectAccion');
+            selectAccion.innerHTML = '<option value="">Seleccione una meta primero</option>';
+
+            const acciones = mapaAccionesPorMeta[idMeta];
+
+            if (Array.isArray(acciones) && acciones.length > 0) {
+                selectAccion.innerHTML = '<option value="">Seleccione...</option>';
+                acciones.forEach(accion => {
+                    const option = document.createElement('option');
+                    option.value = accion.id;
+                    option.textContent = limitarTexto(accion.titulo, 90);
+                    selectAccion.appendChild(option);
+                });
+            } else {
+                mostrarToast(`No hay acciones para la meta seleccionada (${idMeta})`, "warning");
+            }
+        }
+
+
+        let choicesMeta = null;
+
+        function inicializarAutocompleteMetas() {
+            if (choicesMeta) {
+                choicesMeta.destroy();
+            }
+            choicesMeta = new Choices('#selectMeta', {
+                searchEnabled: true,
+                itemSelectText: '',
+                shouldSort: false,
+                searchPlaceholderValue: 'Buscar meta...',
+                placeholder: true
+            });
+        }
+
+        function limitarTexto(texto, limite) {
+            return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+        }
+
+        const LIMITE_MB = 80;
+        const LIMITE_BYTES = LIMITE_MB * 1024 * 1024;
+        const ciclo_key = "2025_2"; // Cambia por la variable dinámica cuando la tengas
+
+        let archivosSeleccionados = [];
+
+        // Selección y validación de archivos
+        document.getElementById("archivoEvidencia").addEventListener("change", function (e) {
+            archivosSeleccionados = Array.from(e.target.files);
+            let pesoTotal = archivosSeleccionados.reduce((acc, f) => acc + f.size, 0);
+
+            if (pesoTotal > LIMITE_BYTES) {
+                mostrarToast(`El total de archivos seleccionados supera los ${LIMITE_MB} MB.`, "danger");
+                this.value = "";
+                archivosSeleccionados = [];
+                document.getElementById("listaArchivos").innerHTML = "";
+            } else {
+                document.getElementById("listaArchivos").innerHTML = archivosSeleccionados.map(f =>
+                    `<p><i class="fas fa-file"></i> ${f.name} (${(f.size / (1024 * 1024)).toFixed(2)} MB)</p>`
+                ).join('');
+            }
+        });
+
+        // Subida de archivos y registro en DB
+        document.getElementById("formEvidencia").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            if (archivosSeleccionados.length === 0) {
+                mostrarToast("Debes seleccionar al menos un archivo.", "warning");
+                return;
+            }
+            let pesoTotal = archivosSeleccionados.reduce((acc, f) => acc + f.size, 0);
+            if (pesoTotal > LIMITE_BYTES) {
+                mostrarToast(`El total de archivos supera los ${LIMITE_MB} MB. No se puede subir.`, "danger");
+                return;
+            }
+
+            const idMeta = document.getElementById("selectMeta").value;
+            const idAccion = document.getElementById("selectAccion").value;
+            const descripcion = document.getElementById("descripcionEvidencia").value;
+            if (!idMeta || !idAccion) {
+                mostrarToast("Debes seleccionar la meta y la acción antes de subir archivos.", "warning");
+                return;
+            }
+
+            try {
+                const storage = getStorage();
+                const db = getDatabase();
+                const folderPath = `PlanItOne/S-PLAN/evidencias/${ciclo_key}/${idMeta}/${idAccion}`;
+                const rutaDB = `S-PLAN/evidencias/${ciclo_key}/${idMeta}/${idAccion}`;
+
+                for (const file of archivosSeleccionados) {
+                    const fileNameKey = reemplazarPuntosPorGuionBajo(file.name);
+                    const fileRef = refStorage(storage, `${folderPath}/${fileNameKey}`);
+                    await uploadBytesResumable(fileRef, file);
+                    const downloadUrl = await getDownloadURL(fileRef);
+
+                    // Guarda el archivo en RTDB usando fileNameKey como clave
+                    await set(ref(db, `${rutaDB}/${fileNameKey}`), {
+                        nombre: file.name,
+                        peso: file.size,
+                        url: downloadUrl,
+                        descripcion: descripcion,
+                        fecha: new Date().toISOString(),
+                        correo: window.correoUsuario,
+                        responsable: window.idResponsable,
+                        estado: "Sin revisión"
+                        // Otros campos opcionales...
+                    });
+                }
+
+
+                mostrarToast("Archivos subidos correctamente.", "success");
+                archivosSeleccionados = [];
+                document.getElementById("archivoEvidencia").value = "";
+                document.getElementById("listaArchivos").innerHTML = "";
+                document.getElementById("descripcionEvidencia").value = "";
+
+                // Después de completar la subida de todos los archivos
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Evidencia subida!',
+                    text: 'Tus archivos han sido cargados correctamente.',
+                    confirmButtonColor: '#00594E',
+                    background: '#f9f9f9',
+                    timer: 2500,
+                    showConfirmButton: true
+                });
+
+
+            } catch (err) {
+                mostrarToast("Error al subir archivos: " + err.message, "danger");
+            }
+        });
+
+        // Inicialización de filtros
+        function llenarFiltrosMetasYAcciones(metas) {
+            const filtroMeta = document.getElementById('filtroMeta');
+            filtroMeta.innerHTML = `<option value="">Filtrar por meta...</option>`;
+            metas.forEach(meta => {
+                filtroMeta.innerHTML += `<option value="${meta.id}">[${meta.id}] ${meta.titulo}</option>`;
+            });
+
+            // Al cambiar meta, actualiza filtro de acciones y el acordeón
+            filtroMeta.addEventListener('change', function () {
+                const metaSel = this.value;
+                llenarFiltroAcciones(metaSel); // ← actualiza placeholder SIEMPRE
+                renderizarAccordionEvidencias(metaSel, '', document.getElementById('buscarEvidencia').value);
+            });
+
+            // Llenar el filtro de acciones con el placeholder de entrada
+            llenarFiltroAcciones(); // ← IMPORTANTE para mostrar el placeholder de entrada
+
+            // Evento para cambiar por acción
+            document.getElementById('filtroAccion').addEventListener('change', function () {
+                const metaSel = filtroMeta.value;
+                const accionSel = this.value;
+                renderizarAccordionEvidencias(metaSel, accionSel, document.getElementById('buscarEvidencia').value);
+            });
+        }
+
+        // Llenar filtro de acciones (con o sin meta seleccionada)
+        function llenarFiltroAcciones(metaSel = '') {
+            const filtroAccion = document.getElementById('filtroAccion');
+            filtroAccion.innerHTML = `<option value="">Filtrar por acción...</option>`;
+            if (!metaSel) return;
+            const meta = datosEvidencias.find(m => m.idMeta === metaSel);
+            if (meta && Array.isArray(meta.acciones)) {
+                meta.acciones.forEach(accion => {
+                    filtroAccion.innerHTML += `<option value="${accion.idAccion}">${accion.tituloAccion}</option>`;
+                });
+            }
+        }
+
+
+        // Evento filtro acción
+        document.getElementById('filtroAccion').addEventListener('change', function () {
+            const metaSel = document.getElementById('filtroMeta').value;
+            const accionSel = this.value;
+            renderizarAccordionEvidencias(metaSel, accionSel, document.getElementById('buscarEvidencia').value);
+        });
+
+        // Evento búsqueda
+        document.getElementById('buscarEvidencia').addEventListener('input', function () {
+            renderizarAccordionEvidencias(
+                document.getElementById('filtroMeta').value,
+                document.getElementById('filtroAccion').value,
+                this.value
+            );
+        });
+
+        // Mostrar todas las metas (quita filtros)
+        document.getElementById('btnMostrarTodas').addEventListener('click', function () {
+            document.getElementById('filtroMeta').value = '';
+            document.getElementById('filtroAccion').value = '';
+            document.getElementById('buscarEvidencia').value = '';
+            renderizarAccordionEvidencias();
+        });
+
+        function renderizarAccordionEvidencias(metaSel = '', accionSel = '', busqueda = '') {
+            const acordeon = document.getElementById('acordeonEvidencias');
+            let html = '';
+            let evidenciasFiltradas = datosEvidencias;
+
+            // Filtro por meta seleccionada
+            if (metaSel) evidenciasFiltradas = evidenciasFiltradas.filter(m => m.idMeta === metaSel);
+
+            evidenciasFiltradas.forEach(meta => {
+                let acciones = meta.acciones;
+                // Filtro por acción seleccionada
+                if (accionSel) acciones = acciones.filter(a => a.idAccion === accionSel);
+
+                // Filtro por búsqueda en nombre de archivo o descripción
+                acciones = acciones.map(a => ({
+                    ...a,
+                    evidencias: a.evidencias.filter(ev =>
+                    (!busqueda ||
+                        (ev.nombre && ev.nombre.toLowerCase().includes(busqueda.toLowerCase())) ||
+                        (ev.descripcion && ev.descripcion.toLowerCase().includes(busqueda.toLowerCase()))
+                    )
+                    )
+                })).filter(a => a.evidencias.length > 0);
+
+                if (acciones.length === 0) return;
+
+                // Meta principal como acordeón
+                const metaIdHtml = `meta${meta.idMeta}`;
+                html += `
+        <div class="accordion-item border-0 shadow-sm mb-2 rounded-3">
+            <h2 class="accordion-header" id="heading${metaIdHtml}">
+                <button class="accordion-button collapsed fs-5 fw-bold py-3" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse${metaIdHtml}" aria-expanded="false" aria-controls="collapse${metaIdHtml}">
+                    <span class="me-2"><i class="fas fa-bullseye text-warning"></i></span>
+                    <span>[${meta.idMeta}] ${limitarTexto(meta.tituloMeta, 60)}</span>
+                </button>
+            </h2>
+            <div id="collapse${metaIdHtml}" class="accordion-collapse collapse" aria-labelledby="heading${metaIdHtml}" data-bs-parent="#acordeonEvidencias">
+                <div class="accordion-body bg-light rounded-bottom">
+                    <div class="accordion" id="acordeonAcciones${metaIdHtml}">
+                        ${acciones.map(a => {
+                    const accionIdHtml = `accion${meta.idMeta}_${a.idAccion}`;
+                    return `
+                                <div class="accordion-item mb-2 border-0">
+                                    <h2 class="accordion-header" id="heading${accionIdHtml}">
+                                        <button class="accordion-button collapsed bg-white fw-semibold fs-6 py-2" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse${accionIdHtml}" aria-expanded="false" aria-controls="collapse${accionIdHtml}">
+                                            <span class="me-2"><i class="fas fa-tasks text-primary"></i></span>
+                                            <span>${limitarTexto(a.tituloAccion, 45)}</span>
+                                            <span class="badge bg-primary ms-2">${a.idAccion}</span>
+                                            <span class="badge bg-secondary ms-auto">${a.evidencias.length} evidencia${a.evidencias.length !== 1 ? 's' : ''}</span>
+                                        </button>
+                                    </h2>
+                                    <div id="collapse${accionIdHtml}" class="accordion-collapse collapse" aria-labelledby="heading${accionIdHtml}" data-bs-parent="#acordeonAcciones${metaIdHtml}">
+                                        <div class="accordion-body bg-white rounded-bottom">
+                                            <ul class="list-group list-group-flush">
+                                                ${a.evidencias.map(ev => `
+                                                    <li class="list-group-item d-flex align-items-center justify-content-between gap-2 py-3" style="border-left:4px solid #B5A160;">
+                                                        <div class="d-flex flex-column flex-md-row align-items-md-center gap-2">
+                                                            <span>
+                                                                <i class="fas fa-file-alt text-secondary me-1"></i>
+                                                                <a href="${ev.url}" target="_blank" class="text-decoration-underline fw-semibold" title="Abrir archivo">${limitarTexto(ev.nombre || ev.archivo, 32)}</a>
+                                                                ${ev.descripcion ? `<small class="text-muted d-block">${limitarTexto(ev.descripcion || "", 60)}</small>` : ''}
+                                                            </span>
+                                                            <span class="badge rounded-pill bg-info text-dark ms-2" title="Responsable">${limitarTexto(ev.responsable || "", 25)}</span>
+                                                            <span class="badge bg-light text-dark border ms-2" title="Fecha de subida">${formatearFechaISO(ev.fecha)}</span>
+                                                        </div>
+                                                        <div class="d-flex flex-row gap-1">
+                                                            <a class="btn btn-outline-success btn-sm px-2 file-action-btn" title="Descargar" target="_blank" href="${ev.url}"><i class="fas fa-download"></i></a>
+                                                            ${ev.puedeEliminar ? `<button class="btn btn-outline-danger btn-sm px-2 file-action-btn btnEliminarEvidencia" data-idmeta="${meta.idMeta}" data-idaccion="${a.idAccion}" data-file="${ev.nombre}" title="Eliminar"><i class="fas fa-trash"></i></button>` : ''}
+                                                        </div>
+                                                    </li>
+                                                `).join('')}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                }).join('')}
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+            });
+
+            acordeon.innerHTML = html;
+            document.getElementById('sinEvidencias').classList.toggle('d-none', !!html);
+        }
+
+
+        function formatearFechaISO(fechaISO) {
+            const date = new Date(fechaISO);
+            const dia = String(date.getDate()).padStart(2, '0');
+            const mes = String(date.getMonth() + 1).padStart(2, '0');
+            const anio = date.getFullYear();
+            let horas = date.getHours();
+            const minutos = String(date.getMinutes()).padStart(2, '0');
+            const ampm = horas >= 12 ? 'pm' : 'am';
+            horas = horas % 12;
+            horas = horas ? horas : 12; // hora '0' debe ser '12'
+            return `${dia}/${mes}/${anio} ${horas}:${minutos} ${ampm}`;
+        }
+
+        async function cargarDatosEvidencias(dbRT, userRoles, idResponsable) {
+            const rutaEvidencias = `/S-PLAN/evidencias/${ciclo_key}`;
+            const refEvidencias = ref(dbRT, rutaEvidencias);
+
+            const snapshot = await get(refEvidencias);
+            let datosEvidencias = [];
+
+            if (!snapshot.exists()) return datosEvidencias;
+
+            const data = snapshot.val();
+
+            for (const idMeta in data) {
+                const metaObj = data[idMeta];
+                let accionesArr = [];
+
+                for (const idAccion in metaObj) {
+                    const evidenciasObj = metaObj[idAccion];
+
+                    // Recorremos cada pushId de evidencia
+                    let evidenciasArr = Object.entries(evidenciasObj).map(([pushId, evidencia]) => {
+                        // Si el rol no es admin, filtrar solo evidencias de su área (responsable)
+                        if (userRoles.includes("admin-s-plan") ||
+                            (evidencia.responsable && evidencia.responsable === idResponsable)) {
+                            return {
+                                ...evidencia,
+                                puedeEliminar: userRoles.includes("admin-s-plan") || (evidencia.responsable === idResponsable),
+                                pushId
+                            };
+                        } else {
+                            return null;
+                        }
+                    }).filter(Boolean);
+
+                    // Solo agregamos la acción si hay evidencias visibles
+                    if (evidenciasArr.length > 0) {
+                        accionesArr.push({
+                            idAccion,
+                            tituloAccion: obtenerTituloAccion(idMeta, idAccion), // crea esta función según tus arrays de acciones
+                            evidencias: evidenciasArr
+                        });
+                    }
+                }
+
+                // Solo agregamos la meta si tiene acciones con evidencias
+                if (accionesArr.length > 0) {
+                    datosEvidencias.push({
+                        idMeta,
+                        tituloMeta: obtenerTituloMeta(idMeta), // crea esta función según tu array de metas
+                        acciones: accionesArr
+                    });
+                }
+            }
+
+            return datosEvidencias;
+        }
+
+
+        const todasLasMetas = await cargarTodasLasMetas(dbRT);
+
+        function obtenerTituloMeta(idMeta) {
+            // Busca en tu array de metas, retorna el titulo
+            const meta = todasLasMetas.find(m => m.id === idMeta);
+            return meta ? meta.titulo : idMeta;
+        }
+
+        function obtenerTituloAccion(idMeta, idAccion) {
+            // Busca primero la meta, luego la acción
+            const meta = todasLasMetas.find(m => m.id === idMeta);
+            if (!meta) return idAccion;
+            const accion = (meta.acciones || []).find(a => a.id === idAccion);
+            return accion ? accion.titulo : idAccion;
+        }
+
+        async function cargarTodasLasMetas(dbRT) {
+            const ejesRef = ref(dbRT, '/S-PLAN/ejes');
+            const snapshot = await get(ejesRef);
+            let todasLasMetas = [];
+
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+
+                for (const idEje in data) {
+                    const eje = data[idEje];
+                    const programas = eje.programas || {};
+
+                    for (const idPrograma in programas) {
+                        const programa = programas[idPrograma];
+                        const proyectos = programa.proyectos || {};
+
+                        for (const idProyecto in proyectos) {
+                            const proyecto = proyectos[idProyecto];
+                            const metasObj = proyecto.metas || {};
+
+                            for (const idMeta in metasObj) {
+                                const meta = metasObj[idMeta];
+
+                                // Recolectar acciones si existen
+                                let accionesArr = [];
+                                if (meta.acciones) {
+                                    accionesArr = Object.entries(meta.acciones).map(([idAccion, accion]) => ({
+                                        id: accion.id_accion || idAccion,
+                                        titulo: accion.titulo_accion || accion.titulo || idAccion
+                                    }));
+                                }
+
+                                todasLasMetas.push({
+                                    id: idMeta,
+                                    titulo: meta.titulo_meta || idMeta,
+                                    idEje,
+                                    idPrograma,
+                                    idProyecto,
+                                    acciones: accionesArr
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            return todasLasMetas;
+        }
+
+
+        document.getElementById('btnIrPaso2').addEventListener('click', async function () {
+            document.getElementById('paso1').classList.add('d-none');
+            document.getElementById('paso2').classList.remove('d-none');
+            document.getElementById('sidebarPaso2').classList.add('paso-activo');
+            document.getElementById('sidebarPaso1').classList.remove('paso-activo');
+            // Si necesitas refrescar los datos antes de mostrar:
+            datosEvidencias = await cargarDatosEvidencias(db, window.userRoles, window.idResponsable);
+            // ... luego renderizar con renderizarAccordionEvidencias(datosEvidencias)
+            renderizarAccordionEvidencias(datosEvidencias);
+
+        });
+
+        document.getElementById('sidebarPaso2').addEventListener('click', async function () {
+            document.getElementById('paso1').classList.add('d-none');
+            document.getElementById('paso2').classList.remove('d-none');
+            document.getElementById('sidebarPaso2').classList.add('paso-activo');
+            document.getElementById('sidebarPaso1').classList.remove('paso-activo');
+            // Si necesitas refrescar los datos antes de mostrar:
+            datosEvidencias = await cargarDatosEvidencias(db, window.userRoles, window.idResponsable);
+            // ... luego renderizar con renderizarAccordionEvidencias(datosEvidencias)
+            renderizarAccordionEvidencias(datosEvidencias);
+
+        });
+
+
+        document.getElementById('sidebarPaso1').addEventListener('click', function () {
+            document.getElementById('paso2').classList.add('d-none');
+            document.getElementById('paso1').classList.remove('d-none');
+            document.getElementById('sidebarPaso1').classList.add('paso-activo');
+            document.getElementById('sidebarPaso2').classList.remove('paso-activo');
+            // Si necesitas refrescar los datos antes de mostrar:
+            //cargarDatosEvidencias(db, ciclo_key).then(renderizarAccordionEvidencias);
+        });
+
+
+
+        document.getElementById('btnVolverPaso1').addEventListener('click', function () {
+            document.getElementById('paso2').classList.add('d-none');
+            document.getElementById('paso1').classList.remove('d-none');
+            document.getElementById('sidebarPaso1').classList.add('paso-activo');
+            document.getElementById('sidebarPaso2').classList.remove('paso-activo');
+            // Si necesitas refrescar los datos antes de mostrar:
+            //cargarDatosEvidencias(db, ciclo_key).then(renderizarAccordionEvidencias);
+        });
+
+
+        document.getElementById('badgePeriodoCarga').textContent = `Periodo: ${ciclo_key}`;
+
+
+        // Función principal para eliminar evidencia
+        async function eliminarEvidencia({ idMeta, idAccion, nombreArchivo }) {
+            try {
+                // 1. Eliminar archivo en Storage
+                const rutaStorage = `PlanItOne/S-PLAN/evidencias/${ciclo_key}/${idMeta}/${idAccion}/${reemplazarPuntosPorGuionBajo(nombreArchivo)}`;
+                const archivoRef = refStorage(storage, rutaStorage);
+                await deleteObject(archivoRef);
+
+
+                // 2. Eliminar registro en Realtime Database
+                const rutaRT = `/S-PLAN/evidencias/${ciclo_key}/${idMeta}/${idAccion}/${reemplazarPuntosPorGuionBajo(nombreArchivo)}`;
+                const evidenciaRef = ref(database, rutaRT);
+                await remove(evidenciaRef);
+
+                datosEvidencias = await cargarDatosEvidencias(db, window.userRoles, window.idResponsable);
+                // ... luego renderizar con renderizarAccordionEvidencias(datosEvidencias)
+                renderizarAccordionEvidencias(datosEvidencias);
+
+                // Éxito
+                if (typeof Swal !== "undefined") {
+                    Swal.fire("¡Eliminado!", "La evidencia ha sido eliminada correctamente.", "success");
+                } else {
+                    mostrarToast("Evidencia eliminada correctamente.", "success");
+
+                }
+                // Recarga o refresca el listado si lo necesitas aquí
+            } catch (error) {
+                mostrarToast("Error eliminando la evidencia.", "danger");
+                console.error(error);
+            }
+        }
+
+        // Delegación de eventos para todos los botones de eliminar (¡SOLO UNO!)
+        document.addEventListener('click', async function (e) {
+            const btn = e.target.closest('.btnEliminarEvidencia');
+            if (btn) {
+                const idMeta = btn.dataset.idmeta;
+                const idAccion = btn.dataset.idaccion;
+                const nombreArchivo = btn.dataset.file;
+                // Confirmación visual con SweetAlert si tienes
+                if (typeof Swal !== "undefined") {
+                    const res = await Swal.fire({
+                        title: "¿Eliminar evidencia?",
+                        text: "Esta acción no se puede deshacer.",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#B5A160",
+                        cancelButtonColor: "#aaa",
+                        confirmButtonText: "Sí, eliminar",
+                        cancelButtonText: "Cancelar"
+                    });
+                    if (res.isConfirmed) {
+                        await eliminarEvidencia({ idMeta, idAccion, nombreArchivo });
+                        // Puedes recargar la tabla/acordeón aquí si lo necesitas
+                    }
+                } else {
+                    // Sin SweetAlert
+                    if (confirm("¿Eliminar la evidencia?")) {
+                        await eliminarEvidencia({ idMeta, idAccion, nombreArchivo });
+                    }
+                }
+            }
+        });
+
+        function reemplazarPuntosPorGuionBajo(texto) {
+            return texto.replace(/\./g, '_');
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Choices.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+</body>
+
+</html>

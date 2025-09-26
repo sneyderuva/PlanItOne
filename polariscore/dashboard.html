@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/polariscore/icono.png">
+  <title>
+    PolariScore - Dashboard General
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <div class="min-height-300 position-absolute w-100"
+    style="background: url('../assets/img/polariscore/bg-gradient.png') no-repeat center center/cover;">
+  </div>
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+    id="sidenav-main" style="z-index:1040;">
+    <div class="sidenav-header mb-3">
+      <a class="navbar-brand m-0 d-flex flex-column align-items-center" href="../index.html">
+        <!-- Logo institucional Argon -->
+        <img src="../assets/img/polariscore/logo.png" class="navbar-brand-img mb-0" style="max-height:60px;"
+          alt="main_logo">
+
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0 mb-2">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- INICIO -->
+
+        <li class="nav-item ">
+          <a class="nav-link d-flex align-items-center gap-2" href="index.html">
+            <i class="fa-solid fa-home text-muted"></i>
+            <span class="nav-link-text">Inicio</span>
+          </a>
+
+        </li>
+
+        <!-- Políticas -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="#" data-bs-toggle="collapse"
+            data-bs-target="#submenuPoliticas" aria-expanded="false">
+            <i class="fa-solid fa-landmark text-success"></i>
+            <span class="nav-link-text">Políticas</span>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+            <li><a class="nav-link active" href="../polariscore/dashboard.html"><i
+                  class="fa-solid fa-chart-pie text-success"></i> Análisis General</a></li>
+            <li><a class="nav-link" href="../polariscore/politicas.html"><i
+                  class="fa-solid fa-list-ul text-primary"></i> Lista de Políticas</a></li>
+            <li class="admin-responsable-only" style="display: none;"><a class="nav-link"
+                href="../polariscore/politicas.html?t="><i class="fa-regular fa-folder-open text-info"></i> Mis
+                Políticas</a></li>
+            <li><a class="nav-link" href="../polariscore/observaciones.html"><i
+                  class="fa-regular fa-comment-dots text-info"></i> Observaciones</a></li>
+          </ul>
+        </li>
+
+        <!-- Seleccionar Política -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="#" data-bs-toggle="collapse"
+            data-bs-target="#cargarPoliticas" aria-expanded="true">
+            <i class="fa-solid fa-gavel text-warning"></i>
+            <span class="nav-link-text">Seleccionar política</span>
+          </a>
+          <ul class="collapse show list-unstyled ms-4" id="cargarPoliticas"></ul>
+        </li>
+
+        <!-- Otras Apps -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 collapsed" href="#" data-bs-toggle="collapse"
+            data-bs-target="#submenuPdi" aria-expanded="false">
+            <i class="fa-solid fa-rocket text-danger"></i>
+            <span class="nav-link-text">Otras Apps</span>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi">
+            <li>
+              <a class="nav-link" href="https://sigunitropico.com" target="_blank">
+                <i class="fa-solid fa-globe text-danger"></i> SIG Unitrópico
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="https://sigunitropico.com/planeacion" target="_blank">
+                <i class="fa-solid fa-chart-line text-info"></i> Planeación
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Admin (solo visible para admins) -->
+        <li class="nav-item mt-3 admin-only admin-polariscore" style="display: none;">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Administración</h6>
+        </li>
+        <li class="nav-item admin-only admin-polariscore" style="display: none;">
+          <a class="nav-link d-flex align-items-center gap-2" href="../pages/usuarios.html" target="_blank">
+            <i class="fa-solid fa-users text-danger"></i>
+            <span class="nav-link-text">Usuarios</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Login/Logout Aside: centrado y sin overlap -->
+    <div class="sidenav-footer w-100 text-center mt-auto pb-3">
+
+      <div class="card card-plain shadow-none mb-2" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-2 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <div id="asideAuthBtn" class="mb-2 d-flex flex-column align-items-center"></div>
+      <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank"
+        class="btn btn-dark btn-sm w-70 mb-2"><i class="fa-solid fa-book me-2"></i>Manual de uso</a>
+      <a class="btn btn-primary btn-sm w-70 mb-0" href="mailto:innovacionplaneacion@unitropico.edu.co" type="button">
+        <i class="fa-solid fa-envelope me-2"></i> Soporte técnico
+      </a>
+
+    </div>
+  </aside>
+
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+
+    <style>
+      .kpi-row-dashboard .kpi-card {
+        border-radius: 1.15em;
+        transition: box-shadow 0.19s;
+        background: #ffffff62;
+        min-height: 120px;
+      }
+
+      .kpi-row-dashboard .kpi-card:hover {
+        box-shadow: 0 7px 28px #07d6bc44, 0 2px 10px #b5a16010;
+      }
+
+      .kpi-icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        background: #f7fafc;
+        border-radius: 50%;
+        margin-bottom: 0.5em;
+      }
+
+      .bg-primary-subtle {
+        background: #e7f3ef !important;
+      }
+
+      .bg-info-subtle {
+        background: #e7f7fa !important;
+      }
+
+      .bg-success-subtle {
+        background: #e8faf2 !important;
+      }
+
+      .bg-warning-subtle {
+        background: #fffbe6 !important;
+      }
+
+      .bg-secondary-subtle {
+        background: #f4f5fa !important;
+      }
+
+      .bg-dark-subtle {
+        background: #f4f4f4 !important;
+      }
+
+      .kpi-label {
+        font-size: 1.02em;
+        color: #495057;
+        font-weight: 500;
+        letter-spacing: .01em;
+      }
+
+      .kpi-value {
+        font-size: 2.1em;
+        font-weight: 800;
+        letter-spacing: 0;
+        color: #222;
+      }
+
+      .kpi-progress {
+        border-radius: 4px;
+        background: #eaf2f6;
+      }
+
+      @media (max-width: 991px) {
+        .kpi-row-dashboard .col-md-2 {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+      }
+
+      @media (max-width: 575px) {
+
+        .kpi-row-dashboard .col-md-2,
+        .kpi-row-dashboard .col-6 {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+
+        .kpi-value {
+          font-size: 1.4em;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .ocultar {
+          display: none !important;
+        }
+
+        .margin-top-5 {
+          margin-top: 5%;
+        }
+
+        .resaltar {
+          background-color: #00594e;
+          border-radius: 0px;
+          margin: 0px auto !important;
+        }
+
+        .fecha_actualizacion {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl resaltar" id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3 ">
+        <nav aria-label="breadcrumb resaltar">
+
+          <h6 class="font-weight-bolder text-white mb-0 ocultar">última actualización
+          </h6>
+          <p class="font-weight-normal text-white mb-0 fecha_actualizacion" id="fecha_actualizacion">calculando...</p>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <div id="perfilUsuario" class="d-flex align-items-center gap-2" data-bs-toggle="dropdown" role="button"
+                aria-expanded="false">
+                <img id="imgPerfilUsuario" src="https://ui-avatars.com/api/?name=Usuario" alt="Foto"
+                  class="rounded-circle border" width="40" height="40" style="object-fit:cover;">
+              </div>
+              <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="perfilUsuario">
+                <li>
+                  <a class="dropdown-item border-radius-md" href="../pages/profile.html">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="my-auto">
+                        <img id="imgPerfilUsuarioDropdown" src="https://ui-avatars.com/api/?name=Usuario"
+                          class="avatar avatar-sm me-3 rounded-circle border" style="object-fit:cover;">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm text-default fw-semibold" id="nombrePerfilUsuario"> Usuario</h6>
+                        <small class="text-xs text-muted mb-0" id="correoPerfilUsuario">Correo</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" id="rolesUsuario">
+                    <i class="fas fa-user-circle text-primary me-2"></i> Mi perfil
+                  </a>
+                </li>
+                <li>
+                  <button id="logButton" class="dropdown-item border-radius-md text-danger d-flex align-items-center">
+                    <span><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</span>
+                  </button>
+                  <style>
+                    /* Soluciona contraste para botón rojo dentro de dropdown Bootstrap */
+                    #logButton.dropdown-item.text-danger:hover,
+                    #logButton.dropdown-item.text-danger:focus {
+                      background-color: #dc3545 !important;
+                      /* danger */
+                      color: #fff !important;
+                      /* blanco */
+                      border-radius: .5rem;
+                    }
+
+                    #logButton.dropdown-item.text-danger:hover i,
+                    #logButton.dropdown-item.text-danger:focus i {
+                      color: #fff !important;
+                    }
+                  </style>
+                </li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!---  CONTENIDO ---->
+    <div class="container-fluid py-4">
+      <!-- KPIs modernos en una fila, centrados -->
+      <div class="row kpi-row-dashboard gy-4 mb-4 justify-content-center">
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card cursor-pointer shadow-sm text-center border-0 h-100"
+            onclick="window.location.href='politicas.html'">
+            <div class="card-body px-1 d-flex flex-column align-items-center justify-content-center">
+              <span class="kpi-icon bg-primary-subtle mb-2">
+                <i class="fas fa-university text-primary"></i>
+              </span>
+              <span class="kpi-label">Total Políticas</span>
+              <span class="kpi-value text-primary" id="kpiTotalPoliticas">
+                <span class="spinner-border spinner-border-sm text-primary"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm text-center border-0 h-100">
+            <div class="card-body px-1 d-flex flex-column align-items-center justify-content-center">
+              <span class="kpi-icon bg-info-subtle mb-2">
+                <i class="fas fa-bullseye text-info"></i>
+              </span>
+              <span class="kpi-label">Total Objetivos</span>
+              <span class="kpi-value text-info" id="kpiTotalObjetivos">
+                <span class="spinner-border spinner-border-sm text-info"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm text-center border-0 h-100">
+            <div class="card-body px-1 d-flex flex-column align-items-center justify-content-center">
+              <span class="kpi-icon bg-success-subtle mb-2">
+                <i class="fas fa-tasks text-success"></i>
+              </span>
+              <span class="kpi-label">Total Acciones</span>
+              <span class="kpi-value text-success" id="kpiTotalAcciones">
+                <span class="spinner-border spinner-border-sm text-success"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm text-center border-0 h-100">
+            <div class="card-body px-1 d-flex flex-column align-items-center justify-content-center">
+              <span class="kpi-icon bg-warning-subtle mb-2">
+                <i class="fas fa-chart-line text-warning"></i>
+              </span>
+              <span class="kpi-label">Cumplimiento Prom.</span>
+              <span class="kpi-value" id="kpiCumplimientoPromedio">
+                <span class="spinner-border spinner-border-sm text-warning"></span>
+              </span>
+              <div class="progress kpi-progress mt-2" style="height:8px;width:90px;">
+                <div id="barraCumplimientoPromedio" class="progress-bar" style="width:0%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm text-center border-0 h-100">
+            <div class="card-body px-1 d-flex flex-column align-items-center justify-content-center">
+              <span class="kpi-icon bg-secondary-subtle mb-2">
+                <i class="fas fa-history text-secondary"></i>
+              </span>
+              <span class="kpi-label">Actualizaciones</span>
+              <span class="kpi-value" id="kpiActualizaciones">
+                <span class="spinner-border spinner-border-sm text-secondary"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm text-center border-0 h-100">
+            <div class="card-body px-1 d-flex flex-column align-items-center justify-content-center">
+              <span class="kpi-icon bg-dark-subtle mb-2">
+                <i class="fas fa-user-friends text-dark"></i>
+              </span>
+              <span class="kpi-label">Responsables</span>
+              <span class="kpi-value" id="kpiResponsables">
+                <span class="spinner-border spinner-border-sm text-dark"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de gráficas y tarjetas de detalle -->
+      <div class="row gx-3 gy-4">
+
+
+        <div class="col-12">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-gradient-success font-weight-bold text-white d-flex align-items-center py-2">
+              <span>
+                <i class="fas fa-poll-h me-2"></i>
+                Avance por Política
+                <span class="small text-white">(General)</span>
+              </span>
+            </div>
+            <div class="card-body">
+              <!-- Responsive wrapper for the chart -->
+              <div class="grafica-polar-responsive"
+                style="width:100%; min-height:400px; height: 80vw; max-height:700px;">
+                <div id="graficaAvance" style="width:100%;height:100%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Puedes poner esto en tu CSS global o en el mismo archivo: -->
+        <style>
+          .grafica-polar-responsive {
+            width: 100%;
+            min-height: 300px;
+            height: 48vw;
+            max-height: 540px;
+            margin: 0 auto;
+            border-radius: 1.2em;
+            background: rgba(250, 250, 250, 0.91);
+            box-shadow: 0 2px 12px 0 #00816b12;
+            padding: 10px 0 0 0;
+          }
+
+          @media (max-width: 700px) {
+            .grafica-polar-responsive {
+              height: 66vw;
+              min-height: 220px;
+            }
+          }
+
+          @media (max-width: 450px) {
+            .grafica-polar-responsive {
+              height: 310px;
+              min-height: 175px;
+              padding: 0;
+            }
+          }
+        </style>
+
+        <div class="col-12">
+          <div class="card shadow-sm mb-4">
+            <div
+              class="card-header bg-gradient-success font-weight-bold text-white d-flex justify-content-between align-items-center py-2">
+              <span><i class="fas fa-poll-h me-2"></i>Cumplimiento por Política <span
+                  class="small text-white">(2023-2025)</span></span>
+              <ul class="nav nav-tabs card-header-tabs justify-content-end" id="cumplimientoTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="grafica-tab" data-bs-toggle="tab" data-bs-target="#tab-grafica"
+                    type="button" role="tab" aria-controls="tab-grafica" aria-selected="true">
+                    <i class="fas fa-chart-area"></i> Gráfica
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="tabla-tab" data-bs-toggle="tab" data-bs-target="#tab-tabla" type="button"
+                    role="tab" aria-controls="tab-tabla" aria-selected="false">
+                    <i class="fas fa-table"></i> Detalles
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="card-body tab-content" id="cumplimientoTabsContent">
+              <div class="tab-pane fade show active" id="tab-grafica" role="tabpanel" aria-labelledby="grafica-tab">
+                <div id="graficaCumplimientoPolar" style="height: 500px;min-width:220px;"></div>
+              </div>
+              <div class="tab-pane fade" id="tab-tabla" role="tabpanel" aria-labelledby="tabla-tab">
+                <div class="table-responsive mt-3">
+                  <table class="table table-bordered table-hover text-center align-middle"
+                    id="tablaCumplimientoPoliticas">
+                    <thead class="table-light">
+                      <tr>
+                        <th class="text-start">Política</th>
+                        <th>2023</th>
+                        <th>2024</th>
+                        <th>2025</th>
+                        <th>Promedio %</th>
+                        <th>Mín %</th>
+                        <th>Máx %</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-7 mb-3">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-light">
+              <strong><i class="fas fa-chart-line me-2"></i>Curva S por Política</strong>
+            </div>
+            <div class="card-body">
+              <canvas id="grafica_curva_s" height="120"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 mb-3">
+          <div class="row gy-3">
+            <div class="col-12">
+              <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-2">
+                    <i class="fas fa-star text-warning me-2"></i>Política más actualizada
+                  </h5>
+                  <p class="card-text" id="politicaActualizada">Cargando...</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                  <h5 class="card-title mb-2">
+                    <i class="fas fa-user-tie text-success me-2"></i>Responsable más activo
+                  </h5>
+                  <p class="card-text" id="responsableActivo">Cargando...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--- FIN DEL CONTENIDO ---->
+
+
+
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link pe-0 text-muted" target="_blank">Licencia</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </main>
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+        <path
+          d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+      </svg>
+    </a>
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary"
+              onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+            onclick="sidebarType(this)">White</button>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+            onclick="sidebarType(this)">Dark</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="d-flex my-3">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <div class="mt-2 mb-5 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+          Download</a>
+        <a class="btn btn-outline-dark w-100"
+          href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+            data-icon="octicon-star" data-size="large" data-show-count="true"
+            aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../assets/js/polariscore-charts.js"></script>
+
+  <script type="module">
+
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get, set, update } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+
+    // Obtener referencias a los elementos HTML
+    const kpiTotalPoliticas = document.getElementById("kpiTotalPoliticas");
+    const kpiTotalObjetivos = document.getElementById("kpiTotalObjetivos");
+    const kpiTotalAcciones = document.getElementById("kpiTotalAcciones");
+    const kpiCumplimientoPromedio = document.getElementById("kpiCumplimientoPromedio");
+    const barraCumplimientoPromedio = document.getElementById("barraCumplimientoPromedio");
+    const kpiActualizaciones = document.getElementById("kpiActualizaciones");
+    const kpiResponsables = document.getElementById("kpiResponsables");
+
+    const fecha_actualizacion = document.getElementById("fecha_actualizacion");
+
+    window.fechaFormateada = '';
+
+    // Formato para mostrar fecha completa en español
+    const opcionesFecha = {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    };
+
+    // Función para calcular "hace X tiempo"
+    function obtenerTiempoTranscurrido(fecha) {
+      const ahora = new Date();
+      const diferencia = ahora - fecha;
+
+      const segundos = Math.floor(diferencia / 1000);
+      const minutos = Math.floor(diferencia / (1000 * 60));
+      const horas = Math.floor(diferencia / (1000 * 60 * 60));
+
+      if (segundos < 60) return `Hace ${segundos} segundo${segundos === 1 ? '' : 's'}`;
+      if (minutos < 60) return `Hace ${minutos} minuto${minutos === 1 ? '' : 's'}`;
+      if (horas < 24) return `Hace ${horas} hora${horas === 1 ? '' : 's'}`;
+
+      return fecha.toLocaleString('es-CO', opcionesFecha)
+        .replace('.', '')
+        .replace('AM', 'a. m.')
+        .replace('PM', 'p. m.');
+    }
+
+    // Obtener la fecha desde Firebase (timestamp en segundos)
+    get(ref(db, "PolariScore/fecha_actualizacion"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const timestamp = snapshot.val(); // en segundos
+          const fecha = new Date(timestamp * 1000); // convertir a milisegundos
+
+          const fechaFormateada = fecha.toLocaleString('es-CO', opcionesFecha)
+            .replace('.', '')
+            .replace('AM', 'a. m.')
+            .replace('PM', 'p. m.');
+
+          // Variables globales
+          window.fechaFormateada = fechaFormateada;
+          window.tiempoTranscurridoFormateado = obtenerTiempoTranscurrido(fecha);
+
+          // Mostrar en pantalla
+          fecha_actualizacion.textContent = tiempoTranscurridoFormateado;
+        } else {
+          fecha_actualizacion.textContent = "Sin fecha registrada";
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener la fecha:", error);
+        fecha_actualizacion.textContent = "Error de conexión";
+      });
+
+
+    const iconosPoliticas = {
+      "P-001": "fas fa-chalkboard-teacher text-primary",         // Formación Profesoral
+      "P-002": "fas fa-flask text-success",                      // Investigación y Convocatorias
+      "P-003": "fas fa-tasks text-info",                         // Autoevaluación, Autorregulación y Mejoramiento
+      "P-004": "fas fa-lightbulb text-warning",                  // Propiedad Intelectual
+      "P-005": "fas fa-university text-danger",                  // Académica
+      "P-006": "fas fa-graduation-cap text-secondary",           // Innovación Educativa y Buenas Prácticas Pedagógicas
+      "P-007": "fas fa-leaf text-success",                       // Ambiental
+      "P-008": "fas fa-language text-primary",                   // Lingüística
+      "P-009": "fas fa-users text-info",                         // Inclusiva e Intercultural (PESII)
+      "P-010": "fas fa-heart text-primary",                       // Bienestar Universitario
+      "P-011": "fas fa-user-graduate text-warning",               // Egresados
+      "P-012": "fas fa-globe-americas text-primary",              // Internacionalización
+      "P-013": "fas fa-user-tie text-dark",                       // Gestión Estratégica de Talento Humano
+      "P-014": "fas fa-award text-warning",                       // Incentivos y Estímulos del Personal
+      "P-015": "fas fa-chart-bar text-success",                   // Gestión de la Información Estadística
+      "P-016": "fas fa-balance-scale text-danger",                 // Transparencia y Lucha contra la Corrupción
+      "P-017": "fas fa-headset text-info",                        // Atención al Ciudadano
+      "P-018": "fas fa-archive text-secondary",                   // Gestión Documental
+      "P-019": "fas fa-tools text-dark",                          // Mantenimiento y Renovación de Infraestructura
+      "P-020": "fas fa-handshake text-success",                   // Integridad
+      "P-021": "fas fa-hands-helping text-primary"                 // Proyección Social
+    };
+
+
+    get(ref(db, "PolariScore/politicas"))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const politicas = snapshot.val();
+
+          let totalPoliticas = 0;
+          let totalObjetivos = 0;
+          let totalAcciones = 0;
+
+          const ulPoliticas = document.getElementById('cargarPoliticas');
+          ulPoliticas.innerHTML = "";
+
+          for (const idPolitica in politicas) {
+            totalPoliticas++;
+            const politica = politicas[idPolitica];
+            const nombrePolitica = politica.titulo || "Sin nombre";
+
+            // Obtener el icono o usar uno por defecto
+            const icono = iconosPoliticas[idPolitica] || "fas fa-file-alt text-secondary";
+
+            const li = document.createElement("li");
+            li.className = "nav-item";
+
+            li.innerHTML = `
+          <a class="nav-link d-flex align-items-center" href="#" title="${nombrePolitica}" data-id="${idPolitica}">
+            <i class="${icono} me-2"></i> 
+            ${limitarTexto(nombrePolitica, 23)}
+          </a>
+        `;
+
+            li.querySelector("a").addEventListener("click", (e) => {
+              e.preventDefault();
+              window.location.href = `politica.html?id=${idPolitica}`;
+            });
+
+            ulPoliticas.appendChild(li);
+
+            const objetivos = politica.objetivos_especificos || {};
+            for (const idObjetivo in objetivos) {
+              totalObjetivos++;
+              const acciones = objetivos[idObjetivo].acciones || {};
+              totalAcciones += Object.keys(acciones).length;
+            }
+          }
+
+          kpiTotalPoliticas.textContent = totalPoliticas;
+          kpiTotalObjetivos.textContent = totalObjetivos;
+          kpiTotalAcciones.textContent = totalAcciones;
+
+          crearGraficaRadarAvancePoliticas(politicas);
+
+        } else {
+          document.getElementById('cargarPoliticas').innerHTML = "";
+          kpiTotalPoliticas.textContent = "0";
+          kpiTotalObjetivos.textContent = "0";
+          kpiTotalAcciones.textContent = "0";
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener políticas:", error);
+        kpiTotalPoliticas.textContent = "Error";
+        kpiTotalObjetivos.textContent = "Error";
+        kpiTotalAcciones.textContent = "Error";
+      });
+
+    Promise.all([
+      get(ref(db, "PolariScore/politicas")),
+      get(ref(db, "PolariScore/seguimientos"))
+    ]).then(([politicasSnap, seguimientosSnap]) => {
+      if (!politicasSnap.exists() || !seguimientosSnap.exists()) {
+        kpiCumplimientoPromedio.textContent = "0%";
+        return;
+      }
+
+      const politicas = politicasSnap.val();
+      const seguimientos = seguimientosSnap.val();
+
+      let sumaCumplimientos = 0;
+      let totalAccionesConsideradas = 0;
+
+      for (const politica of Object.values(politicas)) {
+        const objetivos = politica.objetivos_especificos || {};
+
+        for (const objetivo of Object.values(objetivos)) {
+          const acciones = objetivo.acciones || {};
+
+          for (const accion of Object.values(acciones)) {
+            const idAccion = accion.id_accion;
+            const importancia = parseFloat(accion.importancia_accion || 0);
+            const anios = accion.anios || [];
+
+            for (let i = 0; i < anios.length; i++) {
+              const programado = parseFloat(anios[i] || 0);
+              const anio = new Date().getFullYear() + i;
+
+              if (programado > 0) {
+                const ejecutado = parseFloat(seguimientos[idAccion]?.ejecutado?.[anio] || 0);
+                const avance = ejecutado / programado;
+                const aporte = Math.min(avance, 1) * importancia;
+
+                sumaCumplimientos += aporte;
+                totalAccionesConsideradas += importancia; // se pondera por importancia
+              }
+            }
+          }
+        }
+      }
+
+      const promedio = totalAccionesConsideradas > 0
+        ? (sumaCumplimientos / totalAccionesConsideradas) * 100
+        : 0;
+
+      kpiCumplimientoPromedio.textContent = promedio.toFixed(2) + "%";
+      barraCumplimientoPromedio.style.width = promedio.toFixed(2) + "%";
+      barraCumplimientoPromedio.style.backgroundColor = getProgressBarColor(promedio);
+
+
+    }).catch((error) => {
+      console.error("Error al calcular cumplimiento promedio:", error);
+      kpiCumplimientoPromedio.textContent = "Error";
+    });
+
+    Promise.all([
+      get(ref(db, "PolariScore/politicas")),
+      get(ref(db, "PolariScore/seguimientos"))
+    ]).then(([politicasSnap, seguimientosSnap]) => {
+      if (!politicasSnap.exists()) return;
+
+      const politicas = politicasSnap.val();
+      const seguimientos = seguimientosSnap.exists() ? seguimientosSnap.val() : {};
+
+      let dataCumplimiento = [];
+      let nombresPoliticas = [];
+      let idsPoliticas = [];
+      const aniosEvaluar = [2023, 2024, 2025];
+      const tbody = document.querySelector("#tablaCumplimientoPoliticas tbody");
+
+      for (const [idPolitica, politica] of Object.entries(politicas)) {
+        const avances = [];
+
+        // Extraer el año de inicio
+        let anioInicioPolitica = 2023;
+        if (politica.fecha_politica && typeof politica.fecha_politica === "string") {
+          const partes = politica.fecha_politica.split("/");
+          const anio = parseInt(partes[2]);
+          if (!isNaN(anio)) anioInicioPolitica = anio;
+        }
+
+        for (const anio of aniosEvaluar) {
+          const i = anio - 2023;
+          let cumplimientoAnio = 0;
+          let pesoAnio = 0;
+
+          for (const objetivo of Object.values(politica.objetivos_especificos || {})) {
+            for (const accion of Object.values(objetivo.acciones || {})) {
+              const idAccion = accion.id_accion;
+              const programado = parseFloat(accion.anios?.[i] || 0);
+              const ejecutado = parseFloat(seguimientos[idAccion]?.ejecutado?.[anio.toString()] ?? 0);
+              const importancia = parseFloat(accion.importancia_accion || 0);
+
+              if (programado > 0) {
+                const avance = Math.min(ejecutado / programado, 1) * importancia;
+                cumplimientoAnio += avance;
+                pesoAnio += importancia;
+              }
+            }
+          }
+
+          if (pesoAnio > 0) {
+            const porcentaje = (cumplimientoAnio / pesoAnio) * 100;
+            avances.push(porcentaje);
+          } else {
+            avances.push(null); // 👈 AÑADIR aunque sea null si no hay peso
+          }
+        }
+
+
+        // 💡 NO condicionar a avances.length, siempre hay 3 valores
+        const avancesValidos = avances.filter(a => a !== null);
+
+        if (avancesValidos.length) {
+          const min = Math.min(...avancesValidos);
+          const max = Math.max(...avancesValidos);
+          const prom = avancesValidos.reduce((a, b) => a + b, 0) / avancesValidos.length;
+
+          dataCumplimiento.push([min, max, prom]);
+          nombresPoliticas.push(politica.titulo || idPolitica);
+          idsPoliticas.push(idPolitica);
+
+          agregarFilaTabla(politica.titulo || idPolitica, avances, prom, min, max, anioInicioPolitica);
+
+          const responsables = politica.responsables;
+
+          const anioInicial = 2023;
+
+          const objetoAvancesPorAnio = {};
+
+          avances.forEach((valor, index) => {
+            const anioKey = anioInicial + index;
+
+            objetoAvancesPorAnio[String(anioKey)] = valor;
+          });
+
+          let i = 0;
+
+          const responsablesArray = responsables.split(',').map(nombre => nombre.trim());
+
+          while (i < responsables.length) {
+
+            try {
+
+              const updates = {};
+
+              updates[`responsables/${responsablesArray[i]}/PolariScore/promediosPoliticas/${idPolitica}`] = objetoAvancesPorAnio;
+              update(ref(db), updates);
+
+            } catch (error) {
+              console.error("❌ Error al guardar el promedio de las politicas:", error);
+              mostrarToast("❌ Error al guardar el Promedio de las Políticas.", "danger");
+            }
+            i++;
+          }
+
+
+        }
+      }
+
+
+
+      // 🔁 Paso 1: Construir un arreglo combinado con los datos relevantes
+      const datosOrdenados = dataCumplimiento.map((cumplimiento, index) => ({
+        cumplimiento: cumplimiento,                      // [min, max, promedio]
+        promedio: cumplimiento[2],                       // Para ordenar directamente
+        nombre: nombresPoliticas[index],                 // Título de la política
+        id: idsPoliticas[index]                          // ID único
+      }))
+
+        // 🔼 Paso 2: Ordenar por promedio de cumplimiento (menor a mayor)
+        .sort((a, b) => a.promedio - b.promedio);
+
+      // 💾 Paso 3: Reconstruir los arreglos con el nuevo orden
+      dataCumplimiento = datosOrdenados.map(d => d.cumplimiento);
+      nombresPoliticas = datosOrdenados.map(d => d.nombre);
+      idsPoliticas = datosOrdenados.map(d => d.id);
+
+
+      renderizarGraficaBarras(dataCumplimiento, nombresPoliticas, idsPoliticas);
+
+      function agregarFilaTabla(politica, avances, promedio, min, max, anioInicioPolitica = 2022) {
+        const fila = document.createElement("tr");
+
+        const celdaNombre = document.createElement("td");
+        celdaNombre.classList.add("text-start");
+        celdaNombre.textContent = limitarTexto(politica, 60);
+        fila.appendChild(celdaNombre);
+
+        const aniosEvaluar = [2023, 2024, 2025];
+        aniosEvaluar.forEach((anio, idx) => {
+          const celda = document.createElement("td");
+
+          if (anio < anioInicioPolitica) {
+            celda.textContent = "-";
+          } else {
+            const valor = avances[idx];
+            celda.textContent = valor != null ? valor.toFixed(2) + "%" : "-";
+          }
+
+          fila.appendChild(celda);
+        });
+
+        const celdaProm = document.createElement("td");
+        celdaProm.textContent = promedio.toFixed(2) + "%";
+        fila.appendChild(celdaProm);
+
+        const celdaMin = document.createElement("td");
+        celdaMin.textContent = min.toFixed(2) + "%";
+        fila.appendChild(celdaMin);
+
+        const celdaMax = document.createElement("td");
+        celdaMax.textContent = max.toFixed(2) + "%";
+        fila.appendChild(celdaMax);
+
+        tbody.appendChild(fila);
+      }
+
+
+
+    }).catch(console.error);
+
+
+    function renderizarGraficaBarras(dataCumplimiento, nombresPoliticas, idsPoliticas) {
+      const chart = echarts.init(document.getElementById("graficaCumplimientoPolar"));
+
+      const option = {
+        animationDuration: 1000,
+        animationEasing: 'cubicOut',
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove',
+          enterable: true,
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderColor: '#ccc',
+          borderWidth: 1,
+          extraCssText: 'box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);',
+          textStyle: {
+            color: '#333',
+            fontSize: 12
+          },
+          formatter: function (params) {
+            const index = params.dataIndex;
+            const [min, max, prom] = dataCumplimiento[index];
+            const titulo = nombresPoliticas[index];
+
+            const rangoBarra = () => {
+              const longitud = Math.round((max - min) / 4);
+              return '▏' + '█'.repeat(Math.max(longitud, 1)) + '▏';
+            };
+
+            return `
+      <div style="padding: 4px 8px;">
+        <div style="font-size: 14px; font-weight: bold; margin-bottom: 6px;">📘 ${limitarTexto(titulo, 60)}</div>
+        <div style="margin-bottom: 4px;"><b>📊 Rango:</b> ${min.toFixed(2)}% – ${max.toFixed(2)}%</div>
+        <div style="margin-bottom: 4px;"><b>🎯 Promedio:</b> ${prom.toFixed(2)}%</div>
+        <div style="font-family: monospace; color: #b5a160;">${rangoBarra()}</div>
+      </div>
+    `;
+          }
+        },
+
+        grid: {
+          left: '6%',
+          right: '6%',
+          bottom: '13%',
+          top: nombresPoliticas.length > 15 ? '2%' : '10%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          min: 0,
+          max: 100,
+          axisLabel: {
+            formatter: '{value}%',
+            fontSize: 12,
+            color: '#333'
+          },
+          splitLine: {
+            lineStyle: {
+              type: 'dashed',
+              color: '#eee'
+            }
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: '#999'
+            }
+          }
+        },
+        yAxis: {
+          type: 'category',
+          data: nombresPoliticas,
+          axisLabel: {
+            fontSize: 12,
+            color: '#333',
+            formatter: value => limitarTexto(value, 50),
+            lineHeight: 16,
+            // Simulamos interactividad
+            rich: {
+              active: {
+                color: '#00594e',
+                fontWeight: 'bold',
+                backgroundColor: 'rgba(181,161,96,0.1)',
+                borderRadius: 4,
+                padding: [2, 4]
+              }
+            }
+          },
+          axisLine: { show: false },
+          axisTick: { show: false }
+        },
+
+        series: [
+          {
+            name: 'Rango de avance',
+            type: 'bar',
+            data: dataCumplimiento.map(d => [d[0], d[1]]),
+            itemStyle: {
+              color: '#b5a160',
+              borderRadius: [0, 4, 4, 0]
+            },
+            label: {
+              show: false
+            },
+            emphasis: {
+              itemStyle: {
+                color: '#a9914d'
+              }
+            },
+            barCategoryGap: '25%',
+            barWidth: 16
+          },
+          {
+            name: 'Promedio',
+            type: 'scatter',
+            data: dataCumplimiento.map(d => d[2]),
+            symbolSize: 12,
+            itemStyle: {
+              color: '#00594e',
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            label: {
+              show: true,
+              position: 'right',
+              formatter: p => `${p.value.toFixed(1)}%`,
+              color: '#00594e',
+              fontWeight: 'bold'
+            },
+            emphasis: {
+              itemStyle: {
+                color: '#00463e'
+              }
+            },
+            z: 10
+          }
+        ]
+      };
+
+      chart.setOption(option);
+      aplicarFirmaSPlan(chart, window.fechaFormateada);
+    }
+
+    // Función para obtener el color de la barra de progreso según el porcentaje
+    const getProgressBarColor = (progreso) => {
+      if (progreso <= 40) return "#ff5c5c";  // Rojo
+      if (progreso <= 75) return "#ffa500";  // Naranja
+      return "#4caf50";  // Verde
+    };
+
+
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+
+    // Variables de control para listeners
+    let logoutListenerAddedNavbar = false;
+    let logoutListenerAddedAside = false;
+
+    onAuthStateChanged(auth, (user) => {
+      // 1. Navbar
+      const logButton = document.getElementById("logButton");
+      // 2. Aside
+      const asideAuthDiv = document.getElementById('asideAuthBtn');
+
+      // ---- SI ESTÁ AUTENTICADO ----
+      if (user) {
+        // --- NAVBAR ---
+        if (logButton) {
+          logButton.textContent = "Cerrar sesión";
+          logButton.classList.remove("btn-primary");
+          logButton.classList.add("btn-danger");
+          // Solo agrega el evento una vez
+          if (!logoutListenerAddedNavbar) {
+            logButton.addEventListener("click", () => {
+              const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+              logoutModal.show();
+              // Listener de confirmación (evita duplicidad)
+              const confirmBtn = document.getElementById("confirmLogout");
+              const clonedBtn = confirmBtn.cloneNode(true);
+              confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+              clonedBtn.addEventListener("click", () => {
+                signOut(auth).catch((error) => {
+                  console.error("Error al cerrar sesión:", error);
+                });
+              });
+            });
+            logoutListenerAddedNavbar = true;
+          }
+        }
+
+        // --- ASIDE ---
+        if (asideAuthDiv) {
+          asideAuthDiv.innerHTML = `
+        <button id="btnLogoutAside" class="btn btn-outline-danger btn-sm w-75 mb-1 fw-semibold rounded-pill shadow-sm">
+          <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Cerrar sesión
+        </button>`;
+          // Agrega listener SÓLO una vez (usa bandera)
+          if (!logoutListenerAddedAside) {
+            asideAuthDiv.addEventListener("click", function asideLogoutEvent(e) {
+              if (e.target && (e.target.id === "btnLogoutAside" || e.target.closest('#btnLogoutAside'))) {
+                const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                logoutModal.show();
+                // Listener de confirmación para aside
+                const confirmBtn = document.getElementById("confirmLogout");
+                const clonedBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+                clonedBtn.addEventListener("click", () => {
+                  signOut(auth).catch((error) => {
+                    console.error("Error al cerrar sesión:", error);
+                  });
+                });
+              }
+            });
+            logoutListenerAddedAside = true;
+          }
+        }
+
+        // --- PERFIL USUARIO ---
+        const nombreCompleto = user.displayName || user.email || "Usuario";
+        const nombreCorto = obtenerNombreCorto(nombreCompleto);
+        const foto = user.photoURL
+          ? user.photoURL
+          : `https://ui-avatars.com/api/?name=${encodeURIComponent(nombreCorto)}&background=0D8ABC&color=fff&rounded=true&size=64`;
+
+        if (document.getElementById("nombrePerfilUsuario")) {
+          document.getElementById("nombrePerfilUsuario").textContent = nombreCompleto;
+          document.getElementById("nombrePerfilUsuario").classList.add("text-dark");
+          document.getElementById("nombrePerfilUsuario").classList.remove("text-white");
+          document.getElementById("correoPerfilUsuario").textContent = user.email;
+        }
+        if (document.getElementById("imgPerfilUsuario")) {
+          document.getElementById("imgPerfilUsuario").src = foto;
+          document.getElementById("imgPerfilUsuario").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuario").title = nombreCorto;
+        }
+        if (document.getElementById("imgPerfilUsuarioDropdown")) {
+          document.getElementById("imgPerfilUsuarioDropdown").src = foto;
+          document.getElementById("imgPerfilUsuarioDropdown").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuarioDropdown").title = nombreCorto;
+        }
+
+        // --- ROLES ---
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+            if (roles.includes("admin")) {
+              document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+            }
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+            if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+              document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+            }
+            if (document.getElementById("rolesUsuario")) {
+              let rolSimplificado = "Usuario";
+              const rolesMinusculas = roles.map(r => r.toLowerCase());
+              if (rolesMinusculas.some(r => r.includes("admin"))) {
+                rolSimplificado = "Admin";
+              } else if (rolesMinusculas.some(r => r.includes("responsable"))) {
+                rolSimplificado = "Responsable";
+              } else if (rolesMinusculas.some(r => r.includes("observador"))) {
+                rolSimplificado = "Observador";
+              }
+              document.getElementById("rolesUsuario").textContent = rolSimplificado;
+            }
+          } else {
+            console.warn("Usuario autenticado pero no registrado en la base de datos.");
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+        });
+
+        // ---- SI NO ESTÁ AUTENTICADO ----
+      } else {
+        // Navbar
+        if (logButton) {
+          logButton.textContent = "Iniciar Sesión";
+          logButton.classList.remove("btn-danger", "text-danger");
+          logButton.classList.add("btn-primary", "text-white");
+          logButton.style.backgroundColor = "#00594e";
+          logButton.style.color = "#fff!important";
+          logButton.onclick = () => window.location.href = "../pages/sign-in.html";
+        }
+        // Aside
+        if (asideAuthDiv) {
+          asideAuthDiv.innerHTML = `
+        <a href="../pages/sign-in.html" class="btn btn-outline-success btn-sm w-65 mb-1 fw-semibold rounded-pill shadow-sm">
+          <i class="fa-solid fa-sign-in-alt me-2"></i> Iniciar sesión
+        </a>`;
+        }
+      }
+    });
+
+
+    function obtenerNombreCorto(nombreCompleto) {
+      if (!nombreCompleto) return "";
+      const partes = nombreCompleto.trim().split(" ");
+      if (partes.length === 1) return partes[0];
+      return partes[0] + " " + partes[1];
+    }
+
+
+
+
+
+    // **Función para limitar texto**
+    function limitarTexto(texto, limite) {
+      return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+    }
+
+    // Función para calcular el progreso de cada año
+    function computeProgress(yearValue, divisor, tipo) {
+      if (divisor === 0) {
+        return 0;
+      }
+      let result;
+      if (tipo === "porcentaje") {
+        result = (yearValue / divisor) * 10000;
+      } else if (tipo === "entero") {
+        result = (yearValue / divisor) * 100;
+      } else {
+        result = 0;
+      }
+      return parseFloat(result.toFixed(2));
+    }
+
+
+
+    function crearGraficaRadarAvancePoliticas(politicasObj) {
+      // 1. Ordenar por avance
+      const datos = [];
+      for (const idPolitica in politicasObj) {
+        const politica = politicasObj[idPolitica];
+        const nombreCompleto = politica.titulo || idPolitica;
+        const nombre = limitarTexto(nombreCompleto, 100); // visible en radar
+        let valor = Number((politica.totalPolitica || 0).toFixed(2));
+        datos.push({ nombre, valor, nombreCompleto });
+      }
+      datos.sort((a, b) => a.valor - b.valor);
+
+      const nombres = datos.map(d => d.nombre);
+      const avances = datos.map(d => d.valor);
+      const nombresCompletos = datos.map(d => d.nombreCompleto);
+
+      // 2. Max grid = valor más alto + 10%, redondeado al siguiente múltiplo de 10
+      let maxAvance = Math.max(...avances, 10);
+      let radarMax = Math.ceil((maxAvance * 1.10) / 10) * 10;
+      if (radarMax < 25) radarMax = 25;
+
+      // 3. Nodos individuales
+      const seriesNodes = nombres.map((name, idx) => ({
+        value: avances.map((_, i) => (i === idx ? avances[idx] : 0)), // solo un punto por eje
+        name: name,
+        symbol: 'circle',
+        symbolSize: 13,
+        itemStyle: {
+          color: '#ffbe32',
+          borderColor: '#00594e',
+          borderWidth: 2,
+          shadowColor: '#ffeecd',
+          shadowBlur: 9
+        },
+        label: {
+          show: true,
+          formatter: function (params) {
+            return params.value[idx] ? `${params.value[idx]}%` : '';
+          },
+          color: '#1a3e2e',
+          fontWeight: 700,
+          fontSize: 12,
+          distance: 8
+        }
+      }));
+
+      // 4. Serie principal: línea + zona conectando TODOS
+      const seriePrincipal = {
+        value: avances,
+        name: 'Avance (%)',
+        symbol: 'circle',
+        symbolSize: 0,
+        lineStyle: {
+          color: '#009a8a',
+          width: 3.2,
+          shadowColor: '#62dcb180',
+          shadowBlur: 10
+        },
+        areaStyle: {
+          color: 'rgba(0, 89, 78, 0.14)'
+        },
+        itemStyle: {
+          color: 'rgba(0,0,0,0)'
+        },
+        z: 9
+      };
+
+      // 5. Indicadores del radar
+      const indicators = nombres.map(name => ({
+        name,
+        max: radarMax
+      }));
+
+      // 6. Render ECharts
+      const chart = echarts.init(document.getElementById('graficaAvance'));
+
+      chart.setOption({
+        tooltip: {
+          trigger: 'item',
+          confine: true,
+          borderRadius: 8,
+          backgroundColor: '#fff',
+          borderColor: '#00797033',
+          borderWidth: 1.5,
+          textStyle: { color: '#2b4647', fontWeight: 600 },
+          formatter: function (params) {
+            // Si es nodo individual
+            if (params.seriesName !== 'Avance (%)' && params.value.some(v => v > 0)) {
+              const idx = params.value.findIndex(v => v > 0);
+              return `<b>${nombresCompletos[idx]}</b><br>Avance: <b>${avances[idx]}%</b>`;
+            }
+            // Si es la línea principal, muestra todos los datos
+            if (params.seriesName === 'Avance (%)' && params.value) {
+              // Averigua qué eje está más cerca del mouse
+              const idx = params.value.findIndex(v => v === Math.max(...params.value));
+              return `<b>${nombresCompletos[idx]}</b><br>Avance: <b>${avances[idx]}%</b>`;
+            }
+            return null;
+          }
+        },
+        radar: {
+          center: ['50%', '48%'],
+          radius: '80%',
+          splitNumber: 5,
+          name: {
+            textStyle: {
+              color: '#4b5b54',
+              fontWeight: 600,
+              fontSize: 14
+            },
+            formatter: function (value) {
+              return limitarTexto(value, 50);
+            }
+          },
+          axisNameGap: 14,
+          splitLine: {
+            lineStyle: { color: '#d0e9e2', width: 1.3 }
+          },
+          splitArea: {
+            areaStyle: { color: ['#f5fbfa', '#fafdfe', '#f5fafc', '#fff'] }
+          },
+          axisLine: {
+            lineStyle: { color: '#b5a16065', width: 1.8 }
+          },
+          indicator: indicators
+        },
+        series: [
+          // Línea y zona general
+          {
+            type: 'radar',
+            name: 'Avance (%)',
+            data: [seriePrincipal],
+            lineStyle: { color: '#007970' },
+            z: 1,
+            areaStyle: { color: 'rgba(0, 89, 78, 0.10)' }
+          },
+          // Nodos individuales, uno por política
+          ...seriesNodes.map((serie, idx) => ({
+            type: 'radar',
+            name: serie.name,
+            data: [serie],
+            z: 11 + idx
+          }))
+        ],
+        animationEasing: 'elasticOut',
+        animationDuration: 1200,
+        backgroundColor: 'transparent'
+      });
+
+      // --- Tooltip manual sobre las etiquetas del radar (names) ---
+      setTimeout(() => {
+        // Espera al render para que existan los text-labels
+        const chartDom = document.getElementById('graficaAvance');
+        const svgTexts = chartDom.querySelectorAll('text');
+        // Remueve tooltips previos si los hay
+        let customTip = document.getElementById('customRadarTooltip');
+        if (customTip) customTip.remove();
+
+        // Crea el div-tooltip que usaremos siempre
+        customTip = document.createElement('div');
+        customTip.id = 'customRadarTooltip';
+        customTip.style.position = 'fixed';
+        customTip.style.display = 'none';
+        customTip.style.background = '#fff8ec';
+        customTip.style.color = '#345654';
+        customTip.style.padding = '8px 14px';
+        customTip.style.borderRadius = '1em';
+        customTip.style.fontWeight = '600';
+        customTip.style.boxShadow = '0 2px 16px #c7bba740';
+        customTip.style.zIndex = 12002;
+        customTip.style.border = '1.5px solid #ffd285';
+        customTip.style.pointerEvents = 'none';
+        customTip.style.fontSize = '1em';
+        document.body.appendChild(customTip);
+
+        // Busca solo los labels de los ejes (hay varios <text>)
+        const labelTexts = [];
+        svgTexts.forEach(t => {
+          if (t.textContent && politicasObj) {
+            for (const idPolitica in politicasObj) {
+              // Haz coincidir con el texto limitado (usa el mismo límite que en los ejes)
+              const txtLimitado = limitarTexto((politicasObj[idPolitica].titulo || idPolitica), 50);
+              if (t.textContent.trim() === txtLimitado) {
+                labelTexts.push({ el: t, id: idPolitica });
+                break;
+              }
+            }
+          }
+        });
+
+        // Agrega eventos a cada label:
+        labelTexts.forEach(({ el, id }) => {
+          const politica = politicasObj[id];
+          const avance = (politica.totalPolitica || 0).toFixed(2);
+          const nombre = politica.titulo || id;
+          el.style.cursor = 'pointer';
+          el.onmouseenter = function (e) {
+            customTip.innerHTML = `<b>${nombre}</b><br><span style="font-size:.98em">Avance: <b>${avance}%</b></span>`;
+            customTip.style.display = 'block';
+            let mouseX = e.clientX;
+            let mouseY = e.clientY;
+            if (window.innerWidth - mouseX < 180) mouseX -= 120;
+            customTip.style.left = (mouseX + 12) + 'px';
+            customTip.style.top = (mouseY - 8) + 'px';
+          };
+          el.onmousemove = function (e) {
+            customTip.style.left = (e.clientX + 12) + 'px';
+            customTip.style.top = (e.clientY - 8) + 'px';
+          };
+          el.onmouseleave = function () {
+            customTip.style.display = 'none';
+          };
+        });
+
+        window.addEventListener('scroll', () => { customTip.style.display = 'none'; });
+        window.addEventListener('resize', () => { customTip.style.display = 'none'; });
+      }, 600);
+
+      window.addEventListener('resize', () => chart.resize());
+    }
+
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/argon-dashboard.js"></script>
+</body>
+<style>
+  /* Estilo para las filas de la tabla */
+  #tablaPoliticas tr {
+    cursor: pointer;
+    /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+  }
+
+  /* Cambia el color de fondo de la fila al pasar el cursor */
+  #tablaPoliticas tr:hover {
+    background-color: hsla(214, 83%, 48%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #000;
+    font-weight: 500;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+
+  #tablaPoliticas2 tr:hover {
+    background-color: hsla(173, 100%, 17%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #ffffff;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+</style>
+
+</html>

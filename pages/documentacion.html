@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan-It-One · Guía de uso</title>
+<meta name="description" content="Cómo usar y navegar Plan-It-One: políticas, objetivos, acciones, evidencias y observaciones.">
+<style>
+  /* ======= Diseño limpio y legible ======= */
+  :root{
+    --brand:#00594E;         /* Verde institucional */
+    --brand-600:#0B6C60;
+    --gold:#B5A160;          /* Dorado institucional */
+    --ink:#0A0F12;           /* Texto principal */
+    --ink-2:#475569;         /* Texto secundario */
+    --bg:#ffffff;            /* Fondo */
+    --card:#ffffff;          /* Tarjetas */
+    --line:#E8EDF2;          /* Bordes suaves */
+    --soft:#F7FAFC;          /* Paneles suaves */
+    --pill:#F1F5F9;          /* Chips suaves */
+    --ok:#15803D; --warn:#B45309; --err:#B91C1C;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(2, 6, 12, .06);
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto;}
+  body{font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility}
+
+  /* ======= Topbar ======= */
+  .topbar{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line)}
+  .topbar-inner{max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:14px; padding:10px 18px}
+  .brand{display:flex; align-items:center; gap:12px}
+  .brand img{height:38px; width:auto; display:block}
+  .brand-meta{display:flex; flex-direction:column}
+  .brand-title{font-weight:800; letter-spacing:.2px; font-size:18px}
+  .brand-sub{color:var(--ink-2); font-size:13px}
+  .cta{display:flex; gap:10px}
+  .btn{border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:999px; padding:8px 14px; font-weight:600; cursor:pointer}
+  .btn-brand{border-color:transparent; background:linear-gradient(135deg,var(--brand), var(--brand-600)); color:#fff}
+  .btn:hover{box-shadow:0 6px 18px rgba(0,0,0,.06)}
+
+  /* ======= Layout ======= */
+  .wrap{max-width:1200px; margin:0 auto; display:grid; grid-template-columns:280px 1fr; gap:22px; padding:22px 18px}
+  @media (max-width: 980px){ .wrap{grid-template-columns:1fr} }
+
+  /* ======= Índice lateral ======= */
+  .toc{position:sticky; top:72px; border:1px solid var(--line); background:var(--card); border-radius:var(--radius); padding:14px; box-shadow:var(--shadow)}
+  .toc h2{margin:.2rem 0 .8rem; font-size:1rem; color:#0f172a}
+  .toc ol{margin:0; padding-left:18px}
+  .toc li{margin:.35rem 0}
+  .toc a{color:#0f172a; text-decoration:none}
+  .toc a:hover{color:var(--brand); text-decoration:underline}
+  .toc .active > a{color:var(--brand); font-weight:800}
+
+  /* ======= Contenido / tarjetas ======= */
+  .card{border:1px solid var(--line); border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow)}
+  .card .body{padding:22px}
+  .card h2{margin:.2rem 0 .7rem; font-size:1.6rem; line-height:1.25; letter-spacing:.1px}
+  .lead{color:var(--ink-2); font-size:1.05rem}
+
+  .note{padding:14px; border:1px dashed var(--line); background:var(--soft); border-radius:14px}
+  .pill{display:inline-block; background:var(--pill); border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:.82rem}
+  .kbd{font-family:ui-monospace, Menlo, Consolas; background:#f8fafc; border:1px solid var(--line); padding:2px 6px; border-radius:6px}
+
+  /* ======= Barras de progreso estilo “peso vs avance” ======= */
+  .bar{position:relative; height:16px; border-radius:999px; background:#ECF3F1; border:1px solid var(--line); overflow:hidden}
+  .bar .fill{position:absolute; inset:0 auto 0 0; width:46%; background:linear-gradient(90deg, var(--brand), #2AAE9E); opacity:.95}
+  .bar .weight{position:absolute; top:-3px; bottom:-3px; left:70%; width:2px; background:#94A3B8}
+  .bar .labels{display:flex; justify-content:space-between; font-size:.85rem; color:var(--ink-2); margin-top:6px}
+
+  /* ======= Secciones responsivas ======= */
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:760px){ .grid-2{grid-template-columns:1fr} }
+
+  /* ======= Tabla simple ======= */
+  .table{width:100%; border-collapse:separate; border-spacing:0 10px}
+  .table th{font-size:.9rem; text-align:left; color:#0f172a; padding:8px 10px}
+  .table td{background:#fff; border:1px solid var(--line); border-left:none; border-right:none; padding:12px 10px}
+  .table tr{transition:background .15s}
+  .table tr:hover td{background:#FAFCFD}
+
+  /* ======= FAQ ======= */
+  details{border:1px solid var(--line); border-radius:12px; background:#fff; margin:10px 0; overflow:hidden}
+  details[open]{box-shadow:var(--shadow)}
+  summary{padding:12px 14px; cursor:pointer; font-weight:700; list-style:none}
+  .faq-body{padding:0 14px 14px; color:var(--ink-2)}
+
+  /* ======= Footer ======= */
+  .footer{padding:26px 0 50px; color:#64748b; text-align:center}
+
+  /* Accesibilidad */
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto !important; transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <div class="brand" aria-label="Plan-It-One">
+      <img src="assets/img/logo-ct-dark.png" alt="Plan-It-One">
+      <div class="brand-meta">
+        <div class="brand-title">Plan-It-One</div>
+        <div class="brand-sub">Guía de uso y navegación</div>
+      </div>
+    </div>
+    <div class="cta">
+      <a class="btn" href="#soporte">Soporte</a>
+      <a class="btn btn-brand" href="#carga">Comenzar</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" role="main">
+  <!-- TOC -->
+  <nav class="toc" id="toc" aria-label="Índice">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#bienvenida">Bienvenida</a></li>
+      <li><a href="#acceso">Acceso y roles</a></li>
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#politicas">Políticas y objetivos</a></li>
+      <li><a href="#acciones">Acciones</a></li>
+      <li><a href="#carga">Carga de evidencias</a></li>
+      <li><a href="#observaciones">Observaciones y estados</a></li>
+      <li><a href="#documentos">Documentos</a></li>
+      <li><a href="#buenas-practicas">Buenas prácticas</a></li>
+      <li><a href="#preguntas">FAQ</a></li>
+      <li><a href="#soporte">Soporte</a></li>
+    </ol>
+  </nav>
+
+  <!-- Contenido -->
+  <section class="card" id="bienvenida" tabindex="-1">
+    <div class="body">
+      <h2>Bienvenida</h2>
+      <p class="lead">
+        Esta guía te acompaña paso a paso para usar <strong>Plan-It-One</strong>:
+        navegar políticas, revisar objetivos y acciones, subir evidencias y responder observaciones.
+      </p>
+      <div class="note">
+        <strong>Visión general:</strong> Transforma la gestión en una experiencia clara y trazable.
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="acceso" tabindex="-1">
+    <div class="body">
+      <h2>Acceso y roles</h2>
+      <div class="grid-2">
+        <div>
+          <h3 style="margin-top:0">Acceso</h3>
+          <ul>
+            <li>Ingresa con tu correo institucional.</li>
+            <li>Recupera acceso desde “¿Olvidaste tu contraseña?”</li>
+          </ul>
+          <p class="pill">La sesión expira por inactividad (seguridad).</p>
+        </div>
+        <div>
+          <h3 style="margin-top:0">Roles</h3>
+          <ul>
+            <li><strong>Responsable:</strong> sube evidencias y responde observaciones.</li>
+            <li><strong>Admin:</strong> valida evidencias y cambia estados.</li>
+          </ul>
+          <p class="lead" style="font-size:.98rem">La plataforma muestra opciones según tu rol.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="dashboard" tabindex="-1">
+    <div class="body">
+      <h2>Dashboard</h2>
+      <p>En el inicio verás indicadores de avance y accesos rápidos a tus políticas.</p>
+      <div style="max-width:640px">
+        <div class="bar" aria-label="Ejemplo: avance 46% con peso 70%">
+          <div class="fill" style="width:46%"></div>
+          <div class="weight" style="left:70%"></div>
+        </div>
+        <div class="bar labels">
+          <span>Avance 46%</span>
+          <span>Peso 70%</span>
+        </div>
+      </div>
+      <ul>
+        <li>Tarjetas de avance por política.</li>
+        <li>Notificaciones de cambios de estado y mensajes.</li>
+        <li>Accesos a políticas/acciones con un clic.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" id="politicas" tabindex="-1">
+    <div class="body">
+      <h2>Políticas y objetivos</h2>
+      <p>Cada política contiene <strong>objetivos</strong>, y cada objetivo agrupa <strong>acciones</strong>.</p>
+      <ul>
+        <li>Explora objetivos y su <em>peso relativo</em>.</li>
+        <li>Consulta el <em>avance proporcional</em> acumulado.</li>
+        <li>Ingresa al detalle de cada acción.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" id="acciones" tabindex="-1">
+    <div class="body">
+      <h2>Acciones</h2>
+      <p>Dentro de cada acción podrás:</p>
+      <ul>
+        <li>Ver el indicador, metas por año y ciclos de seguimiento.</li>
+        <li>Consultar y cargar <strong>evidencias requeridas</strong>.</li>
+        <li>Abrir el canal de <strong>observaciones</strong>.</li>
+      </ul>
+      <div class="note">
+        Usa nombres descriptivos para tus archivos (p. ej. <span class="kbd">EV-001_2025-2_informe.pdf</span>).
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="carga" tabindex="-1">
+    <div class="body">
+      <h2>Carga de evidencias</h2>
+      <ol>
+        <li>Selecciona <strong>Política → Objetivo → Acción</strong> (o llega pre-seleccionado).</li>
+        <li>Sube los archivos en el formato solicitado (PDF/Imagen/Excel).</li>
+        <li>Finaliza cuando todo esté marcado como <em>Subido</em>.</li>
+      </ol>
+      <div class="grid-2" style="margin-top:8px">
+        <div>
+          <h3 style="margin-top:0">Formatos</h3>
+          <ul>
+            <li>PDF, Imágenes (JPG/PNG), Excel.</li>
+            <li>Tamaño recomendado ≤ 15 MB.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-top:0">Estados</h3>
+          <ul>
+            <li>En revisión</li>
+            <li>Aprobado</li>
+            <li>Entrega parcial</li>
+            <li>Rechazado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="observaciones" tabindex="-1">
+    <div class="body">
+      <h2>Observaciones y estados</h2>
+      <p>Conversa en el hilo de cada evidencia. El emisor se ve a la derecha, el receptor a la izquierda.</p>
+      <ul>
+        <li>Responde a tiempo para evitar rechazos.</li>
+        <li>Los administradores pueden cambiar el estado tras su revisión.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" id="documentos" tabindex="-1">
+    <div class="body">
+      <h2>Documentos de la política</h2>
+      <p>Encuentra instructivos, formatos y normatividad en el modal <em>Documentos</em>. Puedes descargar todo.</p>
+      <p class="pill">Usa siempre la versión más reciente antes de subir tu evidencia.</p>
+    </div>
+  </section>
+
+  <section class="card" id="buenas-practicas" tabindex="-1">
+    <div class="body">
+      <h2>Buenas prácticas</h2>
+      <ul>
+        <li>Evita duplicados: revisa el historial antes de subir.</li>
+        <li>Estandariza nombres de archivo: <span class="kbd">EV-###_AAAA-P_corto.ext</span>.</li>
+        <li>Aporta fuentes/anexos cuando el indicador lo requiera.</li>
+        <li>Responde observaciones en máximo 3 días hábiles.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="card" id="preguntas" tabindex="-1">
+    <div class="body">
+      <h2>Preguntas frecuentes</h2>
+      <details>
+        <summary>No veo mi acción</summary>
+        <div class="faq-body">Verifica que elegiste la política y objetivo correctos. Si persiste, solicita revisión de permisos.</div>
+      </details>
+      <details>
+        <summary>Reemplacé un archivo, ¿se guarda el anterior?</summary>
+        <div class="faq-body">Sí, el sistema conserva trazabilidad en el historial de cargas.</div>
+      </details>
+      <details>
+        <summary>¿Quién cambia el estado?</summary>
+        <div class="faq-body">Usuarios con rol <strong>Admin</strong>. Recibirás notificación del resultado.</div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card" id="soporte" tabindex="-1">
+    <div class="body">
+      <h2>Soporte</h2>
+      <p>¿Necesitas ayuda?</p>
+      <ul>
+        <li>Escríbenos: <a href="mailto:soporte@institucion.edu.co">soporte@institucion.edu.co</a></li>
+        <li>Horario: L–V, 8:00–17:00</li>
+        <li>Adjunta capturas y el <em>ID de la acción</em> para agilizar.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap" style="grid-template-columns:1fr">
+    <div>© <span id="y"></span> Plan-It-One · Institución</div>
+  </div>
+</footer>
+
+<script>
+  // Año en footer
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // TOC activo al hacer scroll (scrollspy básico)
+  const tocLinks = Array.from(document.querySelectorAll('#toc a'));
+  const sections = tocLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const spy = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      const id = '#'+e.target.id;
+      const li = tocLinks.find(a=>a.getAttribute('href')===id)?.parentElement;
+      if(!li) return;
+      if(e.isIntersecting){
+        document.querySelectorAll('#toc li').forEach(x=>x.classList.remove('active'));
+        li.classList.add('active');
+      }
+    });
+  }, { rootMargin:'-40% 0px -55% 0px' });
+  sections.forEach(s=>spy.observe(s));
+
+  // Scroll suave
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id = a.getAttribute('href');
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      history.replaceState(null,null,id);
+    });
+  });
+</script>
+</body>
+</html>

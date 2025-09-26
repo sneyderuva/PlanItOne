@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/icono.png">
+  <title>
+    Plan It One
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../assets/js/s-plan-charts.js"></script>
+
+</head>
+
+<body class="">
+  <!-- Pantalla de Carga -->
+  <div id="loader" class="loader-container">
+    <img src="../assets/img/animacion.gif" alt="S-PLAN" style="width: 70%;">
+  </div>
+
+  <style>
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999999;
+    }
+
+    .loader-img {
+      width: 35%;
+      animation: zoomIn 2s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script type="module">
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 2200); // Duración exacta de la animación
+    });
+
+  </script>
+  <div class="position-absolute w-100 min-height-300 top-0"
+    style="background-image: url('../assets/img/perfil.png'); background-position-y: 50%; z-index: -11;">
+    <span class="mask bg-primary opacity-6"></span>
+  </div>
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <!-- Navbar -->
+        <nav
+          class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-0 end-0 mx-4">
+          <div class="container-fluid">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3" href="../index.html">
+              PlanItOne
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon mt-2">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
+                    href="../polariscore/dashboard.html">
+                    <img src="../assets/img/polariscore/icono.svg" width="18" height="18" class="me-2"
+                      style="filter: brightness(0) saturate(100%) invert(20%);">
+                    PolariScore
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center me-2" href="../s-plan/dashboard.html">
+                    <img src="../assets/img/s-plan/icono.svg" width="18" height="18" class="me-2"
+                      style="filter: brightness(0) saturate(100%) invert(20%);">
+                    S-Plan
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center me-2" href="../uniproy/dashboard.html">
+                    <img src="../assets/img/uniproy/icono.svg" width="18" height="18" class="me-2"
+                      style="filter: brightness(0) saturate(100%) invert(20%);">
+                    UniProy
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center me-2" href="../datalab/dashboard.html">
+                    <img src="../assets/img/datalab/icono.svg" width="18" height="18" class="me-2"
+                      style="filter: brightness(0) saturate(100%) invert(20%);">
+                    DataLab
+                  </a>
+                </li>
+              </ul>
+
+              <ul class="navbar-nav d-lg-block d-none">
+                <li class="nav-item">
+                  <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary">Iniciar
+                    Sesión</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+      </div>
+    </div>
+  </div>
+  <!-- CONTENIDO ------>
+
+  <div class="container" style="z-index: 9999999; margin-top: 5%;">
+    <h3 class="mb-4 text-white"><i class="fas fa-building me-2"></i>Resumen del Área Responsable | <span
+        id="idOficina">R555</span></h3>
+
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="card shadow-sm border-0">
+          <div class="card-body px-4 py-4">
+
+            <!-- Título principal -->
+            <h2 class="text-primary mb-4" id="nombreOficina"
+              style="font-family: Arial, Helvetica, sans-serif; text-align: start; font-weight: 900; line-height: 100%;">
+              Oficina Asesora de Planeación
+            </h2>
+
+            <!-- KPIs horizontales -->
+            <div class="row text-center">
+              <div class="col-md-4 mb-3 mb-md-0">
+                <div class="bg-light rounded py-3">
+                  <div class="text-muted small">Jefe de Área</div>
+                  <div class="fw-semibold"> <span id="nombreJefe">Dra. Amanda Dueñas Cubides</span> </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3 mb-md-0">
+                <div class="bg-light rounded py-3">
+                  <div class="text-muted small">Miembros del Equipo</div>
+                  <div class="fw-semibold"> <span id="cantidadMiembros"> 12</span></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="bg-light rounded py-3">
+                  <div class="text-muted small">Correo Institucional</div>
+                  <div class="fw-semibold"> <span id="correoOficina"> planeacion@unitropico.edu.co</span></div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <h5 class="mb-3"><i class="fas fa-sliders-h me-2"></i>Selecciona el rango de años</h5>
+            <div id="year-range-slider" class="mt-4 mb-4 mx-3"></div>
+            <div class="text-center " style="margin-top: 6%;">
+              Rango seleccionado: <strong id="slider-year-range-display"></strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+
+
+
+
+
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs mb-3" id="tabsArea" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active responsable" id="tab-resumen" data-bs-toggle="tab"
+          data-bs-target="#contenido-resumen" type="button" role="tab">📊 Resumen General</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link responsable" id="tab-polariscore" data-bs-toggle="tab"
+          data-bs-target="#contenido-polariscore" type="button" role="tab">PolariScore</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link responsable" id="tab-splan" data-bs-toggle="tab" data-bs-target="#contenido-splan"
+          type="button" role="tab">S-Plan</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link responsable disabled-tab" disabled id="tab-datalab" data-bs-toggle="tab"
+          data-bs-target="#contenido-datalab" type="button" role="tab">DataLab</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link responsable disabled-tab" disabled id="tab-uniproy" data-bs-toggle="tab"
+          data-bs-target="#contenido-uniproy" type="button" role="tab">Uniproy</button>
+      </li>
+    </ul>
+
+    <style>
+      .responsable {
+        color: #ddd !important;
+      }
+
+      .responsable:hover {
+        color: #333 !important;
+      }
+
+      .responsable:active {
+        color: #ddd !important;
+      }
+
+      /* ✅ Tab activo */
+      .responsable.active {
+        background-color: #fff !important;
+        /* o cualquier color personalizado */
+        color: #333 !important;
+        border-color: #b5a160 #b5a160 #fff !important;
+      }
+
+      /* ✅ Tab deshabilitado */
+      .responsable.disabled-tab {
+        background-color: transparent !important;
+        color: #ddd !important;
+        cursor: not-allowed !important;
+        opacity: 1;
+        border-color: #dee2e6;
+      }
+    </style>
+
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="contenido-resumen" role="tabpanel">
+        <div class="row g-4">
+          <!-- Columna Izquierda: Tarjetas Apiladas -->
+          <div class="col-lg-9">
+            <div class="row g-4">
+              <!-- Tarjeta: Cumplimiento Institucional -->
+              <div class="col-md-6 col-lg-6"
+                title="Se trata del promedio general de Avance de las políticas donde el área es responsable ">
+                <div class="card shadow-sm h-100 text-center">
+                  <div class="card-body">
+                    <h6 class="text-muted">Cumplimiento Institucional</h6>
+                    <h1 class="text-success fw-bold display-4" id="promedioPoliticas">78.4%</h1>
+                    <p class="mb-0 text-muted">Promedio acumulado de todas las políticas</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tarjeta: Inversión Gestionada -->
+              <div class="col-md-6 col-lg-6">
+                <div class="card shadow-sm h-100 text-center">
+                  <div class="card-body">
+                    <h6 class="text-muted">Inversión Gestionada</h6>
+                    <h1 class="text-warning fw-bold" id="inversionGestionada">$1.250 M</h1>
+                    <p class="mb-0 text-muted">Total reportado por el área</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tarjeta: Acciones Ejecutadas -->
+              <div class="col-md-6 col-lg-6">
+                <div class="card shadow-sm h-100 text-center">
+                  <div class="card-body">
+                    <h6 class="text-muted">Acciones Ejecutadas</h6>
+                    <h1 class="text-primary fw-bold">124</h1>
+                    <p class="mb-0 text-muted">Desde inicio del seguimiento</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tarjeta: Acciones Pendientes -->
+              <div class="col-md-6 col-lg-6">
+                <div class="card shadow-sm h-100">
+                  <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-tasks me-2"></i>Acciones Pendientes</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">🕒 5 acciones en PolariScore</li>
+                      <li class="list-group-item">📝 3 metas sin seguimiento (S-Plan)</li>
+                      <li class="list-group-item">📉 2 indicadores sin datos (DataLab)</li>
+                      <li class="list-group-item">📁 1 proyecto sin evidencia (Uniproy)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Termómetro de Compromiso -->
+          <div class="col-lg-3 d-flex">
+            <div class="card shadow-sm w-100 text-center d-flex flex-column justify-content-center">
+              <div class="card-body">
+                <h6 class="text-muted">Compromiso Unitropista</h6>
+
+                <p class="mb-0 text-muted">Termómetro del comrpomiso Unitropista</p>
+
+
+                <div class="card-body p-3">
+                  <div id="grafica_cumplimiento_Politica" class="text-center">
+                    <svg viewBox="0 0 100 160"
+                      style="width: 100%; height: auto; max-width: 150px; margin: 0 auto; display: block;">
+                      <image class="stat-svg" href="../assets/img/stat.svg" x="0" y="0" width="100" height="160"
+                        opacity="0.6" />
+                      <defs>
+                        <clipPath id="clip-overlay">
+                          <rect id="clip-rect" x="0" y="0" width="100" height="400" />
+                        </clipPath>
+                        <filter id="colorFilter" x="0" y="0" width="100%" height="100%">
+                          <feColorMatrix id="matrix" type="matrix"
+                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" />
+                        </filter>
+                      </defs>
+                      <image class="stat-svg" id="overlay" href="../assets/img/stat1.svg" x="0" y="0" width="100"
+                        height="160" clip-path="url(#clip-overlay)" />
+                    </svg>
+                    <p id="porcentaje" style="font-weight: bold;">0%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row mt-4">
+          <!-- ✅ Tarjeta: Miembros del Área -->
+          <div class="col-md-6 col-lg-9">
+            <div class="card shadow-sm mb-4">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-users me-2"></i>Miembros del Área</h5>
+                <div class="table-responsive">
+                  <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Correo</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tablaMiembros">
+                      <!-- Las filas se insertarán dinámicamente aquí -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Tarjeta: Inversión Gestionada -->
+          <div class="col-md-3">
+            <div class="card shadow-sm  text-center">
+              <div class="card-body">
+                <h6 class="text-muted">Inversión Gestionada</h6>
+                <h1 class="text-info fw-bold" id="inversionGestionada">$1.111 M</h1>
+                <p class=" text-muted">en Construcción</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <!-- Cumplimiento por Aplicación -->
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-chart-bar me-2"></i>Cumplimiento por Aplicación</h5>
+                <div id="graficaCumplimientoApps" style="height: 300px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Radar de Capacidades -->
+          <div class="col-md-6">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-chart-pie me-2"></i>Radar de Capacidades del Área</h5>
+                <div id="graficaRadarOficina" style="height: 300px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          // Inicializar ECharts
+          const chartApps = echarts.init(document.getElementById('graficaCumplimientoApps'));
+          const chartRadar = echarts.init(document.getElementById('graficaRadarOficina'));
+
+          // Gráfica de barras: Cumplimiento por app
+          const optionApps = {
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: { type: 'shadow' }
+            },
+            grid: {
+              left: '5%', // ✅ margen izquierdo del 5%
+              right: '4%',
+              bottom: '10%',
+              containLabel: true
+            },
+            xAxis: {
+              type: 'value',
+              max: 100,
+              axisLabel: { formatter: '{value} %' }
+            },
+            yAxis: {
+              type: 'category',
+              data: ['PolariScore', 'S-Plan', 'DataLab', 'Uniproy'],
+              axisTick: { alignWithLabel: true }
+            },
+            series: [{
+              name: 'Cumplimiento (%)',
+              type: 'bar',
+              data: [85, 70, 55, 40],
+              itemStyle: {
+                color: function (params) {
+                  const colores = ['#1abc9c', '#3498db', '#9b59b6', '#e67e22'];
+                  return colores[params.dataIndex];
+                }
+              },
+              label: {
+                show: true,
+                position: 'right',
+                formatter: '{c} %'
+              }
+            }]
+          };
+
+
+          // Gráfica Radar: Capacidades de la Oficina
+          const optionRadar = {
+            tooltip: {},
+            radar: {
+              indicator: [
+                { name: 'Planeación', max: 100 },
+                { name: 'Organización', max: 100 },
+                { name: 'Seguimiento', max: 100 },
+                { name: 'Comunicación', max: 100 },
+                { name: 'Mejora Continua', max: 100 }
+              ]
+            },
+            series: [{
+              name: 'Capacidades del Área',
+              type: 'radar',
+              data: [
+                {
+                  value: [90, 80, 75, 85, 70],
+                  name: 'Oficina de Planeación'
+                }
+              ],
+              areaStyle: {
+                opacity: 0.2
+              },
+              lineStyle: {
+                color: '#2c3e50'
+              },
+              itemStyle: {
+                color: '#2c3e50'
+              }
+            }]
+          };
+
+          chartApps.setOption(optionApps);
+          chartRadar.setOption(optionRadar);
+        </script>
+
+
+      </div>
+
+
+      <!-- PolariScore -->
+      <div class="tab-pane fade" id="contenido-polariscore" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-check-circle me-2"></i>Acciones asignadas - PolariScore</h5>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Título</th>
+                  <th>Estado</th>
+                  <th>Avance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ACC-001</td>
+                  <td>Plan de mejora</td>
+                  <td><span class="badge bg-warning">En proceso</span></td>
+                  <td>65%</td>
+                </tr>
+                <tr>
+                  <td>ACC-002</td>
+                  <td>Impacto institucional</td>
+                  <td><span class="badge bg-danger">Atrasada</span></td>
+                  <td>30%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- S-Plan -->
+      <div class="tab-pane fade" id="contenido-splan" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-route me-2"></i>Acciones de <span class="text-primary bold" id="responsableNombre"></span> S-Plan</h5>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Meta</th>
+                  <th>Acción</th>
+                  <th>Estado</th>
+                  <th>Avance</th>
+                  <th>Inversión realizada</th>
+                </tr>
+              </thead>
+              <tbody id="s-planTable">
+                <tr>
+                  <td>E1M2</td>
+                  <td>ACC-001</td>
+                  <td><span class="badge bg-warning">En proceso</span></td>
+                  <td>65%</td>
+                  <td>$445.255,00</td>
+                </tr>
+                <tr>
+                  <td>E1M3</td>
+                  <td>ACC-002</td>
+                  <td><span class="badge bg-danger">Atrasada</span></td>
+                  <td>80%</td>
+                  <td>$1.000.000,00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DataLab -->
+      <div class="tab-pane fade" id="contenido-datalab" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-flask me-2"></i>Indicadores en DataLab</h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Indicador</th>
+                  <th>Actual</th>
+                  <th>Meta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Satisfacción estudiantil</td>
+                  <td>82%</td>
+                  <td>90%</td>
+                </tr>
+                <tr>
+                  <td>Cobertura regional</td>
+                  <td>67%</td>
+                  <td>80%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uniproy -->
+      <div class="tab-pane fade" id="contenido-uniproy" role="tabpanel">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-rocket me-2"></i>Proyectos Uniproy</h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Proyecto</th>
+                  <th>Estado</th>
+                  <th>Responsable</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Observatorio de Datos</td>
+                  <td><span class="badge bg-info">En ejecución</span></td>
+                  <td>Carlos López</td>
+                </tr>
+                <tr>
+                  <td>Seguimiento a Egresados</td>
+                  <td><span class="badge bg-secondary">Planificado</span></td>
+                  <td>Diana Ruiz</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer class="footer pt-3  ">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6 mb-lg-0 mb-4">
+          <div class="copyright text-center text-sm text-muted text-lg-start">
+            ©
+            <script>
+              document.write(new Date().getFullYear())
+            </script>,
+            desarrollado por la <a style="font-weight: 600; color: #00584e;"
+              href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de
+              Planeación</a> - Unitrópico
+
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+            <li class="nav-item">
+              <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
+                Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                target="_blank">License</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- FIN DE CONTENIDO ----->
+  <!-- Modal de Redirección -->
+  <div class="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="redirectLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="redirectLabel">Ya estás autenticado</h5>
+        </div>
+        <div class="modal-body text-center">
+          <!-- Imagen centrada -->
+          <img src="../assets/img/oops.png" width="200" alt="Oops" class="mx-auto d-block mb-3">
+          <p>Serás redirigido al inicio en <span id="countdown">4</span> segundos...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="redirectNow">Ir ahora</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor de notificaciones (Toasts) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+    <div id="toastContainer"></div>
+  </div>
+  <script type="module">
+    // Importar Firebase
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import {
+      getAuth, GoogleAuthProvider, signInWithPopup,
+      createUserWithEmailAndPassword, updateProfile,
+      signInWithEmailAndPassword, // 🔹 Agregado para inicio de sesión con email y contraseña
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { get, child } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b",
+      databaseURL: "https://sigunitropico-default-rtdb.firebaseio.com/"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const db = getDatabase(app);
+
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+
+    // Extraer el parámetro "id" de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const idOficina = urlParams.get('id');
+
+
+    // --- Configuración Inicial ---
+    const anioActual = new Date().getFullYear(); // Obtiene 2025 (según la fecha actual)
+    const anioMinimo = 2022;
+    const anioMaximo = 2028;
+
+    // El array 'rango' se llenará dinámicamente con el slider
+    const rango = []; // Empieza vacío o con un valor inicial si lo deseas
+
+    // Elemento contenedor del slider
+    const yearSlider = document.getElementById('year-range-slider');
+    // Elemento para mostrar el rango (opcional)
+    const rangeDisplay = document.getElementById('slider-year-range-display');
+
+
+    // --- Inicializar noUiSlider ---
+    if (yearSlider) {
+      noUiSlider.create(yearSlider, {
+        // Valores iniciales (ej: año actual a año actual, o 2022 a año actual)
+        start: [anioActual, anioActual],
+        // Conectar los dos handles con una barra
+        connect: true,
+        // Definir el rango mínimo y máximo del slider
+        range: {
+          'min': anioMinimo,
+          'max': anioMaximo
+        },
+        // Moverse solo en pasos de 1 (años enteros)
+        step: 1,
+        // Formato para mostrar los valores (números enteros)
+        format: {
+          to: function (value) {
+            return Math.round(value); // Asegura que sea entero
+          },
+          from: function (value) {
+            return Number(value);
+          }
+        },
+        // Opcional: Mostrar tooltips sobre los handles
+        tooltips: true,
+        // Opcional: Mostrar marcas/pips para cada año
+        pips: {
+          mode: 'values',
+          values: Array.from({ length: anioMaximo - anioMinimo + 1 }, (_, i) => anioMinimo + i), // [2022, 2023, ..., 2028]
+          density: 100 / (anioMaximo - anioMinimo), // Ajustar densidad para que quepan
+          format: { // Formato también para los pips
+            to: function (value) {
+              return Math.round(value);
+            }
+          }
+        }
+      });
+
+      // --- Listener para cuando el valor del slider cambia ---
+      yearSlider.noUiSlider.on('change', function (values, handle) {
+        // 'values' es un array con los valores actuales [inicio, fin], como números
+        const anioInicio = parseInt(values[0], 10);
+        const anioFin = parseInt(values[1], 10);
+
+        // Actualizar el display (opcional)
+        if (rangeDisplay) {
+          rangeDisplay.textContent = `${anioInicio} - ${anioFin}`;
+        }
+
+        // Limpiar el array rango existente
+        rango.length = 0;
+
+        // Llenar el array rango con los años seleccionados
+        for (let i = anioInicio; i <= anioFin; i++) {
+          rango.push(i);
+        }
+
+        console.log("✅ Rango actualizado por slider:", rango);
+
+        // Llamar a tu función para recargar/filtrar los datos
+        cargarDatos(); // Asegúrate que esta función use la variable global 'rango'
+
+        // Opcional: Mostrar un toast si lo deseas
+        if (typeof mostrarToast === 'function') {
+          mostrarToast("Rango de años aplicado.", "success");
+        }
+      });
+
+
+      // --- Carga inicial de datos ---
+      // Obtener los valores iniciales del slider para la primera carga
+      const valoresIniciales = yearSlider.noUiSlider.get();
+      const anioInicioInicial = parseInt(valoresIniciales[0], 10);
+      const anioFinInicial = parseInt(valoresIniciales[1], 10);
+
+      // Actualizar display inicial (opcional)
+      if (rangeDisplay) {
+        rangeDisplay.textContent = `${anioInicioInicial} - ${anioFinInicial}`;
+      }
+
+      // Llenar rango inicial
+      rango.length = 0;
+      for (let i = anioInicioInicial; i <= anioFinInicial; i++) {
+        rango.push(i);
+      }
+
+      console.log("Rango inicial (desde slider):", rango);
+      cargarDatos(); // Carga los datos con el rango inicial del slider
+
+    } else {
+      console.error("Elemento del slider no encontrado.");
+      // Carga inicial con valor por defecto si el slider falla
+      rango.push(anioActual);
+      console.log("Rango inicial (por defecto):", rango);
+      cargarDatos();
+    }
+
+
+    // Ya NO necesitas el código de flatpickr ni el listener del botón 'btnAplicarFechas'
+    // Puedes eliminarlos o comentarlos.
+
+    async function cargarDatos() {
+
+      if (idOficina) {
+        document.getElementById("idOficina").textContent = idOficina;
+
+        try {
+          const snapshotResponsables = await get(ref(db, `responsables/${idOficina}`));
+
+          if (snapshotResponsables.exists()) {
+            const oficina = snapshotResponsables.val();
+            const areaOficina = oficina.area;
+
+            document.getElementById("nombreOficina").textContent = areaOficina || "Sin área";
+            document.getElementById("responsableNombre").textContent = areaOficina || "Sin área";
+
+            // Obtener todos los responsables
+            const snapshotTodos = await get(ref(db, `responsables`));
+            let cantidad = 0;
+            const tbody = document.getElementById("tablaMiembros");
+            tbody.innerHTML = ""; // Limpiar contenido previo
+
+            const tbodySplan = document.getElementById("s-planTable");
+            tbodySplan.innerHTML = ""; // Limpiar contenido previo
+
+            let jefeEncontrado = null;
+            const palabrasClave = ["jefe", "rector", "lider", "secretario"];
+
+            if (snapshotTodos.exists()) {
+              const responsables = snapshotTodos.val();
+
+              for (const id in responsables) {
+                const r = responsables[id];
+                if (r.area && normalizarTexto(r.area.trim()) === normalizarTexto(areaOficina.trim())) {
+                  cantidad++;
+
+                  // Crear fila para cada miembro
+                  const tr = document.createElement("tr");
+
+                  const tdNombre = document.createElement("td");
+                  tdNombre.textContent = r.nombre_completo || "Sin nombre";
+                  tr.appendChild(tdNombre);
+
+                  const tdCargo = document.createElement("td");
+                  tdCargo.textContent = r.cargo || "Sin cargo";
+                  tr.appendChild(tdCargo);
+
+                  // Crear la celda de correo electrónico
+                  const tdCorreo = document.createElement("td");
+
+                  // Crear un enlace con el esquema mailto
+                  const enlaceCorreo = document.createElement("a");
+                  enlaceCorreo.href = `mailto:${r.correo}`;
+                  enlaceCorreo.textContent = limitarTexto(r.correo.toLowerCase(), 30) || "Sin correo";
+                  enlaceCorreo.title = "Enviar correo";
+
+                  // Agregar el enlace a la celda
+                  tdCorreo.appendChild(enlaceCorreo);
+
+                  // Agregar la celda a la fila
+                  tr.appendChild(tdCorreo);
+
+                  tbody.appendChild(tr);
+
+
+                  document.getElementById("inversionGestionada").textContent = r.promedioPoliticas || `$` + 0 + ` M`;
+
+                  // Verificar si el cargo contiene alguna palabra clave
+                  if (r.cargo && palabrasClave.some(palabra => r.cargo
+                    .normalize('NFD')               // Separa letras y tildes
+                    .replace(/[\u0300-\u036f]/g, '') // Elimina los signos diacríticos
+                    .toLowerCase()
+                    .includes(
+                      palabra.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+                    )
+                  )) {
+                    jefeEncontrado = r;
+                  }
+                }
+              }
+            }
+
+            document.getElementById("cantidadMiembros").textContent = cantidad;
+
+
+
+            if (jefeEncontrado) {
+
+
+              const responsables = jefeEncontrado.PolariScore;
+
+              console.log(responsables);
+
+
+
+              const promedioGeneralPoliticas = calcularPromedioGeneralPoliticas(rango, responsables)
+              console.log(promedioGeneralPoliticas);
+
+
+              document.getElementById("promedioPoliticas").textContent = promedioGeneralPoliticas.toFixed(2) + `%` || 0 + `%`;
+
+              document.getElementById("nombreJefe").textContent = jefeEncontrado.nombre_completo || "Sin nombre";
+              document.getElementById("correoOficina").textContent = jefeEncontrado.correo.toLowerCase() || "Sin correo";
+            } else {
+              document.getElementById("nombreJefe").textContent = "Área sin jefe asignado";
+              document.getElementById("correoOficina").textContent = "Sin correo";
+            }
+
+          } else {
+            console.warn("No se encontró la oficina con ese ID.");
+          }
+
+        } catch (err) {
+          console.error("❌ Error al obtener datos del responsable:", err);
+        }
+      }
+    }
+
+    function calcularPromedioGeneralPoliticas(rango, objetoCompleto) { // Cambiado nombre de param
+
+      // --- **INICIO DE CAMBIO** ---
+      // Verifica si el objeto de entrada y la propiedad necesaria existen
+      if (!objetoCompleto || !objetoCompleto.promediosPoliticas) {
+        console.error("El objeto de entrada es inválido o no contiene la propiedad 'promediosPoliticas'.");
+        return 0; // O null / NaN
+      }
+      // Accede al objeto interno que contiene las políticas
+      const datosPoliticas = objetoCompleto.promediosPoliticas;
+      // --- **FIN DE CAMBIO** ---
+
+      // El resto del código es idéntico al anterior, pero ahora usa 'datosPoliticas' correctamente
+
+      const promediosPorPolitica = [];
+      const aniosRangoStr = rango.map(String);
+
+      Object.keys(datosPoliticas).forEach(idPolitica => { // Ahora itera sobre P-009, P-010...
+        const scoresDeLaPolitica = datosPoliticas[idPolitica];
+        let sumaInterna = 0;
+        let contadorInterno = 0;
+
+        aniosRangoStr.forEach(anio => {
+          if (scoresDeLaPolitica && scoresDeLaPolitica.hasOwnProperty(anio)) {
+            // NOTA: Tus datos ahora parecen ser NÚMEROS, no strings.
+            // parseFloat() igual funciona con números, así que lo dejamos por robustez
+            // por si algún dato SÍ viene como string.
+            const scoreValor = scoresDeLaPolitica[anio];
+            const scoreNumero = parseFloat(scoreValor);
+
+            if (!isNaN(scoreNumero)) {
+              sumaInterna += scoreNumero;
+              contadorInterno++;
+            } else {
+              console.warn(`Valor no numérico encontrado en politica ${idPolitica}, año ${anio}: ${scoreValor}`);
+            }
+          }
+        });
+
+        if (contadorInterno > 0) {
+          const promedioInterno = sumaInterna / contadorInterno;
+          promediosPorPolitica.push(promedioInterno);
+        }
+      });
+
+      if (promediosPorPolitica.length === 0) {
+        console.warn("No se pudo calcular ningún promedio interno para las políticas en el rango especificado.");
+        return 0;
+      }
+
+      const sumaTotalDePromedios = promediosPorPolitica.reduce((acumulador, promedioActual) => acumulador + promedioActual, 0);
+      const promedioGeneral = sumaTotalDePromedios / promediosPorPolitica.length;
+
+      return promedioGeneral;
+    }
+
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+    // Lista de roles permitidos
+    const rolesPermitidos = [
+      "admin", "admin-polariscore", "admin-datalab", "admin-s-plan", "admin-uniproy",
+      "observador", "observador-polariscore", "observador-datalab", "observador-s-plan", "observador-uniproy",
+      "responsable", "responsable-polariscore", "responsable-datalab", "responsable-s-plan", "responsable-uniproy"
+    ];
+
+    onAuthStateChanged(auth, (user) => {
+      console.log("Usuario autenticado:", user);
+
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            let logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            document.getElementById("confirmLogout").addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+                mostrarToast("Error al cerrar sesión.", "danger");
+              });
+            });
+          });
+          logoutListenerAdded = true;
+        }
+
+        // 🔍 Verificar roles
+        const correoSanitizado = user.email.replace(/\./g, '_');
+        const userRef = ref(db, `usuarios/${correoSanitizado}`);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const userRoles = Array.isArray(userData.roles) ? userData.roles : [];
+
+            console.log(`✅ Usuario autenticado con roles: ${userRoles.join(", ")}`);
+
+            const tieneRolPermitido = userRoles.some(r => rolesPermitidos.includes(r));
+            if (!tieneRolPermitido) {
+              console.warn("🚫 Usuario sin roles autorizados. Redirigiendo...");
+              window.location.href = "sign-in.html";
+            }
+
+          } else {
+            console.error("⚠️ No se encontró información del usuario en la base de datos.");
+            mostrarToast("No se encontró la información del usuario.", "warning");
+            window.location.href = "sign-in.html";
+          }
+        }).catch((error) => {
+          console.error("❌ Error al obtener datos del usuario:", error);
+          mostrarToast("Error al obtener los datos del usuario.", "danger");
+          window.location.href = "sign-in.html";
+        });
+
+      } else {
+        console.log("No hay usuario autenticado");
+
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.add("btn-primary");
+
+        logButton.addEventListener("click", () => {
+          window.location.href = "sign-in.html";
+        });
+
+
+        // 🔴 Redirigir si no hay sesión
+        window.location.href = "sign-in.html";
+      }
+    });
+
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+
+    function limitarTexto(texto, limite) {
+      return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+    }
+
+    function normalizarTexto(texto) {
+      return texto
+        .normalize("NFD") // separa caracteres acentuados
+        .replace(/[\u0300-\u036f]/g, "") // elimina los acentos
+        .toLowerCase(); // convierte a minúsculas
+    }
+
+    // Función para mostrar una notificación (Toast)
+    function mostrarToast(mensaje, tipo = "info") {
+      const toastContainer = document.getElementById("toastContainer");
+
+      // Crear toast
+      const toast = document.createElement("div");
+      toast.className = `toast align-items-center text-white bg-${tipo} border-0 show`;
+      toast.role = "alert";
+      toast.ariaLive = "assertive";
+      toast.ariaAtomic = "true";
+      toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${mensaje}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        `;
+
+      toastContainer.appendChild(toast);
+
+      // Mostrar el toast
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+
+      // Eliminar el toast después de 5 segundos
+      setTimeout(() => {
+        bsToast.hide();
+        setTimeout(() => toast.remove(), 500);
+      }, 2000);
+    }
+
+  </script>
+
+
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+
+
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
+
+</html>

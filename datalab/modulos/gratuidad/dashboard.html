@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../../assets/img/datalab/icono.png">
+  <title>
+    Dashboard Gratuidad
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../../../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <!-- Pantalla de Carga -->
+  <div id="loader" class="loader-container">
+    <img src="../../../assets/img/datalab/animacion.gif" alt="S-PLAN" style="width: 40%;">
+  </div>
+
+  <style>
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999999;
+    }
+
+    .loader-img {
+      width: 35%;
+      animation: zoomIn 2s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ocultar {
+        display: none !important;
+      }
+
+      .margin-top-5 {
+        margin-top: 5%;
+      }
+    }
+  </style>
+
+  <script type="module">
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 1500); // Duración exacta de la animación
+    });
+
+  </script>
+
+
+  <div class="min-height-300 position-absolute w-100"
+    style="background: url('../../../assets/img/datalab/bg-gradient.png') no-repeat center center/cover;"></div>
+  <aside
+    class="sidenav card-glass bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0 d-flex justify-content-center" href="../../../index.html">
+        <img src="../../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- Políticas -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPoliticas" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-collection text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">PolariScore</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/politicas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Políticas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- PDI 2024-2028 -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="true">
+            <!-- Cambié aria-expanded a true -->
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">S-Plan</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi"> <!-- Agregué la clase "show" -->
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/ejes.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Ejes</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/programas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Programas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Proyectos -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuProyectos" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-archive-2 text-sm opacity-10" style="color: #003d6a;"></i>
+              </div>
+              <span class="nav-link-text ms-1">UniProy</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuProyectos">
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/proyectos.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- DATA LAB -->
+        <li class="nav-item ">
+          <a class="nav-link active collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuCifras" aria-expanded="true">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-chart-bar-32 text-secondary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">DataLab</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4 show" id="submenuCifras">
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Cifras</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Cuenta</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com/planeacion"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Planeación</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">SIG Unitrópico</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let navLinks = document.querySelectorAll(".nav-link[data-bs-toggle='collapse']");
+
+          navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+              let target = document.querySelector(this.getAttribute("data-bs-target"));
+
+              // Cierra todos los submenús excepto el que se está abriendo
+              document.querySelectorAll(".collapse.show").forEach(openMenu => {
+                if (openMenu !== target) {
+                  new bootstrap.Collapse(openMenu, { toggle: false }).hide();
+                }
+              });
+            });
+          });
+        });
+      </script>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../../../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://synariscorp.com" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentación</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="mailto:innovacionplaneacion@unitropico.edu.co"
+        type="button">Contactar al equipo técnico</a>
+    </div>
+  </aside>
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb ocultar">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white active ocultar" aria-current="page">Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0 ocultar">última actualización <p
+              class="font-weight-normal text-white mb-0 ocultar" id="fecha_actualizacion">calculando...</p>
+          </h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+
+            <li class="nav-item d-flex align-items-center ">
+              <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary ocultar"><i
+                  class="fa fa-user me-sm-1"></i>Iniciar
+                sesión</button>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center " title="Zona de Filtros">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../../../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!---  CONTENIDO ---->
+
+    <!-- DASHBOARD INTERNACIONALIZACIÓN - DISTRIBUCIÓN ELEGANTE -->
+    <div class="container mt-5" style="align-items: start;">
+
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card card-glass shadow-lg border-0 rounded-4 margin-top-5">
+            <div class="card-body py-5 px-5 text-center text-md-start">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                <div class="mb-3 mb-md-0">
+                  <h2 class="text-white fw-bold mb-3" style="text-shadow: 0 1px 3px rgba(0,0,0,0.4);">
+                    <i class="fa-solid fa-sack-dollar"></i> Política de Estado de Gratuidad
+                  </h2>
+                  <p class="lead text-dark-50 mb-0 text-justify" style="max-width: 60vw;">
+                    Este panel interactivo permite visualizar y analizar los datos relacionados con los estudiantes
+                    postulados y beneficiarios del programa de gratuidad en la educación superior. Aquí podrás explorar
+                    tendencias por semestre, programas académicos, fondos de financiación y criterios de no aceptación,
+                    facilitando la toma de decisiones informadas y el seguimiento de la política de Estado de Gratuidad
+                    en Unitrópico.
+                  </p>
+                  <div id="resumenFiltrosAplicados" class="mt-4 d-flex flex-wrap gap-2">
+                    <!-- Rango de Semestres (siempre visible) -->
+
+                    <script>
+                      document.addEventListener("DOMContentLoaded", () => {
+                        const fixedPlugin = document.querySelector(".fixed-plugin");
+
+                        document.querySelectorAll(".abrir-fixed-plugin").forEach(btn => {
+                          btn.addEventListener("click", e => {
+                            e.stopPropagation(); // para evitar que el body lo cierre inmediatamente
+                            if (fixedPlugin) {
+                              fixedPlugin.classList.toggle("show");
+                            }
+                          });
+                        });
+                      });
+                    </script>
+
+                    <span style="cursor: pointer;"
+                      class="badge rounded-pill bg-gradient-success text-white shadow-sm px-3 py-2 border d-flex align-items-center abrir-fixed-plugin cursor-pointer">
+                      <i class="fa-solid fa-filter me-1 text-white"></i>
+                      Filtros</span>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center">
+                      <i class="fa-solid fa-calendar-alt me-1 text-secondary"></i>
+                      Semestre: <span id="resumenSemestres" class="fw-semibold">2024-A</span>
+                    </span>
+
+                    <!-- Chips dinámicos de otros filtros -->
+                    <div id="chipsFiltrosDinamicos" class="d-flex flex-wrap gap-2"></div>
+                  </div>
+                  <style>
+                    #resumenFiltrosAplicados .badge {
+                      font-size: 0.875rem;
+                      cursor: default;
+                    }
+
+                    .chip-filtro {
+                      background-color: #fff;
+                      border: 1px solid #dee2e6;
+                      padding: 6px 12px;
+                      border-radius: 50px;
+                      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                      display: flex;
+                      align-items: center;
+                    }
+
+                    .chip-filtro .cerrar-chip {
+                      margin-left: 8px;
+                      color: #888;
+                      cursor: pointer;
+                    }
+
+                    .filtro-tag {
+                      background-color: white;
+                      border-radius: 2rem;
+                      padding: 0.3rem 0.9rem 0.3rem 1rem;
+                      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+                      display: inline-flex;
+                      align-items: center;
+                      font-size: 0.9rem;
+                      font-weight: 500;
+                      color: #333;
+                    }
+
+                    .filtro-tag .cerrar-filtro {
+                      margin-left: 8px;
+                      color: #888;
+                      cursor: pointer;
+                      font-weight: bold;
+                    }
+                  </style>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- KPIs principales para Gratuidad -->
+      <div class="row mb-2">
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Estudiantes Postulados</h6>
+              <h1 class="text-primary fw-bold" id="kpiPostulados">--</h1>
+              <p class="text-muted">Total registrados</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Beneficiarios</h6>
+              <h1 class="text-success fw-bold" id="kpiBeneficiarios">--</h1>
+              <p class="text-muted">Accedieron a gratuidad</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">No Beneficiarios</h6>
+              <h1 class="text-danger fw-bold" id="kpiNoBeneficiarios">--</h1>
+              <p class="text-muted">Rechazados o no aceptados</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">% de Beneficiarios</h6>
+              <h1 class="text-info fw-bold" id="kpiPorcentajeBeneficiarios">--</h1>
+              <p class="text-muted">Sobre el total de postulados</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Segunda fila: Gráficas principales -->
+      <!-- Gráfica Gratuidad por semestre-->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+
+              <!-- Título general -->
+              <h5 class="card-title mb-4">
+                <i class="fas fa-globe me-2"></i> Beneficiarios Política de Gratuidad por Semestre (2022-A a 2024-B)
+              </h5>
+              <div id="graficaBeneficiariosPorSemestre" style="height: 25vw;"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Tercera fila: Análisis detallado -->
+      <div class="row mb-2">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-chart-line me-2"></i>Total estudiantes postulados a la PEG (<span
+                  id="labelRangoAniosGratuidad3"></span>) según programa</h5>
+              <div id="graficaPostuladosPorPrograma" style="height: 35vw;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm mb-2">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-university me-2"></i>Balance Beneficiarios PEG <span
+                  id="periodoFiltroBalance"></span> según fondo y no aceptados</h5>
+              <div id="graficaPostuladosPorFondo" style="height: 20vw;"></div>
+            </div>
+          </div>
+          <div class="card card-glass shadow-sm mb-2">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-university me-2"></i>Conoce la Política de Estado de Gratuidad
+              </h5>
+              <div id="" style="height: 11vw; margin-top: 2%;" class="text-dark text-justify">
+
+                La Política de Estado de Gratuidad en la Matrícula es una iniciativa del gobierno colombiano que busca
+                eliminar barreras económicas para el acceso a la educación superior pública en el nivel de pregrado.
+                Esta política subsidia el pago de la matrícula ordinaria neta de estudiantes de bajos recursos en
+                instituciones de educación superior públicas.
+
+                <a class="btn btn-outline-success mt-3"
+                  href="https://www.mineducacion.gov.co/portal/Educacion-superior/Politica-de-Gratuidad-Puedo-Estudiar/409830:Politica-de-Gratuidad-en-la-Educacion-Superior">
+                  Conoce más aquí <i class="fa-solid fa-bullseye"></i></i></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfica Gratuidad por semestre-->
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="card shadow-sm mt-2">
+            <div class="card-body">
+
+              <!-- Título general -->
+              <h5 class="card-title mb-2">
+                <i class="fas fa-globe me-2"></i> Criterios de no aceptación PEG semestre (<span
+                  id="labelRangoAniosGratuidad2">2024-B</span>)
+              </h5>
+              <div id="graficaCriterioNoAceptacion" style="height: 25vw;"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+
+    <!--- FIN DEL CONTENIDO ---->
+
+
+
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
+                  Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                  target="_blank">License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </main>
+
+
+
+  <div class="fixed-plugin ">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="fa fa-filter fixed-plugin-button-nav cursor-pointer"></i>
+    </a>
+
+
+    <div class="card shadow-sm">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="mb-0 text-default">🎛 Zona de Filtros</h5>
+          <small class="text-muted">Personaliza la vista del Dashboard de Gratuidad</small>
+        </div>
+        <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+          <i class="fa fa-compress"></i>
+        </button>
+      </div>
+      <hr class="horizontal dark my-0">
+      <div class="card-body pt-3 pb-3">
+
+        <!-- 🔹 Filtros de Gratuidad -->
+        <h6 class="text-uppercase text-success mb-3">Gratuidad</h6>
+
+        <!-- Rango de Años (Gratuidad) -->
+        <div class="mb-3">
+          <label class="form-label">Periodo</label>
+          <div id="sliderRangoAniosGratuidad" style="margin: 10px 0;"></div>
+          <small>Semestre seleccionado: <span id="labelRangoAniosGratuidad"></span></small>
+        </div>
+
+        <!-- Facultad -->
+        <div class="mb-3">
+          <label class="form-label">Facultad</label>
+          <select id="filtroFacultadGratuidad" class="form-select">
+            <option value="">Todas</option>
+          </select>
+        </div>
+
+        <!-- Programa -->
+        <div class="mb-3">
+          <label class="form-label">Programa</label>
+          <select id="filtroProgramaGratuidad" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- Fondo -->
+        <div class="mb-3">
+          <label class="form-label">Fondo</label>
+          <select id="filtroFondoGratuidad" class="form-select">
+            <option value="">Todos</option>
+            <option value="FSE">FSE</option>
+            <option value="GE">GE</option>
+            <option value="EQUIDAD">Equidad</option>
+            <option value="Política de Gratuidad">Política de gratuidad</option>
+            <option value="NO ACEPTADO">No aceptado</option>
+            <!-- O puedes llenarlo dinámicamente -->
+          </select>
+        </div>
+
+        <!-- Tipo de Estudiante -->
+        <div class="mb-3">
+          <label class="form-label">Tipo de Estudiante</label>
+          <select id="filtroTipoEstudianteGratuidad" class="form-select">
+            <option value="">Todos</option>
+            <option value="NUEVO">Nuevo</option>
+            <option value="ANTIGUO">Antiguo</option>
+            <option value="REINGRESO">Reingreso</option>
+          </select>
+        </div>
+
+        <!-- Sexo -->
+        <div class="mb-3">
+          <label class="form-label">Sexo</label>
+          <select id="filtroSexoGratuidad" class="form-select">
+            <option value="">Todos</option>
+            <option value="FEMENINO">Femenino</option>
+            <option value="MASCULINO">Masculino</option>
+          </select>
+        </div>
+
+        <!-- Criterio de No Aceptación -->
+        <div class="mb-3">
+          <label class="form-label">Criterio No Aceptación</label>
+          <select id="filtroCriterioNoAceptacionGratuidad" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- Botón aplicar filtros -->
+        <div class="d-grid mt-4">
+          <button class="btn btn-success" onclick="">Aplicar Filtros</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Contenedor de notificaciones (Toasts) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+    <div id="toastContainer"></div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes shrinkAndFade {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .shrink-fade-out {
+      animation: shrinkAndFade 0.4s ease forwards;
+    }
+  </style>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+  <!--   Core JS Files   -->
+  <script src="../../../assets/js/core/popper.min.js"></script>
+  <script src="../../../assets/js/core/bootstrap.min.js"></script>
+  <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../../../assets/js/s-plan-charts.js"></script>
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+    // Verificar si el usuario está autenticado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+        // Prevenir múltiples listeners
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            const confirmBtn = document.getElementById("confirmLogout");
+            const clonedBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+
+            clonedBtn.addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "../../../pages/sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+              });
+            });
+          });
+
+          logoutListenerAdded = true;
+        }
+
+        // Buscar por correo sanitizado
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+
+            console.log("Roles del usuario:", roles);
+
+            if (roles.includes("admin")) {
+              document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+              document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+            }
+
+          } else {
+            console.warn("Usuario autenticado pero no registrado en la base de datos.");
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+        });
+
+      } else {
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.add("btn-primary");
+
+        logButton.addEventListener("click", () => {
+          window.location.href = "../../../pages/sign-in.html";
+        });
+      }
+    });
+
+    function limitarTexto(texto, limite) {
+      return texto.length > limite ? texto.slice(0, limite) + '...' : texto;
+    }
+
+    // Definir rango de semestres disponibles
+    const minAnioGratuidad = 2022;
+    const maxAnioGratuidad = 2025;
+
+    const RUTA_BASE_GRATUIDAD = '/DataLab/ciclos_de_carga/gratuidad';
+
+    let gratuidadRaw = [];
+
+    //FUNCIONES DE LAS GRÁFICAS
+
+    //FUNCIÓN GRÁFICA DE BENEFICIARIOS POR SEMESTRE
+    function generarGraficaBeneficiariosPorSemestre(gratuidadArray) {
+      const chart = echarts.init(document.getElementById('graficaBeneficiariosPorSemestre'), 'DATALAB');
+
+      const conteoPorSemestre = {};
+
+      gratuidadArray.forEach(est => {
+        const fondo = (est.fondo || "").toLowerCase().trim();
+        const semestre = obtenerAnioSemestre(est.fecha); // 🟡 Usa la función que convierte la fecha a formato "2024-1"
+
+        if (fondo !== "no aceptado" && semestre) {
+          if (!conteoPorSemestre[semestre]) conteoPorSemestre[semestre] = 0;
+          conteoPorSemestre[semestre]++;
+        }
+      });
+
+      const etiquetas = Object.keys(conteoPorSemestre).sort();
+      const valores = etiquetas.map(k => conteoPorSemestre[k]);
+
+      const option = {
+        title: {
+          text: 'Beneficiarios según semestre',
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetas,
+          name: 'Semestre',
+          nameLocation: 'middle',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'value',
+          name: 'Beneficiarios',
+          nameGap: 35
+        },
+        series: [{
+          name: 'Beneficiarios',
+          type: 'line',
+          data: valores,
+          smooth: false,
+          symbol: 'circle',
+          symbolSize: 10,
+          lineStyle: {
+            width: 2
+          },
+          itemStyle: {
+            color: '#00594E'
+          },
+          label: {
+            show: true,
+            position: 'top',
+            fontWeight: 'bold',
+            fontSize: 11,
+            color: '#00594E'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelBeneficiariosPorSemestre(); // 🟢 Define esta función si usarás exportación
+              }
+            }
+          }
+        },
+        grid: {
+          left: '5%',
+          right: '5%',
+          bottom: '20%',
+          top: '20%',
+          containLabel: true
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //FUNCIÓN GRÁFICA DE POSTULADOS POR PROGRAMA
+    function generarGraficaPostuladosPorPrograma(gratuidadArray) {
+      const chart = echarts.init(document.getElementById('graficaPostuladosPorPrograma'), 'DATALAB');
+
+      // Conteo de postulados por programa (sin importar si fue beneficiado o no)
+      const conteoPorPrograma = {};
+
+      gratuidadArray.forEach(est => {
+        const programa = normalizarTexto(est.programa);
+        if (!conteoPorPrograma[programa]) conteoPorPrograma[programa] = 0;
+        conteoPorPrograma[programa]++;
+      });
+
+      const programas = Object.keys(conteoPorPrograma).sort((a, b) => conteoPorPrograma[b] - conteoPorPrograma[a]);
+      const valores = programas.map(p => conteoPorPrograma[p]);
+
+      const option = {
+        title: {
+          text: 'Postulados por Programa',
+          top: 0,
+          left: 'center'
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '10%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          name: 'Postulados',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'category',
+          data: programas,
+          axisLabel: {
+            formatter: val => val.length > 35 ? val.slice(0, 32) + '...' : val,
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Postulados',
+          type: 'bar',
+          data: valores,
+          barWidth: 16,
+          itemStyle: {
+            color: '#00594E'
+          },
+          label: {
+            show: true,
+            position: 'right',
+            color: '#00594E',
+            fontWeight: 'bold',
+            fontSize: 10
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelPostuladosPorPrograma();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    // FUNCIÓN GRÁFICA DE POSTULADOS POR FONDO (CORREGIDA)
+    function generarGraficaPostuladosPorFondo(datos) {
+      const chart = echarts.init(document.getElementById('graficaPostuladosPorFondo'), 'DATALAB');
+
+      const conteoPorFondo = {};
+
+      datos.forEach(est => {
+        const fondo = est.fondo || "No especificado";
+        if (!conteoPorFondo[fondo]) conteoPorFondo[fondo] = 0;
+        conteoPorFondo[fondo]++;
+      });
+
+      const fondos = Object.keys(conteoPorFondo).sort((a, b) => conteoPorFondo[b] - conteoPorFondo[a]);
+      const valores = fondos.map(f => ({ name: f, value: conteoPorFondo[f] }));
+
+      const option = {
+        title: {
+          text: 'Postulados según fondo',
+          left: 'center'
+        },
+        color: ['#00594E', '#B5A160', '#6D9886', '#D9CBA3', '#A7A9AC', '#E3B23C'],
+        tooltip: {
+          trigger: 'item',
+          formatter: '{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'horizontal',
+          bottom: '12%',
+          textStyle: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          name: 'Postulados',
+          type: 'pie',
+          radius: ['35%', '50%'], // Dona más pequeña
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 6,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: true,
+            position: 'outside',
+            formatter: '{b}\n{c} ({d}%)',
+            fontSize: 10
+          },
+          labelLine: {
+            show: true
+          },
+          data: valores
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG'
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelPostuladosPorFondo(); // Asegúrate que use datos filtrados
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+    
+    // FUNCIÓN GRÁFICA DE POSTULADOS POR CRITERIO NO ACEPTACIÓN (CORREGIDA)
+    function generarGraficaCriterioNoAceptacion(dataFiltrada) {
+      const contenedor = document.getElementById('graficaCriterioNoAceptacion');
+      if (!contenedor) {
+        console.warn("⚠️ No se encontró el contenedor 'graficaCriterioNoAceptacion'");
+        return;
+      }
+
+      const chart = echarts.init(contenedor, 'DATALAB');
+
+      const conteo = {};
+      dataFiltrada.forEach(est => {
+        const fondo = (est.fondo || "").toLowerCase().trim();
+        const criterio = (est.criterio_no_aceptacion || "No especificado").trim();
+        if (fondo === "no aceptado") {
+          if (!conteo[criterio]) conteo[criterio] = 0;
+          conteo[criterio]++;
+        }
+      });
+
+      const criterios = Object.keys(conteo).sort((a, b) => conteo[b] - conteo[a]);
+      const valores = criterios.map(c => conteo[c]);
+
+      const option = {
+        title: {
+          text: 'Postulados No Aceptados por Criterio',
+          left: 'center',
+          top: 0
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        grid: {
+          left: '5%',
+          right: '15%',
+          bottom: '15%',
+          top: '12%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          name: 'Cantidad',
+          nameGap: 25
+        },
+        yAxis: {
+          type: 'category',
+          data: criterios,
+          axisLabel: {
+            fontSize: 10
+          }
+        },
+        series: [{
+          type: 'bar',
+          data: valores,
+          barWidth: 20,
+          label: {
+            show: true,
+            position: 'right',
+            fontSize: 10,
+            color: '#333'
+          },
+          itemStyle: {
+            borderRadius: [4, 4, 4, 4],
+            color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+              { offset: 0, color: '#B5A160' },
+              { offset: 1, color: '#E5D7AA' }
+            ])
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: { title: 'Descargar PNG' },
+            dataView: { title: 'Ver Datos', readOnly: true },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                descargarExcelCriterioNoAceptacion(dataFiltrada);
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    function obtenerFechaHoy() {
+      const hoy = new Date();
+      const dia = String(hoy.getDate()).padStart(2, '0');
+      const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+      const anio = hoy.getFullYear();
+      return `${dia}/${mes}/${anio}`;
+    }
+
+    function obtenerAnioSemestre(fechaStr) {
+      // Ejemplo de fechaStr: "05/03/2024"
+      if (!fechaStr) return null; // si está vacío o undefined
+
+      const partes = fechaStr.split('/');
+      if (partes.length !== 3) return null; // formato inesperado
+
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const anio = parseInt(partes[2], 10);
+
+      if (isNaN(dia) || isNaN(mes) || isNaN(anio)) return null; // datos inválidos
+
+      // Determinar el semestre
+      const semestre = (mes <= 6) ? 'A' : 'B';
+
+      return `${anio}-${semestre}`;
+    }
+
+    function obtenerAnioDesdeFecha(fechaStr) {
+      if (!fechaStr) return null;
+
+      const partes = fechaStr.split('/');
+      if (partes.length !== 3) return null;
+
+      const anio = parseInt(partes[2], 10);
+      return isNaN(anio) ? null : anio;
+    }
+
+    function esUnitropico(entidad) {
+      const entidadNormalizada = entidad.toUpperCase();
+
+      return entidadNormalizada.includes('UNITRÓPICO') ||
+        entidadNormalizada.includes('UNITROPICO') ||
+        entidadNormalizada.includes('UNIVERSIDAD INTERNACIONAL DEL TRÓPICO AMERICANO');
+    }
+
+    function toTitleCase(str) {
+      return str.toLowerCase().split(' ').map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }).join(' ');
+    }
+
+
+
+    //FUNCIONES PARA DESCARGAR DE EXCEL
+    //FUNCIONES PARA DESCARGAR BENEFICIARIOS POR SEMESTRE
+    function descargarExcelBeneficiariosPorSemestre() {
+      // Filtra beneficiarios
+      const beneficiarios = gratuidadRaw.filter(est => (est.fondo || "").toLowerCase().trim() !== "no aceptado");
+
+      // Contar por semestre
+      const conteoPorSemestre = {};
+      beneficiarios.forEach(est => {
+        const semestre = obtenerAnioSemestre(est.fecha);
+        if (semestre) {
+          if (!conteoPorSemestre[semestre]) conteoPorSemestre[semestre] = 0;
+          conteoPorSemestre[semestre]++;
+        }
+      });
+
+      // Convertir a array de objetos
+      const datosExcel = Object.entries(conteoPorSemestre)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([semestre, cantidad]) => ({
+          "Semestre": semestre,
+          "Cantidad de Beneficiarios": cantidad
+        }));
+
+      // Crear hoja y libro Excel
+      const ws = XLSX.utils.json_to_sheet(datosExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "BeneficiariosPorSemestre");
+
+      // Generar nombre del archivo
+      const fecha = new Date();
+      const nombreArchivo = `BeneficiariosPorSemestre_${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, '0')}-${String(fecha.getDate()).padStart(2, '0')}.xlsx`;
+
+      // Descargar
+      XLSX.writeFile(wb, nombreArchivo);
+    }
+
+    //FUNCIONES PARA DESCARGAR POSTULADOS POR PROGRAMA
+    function descargarExcelPostuladosPorPrograma() {
+      const conteoPorPrograma = {};
+
+      gratuidadRaw.forEach(est => {
+        const programa = normalizarTexto(est.programa);
+        if (!conteoPorPrograma[programa]) conteoPorPrograma[programa] = 0;
+        conteoPorPrograma[programa]++;
+      });
+
+      const dataParaExcel = Object.entries(conteoPorPrograma)
+        .sort((a, b) => b[1] - a[1])
+        .map(([programa, total]) => ({
+          "Programa Académico": programa,
+          "Postulados": total
+        }));
+
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(dataParaExcel);
+
+      XLSX.utils.book_append_sheet(wb, ws, "PostuladosPorPrograma");
+
+      const fecha = new Date();
+      const nombreArchivo = `PostuladosPorPrograma_${fecha.getFullYear()}-${String(fecha.getMonth() + 1).padStart(2, '0')}-${String(fecha.getDate()).padStart(2, '0')}.xlsx`;
+
+      XLSX.writeFile(wb, nombreArchivo);
+    }
+
+    //FUNCIONES PARA DESCARGAR POSTULADOS POR FONDO
+    function descargarExcelPostuladosPorFondo() {
+      const conteoPorFondo = {};
+
+      gratuidadRaw.forEach(est => {
+        const fondo = normalizarTexto(est.fondo || "No especificado");
+        if (!conteoPorFondo[fondo]) conteoPorFondo[fondo] = 0;
+        conteoPorFondo[fondo]++;
+      });
+
+      const datosParaExcel = Object.entries(conteoPorFondo).map(([fondo, cantidad]) => ({
+        Fondo: fondo,
+        Postulados: cantidad
+      }));
+
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(datosParaExcel);
+      XLSX.utils.book_append_sheet(wb, ws, "PostuladosPorFondo");
+
+      const fecha = new Date();
+      const nombreArchivo = `Postulados_por_Fondo_${fecha.getFullYear()}-${(fecha.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${fecha.getDate().toString().padStart(2, '0')}.xlsx`;
+
+      XLSX.writeFile(wb, nombreArchivo);
+    }
+
+    //FUNCIONES PARA DESCARGAR POSTULADOS POR CRITERIO DE NO ACEPTACION
+    function descargarExcelCriterioNoAceptacion() {
+      // Contar criterios
+      const conteo = {};
+
+      gratuidadRaw.forEach(est => {
+        const fondo = (est.fondo || "").toLowerCase().trim();
+        const criterio = (est.criterio_no_aceptacion || "No especificado").trim();
+
+        if (fondo === "no aceptado") {
+          if (!conteo[criterio]) conteo[criterio] = 0;
+          conteo[criterio]++;
+        }
+      });
+
+      // Preparar datos para hoja Excel
+      const datosExcel = [["Criterio de No Aceptación", "Cantidad"]];
+
+      for (const criterio in conteo) {
+        datosExcel.push([criterio, conteo[criterio]]);
+      }
+
+      // Crear archivo Excel
+      const ws = XLSX.utils.aoa_to_sheet(datosExcel);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "No Aceptación");
+
+      // Descargar
+      XLSX.writeFile(wb, "criterios_no_aceptacion.xlsx");
+    }
+
+    function normalizarTexto(texto) {
+      if (!texto || typeof texto !== "string") return "No especificado";
+      return texto
+        .trim()
+        .toLowerCase()
+        .split(" ")
+        .map(palabra => {
+          if (palabra.length > 4) {
+            return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+          }
+          return palabra;
+        })
+        .join(" ");
+    }
+
+    function convertirAnioSemestre(valor) {
+      const anio = Math.floor(valor);
+      const decimal = valor - anio;
+
+      // Usamos un umbral para corregir errores de precisión (como 0.49999999)
+      const semestre = decimal >= 0.25 && decimal < 0.75 ? 'B' : 'A';
+
+      return `${anio}-${semestre}`;
+    }
+
+    function convertirSemestreANumero(etiqueta) {
+      const [anio, semestre] = etiqueta.split("-");
+      return parseInt(anio) + (semestre === "B" ? 0.5 : 0);
+    }
+
+    function filtrarDashboardGratuidad(semestreSeleccionado) {
+      const programaSeleccionado = document.getElementById('filtroProgramaGratuidad')?.value || "";
+      const sexoSeleccionado = document.getElementById('filtroSexoGratuidad')?.value || "";
+      const fondoSeleccionado = document.getElementById('filtroFondoGratuidad')?.value || "";
+      const tipoSeleccionado = document.getElementById('filtroTipoEstudianteGratuidad')?.value || "";
+
+      // 🔹 Datos filtrados por semestre, programa, sexo, fondo y tipo_estudiante
+      const datosFiltrados = gratuidadRaw.filter(d => {
+        const etiquetaSemestre = obtenerAnioSemestre(d.fecha);
+        if (!etiquetaSemestre) return false;
+
+        const valorNumerico = convertirSemestreANumero(etiquetaSemestre);
+        const esSemestreSeleccionado = valorNumerico === semestreSeleccionado;
+
+        const programaActual = normalizarTexto(d.programa || "");
+        const coincidePrograma = !programaSeleccionado || programaActual === programaSeleccionado;
+
+        const sexoActual = (d.sexo || "").toUpperCase();
+        const coincideSexo = !sexoSeleccionado || sexoActual === sexoSeleccionado;
+
+        const fondoActual = (d.fondo || "").toUpperCase();
+        const coincideFondo = !fondoSeleccionado || fondoActual === fondoSeleccionado;
+
+        const tipoActual = (d.tipo_estudiante || "").toUpperCase();
+        const coincideTipo = !tipoSeleccionado || tipoActual === tipoSeleccionado;
+
+        return esSemestreSeleccionado && coincidePrograma && coincideSexo && coincideFondo && coincideTipo;
+      });
+
+      // 🔹 Para la gráfica de beneficiarios por semestre (sin filtro de semestre)
+      const datosSoloPorFiltros = gratuidadRaw.filter(d => {
+        const programaActual = normalizarTexto(d.programa || "");
+        const coincidePrograma = !programaSeleccionado || programaActual === programaSeleccionado;
+
+        const sexoActual = (d.sexo || "").toUpperCase();
+        const coincideSexo = !sexoSeleccionado || sexoActual === sexoSeleccionado;
+
+        const fondoActual = (d.fondo || "").toUpperCase();
+        const coincideFondo = !fondoSeleccionado || fondoActual === fondoSeleccionado;
+
+        const tipoActual = (d.tipo_estudiante || "").toUpperCase();
+        const coincideTipo = !tipoSeleccionado || tipoActual === tipoSeleccionado;
+
+        return coincidePrograma && coincideSexo && coincideFondo && coincideTipo;
+      });
+
+      // 🔄 Actualizar visualizaciones
+      generarGraficaBeneficiariosPorSemestre(datosSoloPorFiltros);
+      generarGraficaPostuladosPorPrograma(datosFiltrados);
+      generarGraficaPostuladosPorFondo(datosFiltrados);
+      generarKPIsGratuidad(datosFiltrados);
+      generarGraficaCriterioNoAceptacion(datosFiltrados);
+
+      actualizarResumenFiltrosAplicados();
+
+      console.log(`📊 Datos filtrados (semestre ${semestreSeleccionado}) con programa "${programaSeleccionado}", sexo "${sexoSeleccionado}", fondo "${fondoSeleccionado}" y tipo "${tipoSeleccionado}": ${datosFiltrados.length}`);
+    }
+
+
+    function inicializarSliderGratuidad() {
+      const sliderGratuidad = document.getElementById('sliderRangoAniosGratuidad');
+
+      noUiSlider.create(sliderGratuidad, {
+        start: 2025, // valor único inicial
+        connect: [true, false], // conecta desde el inicio hasta el punto
+        step: 0.5,
+        range: {
+          min: minAnioGratuidad,
+          max: maxAnioGratuidad + 0.5
+        },
+        tooltips: true,
+        format: {
+          to: convertirAnioSemestre,
+          from: value => {
+            const [anio, semestre] = value.split('-');
+            return parseInt(anio) + (semestre === 'B' ? 0.5 : 0);
+          }
+        }
+      });
+
+      const labelRangoGratuidad = document.getElementById('labelRangoAniosGratuidad');
+      const labelRangoGratuidad2 = document.getElementById('labelRangoAniosGratuidad2');
+      const labelRangoGratuidad3 = document.getElementById('labelRangoAniosGratuidad3');
+      const resumenSemestres = document.getElementById('resumenSemestres');
+
+      sliderGratuidad.noUiSlider.on('update', function (values) {
+        const valor = values[0];
+        labelRangoGratuidad.textContent = valor;
+        labelRangoGratuidad2.textContent = valor;
+        labelRangoGratuidad3.textContent = valor;
+        resumenSemestres.textContent = valor;
+
+        const numero = convertirSemestreANumero(valor);
+        filtrarDashboardGratuidad(numero); // mismo valor como min y max
+      });
+
+      // 🟢 Forzar valor predeterminado luego de crear el slider
+      setTimeout(() => {
+        sliderGratuidad.noUiSlider.set(2025);
+        console.log("🎯 Valor predeterminado establecido en el slider:", sliderGratuidad.noUiSlider.get());
+      }, 50);
+    }
+
+
+    async function cargarDataEstudiantes() {
+      try {
+        const snapshot = await get(ref(db, RUTA_BASE_GRATUIDAD));
+        if (snapshot.exists()) {
+          const ciclos = snapshot.val();
+          const ciclosKeys = Object.keys(ciclos);
+
+          let ultimaFechaEntrega = null;
+
+          for (const ciclo of ciclosKeys) {
+            const cicloData = ciclos[ciclo];
+            const dataSnap = await get(ref(db, `${RUTA_BASE_GRATUIDAD}/${ciclo}/data`));
+            if (!dataSnap.exists()) continue;
+
+            const data = dataSnap.val();
+            if (Array.isArray(data.gratuidad)) {
+              gratuidadRaw.push(...data.gratuidad.map(d => ({ ...d, __ciclo: ciclo })));
+            }
+
+            // Obtener la última fecha_entrega
+            const fecha = cicloData.fecha_entrega;
+            if (fecha && (!ultimaFechaEntrega || fecha > ultimaFechaEntrega)) {
+              ultimaFechaEntrega = fecha;
+            }
+          }
+
+          console.log(`✅ Gratuidad: ${gratuidadRaw.length}`);
+
+          // KPIs
+          const totalPostulados = gratuidadRaw.length;
+          const beneficiarios = gratuidadRaw.filter(e =>
+            (e.fondo || "").toLowerCase().trim() !== "no aceptado"
+          ).length;
+          const noBeneficiarios = totalPostulados - beneficiarios;
+          const porcentajeBeneficiarios = totalPostulados > 0
+            ? ((beneficiarios / totalPostulados) * 100).toFixed(1)
+            : 0;
+
+          document.getElementById("kpiPostulados").innerText = totalPostulados.toLocaleString("es-CO");
+          document.getElementById("kpiBeneficiarios").innerText = beneficiarios.toLocaleString("es-CO");
+          document.getElementById("kpiNoBeneficiarios").innerText = noBeneficiarios.toLocaleString("es-CO");
+          document.getElementById("kpiPorcentajeBeneficiarios").innerText = `${porcentajeBeneficiarios}%`;
+
+          if (ultimaFechaEntrega) {
+            const fecha_actualizacion = document.getElementById("fecha_actualizacion");
+            const fechaFormateada = new Date(ultimaFechaEntrega * 1000).toLocaleDateString("es-CO", {
+              year: "numeric", month: "long", day: "numeric"
+            });
+            fecha_actualizacion.textContent = `${fechaFormateada}`;
+          }
+
+
+          // Graficar por primera vez
+          generarGraficaBeneficiariosPorSemestre(gratuidadRaw);
+          generarGraficaPostuladosPorPrograma(gratuidadRaw);
+          generarGraficaPostuladosPorFondo(gratuidadRaw);
+          generarGraficaCriterioNoAceptacion(gratuidadRaw);
+
+        } else {
+          console.warn('⚠️ No hay ciclos de carga en estudiantes.');
+        }
+      } catch (error) {
+        console.error('❌ Error al cargar datos de estudiantes:', error);
+      }
+    }
+
+    function generarKPIsGratuidad(datosFiltrados) {
+      const totalPostulados = datosFiltrados.length;
+
+      const beneficiarios = datosFiltrados.filter(e =>
+        (e.fondo || "").toLowerCase().trim() !== "no aceptado"
+      ).length;
+
+      const noBeneficiarios = totalPostulados - beneficiarios;
+
+      const porcentajeBeneficiarios = totalPostulados > 0
+        ? ((beneficiarios / totalPostulados) * 100).toFixed(1)
+        : 0;
+
+      // Actualizar elementos del HTML
+      document.getElementById("kpiPostulados").innerText = totalPostulados.toLocaleString("es-CO");
+      document.getElementById("kpiBeneficiarios").innerText = beneficiarios.toLocaleString("es-CO");
+      document.getElementById("kpiNoBeneficiarios").innerText = noBeneficiarios.toLocaleString("es-CO");
+      document.getElementById("kpiPorcentajeBeneficiarios").innerText = `${porcentajeBeneficiarios}%`;
+    }
+
+
+    // 🔹 Inicia todo
+    cargarDataEstudiantes().then(() => {
+      inicializarSliderGratuidad();
+      cargarFiltroProgramaGratuidad(); // ← aquí
+    });
+
+
+    function cargarFiltroProgramaGratuidad() {
+      const selectPrograma = document.getElementById('filtroProgramaGratuidad');
+      if (!selectPrograma) return;
+
+      // Extraer programas únicos
+      const programasSet = new Set();
+
+      gratuidadRaw.forEach(d => {
+        if (d.programa) {
+          const nombre = normalizarTexto(d.programa);
+          programasSet.add(nombre);
+        }
+      });
+
+      // Ordenar alfabéticamente
+      const programasOrdenados = Array.from(programasSet).sort();
+
+      // Limpiar y llenar el select
+      selectPrograma.innerHTML = `<option value="">Todos</option>`;
+      programasOrdenados.forEach(nombre => {
+        selectPrograma.innerHTML += `<option value="${nombre}">${nombre}</option>`;
+      });
+    }
+
+    const slider = document.getElementById('sliderRangoAniosGratuidad');
+
+    document.getElementById('filtroProgramaGratuidad').addEventListener('change', () => {
+      const valor = convertirSemestreANumero(slider.noUiSlider.get());
+      filtrarDashboardGratuidad(valor);
+    });
+
+    document.getElementById('filtroSexoGratuidad').addEventListener('change', () => {
+      const valor = convertirSemestreANumero(slider.noUiSlider.get());
+      filtrarDashboardGratuidad(valor);
+    });
+
+    document.getElementById('filtroFondoGratuidad').addEventListener('change', () => {
+      const valor = convertirSemestreANumero(slider.noUiSlider.get());
+      filtrarDashboardGratuidad(valor);
+    });
+
+    document.getElementById('filtroTipoEstudianteGratuidad').addEventListener('change', () => {
+      const valor = convertirSemestreANumero(slider.noUiSlider.get());
+      filtrarDashboardGratuidad(valor);
+    });
+
+
+
+
+    function actualizarResumenFiltrosAplicados() {
+      const contenedorChips = document.getElementById('chipsFiltrosDinamicos');
+      contenedorChips.innerHTML = ''; // Limpiar chips anteriores
+
+      const programaSeleccionado = document.getElementById('filtroProgramaGratuidad')?.value || "";
+      const sexoSeleccionado = document.getElementById('filtroSexoGratuidad')?.value || "";
+      const fondoSeleccionado = document.getElementById('filtroFondoGratuidad')?.value || "";
+      const tipoEstudianteSeleccionado = document.getElementById('filtroTipoEstudianteGratuidad')?.value || "";
+
+      const slider = document.getElementById('sliderRangoAniosGratuidad');
+      const valor = convertirSemestreANumero(slider.noUiSlider.get());
+
+      // 🎓 Chip de Programa
+      if (programaSeleccionado) {
+        const chip = document.createElement('span');
+        chip.className = 'badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center';
+        chip.innerHTML = `
+      <i class="fa-solid fa-graduation-cap me-1 text-secondary"></i>
+      Programa: <strong class="ms-1">${programaSeleccionado}</strong>
+      <button type="button" class="btn-close ms-2 text-dark font-weight-bolder" aria-label="Eliminar" style="font-size: 1rem;">x</button>
+    `;
+        chip.querySelector('.btn-close').addEventListener('click', () => {
+          document.getElementById('filtroProgramaGratuidad').value = "";
+          filtrarDashboardGratuidad(valor);
+        });
+        contenedorChips.appendChild(chip);
+      }
+
+      // 🚻 Chip de Sexo
+      if (sexoSeleccionado) {
+        const chip = document.createElement('span');
+        chip.className = 'badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center';
+        chip.innerHTML = `
+      <i class="fa-solid fa-venus-mars me-1 text-secondary"></i>
+      Sexo: <strong class="ms-1">${sexoSeleccionado}</strong>
+      <button type="button" class="btn-close ms-2 text-dark font-weight-bolder " aria-label="Eliminar" style="font-size: 1rem;">x</button>
+    `;
+        chip.querySelector('.btn-close').addEventListener('click', () => {
+          document.getElementById('filtroSexoGratuidad').value = "";
+          filtrarDashboardGratuidad(valor);
+        });
+        contenedorChips.appendChild(chip);
+      }
+
+      // 💰 Chip de Fondo
+      if (fondoSeleccionado) {
+        const chip = document.createElement('span');
+        chip.className = 'badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center';
+        chip.innerHTML = `
+      <i class="fa-solid fa-hand-holding-dollar me-1 text-secondary"></i>
+      Fondo: <strong class="ms-1">${fondoSeleccionado}</strong>
+      <button type="button" class="btn-close ms-2 text-dark font-weight-bolder" aria-label="Eliminar" style="font-size: 1rem;">x</button>
+    `;
+        chip.querySelector('.btn-close').addEventListener('click', () => {
+          document.getElementById('filtroFondoGratuidad').value = "";
+          filtrarDashboardGratuidad(valor);
+        });
+        contenedorChips.appendChild(chip);
+      }
+
+      // 📘 Chip de Tipo de Estudiante
+      if (tipoEstudianteSeleccionado) {
+        const chip = document.createElement('span');
+        chip.className = 'badge rounded-pill bg-white text-dark shadow-sm px-3 py-2 border d-flex align-items-center';
+        chip.innerHTML = `
+      <i class="fa-solid fa-user-graduate me-1 text-secondary"></i>
+      Tipo: <strong class="ms-1">${tipoEstudianteSeleccionado}</strong>
+      <button type="button" class="btn-close ms-2 text-dark font-weight-bolder" aria-label="Eliminar" style="font-size: 1rem;">x</button>
+    `;
+        chip.querySelector('.btn-close').addEventListener('click', () => {
+          document.getElementById('filtroTipoEstudianteGratuidad').value = "";
+          filtrarDashboardGratuidad(valor);
+        });
+        contenedorChips.appendChild(chip);
+      }
+    }
+
+
+
+
+  </script>
+  <!-- noUiSlider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+  <!-- Tu theme personalizado -->
+  <script src="../../../assets/js/datalab-charts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../../../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
+<style>
+  /* Estilo para las filas de la tabla */
+  #tablaPoliticas tr {
+    cursor: pointer;
+    /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+  }
+
+  /* Cambia el color de fondo de la fila al pasar el cursor */
+  #tablaPoliticas tr:hover {
+    background-color: hsla(214, 83%, 48%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #000;
+    font-weight: 500;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+
+  #tablaPoliticas2 tr:hover {
+    background-color: hsla(173, 100%, 17%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #ffffff;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+</style>
+
+</html>

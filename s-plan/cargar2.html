@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de Evidencias - S-PLAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+    <!-- Choices.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
+
+</head>
+
+<body>
+
+
+
+
+    <!-- Modal de advertencia de inicio de sesión -->
+    <div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-white">
+                    <h5 class="modal-title text-white" id="loginRequiredModalLabel">
+                        <i class="fas fa-exclamation-triangle"></i> Inicio de sesión requerido
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    Para acceder al módulo de carga de evidencias necesitas haber iniciado sesión. Por favor, inicia
+                    sesión o vuelve al inicio.
+                </div>
+                <div class="modal-footer">
+                    <a href="dashboard.html" class="btn btn-secondary">
+                        <i class="fas fa-home"></i> Ir al inicio
+                    </a>
+                    <button id="btnIniciarSesionModal" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        html,
+        body {
+            height: 80%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa url('../assets/img/s-plan/bg-wizard.png') no-repeat center center fixed !important;
+            background-size: cover;
+        }
+
+        .container.min-vh-100 {
+            min-height: 88vh !important;
+            min-width: 100vw !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent !important;
+        }
+
+        .wizard-card-glass {
+            width: 75vw;
+            height: 75vh;
+            min-height: 430px;
+            max-width: 1200px;
+            max-height: 860px;
+            background: rgba(255, 255, 255, 0.89);
+            box-shadow: 0 8px 40px #00594e30, 0 1px 16px #b5a16012;
+            border-radius: 26px;
+            border: 1px solid #b5a16022;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            /* backdrop-filter glass effect */
+            backdrop-filter: blur(8px) saturate(160%);
+            -webkit-backdrop-filter: blur(8px) saturate(160%);
+        }
+
+        #wizardIlustracion,
+        #wizardContenido {
+            flex: 1 1 50%;
+            width: 50%;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 2.5vw;
+        }
+
+        #wizardIlustracion {
+            background: rgba(255, 255, 255, 0.82);
+            /* No border, no border-right, solo glass effect */
+            box-shadow: inset -3px 0 16px 0 rgba(181, 161, 96, 0.03);
+        }
+
+        #wizardContenido {
+            background: rgba(255, 255, 255, 0.88);
+            align-items: flex-start;
+            justify-content: center;
+            padding: 40px 3vw 40px 2vw;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .wizard-card-glass {
+                flex-direction: column;
+                width: 99vw;
+                height: auto;
+                min-height: 500px;
+                max-width: 99vw;
+            }
+
+            #wizardIlustracion,
+            #wizardContenido {
+                width: 100%;
+                min-height: 200px;
+                padding: 24px 6vw;
+            }
+
+            #wizardContenido {
+                align-items: center;
+            }
+        }
+
+        /* Progress bar moderna */
+        .progress {
+            background: #e7f3ef;
+            border-radius: 8px;
+            height: 15px;
+            width: 400px;
+            max-width: 90vw;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #07dcc3, #00594e 90%);
+            border-radius: 8px;
+            transition: width 0.5s cubic-bezier(.4, 2, .2, 1);
+        }
+
+        .imgIlustracionWizard {
+            width: 95%;
+            max-width: 400px;
+        }
+
+        /* FORMULARIO WIZARD GLASS-MINIMAL */
+
+        #wizardContenido form {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            margin-top: 0;
+        }
+
+        #wizardContenido .form-label {
+            font-weight: 600;
+            color: #00594e;
+            margin-bottom: 4px;
+            letter-spacing: .02em;
+            font-size: 1em;
+        }
+
+        #wizardContenido .form-select,
+        #wizardContenido textarea.form-control {
+            border-radius: 8px;
+            border: 1.1px solid #cfe3de;
+            background: #f8fafb;
+            font-size: 1em;
+            padding: 7px 12px;
+            margin-bottom: 9px;
+            transition: border-color .22s;
+            min-height: 38px;
+        }
+
+        #wizardContenido .form-select:focus,
+        #wizardContenido textarea.form-control:focus {
+            border-color: #B5A160;
+            box-shadow: 0 0 0 1.5px #b5a16025;
+        }
+
+        /* Dropzone */
+        #dropzoneWizard {
+            background: linear-gradient(120deg, #e7f3ef 60%, #fffde9 100%);
+            border: 2px dashed #B5A160;
+            border-radius: 10px;
+            min-height: 70px;
+            cursor: pointer;
+            transition: border-color .18s, background .18s;
+            padding: 18px 10px 10px 10px;
+            margin-bottom: 7px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #dropzoneWizard:hover,
+        #dropzoneWizard.dragover {
+            background: linear-gradient(120deg, #fffde9 60%, #e7f3ef 100%);
+            border-color: #00594E;
+        }
+
+        #dropzoneWizard .fa-cloud-upload-alt {
+            color: #00594E;
+            font-size: 2em;
+            margin-bottom: 0;
+        }
+
+        #dropzoneWizard p {
+            font-size: 0.97em;
+            color: #5c6770;
+            margin-bottom: 0;
+        }
+
+        #listaArchivosWizard {
+            margin-top: 6px;
+        }
+
+        #listaArchivosWizard .archivo-item {
+            background: #f2f8f6;
+            border-radius: 6px;
+            padding: 5px 10px;
+            font-size: 0.98em;
+            color: #222;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e8ecea;
+        }
+
+        @media (max-width: 600px) {
+
+            #wizardContenido .form-select,
+            #wizardContenido textarea.form-control {
+                font-size: 0.98em;
+                padding: 6px 7px;
+            }
+
+            #dropzoneWizard {
+                padding: 12px 2px 6px 2px;
+            }
+        }
+
+        .user-profile-widget {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .user-profile-trigger {
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 2px 18px #00594e18;
+            border: 1px solid #e0e6e6;
+            font-size: 1em;
+            transition: background .2s, box-shadow .2s, color .2s;
+        }
+
+        .user-profile-trigger:hover,
+        .user-profile-trigger:focus {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 22px #00594e1c;
+            color: #00594E;
+        }
+
+        .user-profile-trigger img {
+            border: 2.5px solid #B5A16033;
+        }
+
+        .user-dropdown-glass {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(13px) saturate(150%);
+            border-radius: 18px;
+            box-shadow: 0 8px 30px #00594e28, 0 1px 10px #b5a16012;
+            border: 1px solid #f3efe6;
+        }
+
+        .user-dropdown-glass .dropdown-item {
+            font-size: 1em;
+            border-radius: 10px;
+            transition: background .17s, color .17s;
+        }
+
+        .user-dropdown-glass .dropdown-item:hover,
+        .user-dropdown-glass .dropdown-item:focus {
+            background: #00594e28 !important;
+            color: #fff !important;
+        }
+
+        .user-dropdown-glass .dropdown-item.text-danger:hover,
+        .user-dropdown-glass .dropdown-item.text-danger:focus {
+            background: #dc3545 !important;
+            color: #fff !important;
+        }
+
+        .user-dropdown-glass .dropdown-item.text-primary:hover,
+        .user-dropdown-glass .dropdown-item.text-primary:focus {
+            background: #e7f3ef !important;
+            color: #00594e !important;
+        }
+
+        .user-dropdown-glass hr.dropdown-divider {
+            margin: 6px 0;
+            border-top: 1px solid #e7f3ef;
+        }
+
+        @media (max-width: 600px) {
+            .user-profile-widget {
+                margin-right: 0 !important;
+            }
+
+            .user-profile-trigger span {
+                display: none !important;
+            }
+        }
+
+        .wizard-fade-in {
+            animation: wizardFadeIn .65s cubic-bezier(.33, 1, .68, 1) both;
+        }
+
+        @keyframes wizardFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(36px) scale(.97);
+                filter: blur(2px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+        }
+
+        .wizard-slide-left {
+            animation: wizardSlideLeft .7s cubic-bezier(.33, 1, .68, 1) both;
+        }
+
+        @keyframes wizardSlideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(60px) scale(.97);
+                filter: blur(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+        }
+
+        .wizard-slide-right {
+            animation: wizardSlideRight .7s cubic-bezier(.33, 1, .68, 1) both;
+        }
+
+        @keyframes wizardSlideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-60px) scale(.97);
+                filter: blur(2px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                filter: none;
+            }
+        }
+
+        .wizard-bounce {
+            animation: wizardBounce 1.5s infinite alternate cubic-bezier(.66, 0, 0, 1);
+        }
+
+        @keyframes wizardBounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .archivo-item {
+            animation: archivoFadeIn .35s;
+        }
+
+        @keyframes archivoFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+
+    <!-- Fila superior: logo izquierda, progress bar centrada, perfil derecha -->
+    <div class="d-flex align-items-center justify-content-between w-100 px-4 pt-4 mb-2" style="gap: 0;">
+        <!-- Logo S-PLAN a la izquierda -->
+        <a href="dashboard.html" class="d-flex align-items-center me-3" style="text-decoration: none;">
+            <img src="../assets/img/s-plan/logo.png" alt="S-PLAN"
+                style="height: 50px; width: auto; border-radius: 10px; ">
+
+        </a>
+        <!-- Progress bar centrada (flex-grow para centrar) -->
+        <div class="flex-grow-1 d-flex justify-content-center">
+            <div class="progress" style="width: 100%; max-width: 540px;">
+                <div id="barraProgreso" class="progress-bar" role="progressbar"></div>
+            </div>
+        </div>
+        <!-- Widget de usuario a la derecha -->
+        <div class="user-profile-widget ms-3" style="z-index:1031;">
+            <div id="perfilUsuario"
+                class="d-flex align-items-center gap-2 rounded-pill py-1 px-2 bg-white bg-opacity-70 shadow-sm border user-profile-trigger"
+                data-bs-toggle="dropdown" role="button" aria-expanded="false" style="cursor:pointer; min-width:170px;">
+                <img id="imgPerfilUsuario" src="https://ui-avatars.com/api/?name=Usuario" alt="Foto de perfil"
+                    class="rounded-circle border" width="40" height="40" style="object-fit:cover;">
+                <span class="fw-semibold text-dark d-none d-md-inline" id="nombrePerfilUsuarioBarra">Usuario</span>
+                <i class="fas fa-chevron-down text-muted ms-1"></i>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-end user-dropdown-glass px-2 py-3" aria-labelledby="perfilUsuario"
+                style="min-width: 240px;">
+                <li>
+                    <a class="dropdown-item d-flex align-items-center gap-2 rounded-3" href="../pages/profile.html">
+                        <img id="imgPerfilUsuarioDropdown" src="https://ui-avatars.com/api/?name=Usuario"
+                            class="avatar avatar-sm rounded-circle border"
+                            style="width:34px;height:34px;object-fit:cover;">
+                        <div>
+                            <div class="fw-semibold text-dark" id="nombrePerfilUsuario">Usuario</div>
+                            <div class="text-xs text-muted" id="correoPerfilUsuario">correo@ejemplo.com</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li>
+                    <span class="dropdown-item text-primary d-flex align-items-center gap-2">
+                        <i class="fas fa-user-tag"></i>
+                        <span>Rol: <b id="rolesUsuario">Usuario</b></span>
+                    </span>
+                </li>
+                <li>
+                    <button id="logButton"
+                        class="dropdown-item text-danger d-flex align-items-center gap-2 rounded-3 mt-1">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="container min-vh-100">
+
+
+
+        <div class="card wizard-card-glass">
+            <!-- Ilustración SVG checklist (cambia según el paso) -->
+            <div id="wizardIlustracion" class="d-flex flex-column align-items-center justify-content-center">
+                <!-- SVG del paso actual se inyecta por JS -->
+            </div>
+            <!-- Paso de contenido dinámico -->
+            <div id="wizardContenido">
+                <!-- Aquí va el contenido del paso (badge, título, texto, botones) -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Cierre de Sesión -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>¿Estás seguro de que quieres cerrar sesión?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contenedor de notificaciones (Toasts) -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+        <div id="toastContainer"></div>
+    </div>
+
+
+    <footer class="footer  ">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-lg-6 mb-lg-0 mb-4">
+                    <div class="copyright text-center text-sm text-muted text-lg-start">
+                        ©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>,
+                        desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                            href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> -
+                        Unitrópico
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                        <li class="nav-item">
+                            <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://sigunitropico.com/planeacion" class="nav-link text-muted"
+                                target="_blank">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://sigunitropico.com/planeacion" class="nav-link text-muted"
+                                target="_blank">Documentación</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://sigunitropico.com/planeacion" class="nav-link pe-0 text-muted"
+                                target="_blank">Licencia</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+        import { getDatabase, ref, get, update, push, remove, set } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+        import { getAuth, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+        import { getFirestore, collection, query, where, getDocs, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+        import { getStorage, ref as refStorage, uploadBytesResumable, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js";
+
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+            authDomain: "sigunitropico.firebaseapp.com",
+            projectId: "sigunitropico",
+            storageBucket: "sigunitropico.appspot.com",
+            messagingSenderId: "32992004482",
+            appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+        const database = getDatabase(app); // ✅ Esta línea es clave
+        const provider = new GoogleAuthProvider();
+        const dbRT = getDatabase(app);
+        const dbFS = getFirestore(app);
+        const storage = getStorage(app);
+
+        // Variable para evitar agregar múltiples event listeners
+        let logoutListenerAdded = false;
+
+        let datosEvidencias = {};
+        window.evidenciasSubidas = [];         // Array de evidencias subidas en esta sesión
+        window.archivosSeleccionados = [];     // Archivos del formulario actual
+        window.metaSeleccionada = null;        // Meta seleccionada en el paso
+        window.accionSeleccionada = null;      // Acción seleccionada
+        window.descripcionEvidencia = "";      // Descripción actual
+
+
+
+        const RUTA_BASE_METAS = "/S-PLAN/";
+        const RUTA_BASE_RESPONSABLES = "/responsables";
+
+        let email = "";
+
+        asignarListenersWizard();
+
+        // Lista de roles permitidos
+        const rolesPermitidos = [
+            "admin", "admin-polariscore", "admin-datalab", "admin-s-plan", "admin-uniproy",
+            "observador", "observador-polariscore", "observador-datalab", "observador-s-plan", "observador-uniproy",
+            "responsable", "responsable-polariscore", "responsable-datalab", "responsable-s-plan", "responsable-uniproy"
+        ];
+
+        // Escuchar cambios en el estado de autenticación
+        onAuthStateChanged(auth, async (user) => {
+            console.log("Usuario autenticado:", user); // 🚀 Verifica si el usuario está autenticado
+
+            if (user) {
+
+                const correoUsuario = user.email;
+                window.correoUsuario = correoUsuario;
+
+                if (!correoUsuario) {
+                    console.error("El usuario no tiene correo.");
+                    return;
+                }
+
+                const idResponsable = await obtenerIdResponsablePorCorreoFS(dbFS, correoUsuario);
+                window.idResponsable = idResponsable;
+                if (idResponsable) {
+                    console.log("ID del responsable:", idResponsable);
+                    // Aquí puedes continuar el flujo...
+                } else {
+                    console.warn("No se encontró responsable para ese correo.");
+                }
+
+                const loginModalElement = document.getElementById("loginRequiredModal");
+                if (loginModalElement && bootstrap.Modal.getInstance(loginModalElement)) {
+                    bootstrap.Modal.getInstance(loginModalElement).hide();
+                }
+
+                logButton.textContent = "Cerrar sesión";
+                logButton.classList.remove("btn-primary");
+                logButton.classList.add("btn-danger");
+
+
+                // Mostrar foto y nombre de perfil
+                const nombreCompleto = user.displayName || user.email || "Usuario";
+                const nombreCorto = obtenerNombreCorto(nombreCompleto);
+                const foto = user.photoURL
+                    ? user.photoURL
+                    : `https://ui-avatars.com/api/?name=${encodeURIComponent(nombreCorto)}&background=0D8ABC&color=fff&rounded=true&size=64`;
+
+                if (document.getElementById("nombrePerfilUsuario")) {
+                    document.getElementById("nombrePerfilUsuario").textContent = nombreCompleto;
+                    document.getElementById("nombrePerfilUsuario").classList.add("text-dark");
+                    document.getElementById("nombrePerfilUsuario").classList.remove("text-white");
+                    document.getElementById("correoPerfilUsuario").textContent = user.email;
+
+                }
+
+
+                if (document.getElementById("imgPerfilUsuario")) {
+                    document.getElementById("imgPerfilUsuario").src = foto;
+                    document.getElementById("imgPerfilUsuario").alt = nombreCorto;
+                    document.getElementById("imgPerfilUsuario").title = nombreCorto;
+                }
+
+                if (document.getElementById("imgPerfilUsuarioDropdown")) {
+                    document.getElementById("imgPerfilUsuarioDropdown").src = foto;
+                    document.getElementById("imgPerfilUsuarioDropdown").alt = nombreCorto;
+                    document.getElementById("imgPerfilUsuarioDropdown").title = nombreCorto;
+                }
+
+
+
+                // Manejo del logout (evita agregar múltiples eventos)
+                if (!logoutListenerAdded) {
+                    logButton.addEventListener("click", () => {
+                        let logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                        logoutModal.show();
+
+                        document.getElementById("confirmLogout").addEventListener("click", () => {
+                            signOut(auth).then(() => {
+                                window.location.href = "../pages/sign-in.html";
+                            }).catch((error) => {
+                                console.error("Error al cerrar sesión:", error);
+                                mostrarToast("Error al cerrar sesión.", "danger");
+                            });
+                        });
+                    });
+                    logoutListenerAdded = true;
+                }
+
+                // Obtener los roles del usuario desde Firebase Database
+                const correoSanitizado = user.email.replace(/\./g, '_');
+                const userRef = ref(db, `usuarios/${correoSanitizado}`);
+
+                get(userRef).then(async (snapshot) => {
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+                        const userRoles = Array.isArray(userData.roles) ? userData.roles : [];
+
+                        console.log(`✅ Usuario autenticado con roles: ${userRoles.join(", ")}`);
+
+
+                        // Aquí se obtiene el idResponsable SOLO si el rol es responsable
+                        let idResponsable = null;
+                        if (userRoles.includes('responsable-s-plan')) {
+                            // Lógica para obtener el código responsable, ejemplo:
+                            // Supón que ya tienes una función obtenerIdResponsablePorCorreo (Firestore o RTDB)
+                            idResponsable = await obtenerIdResponsablePorCorreoFS(dbFS, user.email); // Implementa según tu sistema
+                            window.idResponsable = idResponsable;
+                        }
+
+                        // Reutilizable para admin o responsable
+                        const metas = await obtenerMetasPorRol(db, userRoles, idResponsable);
+                        window.metas = metas;
+
+                        window.userRoles = userRoles;
+
+                        //datosEvidencias = await cargarDatosEvidencias(db, userRoles, idResponsable);
+                        //renderizarAccordionEvidencias(datosEvidencias);
+
+                        // Observar cambios en el DOM
+                        const observer = new MutationObserver(() => {
+                        });
+                        observer.observe(document.body, { childList: true, subtree: true });
+
+                    } else {
+                        console.error("⚠️ No se encontró información del usuario en la base de datos.");
+                        mostrarToast("No se encontró la información del usuario.", "warning");
+                    }
+                }).catch((error) => {
+                    console.error("❌ Error al obtener datos del usuario:", error);
+                    mostrarToast("Error al obtener los datos del usuario.", "danger");
+                });
+
+            } else {
+
+
+                console.log("No hay usuario autenticado");
+
+                logButton.textContent = "Iniciar Sesión";
+                logButton.classList.remove("btn-danger");
+                logButton.classList.remove("text-danger");
+                logButton.classList.add("btn-primary");
+                logButton.classList.add("text-white");
+
+                logButton.style.backgroundColor = "#00594e";
+                logButton.style.color = "#fff!important";
+                logButton.addEventListener("click", () => {
+                    window.location.href = "../pages/sign-in.html";
+                });
+
+                // Mostrar modal de advertencia
+                let loginModal = new bootstrap.Modal(document.getElementById("loginRequiredModal"));
+                loginModal.show();
+
+                // Evento para botón de iniciar sesión del modal
+                logButton.addEventListener("click", () => {
+                    signInWithPopup(auth, provider)
+                        .then((result) => {
+                            const user = result.user;
+                            mostrarToast(`¡Bienvenido, ${user.displayName}!`, "success");
+                            guardarUsuario(user.email, user.displayName);
+                        })
+                        .catch((error) => {
+                            console.error("Error al iniciar sesión con Google:", error.code, error.message);
+                            mostrarToast(obtenerMensajeError(error.code), "danger");
+                        });
+                });
+
+
+                document.getElementById("btnIniciarSesionModal").addEventListener("click", () => {
+                    signInWithPopup(auth, provider)
+                        .then((result) => {
+                            const user = result.user;
+                            mostrarToast(`¡Bienvenido, ${user.displayName}!`, "success");
+                            guardarUsuario(user.email, user.displayName);
+                        })
+                        .catch((error) => {
+                            console.error("Error al iniciar sesión con Google:", error.code, error.message);
+                            mostrarToast(obtenerMensajeError(error.code), "danger");
+                        });
+                });
+            }
+        });
+
+
+
+        function obtenerNombreCorto(nombreCompleto) {
+            if (!nombreCompleto) return "";
+            const partes = nombreCompleto.trim().split(" ");
+            if (partes.length === 1) return partes[0];
+            return partes[0] + " " + partes[1];
+        }
+
+
+
+
+        function mostrarToast(mensaje, tipo = "info", tiempo = 4000) {
+            // Busca o crea el contenedor
+            let container = document.getElementById("toastContainer");
+            if (!container) {
+                container = document.createElement("div");
+                container.id = "toastContainer";
+                container.className = "toast-container position-fixed top-0 end-0 p-3";
+                container.style.zIndex = "11000";
+                document.body.appendChild(container);
+            }
+
+            // Bootstrap 5 Toast template
+            const toastDiv = document.createElement('div');
+            toastDiv.className = `toast align-items-center text-bg-${tipo} border-0 show mb-2`;
+            toastDiv.setAttribute("role", "alert");
+            toastDiv.setAttribute("aria-live", "assertive");
+            toastDiv.setAttribute("aria-atomic", "true");
+
+            toastDiv.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">${mensaje}</div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            `;
+
+            container.appendChild(toastDiv);
+
+            // Auto-cierre
+            setTimeout(() => {
+                toastDiv.classList.remove('show');
+                setTimeout(() => toastDiv.remove(), 500);
+            }, tiempo);
+        }
+
+        async function obtenerIdResponsablePorCorreoFS(dbFS, correoBuscado) {
+            const responsablesRef = collection(dbFS, "responsables");
+            const q = query(responsablesRef, where("correo", "==", correoBuscado));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+                // Solo debería haber uno, pero si hay varios tomamos el primero
+                const doc = querySnapshot.docs[0];
+                return doc.id; // <-- Este es el ID del responsable
+            }
+            return null;
+        }
+        let mapaAccionesPorMeta = {};
+
+        async function obtenerMetasPorRol(db, userRoles, idResponsable = null) {
+            const ejesRef = ref(db, '/S-PLAN/ejes');
+            const snapshot = await get(ejesRef);
+            let metas = [];
+
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+
+                for (const idEje in data) {
+                    const eje = data[idEje];
+                    const programas = eje.programas || {};
+                    for (const idPrograma in programas) {
+                        const programa = programas[idPrograma];
+                        const proyectos = programa.proyectos || {};
+                        for (const idProyecto in proyectos) {
+                            const proyecto = proyectos[idProyecto];
+                            const metasObj = proyecto.metas || {};
+                            for (const idMeta in metasObj) {
+                                const meta = metasObj[idMeta];
+
+                                // Obtén acciones como array
+                                let accionesArray = [];
+                                if (meta.acciones && typeof meta.acciones === "object") {
+                                    accionesArray = Object.entries(meta.acciones).map(([id, a]) => ({
+                                        id: a.id_accion || id,
+                                        titulo: a.titulo_accion || a.titulo || id,
+                                        responsable: a.responsable || ""
+                                    }));
+                                }
+
+                                // Si es admin-s-plan, ve todas
+                                // Si es responsable, solo las que contengan su id en el campo 'responsable' de alguna acción
+                                let incluir = false;
+                                if (userRoles.includes("admin-s-plan")) {
+                                    incluir = true;
+                                } else if (idResponsable && accionesArray.length > 0) {
+                                    incluir = accionesArray.some(accion =>
+                                        accion.responsable &&
+                                        accion.responsable.split(',').map(s => s.trim()).includes(idResponsable)
+                                    );
+                                }
+
+                                if (incluir) {
+                                    metas.push({
+                                        id: idMeta,
+                                        titulo: meta.titulo_meta || idMeta,
+                                        idEje,
+                                        idPrograma,
+                                        idProyecto,
+                                        acciones: accionesArray // <-- ¡Las traemos aquí!
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return metas;
+        }
+
+
+
+
+        function limitarTexto(texto, limite) {
+            return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+        }
+
+
+
+        function formatearFechaISO(fechaISO) {
+            const date = new Date(fechaISO);
+            const dia = String(date.getDate()).padStart(2, '0');
+            const mes = String(date.getMonth() + 1).padStart(2, '0');
+            const anio = date.getFullYear();
+            let horas = date.getHours();
+            const minutos = String(date.getMinutes()).padStart(2, '0');
+            const ampm = horas >= 12 ? 'pm' : 'am';
+            horas = horas % 12;
+            horas = horas ? horas : 12; // hora '0' debe ser '12'
+            return `${dia}/${mes}/${anio} ${horas}:${minutos} ${ampm}`;
+        }
+
+
+        let pasoActual = 1;
+        const totalPasos = 5;
+
+        // Renderiza el paso actual
+        function renderPasoWizard() {
+            // Puedes tener un switch o un array de funciones, aquí va un ejemplo tipo switch
+            switch (pasoActual) {
+                case 1:
+                    // Ilustración (ejemplo)
+                    document.getElementById("wizardIlustracion").innerHTML = `
+                <img class="imgIlustracionWizard" src="../assets/img/s-plan/animacion-2.gif" >
+                <div class="d-none d-md-block text-secondary text-center">¡Bienvenido!</div>
+            `;
+                    // Contenido
+                    document.getElementById("wizardContenido").innerHTML = `
+                <span class="badge bg-success bg-opacity-10 text-white rounded-pill px-3 py-1 mb-3">
+                    Inicio
+                </span>
+            
+                <h2 class="fw-bold mb-3" style="font-size:1.7rem;">Bienvenido al módulo de carga</h2>
+                <div class="mb-4">Gestiona eficientemente tus evidencias del Plan de Desarrollo Institucional. 2024-2028</div>
+                <div class="d-flex justify-content-end gap-2 w-100">
+                    <button class="btn btn-primary px-5 fw-semibold" id="btnSiguienteWizard">Siguiente</button>
+                </div>
+            `;
+                    break;
+
+                case 2:
+                    document.getElementById("wizardIlustracion").innerHTML = `
+                    <!-- SVG moderno de checklist -->
+                <img src="../assets/img/s-plan/paso-1-carga.svg" width="250"  alt="Ilustración Selección" class="mb-3" style="max-width: 90%;">
+                <div class="d-none d-md-block text-secondary text-center mt-3" id="textoIlustracionWizard">
+                    ¡Selecciona primero tu meta y luego tu acción!
+                </div>
+                `;
+                    document.getElementById("wizardContenido").innerHTML = `
+                    <span class="badge bg-success bg-opacity-10 text-white rounded-pill px-3 py-1 mb-3">
+                        Paso 1 de ${totalPasos}
+                    </span>
+                    <h2 class="fw-bold mb-3" style="font-size:1.7rem;">Selecciona la meta y la acción</h2>
+                    <div class="mb-4">
+                        <p>Por favor, selecciona la <b>meta</b> y luego la <b>acción</b> asignada.</p>
+                        <ul style="font-size: 1.1em; color: #555;">
+                            <li>Solo se mostrarán metas y acciones donde eres responsable.</li>
+                            <li>La selección es obligatoria para continuar.</li>
+                            <li>Si tienes dudas, comunícate con tu líder de área.</li>
+                        </ul>
+                    </div>
+                    <div class="d-flex justify-content-between gap-2 w-100">
+                        <button class="btn btn-outline-secondary px-4" id="btnAnteriorWizard">Anterior</button>
+                        <button class="btn btn-primary px-5 fw-semibold" id="btnSiguienteWizard">Siguiente</button>
+                    </div>
+                `;
+                    break;
+
+
+                case 3:
+                    document.getElementById("wizardIlustracion").innerHTML = `
+                        <img src="../assets/img/s-plan/paso-2-carga.svg" width="250"  alt="Ilustración carga" class="mb-3" style="max-width: 90%;">
+                        <div class="text-secondary text-center mt-3">
+                            <b>Súbe tu archivo</b><br>Adjunta la evidencia en formato digital<br>
+                            (PDF, imágenes o Excel)
+                        </div>
+                    `;
+
+                    // Contenido del paso
+                    document.getElementById("wizardContenido").innerHTML = `
+                    <span class="badge bg-success bg-opacity-10 text-white rounded-pill px-3 py-1 mb-3">
+                        Paso 1 de ${totalPasos}
+                    </span>
+                    <h2 class="fw-bold mb-3" style="font-size:1.7rem;">
+                        Carga la Evidencia
+                    </h2>
+                    <form id="formEvidenciaWizard">
+
+                    <div class="mb-2">
+                        <label for="selectMetaWizard" class="form-label">Selecciona una meta asignada</label>
+                        <select class="form-select" id="selectMetaWizard" required>
+                            <option value=""></option>
+                            <!-- Opciones dinámicas -->
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="selectAccionWizard" class="form-label">Selecciona una acción</label>
+                        <select class="form-select" id="selectAccionWizard" required disabled>
+                            <option value="">Seleccione una meta primero</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="descripcionEvidenciaWizard" class="form-label">Descripción de la evidencia</label>
+                        <textarea class="form-control" id="descripcionEvidenciaWizard" rows="2" required></textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Subir archivos</label>
+                        <div id="dropzoneWizard" class="dropzone text-center">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p class="mb-1 text-muted">Arrastra los archivos aquí o haz clic para seleccionarlos</p>
+                            <input type="file" id="archivoEvidenciaWizard" class="form-control d-none" multiple>
+                        </div>
+                        <div id="listaArchivosWizard"></div>
+                    </div>
+                    <br>
+                   <div class="d-flex justify-content-end gap-2 w-100 mt-3">
+                        <button class="btn btn-outline-secondary px-4" id="btnAnteriorWizard" type="button">Anterior</button>
+                        <button class="btn btn-success px-5 fw-semibold" id="btnGuardarEvidenciaWizard" type="submit">
+                            <i class="fas fa-save me-2"></i>Guardar
+                        </button>
+                        <button class="btn btn-primary px-5 fw-semibold" id="btnSiguienteWizard" type="button" >
+                            Siguiente <i class="fas fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+
+                </form>
+
+                `;
+                    inicializarDropzoneWizard();
+                    listenerMetaWizard();
+
+                    // Lee parámetros de la URL
+                    const qs = new URLSearchParams(window.location.search);
+                    const mParam = (qs.get('m') || qs.get('meta') || '').trim();
+                    const aParam = (qs.get('a') || qs.get('accion') || '').trim();
+
+                    const spinnerEl = document.getElementById('prefillSpinner');
+
+                    (async () => {
+                        if (mParam) {
+                            // ⚡️ Ruta rápida con spinner + delay
+                            if (spinnerEl) spinnerEl.style.display = 'flex';
+                            setWizardDisabled(true);
+
+                            // prefill inmediato (sin iterar todas las metas)
+                            prefillMetaAccionRapido(mParam, aParam);
+
+                            // espera "de cortesía" para que Choices/UI/DOM se estabilicen
+                            await sleep(PREFILL_DELAY_MS);
+
+                            if (spinnerEl) spinnerEl.style.display = 'none';
+                            setWizardDisabled(false);
+                        } else {
+                            // Ruta normal
+                            llenarSelectMetas(window.metas);
+                            inicializarAutocompleteMetas();
+                        }
+                    })();
+
+
+
+                    // Aquí debes inicializar los selects, el drag and drop, y los eventListeners específicos de este paso.
+                    break;
+
+
+                case 4:
+                    // Ilustración tipo dashboard de entregas
+                    document.getElementById("wizardIlustracion").innerHTML = `
+                     <img src="../assets/img/s-plan/paso-3-carga.svg" width="300"  alt="Ilustración carga" class="mb-3" style="max-width: 90%;">
+                    <div class="fw-normal text-center mt-3 text-secondary" style="font-size:1.04em;">
+                        Resumen de tus evidencias<br>
+                        Puedes revisar y editar antes de entregar
+                    </div>
+                `;
+
+                    // Contenido principal: resumen
+                    document.getElementById("wizardContenido").innerHTML = `
+                        <span class="badge bg-success bg-opacity-10 text-white rounded-pill px-3 py-1 mb-3">
+                            Paso 2 de ${totalPasos}
+                        </span>
+                        <h2 class="fw-bold mb-3" style="font-size:1.65rem;">
+                            Resumen de evidencias subidas
+                        </h2>
+                        <div class="d-flex flex-wrap gap-4 mb-3">
+                            <div class="bg-white shadow-sm rounded-3 text-center px-3 py-2 flex-fill" style="min-width:130px;">
+                                <div class="text-secondary fw-semibold small mb-1">Metas</div>
+                                <div id="resumenTotalMetas" class="fs-3 fw-bold text-warning">0</div>
+                            </div>
+                            <div class="bg-white shadow-sm rounded-3 text-center px-3 py-2 flex-fill" style="min-width:130px;">
+                                <div class="text-secondary fw-semibold small mb-1">Acciones</div>
+                                <div id="resumenTotalAcciones" class="fs-3 fw-bold text-warning">0</div>
+                            </div>
+                            <div class="bg-white shadow-sm rounded-3 text-center px-3 py-2 flex-fill" style="min-width:130px;">
+                                <div class="text-secondary fw-semibold small mb-1">Evidencias</div>
+                                <div id="resumenTotalEvidencias" class="fs-3 fw-bold text-warning">0</div>
+                            </div>
+                        </div>
+                        <div class="table-responsive bg-white rounded-3 shadow-sm p-2" style="max-height: 380px; overflow-y:auto;">
+                            <table class="table table-sm table-borderless align-middle mb-0">
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th class="text-start">Meta</th>
+                                        <th class="text-start">Acción</th>
+                                        <th class="text-center">Archivo(s)</th>
+                                        <th class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablaResumenEvidencias">
+                                    <!-- Se llena por JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 w-100 mt-4">
+                            <button class="btn btn-outline-secondary px-4" id="btnAnteriorWizard" type="button">Anterior</button>
+                            <button class="btn btn-success px-5 fw-semibold" id="btnFinalizarEntregaWizard" type="button">
+                                <i class="fas fa-paper-plane me-2"></i>Entregar todo
+                            </button>
+                        </div>
+                    `;
+
+                    // Llenar datos del resumen (llámalo aquí después del render)
+                    renderizarResumenEvidencias();
+
+                    // Listeners botones
+                    asignarListenersWizard();
+
+                    break;
+
+
+                case 5:
+                    // Ilustración moderna de éxito/check animado
+                    document.getElementById("wizardIlustracion").innerHTML = `
+                    <img src="../assets/img/s-plan/completado.svg" width="250"  alt="Ilustración Selección" class="mb-3" style="max-width: 90%;">
+                    <div class="text-success text-center mt-3 fw-bold" style="font-size: 1.2em;">
+                        ¡Entrega exitosa!
+                    </div>
+                `;
+
+                    // Contenido del paso 5
+                    document.getElementById("wizardContenido").innerHTML = `
+                        <span class="badge bg-success bg-opacity-10 text-white rounded-pill px-3 py-1 mb-3">
+                            Completado
+                        </span>
+                        <h2 class="fw-bold mb-3" style="font-size:1.7rem;">
+                            ¡Felicitaciones, evidencia entregada!
+                        </h2>
+                        <div class="mb-4" style="font-size:1.15rem; color:#555;">
+                            <p>
+                                Tus evidencias fueron <b>registradas correctamente</b> en el sistema.<br>
+                                <span class="text-success">¡Muchas gracias por tu compromiso!</span>
+                            </p>
+                            <ul class="mb-3" style="font-size:1.08rem;">
+                                <li>Serás notificado(a) cuando la evidencia sea revisada y validada por el líder del área.</li>
+                                <li>Puedes hacer seguimiento al estado desde tu perfil o en el historial de cargas.</li>
+                                <li>Recuerda que si es necesario complementar información, recibirás un mensaje en tu correo institucional.</li>
+                            </ul>
+                            <div class="alert alert-success mt-3 py-2 px-3" style="font-size:1rem; border-radius:9px;">
+                                <i class="fa fa-check-circle me-2"></i>
+                                Proceso completado con éxito.
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 w-100 mt-2">
+                            
+                            <button class="btn btn-success px-5 fw-semibold" id="btnCerrarWizard" type="button">
+                                Finalizar
+                            </button>
+                        </div>
+                    `;
+
+                    // Listener para finalizar/cerrar
+                    document.getElementById("btnCerrarWizard").onclick = () => {
+                        window.close();
+                    };
+                    break;
+
+
+            }
+
+            actualizarBarraProgreso(pasoActual, totalPasos);
+
+            // ...tu render dinámico
+            asignarListenersWizard();
+
+
+
+        }
+
+        // Asigna los listeners a los botones de los pasos visibles
+        function asignarListenersWizard() {
+            // Botón siguiente
+            const btnSig = document.getElementById("btnSiguienteWizard");
+            if (btnSig) {
+                btnSig.onclick = () => {
+                    if (pasoActual < totalPasos) {
+                        pasoActual++;
+                        renderPasoWizard();
+                    }
+                };
+            }
+
+            // Botón anterior
+            const btnAnt = document.getElementById("btnAnteriorWizard");
+            if (btnAnt) {
+                btnAnt.onclick = () => {
+                    if (pasoActual > 1) {
+                        pasoActual--;
+                        renderPasoWizard();
+                    }
+                };
+            }
+
+            // Listener para el botón "Entregar todo"
+            const btnFinalizar = document.getElementById("btnFinalizarEntregaWizard");
+            if (btnFinalizar) {
+                btnFinalizar.onclick = () => {
+                    pasoActual = 5;  // O el valor correspondiente al siguiente paso de cierre
+                    renderPasoWizard();
+                };
+            }
+        }
+
+
+        function actualizarBarraProgreso(pasoActual, totalPasos) {
+            const porcentaje = Math.round((pasoActual / totalPasos) * 100);
+            const barra = document.getElementById("barraProgreso");
+            barra.style.width = `${porcentaje}%`;
+            barra.setAttribute("aria-valuenow", porcentaje);
+            barra.textContent = `${porcentaje}%`;
+        }
+
+        // Inicializa el wizard en el primer paso
+        renderPasoWizard();
+
+
+
+
+        function inicializarDropzoneWizard() {
+            const dropzone = document.getElementById('dropzoneWizard');
+            const archivoInput = document.getElementById('archivoEvidenciaWizard');
+            const listaArchivos = document.getElementById('listaArchivosWizard');
+            const form = document.getElementById("formEvidenciaWizard");
+
+            if (!dropzone || !archivoInput || !listaArchivos || !form) {
+                // Uno o más elementos no existen aún
+                return;
+            }
+
+            // VARIABLES GLOBALES SUGERIDAS
+            window.evidenciasSubidas = window.evidenciasSubidas || [];
+            window.archivosSeleccionados = window.archivosSeleccionados || [];
+
+            // Mostrar archivos en la UI y sincronizar el array global
+            function mostrarArchivosWizard() {
+                const archivos = Array.from(archivoInput.files);
+                window.archivosSeleccionados = archivos;
+                listaArchivos.innerHTML = archivos.map(file =>
+                    `<p class="archivo-item"><i class="fas fa-file"></i> ${file.name}</p>`).join('');
+            }
+
+            // Dropzone listeners
+            dropzone.addEventListener('click', () => archivoInput.click());
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.classList.add('dragover');
+            });
+            dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('dragover');
+                archivoInput.files = e.dataTransfer.files;
+                mostrarArchivosWizard();
+            });
+            archivoInput.addEventListener('change', mostrarArchivosWizard);
+
+            // FORMULARIO: Subir archivos
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const LIMITE_MB = 80;
+                const LIMITE_BYTES = LIMITE_MB * 1024 * 1024;
+                const ciclo_key = "2025_2"; // <--- Cambia esto por una variable dinámica si la tienes
+
+                // Validaciones de selección de archivos
+                if (!window.archivosSeleccionados || window.archivosSeleccionados.length === 0) {
+                    mostrarToast("Debes seleccionar al menos un archivo.", "warning");
+                    return;
+                }
+                let pesoTotal = window.archivosSeleccionados.reduce((acc, f) => acc + f.size, 0);
+                if (pesoTotal > LIMITE_BYTES) {
+                    mostrarToast(`El total de archivos supera los ${LIMITE_MB} MB. No se puede subir.`, "danger");
+                    return;
+                }
+
+                // Validaciones de formulario
+                const idMeta = document.getElementById("selectMetaWizard").value;
+                const idAccion = document.getElementById("selectAccionWizard").value;
+                const descripcion = document.getElementById("descripcionEvidenciaWizard").value;
+
+                if (!idMeta || !idAccion) {
+                    mostrarToast("Debes seleccionar la meta y la acción antes de subir archivos.", "warning");
+                    return;
+                }
+
+                // OBTENER nombres legibles de meta y acción para mostrar en el resumen
+                const metaSelect = document.getElementById("selectMetaWizard");
+                const accionSelect = document.getElementById("selectAccionWizard");
+                const metaNombre = metaSelect.options[metaSelect.selectedIndex]?.text ?? "";
+                const accionNombre = accionSelect.options[accionSelect.selectedIndex]?.text ?? "";
+
+                // GUARDA en variables globales (última selección)
+                window.metaSeleccionada = idMeta;
+                window.accionSeleccionada = idAccion;
+                window.descripcionEvidencia = descripcion;
+
+                // GUARDA en el array de evidencias subidas (para el resumen del wizard)
+                window.evidenciasSubidas.push({
+                    meta: idMeta,
+                    metaNombre: metaNombre,
+                    accion: idAccion,
+                    accionNombre: accionNombre,
+                    descripcion: descripcion,
+                    archivos: window.archivosSeleccionados.map(f => ({ name: f.name, size: f.size }))
+                });
+
+                // Subida a Firebase Storage & RTDB
+                try {
+                    const storage = getStorage();
+                    const db = getDatabase();
+                    const folderPath = `PlanItOne/S-PLAN/evidencias/${ciclo_key}/${idMeta}/${idAccion}`;
+                    const rutaDB = `S-PLAN/evidencias/${ciclo_key}/${idMeta}/${idAccion}`;
+
+                    // --- Feedback visual de carga ---
+                    Swal.fire({
+                        title: 'Subiendo archivos...',
+                        html: 'Por favor espera mientras se cargan tus archivos.',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showConfirmButton: false,
+                        willOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+
+                    for (const file of window.archivosSeleccionados) {
+                        const fileNameKey = file.name.replace(/\./g, "_");
+                        const fileRef = refStorage(storage, `${folderPath}/${fileNameKey}`);
+                        // Subida
+                        await uploadBytesResumable(fileRef, file);
+                        const downloadUrl = await getDownloadURL(fileRef);
+
+                        // Guarda en RTDB (puedes anidar por usuario/responsable/fecha si quieres)
+                        await set(ref(db, `${rutaDB}/${fileNameKey}`), {
+                            nombre: file.name,
+                            peso: file.size,
+                            url: downloadUrl,
+                            formato: obtenerExtensionFormato(file.name),
+                            descripcion: descripcion,
+                            fecha: new Date().toISOString(),
+                            correo: window.correoUsuario,
+                            responsable: window.idResponsable,
+                            estado: "Sin revisión"
+                        });
+                    }
+
+                    Swal.close();
+                    mostrarToast("Archivos subidos correctamente.", "success");
+
+                    // Limpiar los campos y variables
+                    window.archivosSeleccionados = [];
+                    archivoInput.value = "";
+                    listaArchivos.innerHTML = "";
+                    document.getElementById("descripcionEvidenciaWizard").value = "";
+
+                    // Mensaje de éxito
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Evidencia subida!',
+                        text: 'Tus archivos han sido cargados correctamente.',
+                        confirmButtonColor: '#00594E',
+                        background: '#f9f9f9',
+                        timer: 2000,
+                        showConfirmButton: true
+                    });
+
+                } catch (err) {
+                    Swal.close();
+                    mostrarToast("Error al subir archivos: " + err.message, "danger");
+                }
+            });
+        }
+
+        function llenarSelectMetas(metas) {
+            if (!Array.isArray(metas) || metas.length === 0) {
+                // Puedes mostrar un warning o simplemente retornar.
+                // mostrarToast("No hay metas disponibles.", "warning");
+                return;
+            }
+            const selectMeta = document.getElementById('selectMetaWizard');
+            selectMeta.innerHTML = '<option value="">Seleccione...</option>';
+            mapaAccionesPorMeta = {}; // Limpia el mapa
+
+            metas.forEach(meta => {
+                const option = document.createElement('option');
+                option.value = meta.id;
+                option.textContent = `[${meta.id}] ${limitarTexto(meta.titulo, 45)}`;
+                option.dataset.eje = meta.idEje;
+                option.dataset.programa = meta.idPrograma;
+                option.dataset.proyecto = meta.idProyecto;
+                selectMeta.appendChild(option);
+
+                // Guarda acciones aunque el array esté vacío (evita errores)
+                mapaAccionesPorMeta[meta.id] = Array.isArray(meta.acciones) ? meta.acciones : [];
+            });
+        }
+
+        function listenerMetaWizard() {
+            const selectMeta = document.getElementById('selectMetaWizard');
+            const selectAccion = document.getElementById('selectAccionWizard');
+
+            selectMeta.addEventListener('change', function () {
+                // Si estamos en prefill, no toques las acciones
+                if (window.__prefillEnProgreso) return;
+
+                const idMeta = this.value;
+                llenarSelectAcciones(idMeta);
+                selectAccion.disabled = !(mapaAccionesPorMeta[idMeta] && mapaAccionesPorMeta[idMeta].length > 0);
+            });
+        }
+
+
+
+        function llenarSelectAcciones(idMeta) {
+            const selectAccion = document.getElementById('selectAccionWizard');
+            selectAccion.innerHTML = '<option value="">Seleccione una acción...</option>';
+
+            const acciones = mapaAccionesPorMeta[idMeta];
+            if (Array.isArray(acciones) && acciones.length > 0) {
+                acciones.forEach(accion => {
+                    const option = document.createElement('option');
+                    option.value = accion.id;
+                    option.textContent = limitarTexto(accion.titulo, 80);
+                    selectAccion.appendChild(option);
+                });
+                selectAccion.disabled = false;
+            } else {
+                selectAccion.innerHTML = '<option value="">No hay acciones para esta meta</option>';
+                selectAccion.disabled = true;
+            }
+        }
+
+        // Flag global para bloquear el listener durante prefill
+        window.__prefillEnProgreso = false;
+
+        // Prefill inmediato SIN recorrer todas las metas
+        function prefillMetaAccionRapido(metaId, accionId) {
+            const selMeta = document.getElementById('selectMetaWizard');
+            const selAccion = document.getElementById('selectAccionWizard');
+            if (!selMeta || !selAccion) return;
+
+            window.__prefillEnProgreso = true; // ← bloquea el listener
+
+            // ¿Tenemos la meta en window.metas?
+            const metaObj = Array.isArray(window.metas)
+                ? window.metas.find(m => String(m.id) === String(metaId))
+                : null;
+
+            // Pinta SOLO esa meta en el select
+            const label = metaObj ? `[${metaObj.id}] ${limitarTexto(metaObj.titulo, 45)}` : String(metaId);
+            selMeta.innerHTML = '';
+            const op = document.createElement('option');
+            op.value = metaId;
+            op.textContent = label;
+            selMeta.appendChild(op);
+            selMeta.value = metaId;
+            selMeta.disabled = false;
+
+            // Prepara el mapa de acciones para esa meta
+            let accionesPref = [];
+            if (metaObj && Array.isArray(metaObj.acciones) && metaObj.acciones.length > 0) {
+                accionesPref = metaObj.acciones;
+            } else if (accionId) {
+                // Si aún no tenemos acciones, crea una placeholder para que quede seleccionada
+                accionesPref = [{ id: String(accionId), titulo: String(accionId) }];
+            }
+            mapaAccionesPorMeta = mapaAccionesPorMeta || {};
+            mapaAccionesPorMeta[metaId] = accionesPref;
+
+            // Pobla acciones y selecciona
+            llenarSelectAcciones(metaId);
+
+            if (accionId) {
+                const v = String(accionId);
+                const match = Array.from(selAccion.options).find(o => String(o.value) === v);
+                if (match) {
+                    selAccion.value = match.value;
+                } else {
+                    // Refuerzo por si llenarSelectAcciones no incluyó la placeholder (edge raro)
+                    const o = document.createElement('option');
+                    o.value = v;
+                    o.textContent = v;
+                    selAccion.appendChild(o);
+                    selAccion.value = v;
+                }
+                selAccion.disabled = false;
+                selAccion.dispatchEvent(new Event('change', { bubbles: true }));
+            } else {
+                // Si no hay acción precargada pero sí tenemos lista, habilita el select
+                selAccion.disabled = !(mapaAccionesPorMeta[metaId] && mapaAccionesPorMeta[metaId].length > 0);
+            }
+
+            // (IMPORTANTE) No dispares change de meta aquí para que el listener no borre acciones
+            // selMeta.dispatchEvent(new Event('change', { bubbles: true })); // ← NO
+
+            // Si quieres avisar a otros módulos, dispara tu propio evento:
+            document.dispatchEvent(new CustomEvent('prefill:meta', { detail: { metaId, accionId } }));
+
+            // Inicializa Choices después de pintar la opción (opcional)
+            if (typeof inicializarAutocompleteMetas === 'function') {
+                inicializarAutocompleteMetas();
+                if (window.choicesMeta) {
+                    try { window.choicesMeta.setChoiceByValue(String(metaId)); } catch { }
+                }
+            }
+
+            window.__prefillEnProgreso = false; // ← libera el listener
+        }
+
+
+        let choicesMeta = null;
+
+        function inicializarAutocompleteMetas() {
+            if (choicesMeta) {
+                choicesMeta.destroy();
+            }
+            choicesMeta = new Choices('#selectMetaWizard', {
+                searchEnabled: true,
+                itemSelectText: '',
+                shouldSort: false,
+                searchPlaceholderValue: 'Buscar meta...',
+                placeholder: true
+            });
+        }
+
+        function reemplazarPuntosPorGuionBajo(texto) {
+            return texto.replace(/\./g, '_');
+        }
+
+
+        function llenarResumenPaso4() {
+            // Asume que tienes estas variables globales llenas desde los pasos previos:
+            // window.metaSeleccionada, window.accionSeleccionada, window.descripcionEvidencia, window.archivosSeleccionados
+
+            document.getElementById('resumenMeta').textContent = window.metaSeleccionada?.nombre || '';
+            document.getElementById('resumenAccion').textContent = window.accionSeleccionada?.nombre || '';
+            document.getElementById('resumenDescripcion').textContent = window.descripcionEvidencia || '';
+
+            // Archivos
+            const archivos = window.archivosSeleccionados || [];
+            const contenedor = document.getElementById('listaResumenArchivos');
+            if (archivos.length === 0) {
+                contenedor.innerHTML = `<span class="text-muted small">No se han subido archivos.</span>`;
+            } else {
+                contenedor.innerHTML = archivos.map(file => `
+            <div class="d-flex align-items-center py-2 border-bottom" style="gap: 12px;">
+                <i class="fas ${obtenerIconoPorTipo(file.name)} fs-4"></i>
+                <span class="flex-grow-1">${file.name}</span>
+                <span class="badge bg-light text-dark px-2">${(file.size / 1024 / 1024).toFixed(2)}MB</span>
+                <a href="${file.url || '#'}" target="_blank" class="btn btn-outline-success btn-sm ms-2">
+                    <i class="fas fa-eye"></i> Ver
+                </a>
+                <button class="btn btn-outline-danger btn-sm ms-2" onclick="eliminarArchivoResumen('${file.name}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `).join('');
+            }
+        }
+
+
+        function obtenerExtensionFormato(nombreArchivo) {
+            if (!nombreArchivo || typeof nombreArchivo !== "string") return "";
+            const partes = nombreArchivo.split(".");
+            return partes.length > 1 ? partes.pop().toLowerCase() : "";
+        }
+
+        // Helper para icono según tipo archivo
+        function obtenerIconoPorTipo(nombre) {
+            if (nombre.match(/\.pdf$/i)) return 'fa-file-pdf text-danger';
+            if (nombre.match(/\.(jpg|jpeg|png|gif)$/i)) return 'fa-file-image text-primary';
+            if (nombre.match(/\.(xls|xlsx)$/i)) return 'fa-file-excel text-success';
+            return 'fa-file text-secondary';
+        }
+
+        // Puedes implementar eliminarArchivoResumen si permites borrar en este paso.
+
+        function renderizarResumenEvidencias() {
+            // Supón que tienes window.evidenciasSubidas = [{ meta, accion, descripcion, archivos: [..] }]
+            const evidencias = window.evidenciasSubidas || [];
+            // Obtén metas y acciones únicas
+            const metasSet = new Set();
+            const accionesSet = new Set();
+            evidencias.forEach(e => {
+                metasSet.add(e.metaNombre);
+                accionesSet.add(e.accionNombre);
+            });
+
+            document.getElementById('resumenTotalMetas').textContent = metasSet.size;
+            document.getElementById('resumenTotalAcciones').textContent = accionesSet.size;
+            document.getElementById('resumenTotalEvidencias').textContent = evidencias.length;
+
+            // Tabla
+            const tbody = document.getElementById('tablaResumenEvidencias');
+            if (evidencias.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4">No has subido ninguna evidencia aún.</td></tr>`;
+            } else {
+                tbody.innerHTML = evidencias.map((ev, idx) => `
+            <tr>
+                <td class="text-start">${limitarTexto(ev.metaNombre, 10)}</td>
+                <td class="text-start">${limitarTexto(ev.accionNombre, 10)}</td>
+                <td class="text-center">
+                    ${ev.archivos.map(f => `<span class="badge bg-light text-dark mx-1">${f.name}</span>`).join('')}
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-outline-primary btn-sm" onclick="abrirModalEdicionEvidencia(${idx})">
+                        <i class="fas fa-edit"></i> Revisar
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+            }
+
+
+        }
+
+        // Delay configurable
+        const PREFILL_DELAY_MS = 700; // <- ajusta aquí (milisegundos)
+
+        function sleep(ms) {
+            return new Promise(res => setTimeout(res, ms));
+        }
+
+        function setWizardDisabled(disabled) {
+            const ids = [
+                'selectMetaWizard', 'selectAccionWizard', 'descripcionEvidenciaWizard',
+                'archivoEvidenciaWizard', 'btnAnteriorWizard', 'btnGuardarEvidenciaWizard', 'btnSiguienteWizard'
+            ];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.disabled = disabled;
+            });
+        }
+
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Choices.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+</body>
+
+</html>

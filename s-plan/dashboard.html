@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/s-plan/icono.png">
+  <title>
+    S - PLAN Dashboard
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <!-- Pantalla de Carga -->
+  <div id="loader" class="loader-container">
+    <img src="../assets/img/s-plan/animacion.gif" alt="S-PLAN" style="width: 40%;">
+  </div>
+
+  <style>
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999999;
+    }
+
+    .loader-img {
+      width: 35%;
+      animation: zoomIn 2s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+  </style>
+
+  <script type="module">
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 1500); // Duración exacta de la animación
+    });
+
+  </script>
+
+
+  <div class="min-height-300 position-absolute w-100"
+    style="background: url('../assets/img/s-plan/bg-splan.png') no-repeat center center/cover;"></div>
+
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+    id="sidenav-main" style="z-index:1040;">
+    <div class="sidenav-header mb-3">
+      <a class="navbar-brand m-0 d-flex flex-column align-items-center" href="../index.html">
+        <!-- Logo institucional Argon -->
+        <img src="../assets/img/s-plan/logo.png" class="navbar-brand-img mb-0" style="max-height:60px;" alt="main_logo">
+
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0 mb-2">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- INICIO -->
+
+        <li class="nav-item ">
+          <a class="nav-link d-flex align-items-center gap-2" href="index.html">
+            <i class="fa-solid fa-home text-muted"></i>
+            <span class="nav-link-text">Inicio</span>
+          </a>
+
+        </li>
+
+        <!-- PDI 2024-2028 -->
+        <li class="nav-item">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="true">
+            <!-- Cambié aria-expanded a true -->
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">S-Plan</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4 show" id="submenuPdi"> <!-- Agregué la clase "show" -->
+            <li class="nav-item "><a class="nav-link active" href="../s-plan/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/ejes.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Ejes</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/programas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Programas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+
+
+        <!-- Buscar / Seleccionar (abre modal) -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="#" data-bs-toggle="modal"
+            data-bs-target="#modalBusquedaPolitica">
+            <i class="fa-solid fa-magnifying-glass text-warning"></i>
+            <span class="nav-link-text">Buscar / Seleccionar</span>
+          </a>
+        </li>
+
+        <!-- Otras Apps -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 collapsed" href="#" data-bs-toggle="collapse"
+            data-bs-target="#submenuPdi" aria-expanded="false">
+            <i class="fa-solid fa-rocket text-danger"></i>
+            <span class="nav-link-text">Otras Apps</span>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi">
+            <li>
+              <a class="nav-link" href="https://sigunitropico.com" target="_blank">
+                <i class="fa-solid fa-globe text-danger"></i> SIG Unitrópico
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="https://sigunitropico.com/planeacion" target="_blank">
+                <i class="fa-solid fa-chart-line text-info"></i> Planeación
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Admin (solo visible para admins) -->
+        <li class="nav-item mt-3 admin-only admin-polariscore" style="display: none;">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Administración</h6>
+        </li>
+        <li class="nav-item admin-only admin-polariscore" style="display: none;">
+          <a class="nav-link d-flex align-items-center gap-2" href="../pages/usuarios.html" target="_blank">
+            <i class="fa-solid fa-users text-danger"></i>
+            <span class="nav-link-text">Usuarios</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Login/Logout Aside: centrado y sin overlap -->
+    <div class="sidenav-footer w-100 text-center mt-auto pb-3">
+
+      <div class="card card-plain shadow-none mb-2" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-2 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <div id="asideAuthBtn" class="mb-2 d-flex flex-column align-items-center"></div>
+      <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank"
+        class="btn btn-dark btn-sm w-70 mb-2"><i class="fa-solid fa-book me-2"></i>Manual de uso</a>
+      <a class="btn btn-primary btn-sm w-70 mb-0" href="mailto:innovacionplaneacion@unitropico.edu.co" type="button">
+        <i class="fa-solid fa-envelope me-2"></i> Soporte técnico
+      </a>
+
+    </div>
+  </aside>
+
+
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0">última actualización <p
+              class="font-weight-normal text-white mb-0" id="fecha_actualizacion">calculando...</p>
+          </h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <div id="perfilUsuario" class="d-flex align-items-center gap-2" data-bs-toggle="dropdown" role="button"
+                aria-expanded="false">
+                <img id="imgPerfilUsuario" src="https://ui-avatars.com/api/?name=Usuario" alt="Foto"
+                  class="rounded-circle border" width="40" height="40" style="object-fit:cover;">
+              </div>
+              <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="perfilUsuario">
+                <li>
+                  <a class="dropdown-item border-radius-md" href="../pages/profile.html">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="my-auto">
+                        <img id="imgPerfilUsuarioDropdown" src="https://ui-avatars.com/api/?name=Usuario"
+                          class="avatar avatar-sm me-3 rounded-circle border" style="object-fit:cover;">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm text-default fw-semibold" id="nombrePerfilUsuario"> Usuario</h6>
+                        <small class="text-xs text-muted mb-0" id="correoPerfilUsuario">Correo</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" id="rolesUsuario">
+                    <i class="fas fa-user-circle text-primary me-2"></i> Mi perfil
+                  </a>
+                </li>
+                <li>
+                  <button id="logButton" class="dropdown-item border-radius-md text-danger d-flex align-items-center">
+                    <span><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</span>
+                  </button>
+                  <style>
+                    /* Soluciona contraste para botón rojo dentro de dropdown Bootstrap */
+                    #logButton.dropdown-item.text-danger:hover,
+                    #logButton.dropdown-item.text-danger:focus {
+                      background-color: #dc3545 !important;
+                      /* danger */
+                      color: #fff !important;
+                      /* blanco */
+                      border-radius: .5rem;
+                    }
+
+                    #logButton.dropdown-item.text-danger:hover i,
+                    #logButton.dropdown-item.text-danger:focus i {
+                      color: #fff !important;
+                    }
+                  </style>
+                </li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!--- CONTENIDO --->
+    <div class="container-fluid mt-4">
+
+
+
+      <style>
+        :root {
+          --uni-green: #00594E;
+          --uni-gold: #B5A160;
+          --uni-shadow: 0 7px 28px #07d6bc2a, 0 2px 10px #b5a16010;
+        }
+
+        /* ===== KPI Cards (compactas) ===== */
+        .kpi-card {
+          border-radius: 16px;
+          background: #ffffffc9;
+          transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+          min-height: 92px;
+          /* ↓ más baja */
+        }
+
+        .kpi-card .card-body {
+          padding: .55rem .75rem .45rem;
+          /* ↓ menos padding inferior */
+        }
+
+        .kpi-icon {
+          font-size: 1.35rem;
+          /* ↓ icono más pequeño */
+          margin-bottom: .1rem;
+          /* ↓ espacio bajo icono */
+          opacity: .9;
+        }
+
+        .kpi-title {
+          font-size: .72rem;
+          letter-spacing: .04em;
+          margin-bottom: .1rem;
+          /* ↓ espacio bajo título */
+          text-transform: uppercase;
+          color: #6b7280;
+          font-weight: 600;
+        }
+
+        .kpi-value {
+          font-size: 1.65rem;
+          /* ↓ número más compacto */
+          line-height: 1;
+          /* ↓ achata el bloque */
+          margin: 0;
+          /* ↓ sin margen extra */
+          color: #1f2937;
+          font-weight: 800;
+        }
+
+        .kpi-divider {
+          height: 3px;
+          /* línea decorativa */
+          width: 100%;
+          margin-top: .45rem;
+          /* pegada al número */
+          border-radius: 999px;
+          background: linear-gradient(90deg, var(--uni-green), var(--uni-gold));
+          opacity: .85;
+        }
+
+        .kpi-card:hover {
+          background: #fff;
+          transform: translateY(-2px);
+          box-shadow: var(--uni-shadow);
+        }
+
+        .cursor-pointer {
+          cursor: pointer
+        }
+
+        /* ===== Cards de gráficas ===== */
+        .card.h-graph .card-header {
+          background: #f8fafc;
+          border-bottom: 1px solid #eef2f7;
+        }
+
+        .card.h-graph .card-body {
+          padding: .75rem .75rem;
+        }
+
+        /* ===== Utilidades responsive ===== */
+        @media (max-width: 991.98px) {
+          .kpi-value {
+            font-size: 1.5rem;
+          }
+        }
+
+        @media (max-width: 575.98px) {
+          .kpi-value {
+            font-size: 1.45rem;
+          }
+        }
+      </style>
+
+      <!-- KPIs principales (full width, 6 columnas en md) -->
+      <div class="row g-3 mb-4">
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm border-0 cursor-pointer h-100" onclick="redirigirPorKPI('ejes')">
+            <div class="card-body text-center">
+              <i class="fas fa-layer-group kpi-icon text-primary"></i>
+              <div class="kpi-title">Total Ejes</div>
+              <h2 id="totalEjes" class="kpi-value">0</h2>
+              <div class="kpi-divider"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm border-0 cursor-pointer h-100" onclick="redirigirPorKPI('programas')">
+            <div class="card-body text-center">
+              <i class="fas fa-cubes kpi-icon" style="color:#16a34a"></i>
+              <div class="kpi-title">Total Programas</div>
+              <h2 id="totalProgramas" class="kpi-value">0</h2>
+              <div class="kpi-divider"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm border-0 cursor-pointer h-100" onclick="redirigirPorKPI('proyectos')">
+            <div class="card-body text-center">
+              <i class="fas fa-project-diagram kpi-icon" style="color:#06b6d4"></i>
+              <div class="kpi-title">Total Proyectos</div>
+              <h2 id="totalProyectos" class="kpi-value">0</h2>
+              <div class="kpi-divider"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm border-0 cursor-pointer h-100" onclick="redirigirPorKPI('metas')">
+            <div class="card-body text-center">
+              <i class="fas fa-bullseye kpi-icon" style="color:#ef4444"></i>
+              <div class="kpi-title">Total Metas</div>
+              <h2 id="totalMetas" class="kpi-value">0</h2>
+              <div class="kpi-divider"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm border-0 cursor-pointer h-100" onclick="redirigirPorKPI('acciones')">
+            <div class="card-body text-center">
+              <i class="fas fa-tasks kpi-icon" style="color:#f59e0b"></i>
+              <div class="kpi-title">Total Acciones</div>
+              <h2 id="totalAcciones" class="kpi-value">0</h2>
+              <div class="kpi-divider"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-2">
+          <div class="card kpi-card shadow-sm border-0 h-100">
+            <div class="card-body text-center">
+              <i class="fas fa-coins kpi-icon text-secondary"></i>
+              <div class="kpi-title">Inversión</div>
+              <h2 id="totalInversion" class="kpi-value" style="font-size:1.45rem;">0</h2>
+              <div class="kpi-divider"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avance General (md-12 = 100% ancho) -->
+      <div class="row mb-4">
+        <div class="col-md-12">
+          <div class="card shadow-sm border-0 h-graph">
+
+            <div class="card-body p-2"
+              style="background:url('../assets/img/s-plan/bg_taco.png') no-repeat center/cover; border-radius: 12px;">
+              <div id="avanceGeneral" style="height:50vh;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avance por Ejes y Programas -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <div class="card shadow-sm border-0 h-100 h-graph">
+            <div class="card-header d-flex align-items-center gap-2">
+              <i class="fas fa-chart-bar" style="color:#16a34a"></i>
+              <span class="fw-bold">Avance por Ejes</span>
+            </div>
+            <div class="card-body">
+              <div id="graficaAvanceEjes" style="height:350px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card shadow-sm border-0 h-100 h-graph">
+            <div class="card-header d-flex align-items-center gap-2">
+              <i class="fas fa-sitemap" style="color:#06b6d4"></i>
+              <span class="fw-bold">Programas por Eje</span>
+            </div>
+            <div class="card-body">
+              <div id="graficaProgramasPorEje" style="height:350px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avance Proyectos e Inversión -->
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <div class="card shadow-sm border-0 h-100 h-graph">
+            <div class="card-header d-flex align-items-center gap-2">
+              <i class="fas fa-tasks" style="color:#ef4444"></i>
+              <span class="fw-bold">Avance por Proyectos</span>
+            </div>
+            <div class="card-body">
+              <div id="graficaAvanceProyectos" style="height:68vh;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card shadow-sm border-0 h-100 h-graph">
+            <div class="card-header d-flex align-items-center gap-2">
+              <i class="fas fa-hand-holding-usd" style="color:#f59e0b"></i>
+              <span class="fw-bold">Inversión por Ejes</span>
+            </div>
+            <div class="card-body">
+              <div id="graficaInversionEjes" style="height:68vh;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal: Búsqueda / Selección -->
+    <div class="modal fade" id="modalBusquedaPolitica" tabindex="-1" aria-labelledby="modalBusquedaPoliticaLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" action="consulta.html" method="get">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalBusquedaPoliticaLabel">
+              <i class="fa-solid fa-magnifying-glass me-2"></i> Búsqueda avanzada
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body">
+            <!-- Criterio -->
+            <div class="mb-3">
+              <label for="campoBusqueda" class="form-label">Criterio de búsqueda</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-keyboard"></i></span>
+                <input type="text" class="form-control" id="campoBusqueda" name="busqueda"
+                  placeholder="Ej: E1M1, 'calidad', R136" required>
+              </div>
+            </div>
+            <!-- Filtro -->
+            <div>
+              <label for="campoFiltro" class="form-label">Filtrar por</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-filter"></i></span>
+                <select class="form-select" id="campoFiltro" name="filtro">
+                  <option value="todos" selected>Todos</option>
+                  <option value="ejes">Ejes</option>
+                  <option value="programas">Programas</option>
+                  <option value="proyectos">Proyectos</option>
+                  <option value="metas">Metas</option>
+                  <option value="acciones">Acciones</option>
+                  <option value="responsables">Responsables</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+              <i class="fa-solid fa-xmark me-1"></i> Cerrar
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-solid fa-arrow-right-to-bracket me-1"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const modal = document.getElementById('modalBusquedaPolitica');
+        if (!modal) return;
+
+        const form = modal.querySelector('form');
+        const inputQ = modal.querySelector('input[name="busqueda"]');
+        const selectF = modal.querySelector('select[name="filtro"]');
+
+        // Si necesitas forzar una ruta (ej. "../s-plan/consulta.html"), añade:
+        // <div id="modalBusquedaPolitica" data-consulta-path="../s-plan/consulta.html" ...>
+        function getBasePath() {
+          const attr = modal.getAttribute('data-consulta-path');
+          if (attr && attr.trim()) return attr.trim();
+          // Fallback: intenta relativa al archivo actual
+          return 'consulta.html';
+        }
+
+        function construirURLConsulta(basePath, busqueda, filtro) {
+          const q = (busqueda || '').trim();
+          const f = (filtro || 'todos').trim() || 'todos';
+          const params = new URLSearchParams({ busqueda: q, filtro: f });
+          return `${basePath}?${params.toString()}`;
+        }
+
+        form?.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const q = inputQ?.value || '';
+          if (!q.trim()) {
+            inputQ?.focus();
+            return;
+          }
+          const f = selectF?.value || 'todos';
+          const url = construirURLConsulta(getBasePath(), q, f);
+          window.location.href = url;
+        });
+
+        // Opcional: abrir el modal y enfocar con "/" (fuera de inputs)
+        document.addEventListener('keydown', (e) => {
+          const t = (e.target?.tagName || '').toLowerCase();
+          if (e.key === '/' && !['input', 'textarea', 'select'].includes(t)) {
+            e.preventDefault();
+            const bsModal = bootstrap ? new bootstrap.Modal(modal) : null;
+            bsModal?.show();
+            setTimeout(() => inputQ?.focus(), 200);
+          }
+        });
+      })();
+    </script>
+
+
+
+    <!--- FIN DEL CONTENIDO --->
+
+
+
+
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
+                  Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                  target="_blank">License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </main>
+
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+        <path
+          d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+      </svg>
+    </a>
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary"
+              onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+            onclick="sidebarType(this)">White</button>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+            onclick="sidebarType(this)">Dark</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="d-flex my-3">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <div class="mt-2 mb-5 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+          Download</a>
+        <a class="btn btn-outline-dark w-100"
+          href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+            data-icon="octicon-star" data-size="large" data-show-count="true"
+            aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes shrinkAndFade {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .shrink-fade-out {
+      animation: shrinkAndFade 0.4s ease forwards;
+    }
+  </style>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../assets/js/s-plan-charts.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+
+    // Variables de control para listeners
+    let logoutListenerAddedNavbar = false;
+    let logoutListenerAddedAside = false;
+
+    onAuthStateChanged(auth, (user) => {
+      // 1. Navbar
+      const logButton = document.getElementById("logButton");
+      // 2. Aside
+      const asideAuthDiv = document.getElementById('asideAuthBtn');
+
+      // ---- SI ESTÁ AUTENTICADO ----
+      if (user) {
+        // --- NAVBAR ---
+        if (logButton) {
+          logButton.textContent = "Cerrar sesión";
+          logButton.classList.remove("btn-primary");
+          logButton.classList.add("btn-danger");
+          // Solo agrega el evento una vez
+          if (!logoutListenerAddedNavbar) {
+            logButton.addEventListener("click", () => {
+              const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+              logoutModal.show();
+              // Listener de confirmación (evita duplicidad)
+              const confirmBtn = document.getElementById("confirmLogout");
+              const clonedBtn = confirmBtn.cloneNode(true);
+              confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+              clonedBtn.addEventListener("click", () => {
+                signOut(auth).catch((error) => {
+                  console.error("Error al cerrar sesión:", error);
+                });
+              });
+            });
+            logoutListenerAddedNavbar = true;
+          }
+        }
+
+        // --- ASIDE ---
+        if (asideAuthDiv) {
+          asideAuthDiv.innerHTML = `
+        <button id="btnLogoutAside" class="btn btn-outline-danger btn-sm w-75 mb-1 fw-semibold rounded-pill shadow-sm">
+          <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Cerrar sesión
+        </button>`;
+          // Agrega listener SÓLO una vez (usa bandera)
+          if (!logoutListenerAddedAside) {
+            asideAuthDiv.addEventListener("click", function asideLogoutEvent(e) {
+              if (e.target && (e.target.id === "btnLogoutAside" || e.target.closest('#btnLogoutAside'))) {
+                const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                logoutModal.show();
+                // Listener de confirmación para aside
+                const confirmBtn = document.getElementById("confirmLogout");
+                const clonedBtn = confirmBtn.cloneNode(true);
+                confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+                clonedBtn.addEventListener("click", () => {
+                  signOut(auth).catch((error) => {
+                    console.error("Error al cerrar sesión:", error);
+                  });
+                });
+              }
+            });
+            logoutListenerAddedAside = true;
+          }
+        }
+
+        // --- PERFIL USUARIO ---
+        const nombreCompleto = user.displayName || user.email || "Usuario";
+        const nombreCorto = obtenerNombreCorto(nombreCompleto);
+        const foto = user.photoURL
+          ? user.photoURL
+          : `https://ui-avatars.com/api/?name=${encodeURIComponent(nombreCorto)}&background=0D8ABC&color=fff&rounded=true&size=64`;
+
+        if (document.getElementById("nombrePerfilUsuario")) {
+          document.getElementById("nombrePerfilUsuario").textContent = nombreCompleto;
+          document.getElementById("nombrePerfilUsuario").classList.add("text-dark");
+          document.getElementById("nombrePerfilUsuario").classList.remove("text-white");
+          document.getElementById("correoPerfilUsuario").textContent = user.email;
+        }
+        if (document.getElementById("imgPerfilUsuario")) {
+          document.getElementById("imgPerfilUsuario").src = foto;
+          document.getElementById("imgPerfilUsuario").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuario").title = nombreCorto;
+        }
+        if (document.getElementById("imgPerfilUsuarioDropdown")) {
+          document.getElementById("imgPerfilUsuarioDropdown").src = foto;
+          document.getElementById("imgPerfilUsuarioDropdown").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuarioDropdown").title = nombreCorto;
+        }
+
+        // --- ROLES ---
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+            if (roles.includes("admin")) {
+              document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+            }
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+            if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+              document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+            }
+            if (document.getElementById("rolesUsuario")) {
+              let rolSimplificado = "Usuario";
+              const rolesMinusculas = roles.map(r => r.toLowerCase());
+              if (rolesMinusculas.some(r => r.includes("admin"))) {
+                rolSimplificado = "Admin";
+              } else if (rolesMinusculas.some(r => r.includes("responsable"))) {
+                rolSimplificado = "Responsable";
+              } else if (rolesMinusculas.some(r => r.includes("observador"))) {
+                rolSimplificado = "Observador";
+              }
+              document.getElementById("rolesUsuario").textContent = rolSimplificado;
+            }
+          } else {
+            console.warn("Usuario autenticado pero no registrado en la base de datos.");
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+        });
+
+        // ---- SI NO ESTÁ AUTENTICADO ----
+      } else {
+        // Navbar
+        if (logButton) {
+          logButton.textContent = "Iniciar Sesión";
+          logButton.classList.remove("btn-danger", "text-danger");
+          logButton.classList.add("btn-primary", "text-white");
+          logButton.style.backgroundColor = "#00594e";
+          logButton.style.color = "#fff!important";
+          logButton.onclick = () => window.location.href = "../pages/sign-in.html";
+        }
+        // Aside
+        if (asideAuthDiv) {
+          asideAuthDiv.innerHTML = `
+        <a href="../pages/sign-in.html" class="btn btn-outline-success btn-sm w-65 mb-1 fw-semibold rounded-pill shadow-sm">
+          <i class="fa-solid fa-sign-in-alt me-2"></i> Iniciar sesión
+        </a>`;
+        }
+      }
+    });
+
+
+    function obtenerNombreCorto(nombreCompleto) {
+      if (!nombreCompleto) return "";
+      const partes = nombreCompleto.trim().split(" ");
+      if (partes.length === 1) return partes[0];
+      return partes[0] + " " + partes[1];
+    }
+
+
+
+
+    const dbRef = ref(db, `S-PLAN/ejes/`);
+
+    get(dbRef).then((snapshot) => {
+      if (!snapshot.exists()) return;
+
+      const data = snapshot.val();
+
+      let totalEjes = 0, totalProgramas = 0, totalProyectos = 0, totalMetas = 0, totalAcciones = 0;
+
+      const nombresEjes = [];
+      const avancesEjes = [];
+      const programasPorEje = [];
+
+      const idsProyectos = [];
+      const avancesProyectos = [];
+      const proyectoMetaData = {};
+
+      for (const idEje in data) {
+        totalEjes++;
+        const eje = data[idEje];
+
+        nombresEjes.push(eje.titulo_eje);
+        avancesEjes.push(((eje.avance_eje || 0) * 100).toFixed(2));
+        programasPorEje.push(Object.keys(eje.programas || {}).length);
+        const programas = eje.programas || {};
+
+        for (const idPrograma in programas) {
+          totalProgramas++;
+          const programa = programas[idPrograma];
+          const proyectos = programa.proyectos || {};
+
+          for (const idProyecto in proyectos) {
+            totalProyectos++;
+            const proyecto = proyectos[idProyecto];
+
+            const avance = parseFloat(proyecto.avance_proyecto || 0) * 100;
+            idsProyectos.push(idProyecto);
+            avancesProyectos.push(parseFloat(avance.toFixed(2)));
+
+            proyectoMetaData[idProyecto] = {
+              eje: idEje,
+              programa: idPrograma
+            };
+
+            for (const idMeta in proyecto.metas || {}) {
+              totalMetas++;
+              const meta = proyecto.metas[idMeta];
+              totalAcciones += Object.keys(meta.acciones || {}).length;
+            }
+          }
+        }
+      }
+
+      document.getElementById('totalEjes').textContent = totalEjes;
+      document.getElementById('totalProgramas').textContent = totalProgramas;
+      document.getElementById('totalProyectos').textContent = totalProyectos;
+      document.getElementById('totalMetas').textContent = totalMetas;
+      document.getElementById('totalAcciones').textContent = totalAcciones;
+
+      const chartAvanceProyectos = echarts.init(document.getElementById('graficaAvanceProyectos'), 'S-PLAN');
+
+      chartAvanceProyectos.setOption({
+        title: {
+          text: 'Avance por Proyecto',
+          left: 'center',
+          top: 10,
+          textStyle: {
+            fontSize: 18,
+            color: '#00594e',
+            fontWeight: 'bold'
+          }
+        },
+        toolbox: {
+          show: true,
+          orient: 'vertical',
+          left: 'right',
+          top: 'center',
+          feature: {
+            dataView: {
+              show: true,
+              readOnly: false,
+              title: 'Ver Datos',
+              lang: ['Vista de Datos', 'Cerrar', 'Actualizar'],
+              optionToContent: function (opt) {
+                const axisData = idsProyectos;
+                const series = opt.series[0].data;
+
+                let table = '<table style="width:100%;text-align:left"><thead><tr><th>Proyecto</th><th>Avance (%)</th></tr></thead><tbody>';
+                for (let i = 0; i < axisData.length; i++) {
+                  table += `<tr><td>${axisData[i]}</td><td>${series[i].toFixed(2)}%</td></tr>`;
+                }
+                table += '</tbody></table>';
+                return table;
+              }
+            },
+            myExcel: {
+              show: true,
+              title: 'Descargar Excel',
+              icon: 'path://M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zM384 384h128v128H384V384zm0 192h128v192H384V576z',
+              onclick: function () {
+                const wb = XLSX.utils.book_new();
+                const wsData = [["ID Proyecto", "Avance (%)"]];
+
+                idsProyectos.forEach((id, i) => {
+                  wsData.push([id, avancesProyectos[i]]);
+                });
+
+                const ws = XLSX.utils.aoa_to_sheet(wsData);
+                XLSX.utils.book_append_sheet(wb, ws, 'Avance Proyectos');
+                XLSX.writeFile(wb, 'avance_proyectos.xlsx');
+              }
+            },
+            saveAsImage: {
+              show: true,
+              title: 'Descargar Imagen'
+            }
+          }
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' },
+          formatter: params => {
+            return params.map(p => `${p.marker} ${p.name}: ${p.value.toFixed(2)}%`).join('<br/>');
+          }
+        },
+        grid: {
+          left: '15%',
+          right: '5%',
+          top: 40,
+          bottom: 80
+        },
+        xAxis: {
+          type: 'value',
+          max: 100,
+          axisLabel: {
+            formatter: '{value} %'
+          }
+        },
+        yAxis: {
+          type: 'category',
+          data: idsProyectos,
+          axisLabel: {
+            fontSize: 12,
+            overflow: 'truncate'
+          }
+        },
+        series: [{
+          name: 'Avance',
+          type: 'bar',
+          data: avancesProyectos,
+          barWidth: 8,
+          itemStyle: {
+            color: '#b5a160'
+          },
+          label: {
+            show: true,
+            position: 'right',
+            formatter: '{c} %',
+            fontSize: 8
+          }
+        }]
+      });
+
+      chartAvanceProyectos.on('click', function (params) {
+        const idProyectoSeleccionado = idsProyectos[params.dataIndex];
+        const meta = proyectoMetaData[idProyectoSeleccionado];
+
+        if (idProyectoSeleccionado && meta) {
+          const { eje, programa } = meta;
+          window.location.href = `proyecto.html?id=${idProyectoSeleccionado}&programa=${programa}&eje=${eje}`;
+        }
+      });
+
+      const coloresPersonalizados = ['#b5a160', '#00594e', '#f3a43b', '#e63b21'];
+
+      function limitarTexto(texto, max = 40) {
+        return texto.length > max ? texto.slice(0, max) + '...' : texto;
+      }
+
+      const chartInversionEjes = echarts.init(document.getElementById('graficaInversionEjes'), 'S-PLAN');
+      // Prepara nombres y datos
+      const nombresEjesOriginales = Object.values(data).map(eje => eje.titulo_eje || 'Eje');
+      const nombresEjesLimitados = nombresEjesOriginales.map(nombre => limitarTexto(nombre, 18));
+      const inversionesEjes = Object.values(data).map(eje => parseFloat(eje.inversion_eje || 0));
+      // Sumar el total de inversión realizada
+      const totalInversion = inversionesEjes.reduce((acc, val) => acc + val, 0);
+
+      document.getElementById('totalInversion').textContent = totalInversion.toLocaleString('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0
+      });
+
+
+      // Configura el gráfico
+      chartInversionEjes.setOption({
+        title: {
+          text: 'Inversión Realizada por Eje',
+          left: 'center',
+          top: 10,
+          textStyle: {
+            fontSize: 18,
+            color: '#00594e',
+            fontWeight: 'bold'
+          }
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' },
+          formatter: params => {
+            return params.map(p => `${p.marker} ${nombresEjesOriginales[p.dataIndex]}: ${p.value.toLocaleString('es-CO', {
+              style: 'currency',
+              currency: 'COP',
+              maximumFractionDigits: 0
+            })}`).join('<br/>');
+          }
+        },
+        toolbox: {
+          show: true,
+          orient: 'vertical',
+          left: 'right',
+          top: 'center',
+          feature: {
+            dataView: {
+              show: true,
+              readOnly: false,
+              title: 'Ver Datos',
+              lang: ['Vista de Datos', 'Cerrar', 'Actualizar'],
+              optionToContent: function () {
+                let html = '<table style="width:100%;text-align:left"><thead><tr><th>Eje</th><th>Inversión</th></tr></thead><tbody>';
+                nombresEjesOriginales.forEach((nombre, i) => {
+                  html += `<tr><td>${nombre}</td><td>${inversionesEjes[i].toLocaleString('es-CO', {
+                    style: 'currency',
+                    currency: 'COP',
+                    maximumFractionDigits: 0
+                  })}</td></tr>`;
+                });
+                html += '</tbody></table>';
+                return html;
+              }
+            },
+            saveAsImage: {
+              show: true,
+              title: 'Descargar Imagen'
+            }
+          }
+        },
+        grid: {
+          left: '16%',
+          right: '8%',
+          top: 40,
+          bottom: 90
+        },
+        xAxis: {
+          type: 'value',
+          axisLabel: {
+            formatter: value => value.toLocaleString('es-CO', {
+              style: 'currency',
+              currency: 'COP',
+              maximumFractionDigits: 0
+            })
+          }
+        },
+        yAxis: {
+          type: 'category',
+          data: nombresEjesLimitados,
+          axisLabel: {
+            fontSize: 12,
+            overflow: 'truncate'
+          }
+        },
+        series: [{
+          name: 'Inversión',
+          type: 'bar',
+          data: inversionesEjes,
+          barWidth: 40,
+          itemStyle: {
+            color: function (params) {
+              return coloresPersonalizados[params.dataIndex % coloresPersonalizados.length];
+            }
+          },
+          label: {
+            show: true,
+            position: 'right',
+            formatter: params => params.value.toLocaleString('es-CO', {
+              style: 'currency',
+              currency: 'COP',
+              maximumFractionDigits: 0
+            }),
+            fontSize: 10
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontWeight: 'bold',
+              formatter: (params) =>
+                `${nombresEjesOriginales[params.dataIndex]}:\n${params.value.toLocaleString('es-CO', {
+                  style: 'currency',
+                  currency: 'COP',
+                  maximumFractionDigits: 0
+                })}`
+            }
+          }
+        }]
+      });
+
+
+
+      const fechaRef = ref(db, `S-PLAN/fecha_actualizacion`);
+
+      get(fechaRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          const timestamp = snapshot.val(); // Debe ser tipo timestamp (milisegundos)
+          const fecha = new Date(timestamp);
+
+          const opcionesFecha = {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          };
+
+          const fechaFormateada = fecha.toLocaleString('es-CO', opcionesFecha);
+          aplicarFirmaSPlan(chartInversionEjes, fechaFormateada)
+          document.getElementById('fecha_actualizacion').textContent = `${fechaFormateada}`;
+
+          aplicarFirmaSPlan(chartAvanceProyectos, fechaFormateada);
+          // Gráfica avance por eje
+          const chartAvanceEjes = echarts.init(document.getElementById('graficaAvanceEjes'), 'S-PLAN');
+
+          chartAvanceEjes.setOption({
+            title: { text: 'Avance por Eje' },
+            tooltip: { trigger: 'axis' },
+            grid: {
+              left: '15%', // aumenta espacio a la izquierda
+              right: '5%',
+              top: 50,
+              bottom: 80
+            },
+            xAxis: {
+              type: 'value',
+              max: 100
+            },
+            yAxis: {
+              type: 'category',
+              data: nombresEjes.map(nombre => limitarTexto(nombre, 17)), // Limitar texto a 30 caracteres
+              axisLabel: {
+                width: 200,  // Ajusta al espacio disponible
+                overflow: 'truncate', // o 'break' si quieres corte multi-línea
+                fontSize: 11
+              }
+            }, toolbox: {
+              show: true,
+              orient: 'horizontal',
+              left: 'right',
+              top: 'start',
+              feature: {
+                dataView: {
+                  show: true,
+                  readOnly: false,
+                  title: 'Ver Datos',
+                  lang: ['Vista de Datos', 'Cerrar', 'Actualizar']
+                },
+                myExcel: {
+                  show: true,
+                  title: 'Descargar Excel',
+                  icon: 'path://M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zM384 384h128v128H384V384zm0 192h128v192H384V576z', // Icono tipo Excel (puedes cambiarlo)
+                  onclick: function () {
+                    const rows = [["Eje", "Cantidad de Programas"]];
+
+                    nombresEjes.forEach((nombre, i) => {
+                      rows.push([nombre, programasPorEje[i]]);
+                    });
+
+                    const csvContent = rows.map(row => row.map(col => `"${col}"`).join(",")).join("\n");
+
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'programas_por_eje.csv';
+                    link.click();
+                    URL.revokeObjectURL(url);
+                  }
+                },
+                saveAsImage: {
+                  show: true,
+                  title: 'Descargar Imagen'
+                }
+
+              }
+            },
+            series: [{
+              type: 'bar',
+              data: avancesEjes.map((valor, i) => ({
+                value: valor,
+                itemStyle: {
+                  color: coloresPersonalizados[i % coloresPersonalizados.length]
+                }
+              })),
+              label: {
+                show: true,
+                position: 'right',
+                fontSize: 12,
+                formatter: function (params) {
+                  return params.value + ' %';
+                }
+              }
+            }]
+
+
+          });
+
+
+
+          aplicarFirmaSPlan(chartAvanceEjes, fechaFormateada);
+
+          // EJE DE DOUGHNUT--->>>
+
+          const chartProgramasPorEje = echarts.init(document.getElementById('graficaProgramasPorEje'), 'S-PLAN');
+          const totalProgramasGeneral = programasPorEje.reduce((a, b) => a + b, 0);
+          const idsEjes = Object.keys(data); // Lista ordenada de IDs de ejes
+
+          const option = {
+            title: {
+              text: 'Programas por Eje',
+              left: 'left',
+              top: 20
+            },
+            tooltip: {
+              trigger: 'item',
+              formatter: '{b}: {c} Programas'
+            }, toolbox: {
+              show: true,
+              orient: 'vertical',
+              left: 'right',
+              top: 'center',
+              feature: {
+                dataView: {
+                  show: true,
+                  readOnly: false,
+                  title: 'Ver Datos',
+                  lang: ['Vista de Datos', 'Cerrar', 'Actualizar']
+                },
+                myExcel: {
+                  show: true,
+                  title: 'Descargar Excel',
+                  icon: 'path://M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zM384 384h128v128H384V384zm0 192h128v192H384V576z',
+                  onclick: function () {
+                    const wb = XLSX.utils.book_new();
+                    const wsData = [["Eje", "Cantidad de Programas"]];
+
+                    nombresEjes.forEach((nombre, i) => {
+                      wsData.push([nombre, programasPorEje[i]]);
+                    });
+
+                    const ws = XLSX.utils.aoa_to_sheet(wsData);
+                    XLSX.utils.book_append_sheet(wb, ws, 'Programas');
+
+                    XLSX.writeFile(wb, 'programas_por_eje.xlsx');
+                  }
+                },
+                saveAsImage: {
+                  show: true,
+                  title: 'Descargar Imagen'
+                }
+
+              }
+            },
+
+            animationDuration: 1000,
+            animationEasing: 'cubicOut',
+            series: [{
+              type: 'pie',
+              radius: ['50%', '70%'],
+              avoidLabelOverlap: true,
+              label: {
+                show: true,
+                position: 'outside',
+                formatter: function (params) {
+                  return limitarTexto2(params.name, 17) + ': tiene ' + params.value + ' programa(s).';
+                },
+                fontSize: 12
+              },
+              labelLine: { show: true },
+              data: nombresEjes.map((nombre, i) => ({
+                name: nombre,
+                value: programasPorEje[i],
+                id: idsEjes[i],
+              })),
+
+            }]
+          };
+
+          // Etiqueta central con total general
+          chartProgramasPorEje.setOption({
+            graphic: {
+              type: 'text',
+              left: 'center',
+              top: 'center',
+              style: {
+                text: totalProgramasGeneral.toString(),
+                textAlign: 'center',
+                fill: '#00594e',
+                fontSize: 28,
+                fontWeight: 'bold'
+              }
+            }
+          });
+
+          chartProgramasPorEje.setOption(option);
+
+          // Hover: mostrar valor del eje en el centro
+          chartProgramasPorEje.on('mouseover', function (params) {
+            chartProgramasPorEje.setOption({
+              graphic: {
+                style: {
+                  text: params.data.value.toString()
+                }
+              }
+            });
+          });
+
+          // Mouse out: volver al total
+          chartProgramasPorEje.on('mouseout', function () {
+            chartProgramasPorEje.setOption({
+              graphic: {
+                style: {
+                  text: totalProgramasGeneral.toString()
+                }
+              }
+            });
+          });
+
+          chartProgramasPorEje.on('click', function (params) {
+            const idEje = params.data.id;
+            if (idEje) {
+              const grafica = document.getElementById('graficaProgramasPorEje');
+
+              grafica.classList.add('shrink-fade-out');
+
+              window.location.href = `eje.html?id=${idEje}`;
+
+            }
+          });
+
+
+          aplicarFirmaSPlan(chartProgramasPorEje, fechaFormateada);
+
+          cargarAvanceGeneral();
+
+
+
+        } else {
+          document.getElementById('fecha_actualizacion').textContent = "Sin actualización registrada";
+        }
+      }).catch((error) => {
+        console.error("Error al obtener la fecha:", error);
+        document.getElementById('fecha_actualizacion').textContent = "Error de conexión";
+      });
+
+
+
+
+
+
+    });
+
+
+    // **Función para limitar texto**
+    function limitarTexto(texto, limite) {
+      return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+    }
+
+    // **Función para limitar texto**
+    function limitarTexto2(texto, limite) {
+      return texto.length > limite ? texto.substring(0, limite) : texto;
+    }
+
+
+
+    function exportarGrafica(idCanvas, nombreArchivo = "grafica.png", scaleFactor = 4) {
+      const canvas = document.getElementById(idCanvas);
+      if (!canvas) {
+        console.error("El canvas no se encontró.");
+        return;
+      }
+
+      // Crear un canvas temporal con mayor resolución
+      const canvasExport = document.createElement("canvas");
+      const ctxExport = canvasExport.getContext("2d");
+
+      // Ajustar tamaño del nuevo canvas para mayor resolución
+      canvasExport.width = canvas.width * scaleFactor;
+      canvasExport.height = canvas.height * scaleFactor;
+
+      // Mejorar la calidad del renderizado
+      ctxExport.imageSmoothingEnabled = true;
+      ctxExport.imageSmoothingQuality = "high";
+
+      // Dibujar la gráfica en el nuevo canvas con mayor resolución
+      ctxExport.scale(scaleFactor, scaleFactor);
+      ctxExport.drawImage(canvas, 0, 0);
+
+      // Convertir a imagen en formato PNG con calidad máxima
+      const imagen = canvasExport.toDataURL("image/png", 1.0);
+
+      // Crear un enlace de descarga
+      const link = document.createElement("a");
+      link.href = imagen;
+      link.download = nombreArchivo;
+
+      // Simular clic para descargar la imagen
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    window.exportarGrafica = exportarGrafica;
+
+    function exportarDatosAGrafica(labels, datos, nombreColumnas = ["Etiqueta", "Valor"], nombreArchivo = "datos_grafica.xlsx") {
+      if (!labels || !datos || labels.length !== datos.length) {
+        console.error("Error: Los datos y etiquetas deben tener la misma longitud.");
+        return;
+      }
+
+      // Crear los datos para el archivo Excel
+      let datosExcel = labels.map((label, index) => ({
+        [nombreColumnas[0]]: label,
+        [nombreColumnas[1]]: datos[index].toFixed(2) // Formatear a dos decimales
+      }));
+
+      // Convertir datos a hoja de Excel
+      const ws = XLSX.utils.json_to_sheet(datosExcel);
+
+      // Crear libro de trabajo
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Datos");
+
+      // Descargar el archivo
+      XLSX.writeFile(wb, nombreArchivo);
+    }
+    window.exportarDatosAGrafica = exportarDatosAGrafica;
+
+    // Función para mostrar elementos según los roles del usuario (disponible globalmente)
+    window.mostrarElementosDinamicos = function (rolesUsuario = []) {
+      if (!Array.isArray(rolesUsuario)) {
+        console.error("⚠️ Error: rolesUsuario no es un array. Valor recibido:", rolesUsuario);
+        rolesUsuario = []; // Asignar un array vacío si es incorrecto
+      }
+
+      setTimeout(() => {
+        // Ocultar todos los elementos antes de mostrarlos según el rol
+        document.querySelectorAll(".admin-only, .admin-s-plan-only, .responsable-s-plan-only").forEach(el => {
+          el.style.display = "none";
+        });
+
+        // Mostrar solo los elementos que coincidan con los roles del usuario
+        if (rolesUsuario.includes("admin")) {
+          document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+        }
+        if (rolesUsuario.includes("admin-s-plan")) {
+          document.querySelectorAll(".admin-s-plan-only").forEach(el => el.style.display = "block");
+        }
+        if (rolesUsuario.includes("responsable-s-plan")) {
+          document.querySelectorAll(".responsable-s-plan-only").forEach(el => el.style.display = "block");
+        }
+      }, 50);
+    };
+
+    // Escuchar cambios en el estado de autenticación
+    onAuthStateChanged(auth, (user) => {
+      console.log("Usuario autenticado:", user); // 🚀 Verifica si el usuario está autenticado
+
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+        // Manejo del logout (evita agregar múltiples eventos)
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            let logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            document.getElementById("confirmLogout").addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "../pages/sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+                mostrarToast("Error al cerrar sesión.", "danger");
+              });
+            });
+          });
+          logoutListenerAdded = true;
+        }
+
+        // Obtener los roles del usuario desde Firebase Database
+        const correoSanitizado = user.email.replace(/\./g, '_');
+        const userRef = ref(db, `usuarios/${correoSanitizado}`);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const userRoles = Array.isArray(userData.roles) ? userData.roles : [];
+
+            console.log(`✅ Usuario autenticado con roles: ${userRoles.join(", ")}`);
+            mostrarElementosDinamicos(userRoles);
+
+            // Observar cambios en el DOM
+            const observer = new MutationObserver(() => {
+              mostrarElementosDinamicos(userRoles);
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+
+          } else {
+            console.error("⚠️ No se encontró información del usuario en la base de datos.");
+            mostrarToast("No se encontró la información del usuario.", "warning");
+          }
+        }).catch((error) => {
+          console.error("❌ Error al obtener datos del usuario:", error);
+          mostrarToast("Error al obtener los datos del usuario.", "danger");
+        });
+
+      } else {
+        console.log("No hay usuario autenticado");
+
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.add("btn-primary");
+
+        logButton.addEventListener("click", () => {
+          window.location.href = "../pages/sign-in.html";
+        });
+
+        mostrarElementosDinamicos([]);
+      }
+    });
+
+
+    function redirigirPorKPI(tipo) {
+      const tiposValidos = ['ejes', 'programas', 'proyectos', 'metas', 'acciones', 'responsables'];
+      if (tiposValidos.includes(tipo)) {
+        window.location.href = `consulta.html?tipo=${tipo}`;
+      } else {
+        console.warn(`Tipo no reconocido: ${tipo}`);
+      }
+    }
+    window.redirigirPorKPI = redirigirPorKPI;
+
+
+    // 📌 Render Avance General PDI con valores 0–1 → 0–100 y 2 decimales exactos
+    function cargarAvanceGeneral() {
+      const avanceRef = ref(db, `S-PLAN/avance_general`);
+      const programacionRef = ref(db, `S-PLAN/programacion_general/anio1`);
+
+      Promise.all([get(avanceRef), get(programacionRef)])
+        .then(([avanceSnap, progSnap]) => {
+          if (!avanceSnap.exists() || !progSnap.exists()) {
+            console.warn("⚠️ No hay datos en avance_general o programacion_general");
+            renderAvanceGeneral(0, 0);
+            return;
+          }
+
+          // ✅ Escala: valores en 0–1 → multiplicamos por 100
+          const avance = (parseFloat(avanceSnap.val()) || 0) * 100;
+          const programado = (parseFloat(progSnap.val()) || 0) * 100;
+
+          // Nos aseguramos de mantener 2 decimales exactos
+          const valAvance = Number(avance.toFixed(2));
+          const valProg = Number(programado.toFixed(2));
+
+          console.log("🎯 Avance:", valAvance, " Programado:", valProg);
+          renderAvanceGeneral(valAvance, valProg);
+        })
+        .catch(error => {
+          console.error("❌ Error cargando datos del gauge PDI:", error);
+          renderAvanceGeneral(0, 0);
+        });
+    }
+
+    function renderAvanceGeneral(valAvance, valProg) {
+      const contAG = document.getElementById('avanceGeneral');
+      if (!contAG) {
+        console.error("❌ No existe el contenedor #avanceGeneral");
+        return;
+      }
+
+      const chartAvanceGeneral = echarts.init(contAG, 'S-PLAN');
+
+      const fondoURL = 'https://sigunitropico.com/wp-content/uploads/2025/09/pdi.png';
+      const getBgSize = () => {
+        const w = contAG.clientWidth || 320;
+        const h = contAG.clientHeight || w;
+        return Math.floor(Math.min(w, h) * 0.80);
+      };
+      const bgSize = getBgSize();
+
+      chartAvanceGeneral.setOption({
+        title: {
+          text: 'Avance General del PDI',
+          left: 'center',
+          top: 8,
+          textStyle: { fontSize: 16, fontWeight: 'bold', color: '#333' }
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: (p) => `${p.seriesName}: <b>${(p.value ?? 0).toFixed(2)}%</b>`
+        },
+        legend: {
+          bottom: 8,
+          itemWidth: 14,
+          itemHeight: 8,
+          textStyle: { fontSize: 12, color: '#333' },
+          data: ['Programación', 'Ejecución']
+        },
+        graphic: [
+          {
+            id: 'bg',
+            type: 'image',
+            left: 'center',
+            top: 'middle',
+            z: -2,
+            silent: true,
+            style: {
+              image: fondoURL,
+              width: bgSize,
+              height: bgSize,
+              opacity: 0.3
+            }
+          },
+          {
+            id: 'txtProg',
+            type: 'text',
+            left: 'center',
+            top: '62%',
+            style: {
+              text: `Programado: ${valProg.toFixed(2)}%`,
+              fill: '#b5a160',
+              fontSize: 16,
+              fontFamily: 'sans-serif'
+            }
+          }
+        ],
+        series: [
+          {
+            name: 'Programación',
+            type: 'gauge',
+            startAngle: 90,
+            endAngle: -270,
+            min: 0, max: 100,
+            radius: '80%',
+            axisLine: { lineStyle: { width: 20, color: [[1, '#eee']] } },
+            splitLine: { show: false }, axisTick: { show: false }, axisLabel: { show: false }, pointer: { show: false },
+            itemStyle: { color: '#B5A160' },
+            progress: { show: true, overlap: true, roundCap: true, clip: false },
+            detail: { show: false },
+            data: [{ value: valProg }],
+            z: 2
+          },
+          {
+            name: 'Ejecución',
+            type: 'gauge',
+            startAngle: 90,
+            endAngle: -270,
+            min: 0, max: 100,
+            radius: '74%',
+            axisLine: { lineStyle: { width: 14, color: [[1, '#f3f3f3']] } },
+            splitLine: { show: false }, axisTick: { show: false }, axisLabel: { show: false }, pointer: { show: false },
+            itemStyle: { color: '#00594E' },
+            progress: { show: true, overlap: true, roundCap: true, clip: false },
+            detail: {
+              valueAnimation: true,
+              formatter: (v) => `${(v ?? 0).toFixed(2)}%`, // 🔹 siempre 2 decimales
+              color: '#00594E',
+              fontSize: 40,
+              fontWeight: 'bold',
+              offsetCenter: [0, '0%']
+            },
+            data: [{ value: valAvance }],
+            z: 3
+          }
+        ]
+      });
+
+      // Mantener fondo escalado en resize
+      window.addEventListener('resize', () => {
+        chartAvanceGeneral.resize();
+        const size = getBgSize();
+        chartAvanceGeneral.setOption({
+          graphic: [{ id: 'bg', style: { width: size, height: size } }]
+        });
+      });
+    }
+
+
+  </script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
+<style>
+  /* Estilo para las filas de la tabla */
+  #tablaPoliticas tr {
+    cursor: pointer;
+    /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+  }
+
+  /* Cambia el color de fondo de la fila al pasar el cursor */
+  #tablaPoliticas tr:hover {
+    background-color: hsla(214, 83%, 48%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #000;
+    font-weight: 500;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+
+  #tablaPoliticas2 tr:hover {
+    background-color: hsla(173, 100%, 17%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #ffffff;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+</style>
+
+</html>

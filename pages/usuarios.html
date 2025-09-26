@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/polariscore/icono.png">
+  <title id="page_title">
+    Usuarios
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show   bg-gray-100">
+
+  <div id="loadingOverlay"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:white; z-index:99999999; justify-content:center; align-items:center;">
+    <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div>
+  </div>
+
+  <div class="min-height-300 position-absolute w-100"
+    style="background: linear-gradient(135deg, #b5a160 0%, #d8c799 50%, #f5f0dc 100%); padding: 40px; color: #333;">
+  </div>
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0 d-flex justify-content-center" href="../index.html">
+        <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- Políticas -->
+        <li class="nav-item">
+          <a class="nav-link active d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPoliticas" aria-expanded="true">
+            <div class="d-flex align-items-center">
+              <img src="../assets/img/polariscore/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+            </div>
+          </a>
+          <ul class="collapse show list-unstyled ms-4" id="submenuPoliticas"> <!-- 🔥 Agregado "show" -->
+            <li class="nav-item"><a class="nav-link" href="../polariscore/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../polariscore/politicas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Políticas</span></a>
+            </li>
+
+
+
+
+            <li class="nav-item"><a class="nav-link" href="../polariscore/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Contenido exclusivo para administradores -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="false">
+            <div class="d-flex align-items-start">
+              <img src="../assets/img/s-plan/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi">
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuProyectos" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <img src="../assets/img/uniproy/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuProyectos">
+            <li class="nav-item"><a class="nav-link" href="../uniproy/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../uniproy/proyectos.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../uniproy/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Unitrópico en Cifras -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuCifras" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <img src="../assets/img/datalab/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuCifras">
+            <li class="nav-item"><a class="nav-link" href="../datalab/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../datalab/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Cifras</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../datalab/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Cuenta</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com/planeacion"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Planeación</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">SIG Unitrópico</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let navLinks = document.querySelectorAll(".nav-link[data-bs-toggle='collapse']");
+
+          navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+              let target = document.querySelector(this.getAttribute("data-bs-target"));
+
+              // Cierra todos los submenús excepto el que se está abriendo
+              document.querySelectorAll(".collapse.show").forEach(openMenu => {
+                if (openMenu !== target) {
+                  new bootstrap.Collapse(openMenu, { toggle: false }).hide();
+                }
+              });
+            });
+          });
+        });
+      </script>
+
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank"
+        class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="mailto:innovacionplaneacion@unitropico.edu.co"
+        type="button">Contactar a un Minero</a>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page"><a
+                class="opacity-5 text-white">Usuarios</a></li>
+
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0">Detalles de los Usuarios</h6>
+        </nav>
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+        </div>
+
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <div id="perfilUsuario" class="d-flex align-items-center gap-2" data-bs-toggle="dropdown" role="button"
+                aria-expanded="false">
+                <img id="imgPerfilUsuario" src="https://ui-avatars.com/api/?name=Usuario" alt="Foto"
+                  class="rounded-circle border" width="40" height="40" style="object-fit:cover;">
+              </div>
+              <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="perfilUsuario">
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="my-auto">
+                        <img id="imgPerfilUsuarioDropdown" src="https://ui-avatars.com/api/?name=Usuario"
+                          class="avatar avatar-sm me-3 rounded-circle border" style="object-fit:cover;">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm fw-bold" id="nombrePerfilUsuario"></h6>
+                        <small class="text-xs text-muted mb-0" id="correoPerfilUsuario"></small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="profile.html">
+                    <i class="fas fa-user-circle text-primary me-2"></i> Mi perfil
+                  </a>
+                </li>
+                <li>
+                  <button id="logButton" class="dropdown-item border-radius-md text-danger d-flex align-items-center">
+                    <span><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</span>
+                  </button>
+                  <style>
+                    /* Soluciona contraste para botón rojo dentro de dropdown Bootstrap */
+                    #logButton.dropdown-item.text-danger:hover,
+                    #logButton.dropdown-item.text-danger:focus {
+                      background-color: #dc3545 !important;
+                      /* danger */
+                      color: #fff !important;
+                      /* blanco */
+                      border-radius: .5rem;
+                    }
+
+                    #logButton.dropdown-item.text-danger:hover i,
+                    #logButton.dropdown-item.text-danger:focus i {
+                      color: #fff !important;
+                    }
+                  </style>
+                </li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!----------------- INICIO del contenido --------------->
+    <div class="container-fluid py-4">
+
+      <div class="row mt-1 d-flex align-items-stretch">
+        <!-- Columna completa (Título + KPIs) -->
+        <div class="col-md-12 d-flex flex-column">
+
+          <!-- Fila 1: Título, Descripción general -->
+          <div class="card shadow-sm flex-fill mb-3" style="background: #fff">
+            <div class="card-body">
+              <h6 class="text-uppercase text-muted mb-2">Módulo</h6>
+              <h2 class="text" style="font-weight: bolder;" id="titulo_politica">Administración de Usuarios</h2>
+
+              <h6 class="text-uppercase text-muted mb-2">Descripción General</h6>
+              <p style="text-align: justify;" id="objetivo_general" class="mb-0">
+                Este módulo permite la gestión integral de usuarios institucionales, incluyendo la asignación de roles,
+                el seguimiento de accesos y la verificación del cumplimiento de responsabilidades asociadas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Fila 2: KPIs Generales -->
+          <div class="row text-center flex-fill">
+
+            <div class="col-md-3 mb-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-muted">Total Usuarios Registrados</h6>
+                  <h2 id="totalUsuarios" class="fw-bold text-dark">...</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-muted">Administradores</h6>
+                  <h2 id="totalAdministradores" class="fw-bold text-dark">...</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 mb-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-muted">Responsables</h6>
+                  <h2 id="totalResponsables" class="fw-bold text-dark">...</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 mb-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-muted">Observadores</h6>
+                  <h2 id="totalObservadores" class="fw-bold text-dark">...</h2>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-2 mb-3">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="text-uppercase text-muted">Usuarios normales</h6>
+                  <h2 id="totalUsuariosNormales" class="fw-bold text-dark">...</h2>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="card shadow-sm border-0">
+            <div class="card-header bg-white pb-0 border-0">
+              <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <div class="d-flex align-items-center">
+                  <h5 class="mb-0 fw-bold">
+                    <i class="fas fa-users text-primary me-2"></i>Usuarios Registrados
+                  </h5>
+                </div>
+                <div>
+                  <button class="btn btn-gradient btn-success px-4 py-2 shadow-sm fw-semibold" id="btnAgregarUsuario">
+                    <i class="fas fa-user-plus me-2"></i>Agregar usuario
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card-body pt-2">
+              <div class="row g-2 mb-3">
+                <div class="col-md-3">
+                  <input type="text" id="buscarUsuario" class="form-control form-control-sm"
+                    placeholder="Buscar nombre o correo...">
+                </div>
+                <div class="col-md-3">
+                  <select id="filtroRol" class="form-select form-select-sm">
+                    <option value="">Todos los roles</option>
+                    <option value="admin-polariscore">Admin Polariscore</option>
+                    <option value="normal">Usuario Normal</option>
+                    <option value="observador-polariscore">Observador</option>
+                    <!-- Puedes agregar más roles dinámicamente -->
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <select id="filtroArea" class="form-select form-select-sm">
+                    <option value="">Todas las áreas</option>
+                    <!-- Opciones de áreas se llenan por JS -->
+                  </select>
+                </div>
+                <div class="col-md-3 d-flex">
+                  <button id="btnLimpiarFiltros" class="btn btn-outline-secondary btn-sm ms-auto">
+                    <i class="fas fa-sync-alt"></i> Limpiar
+                  </button>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                  <label for="filasMostrar" class="me-2 text-muted fw-semibold">Mostrar</label>
+                  <select id="filasMostrar" class="form-select form-select-sm d-inline-block w-auto">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                  <span class="ms-2 text-muted">usuarios</span>
+                </div>
+                <!-- Espacio para paginación si luego quieres -->
+              </div>
+
+              <div class="table-responsive">
+                <table class="table align-middle table-hover mb-0" id="tablaUsuarios">
+                  <thead class="table-light text-uppercase">
+                    <tr>
+                      <th class="text-start">Nombre</th>
+                      <th class="text-start">Correo</th>
+                      <th class="text-start">Roles</th>
+                      <th class="text-start">Área</th>
+                      <th class="text-center">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Usuarios dinámicos por JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!--------- Fin del contenido ----------->
+
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link pe-0 text-muted" target="_blank">Licencia</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+
+
+
+  </main>
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+        viewBox="0 0 16 16">
+        <path
+          d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+        <path
+          d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+      </svg>
+    </a>
+
+
+    <style>
+      /* Estilo base para botones flotantes */
+      .boton-politica {
+        position: fixed;
+        right: 1.8%;
+        z-index: 5;
+        background-color: #ffffff;
+        color: #00594E;
+        border-radius: 50%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease-in-out;
+        border: 2px solid #00594E;
+      }
+
+      .boton-politica:hover {
+        background-color: #00594E;
+        color: #ffffff;
+        transform: scale(1.1);
+      }
+
+      .boton-politica svg {
+        pointer-events: none;
+      }
+
+      /* Posiciones individuales */
+      #anteriorBtn {
+        bottom: 10%;
+      }
+
+      #siguienteBtn {
+        bottom: 16%;
+      }
+
+      #documentosBtn {
+        bottom: 22%;
+        border: 2px solid #b5a160;
+        color: #b5a160;
+      }
+
+      #documentosBtn:hover {
+        background-color: #b5a160;
+        color: #fff;
+      }
+
+      /* Estilo para deshabilitado visual */
+      .boton-politica.disabled {
+        opacity: 0.4;
+        pointer-events: none;
+      }
+    </style>
+    <a id="anteriorBtn" class="boton-politica" title="Política Anterior" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-left"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+      </svg>
+    </a>
+
+    <a id="siguienteBtn" class="boton-politica" title="Política Siguiente" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-right"
+        viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+      </svg>
+    </a>
+    <a id="documentosBtn" class="boton-politica" title="Ver Documentos" href="#" data-bs-toggle="modal"
+      data-bs-target="#DocumentosModal">
+      <i class="fa-solid fa-folder-open"></i>
+    </a>
+
+
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary"
+              onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+            onclick="sidebarType(this)">White</button>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+            onclick="sidebarType(this)">Dark</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="d-flex my-3">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <div class="mt-2 mb-5 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+          Download</a>
+        <a class="btn btn-outline-dark w-100"
+          href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+            data-icon="octicon-star" data-size="large" data-show-count="true"
+            aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Crear Usuario -->
+  <div class="modal fade" id="modalCrearUsuario" tabindex="-1" aria-labelledby="modalCrearUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" id="formCrearUsuario" autocomplete="off">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title text-white" id="modalCrearUsuarioLabel"><i class="fas fa-user-plus me-2"></i>Registrar
+            nuevo
+            usuario</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="inputNombreUsuario" class="form-label">Nombre completo <span
+                class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="inputNombreUsuario" required maxlength="60"
+              placeholder="Nombre y Apellido">
+          </div>
+          <div class="mb-3">
+            <label for="inputCorreoUsuario" class="form-label">Correo electrónico <span
+                class="text-danger">*</span></label>
+            <input type="email" class="form-control" id="inputCorreoUsuario" required maxlength="60"
+              placeholder="correo@ejemplo.com">
+          </div>
+          <div class="mb-3">
+            <label for="inputAreaUsuario" class="form-label">Área</label>
+            <input type="text" class="form-control" id="inputAreaUsuario" maxlength="40"
+              placeholder="Área o dependencia">
+          </div>
+          <div class="mb-3">
+            <label for="selectRolesUsuario" class="form-label">Roles <span class="text-danger">*</span></label>
+            <select multiple class="form-select" id="selectRolesUsuario" required>
+              <option value="normal">Usuario Normal</option>
+
+              <option value="admin-polariscore">Admin Polariscore</option>
+              <option value="admin-s-plan">Admin S-PLAN</option>
+              <option value="admin-uniproy">Admin Uniproy</option>
+              <option value="admin-datalab">Admin Datalab</option>
+
+              <option value="responsable-polariscore">Responsable Polariscore</option>
+              <option value="responsable-s-plan">Responsable S-PLAN</option>
+              <option value="responsable-uniproy">Responsable Uniproy</option>
+              <option value="responsable-datalab">Responsable Datalab</option>
+
+              <option value="observador-polariscore">Observador Polariscore</option>
+              <option value="observador-s-plan">Observador S-PLAN</option>
+              <option value="observador-uniproy">Observador Uniproy</option>
+              <option value="observador-datalab">Observador Datalab</option>
+
+            </select>
+            <small class="form-text text-muted">Mantén presionada Ctrl (Windows) o Cmd (Mac) para seleccionar
+              varios.</small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary fw-semibold">
+            <i class="fas fa-save me-2"></i>Guardar usuario
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="DocumentosModal" tabindex="-1" role="dialog" aria-labelledby="DocumentosLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DocumentosLabel">Documentos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido de la tarjeta aquí -->
+          <div class="col-lg-12">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="mb-0">Documentos de la Política</h6>
+              <button class="btn btn-outline-primary btn-sm mb-0" id="descargar_todo">Descargar todo</button>
+            </div>
+
+            <div id="modalDocumentos">
+              <p class="text-muted text-center">Cargando documentos...</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Eliminación de usuario -->
+  <div class="modal fade" id="modalEliminarUsuario" tabindex="-1" aria-labelledby="modalEliminarUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-sm">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-danger" id="modalEliminarUsuarioLabel"><i
+              class="fas fa-trash-alt me-2"></i>Eliminar usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="fw-semibold mb-2">¿Estás seguro que deseas eliminar este usuario?</p>
+          <div id="eliminarUsuarioInfo" class="text-secondary mb-0 small"></div>
+        </div>
+        <div class="modal-footer border-0 d-flex justify-content-end gap-2">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="btnConfirmarEliminarUsuario" type="button" class="btn btn-danger px-4">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de EDICIÓN de usuario (mejorado) -->
+  <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" id="formEditarUsuario" autocomplete="off">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title fw-bold" id="modalEditarUsuarioLabel">
+            <i class="fas fa-user-edit text-info me-2"></i> Editar Usuario
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body">
+          <input type="hidden" id="editarCorreoKey">
+
+          <div class="mb-2">
+            <label class="form-label">Correo</label>
+            <input type="email" class="form-control" id="editarCorreo" disabled>
+            <div class="form-text">El correo es el ID en la base de datos.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editarNombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="editarNombre" required maxlength="60">
+            <div class="invalid-feedback">El nombre no puede estar vacío.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="editarArea" class="form-label">Área</label>
+            <input type="text" class="form-control" id="editarArea" list="listaAreas" maxlength="60"
+              placeholder="Área o dependencia">
+            <datalist id="listaAreas"></datalist>
+          </div>
+
+          <div class="mb-2 d-flex justify-content-between align-items-center">
+            <label for="editarRoles" class="form-label mb-0">Roles <span class="text-danger">*</span></label>
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btnRolesTodos">Todos</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btnRolesNinguno">Ninguno</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="btnRolesNormal">Solo normal</button>
+            </div>
+          </div>
+          <select id="editarRoles" class="form-select mb-2" multiple>
+            <option value="normal">Usuario Normal</option>
+
+            <option value="admin-polariscore">Admin Polariscore</option>
+            <option value="admin-s-plan">Admin S-PLAN</option>
+            <option value="admin-uniproy">Admin Uniproy</option>
+            <option value="admin-datalab">Admin Datalab</option>
+
+            <option value="responsable-polariscore">Responsable Polariscore</option>
+            <option value="responsable-s-plan">Responsable S-PLAN</option>
+            <option value="responsable-uniproy">Responsable Uniproy</option>
+            <option value="responsable-datalab">Responsable Datalab</option>
+
+            <option value="observador-polariscore">Observador Polariscore</option>
+            <option value="observador-s-plan">Observador S-PLAN</option>
+            <option value="observador-uniproy">Observador Uniproy</option>
+            <option value="observador-datalab">Observador Datalab</option>
+          </select>
+          <div id="rolesChips" class="d-flex flex-wrap gap-2 small mb-3 text-muted">Sin roles seleccionados</div>
+
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="editarActivo">
+            <label class="form-check-label" for="editarActivo">Activo</label>
+          </div>
+        </div>
+
+        <div class="modal-footer d-flex justify-content-between align-items-center">
+          <button type="button" id="btnEnviarReset" class="btn btn-outline-warning">
+            <i class="fa-solid fa-envelope me-1"></i> Restablecer contraseña
+          </button>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" id="btnGuardarEditarUsuario" class="btn btn-success" disabled>
+              <span class="label">Guardar Cambios</span>
+              <span class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script>
+
+  </script>
+
+  <script type="module">
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get, set, update, onValue, remove } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    const usuariosRef = ref(db, "/usuarios");
+
+    const kpiTotalUsuarios = document.getElementById("totalUsuarios");
+    const kpiTotalAdministradores = document.getElementById("totalAdministradores");
+    const kpiTotalObservadores = document.getElementById("totalObservadores");
+    const kpiTotalUsuariosNormales = document.getElementById("totalUsuariosNormales");
+    const kpiTotalResponsables = document.getElementById("totalResponsables");
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+
+
+    const ROLES_ADMIN_PERMITIDOS = [
+      "admin-polariscore",
+      "admin-s-plan",
+      "admin-datalab",
+      "admin-uniproy"
+    ];
+
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+    // Verificar si el usuario está autenticado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+        // Mostrar foto y nombre de perfil
+        const nombreCompleto = user.displayName || user.email || "Usuario";
+        const nombreCorto = obtenerNombreCorto(nombreCompleto);
+        const foto = user.photoURL
+          ? user.photoURL
+          : `https://ui-avatars.com/api/?name=${encodeURIComponent(nombreCorto)}&background=0D8ABC&color=fff&rounded=true&size=64`;
+
+        if (document.getElementById("nombrePerfilUsuario")) {
+          document.getElementById("nombrePerfilUsuario").textContent = nombreCompleto;
+        }
+        if (document.getElementById("imgPerfilUsuario")) {
+          document.getElementById("imgPerfilUsuario").src = foto;
+          document.getElementById("imgPerfilUsuario").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuario").title = nombreCorto;
+        }
+
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            const confirmBtn = document.getElementById("confirmLogout");
+            const clonedBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+
+            clonedBtn.addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+              });
+            });
+          });
+
+          logoutListenerAdded = true;
+        }
+
+        // Buscar roles del usuario
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+
+            // Chequea si el usuario es admin permitido
+            const esAdmin = ROLES_ADMIN_PERMITIDOS.some(role => roles.includes(role));
+            if (!esAdmin) {
+              window.location.href = "../index.html";
+              return;
+            }
+
+            // Mostrar componentes según roles si quieres
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+            // ...otros roles
+
+          } else {
+            // Usuario autenticado pero no registrado en base de datos
+            window.location.href = "../index.html";
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+          window.location.href = "../index.html";
+        });
+
+      } else {
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.add("btn-primary");
+
+        logButton.addEventListener("click", () => {
+          window.location.href = "/sign-in.html";
+        });
+        // Si no está autenticado, lo puedes redirigir:
+        window.location.href = "../index.html";
+      }
+    });
+    // Función para actualizar los KPIs
+    function actualizarKPIsUsuarios() {
+      onValue(usuariosRef, (snapshot) => {
+        if (!snapshot.exists()) {
+          kpiTotalUsuarios.textContent = "0";
+          kpiTotalAdministradores.textContent = "0";
+          kpiTotalObservadores.textContent = "0";
+          kpiTotalUsuariosNormales.textContent = "0";
+          kpiTotalResponsables.textContent = "0";
+          return;
+        }
+
+        const usuarios = snapshot.val();
+        let totalUsuarios = 0;
+        let totalAdmins = 0;
+        let totalObservadores = 0;
+        let totalNormales = 0;
+        let totalResponsables = 0;
+
+        Object.values(usuarios).forEach(usuario => {
+          totalUsuarios++;
+          const roles = Array.isArray(usuario.roles) ? usuario.roles : [];
+
+          if (roles.some(r => r.startsWith("admin-"))) {
+            totalAdmins++;
+          } else if (roles.some(r => r.includes("observador"))) {
+            totalObservadores++;
+          } else if (roles.some(r => r === "normal")) {
+            totalNormales++;
+          } else if (roles.some(r => r.startsWith("responsable-"))) {
+            totalResponsables++;
+          }
+
+        });
+
+        kpiTotalUsuarios.textContent = totalUsuarios;
+        kpiTotalAdministradores.textContent = totalAdmins;
+        kpiTotalObservadores.textContent = totalObservadores;
+        kpiTotalUsuariosNormales.textContent = totalNormales;
+        kpiTotalResponsables.textContent = totalResponsables;
+
+      });
+    }
+
+    // Llama a la función cuando cargue la página o al inicializar el dashboard
+    actualizarKPIsUsuarios();
+
+    function renderDropdownRoles(rolesArray, correoKey) {
+      if (!Array.isArray(rolesArray) || rolesArray.length === 0) return '-';
+      // Un id único por usuario
+      const idDropdown = `dropdownRoles_${correoKey}`;
+      return `
+    <div class="dropdown">
+      <button class="btn btn-light btn-sm dropdown-toggle px-3" type="button" id="${idDropdown}" data-bs-toggle="dropdown" aria-expanded="false">
+        Roles <span class="badge bg-secondary">${rolesArray.length}</span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="${idDropdown}">
+        ${rolesArray.map(r => `<li><span class="dropdown-item small text-primary">${r}</span></li>`).join('')}
+      </ul>
+    </div>
+  `;
+    }
+
+
+
+    let usuariosList = []; // Para paginación y filtro rápido
+
+    async function cargarUsuariosTabla() {
+      const tabla = document.querySelector('#tablaUsuarios tbody');
+      tabla.innerHTML = `
+    <tr><td colspan="5" class="text-center text-muted py-5"><span class="spinner-border"></span> Cargando usuarios...</td></tr>
+  `;
+
+      try {
+        const snapshot = await get(usuariosRef);
+        if (!snapshot.exists()) {
+          tabla.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-5">No hay usuarios registrados.</td></tr>`;
+          return;
+        }
+        const usuarios = snapshot.val();
+        usuariosList = Object.entries(usuarios).map(([correoKey, usuario]) => ({
+          correoKey,
+          ...usuario
+        }));
+
+        renderizarUsuariosTabla();
+      } catch (error) {
+        tabla.innerHTML = `<tr><td colspan="5" class="text-center text-danger">❌ Error cargando usuarios</td></tr>`;
+        console.error("Error al cargar usuarios:", error);
+      }
+    }
+
+
+    // Llenar el select de áreas dinámicamente
+    function llenarFiltroAreas() {
+      const filtroArea = document.getElementById('filtroArea');
+      const areas = [...new Set(usuariosList.map(u => u.area).filter(Boolean))];
+      filtroArea.innerHTML = `<option value="">Todas las áreas</option>` +
+        areas.map(area => `<option value="${area}">${area}</option>`).join('');
+    }
+
+    // Lógica principal para filtrar y renderizar la tabla
+    function renderizarUsuariosTabla() {
+      const search = document.getElementById('buscarUsuario').value.trim().toLowerCase();
+      const filtroRol = document.getElementById('filtroRol').value;
+      const filtroArea = document.getElementById('filtroArea').value;
+      const filasMostrar = parseInt(document.getElementById('filasMostrar').value, 10);
+
+      let filtrados = usuariosList.filter(usuario => {
+        // Filtrar por búsqueda en nombre/correo
+        const coincideBusqueda =
+          usuario.nombre.toLowerCase().includes(search) ||
+          usuario.correo.toLowerCase().includes(search);
+
+        // Filtrar por rol
+        const coincideRol = !filtroRol || (usuario.roles && usuario.roles.includes(filtroRol));
+
+        // Filtrar por área
+        const coincideArea = !filtroArea || usuario.area === filtroArea;
+
+        return coincideBusqueda && coincideRol && coincideArea;
+      });
+
+      // Mostrar solo el número de filas seleccionado
+      filtrados = filtrados.slice(0, filasMostrar);
+
+      // Renderiza la tabla
+      const tbody = document.querySelector('#tablaUsuarios tbody');
+      if (filtrados.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-4">No se encontraron usuarios</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtrados.map(usuario => {
+        // Roles en dropdown (si hay varios)
+        const rolesDropdown = Array.isArray(usuario.roles) && usuario.roles.length > 2
+          ? `
+      <div class="dropdown">
+        <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+          ${usuario.roles[0]} <span class="badge bg-primary">${usuario.roles.length}</span>
+        </button>
+        <ul class="dropdown-menu">
+          ${usuario.roles.map(r => `<li><span class="dropdown-item">${r}</span></li>`).join('')}
+        </ul>
+      </div>
+      `
+          : (usuario.roles || []).map(r => `<span class="badge bg-primary me-1">${r}</span>`).join('');
+
+        return `
+      <tr>
+        <td title="${usuario.nombre}" class="text-start">${limitarTexto(usuario.nombre, 30)}</td>
+        <td title="${usuario.correo}" class="text-start">${limitarTexto(usuario.correo, 30)}</td>
+        <td class="text-start">${rolesDropdown}</td>
+        <td title="${usuario.area}" class="text-start">${limitarTexto(usuario.area, 30)}</td>
+        <td class="text-center">
+          <button class="btn btn-outline-info btn-sm px-2 me-1 btnEditarUsuario" title="Editar" data-id="${usuario.correo.replace(/\./g, '_')}">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-outline-danger btn-sm px-2 btnEliminarUsuario" title="Eliminar" data-id="${usuario.correo.replace(/\./g, '_')}">
+            <i class="fas fa-trash"></i>
+          </button>
+        </td>
+      </tr>`;
+      }).join('');
+    }
+
+    // Listener para búsqueda
+    document.getElementById('buscarUsuario').addEventListener('input', renderizarUsuariosTabla);
+
+    // Listener para filtro de roles
+    document.getElementById('filtroRol').addEventListener('change', renderizarUsuariosTabla);
+
+    // Listener para filtro de área
+    document.getElementById('filtroArea').addEventListener('change', renderizarUsuariosTabla);
+
+    // Listener para cantidad de filas
+    document.getElementById('filasMostrar').addEventListener('change', renderizarUsuariosTabla);
+
+    // Listener para limpiar filtros
+    document.getElementById('btnLimpiarFiltros').addEventListener('click', function () {
+      document.getElementById('buscarUsuario').value = "";
+      document.getElementById('filtroRol').value = "";
+      document.getElementById('filtroArea').value = "";
+      renderizarUsuariosTabla();
+    });
+
+    // Cuando termines de cargar usuarios (por ejemplo después de get(usuariosRef)), haz:
+    function inicializarTablaUsuarios(usuarios) {
+      usuariosList = usuarios.map(u => ({
+        nombre: u.nombre || "-",
+        correo: u.correo || "-",
+        roles: Array.isArray(u.roles) ? u.roles : [],
+        area: u.area || "-"
+      }));
+      llenarFiltroAreas();
+      renderizarUsuariosTabla();
+    }
+
+    // Ejemplo: después de cargar usuarios del backend
+    // inicializarTablaUsuarios(arrayDeUsuariosFirebase);
+
+    // Utilidad para limitar texto
+    function limitarTexto(texto, limite) {
+      return texto && texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+    }
+
+    // Llama la función al cargar la página:
+    cargarUsuariosTabla();
+
+    // Abrir modal al hacer click en el botón
+    document.getElementById("btnAgregarUsuario").addEventListener("click", function () {
+      const modal = new bootstrap.Modal(document.getElementById("modalCrearUsuario"));
+      document.getElementById("formCrearUsuario").reset(); // Limpiar antes de abrir
+      modal.show();
+    });
+
+    document.getElementById("formCrearUsuario").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // Obtén los valores
+      const nombre = document.getElementById("inputNombreUsuario").value.trim();
+      const correo = document.getElementById("inputCorreoUsuario").value.trim().toLowerCase();
+      // Obtener roles del select multiple
+      const rolesSelect = document.getElementById("selectRolesUsuario");
+      const roles = Array.from(rolesSelect.selectedOptions).map(opt => opt.value);
+
+      if (!nombre || !correo || roles.length === 0) {
+        mostrarToast("Completa todos los campos obligatorios.", "warning");
+        return;
+      }
+
+      const correoSanitizado = correo.replace(/\./g, '_');
+      const usuarioRef = ref(db, 'usuarios/' + correoSanitizado);
+
+      try {
+        const snapshot = await get(usuarioRef);
+        if (snapshot.exists()) {
+          mostrarToast("El usuario ya existe. No se modificará.", "warning");
+        } else {
+          await set(usuarioRef, {
+            nombre,
+            correo,
+            roles
+          });
+          mostrarToast("Usuario registrado correctamente.", "success");
+          // Opcional: cerrar modal después de éxito
+          bootstrap.Modal.getInstance(document.getElementById("modalCrearUsuario")).hide();
+          // Refresca la tabla de usuarios si la tienes
+          cargarUsuariosTabla && cargarUsuariosTabla();
+        }
+      } catch (error) {
+        console.error('❌ Error al guardar usuario en Firebase:', error);
+        mostrarToast("Error al registrar el usuario.", "danger");
+      }
+    });
+
+
+    function obtenerNombreCorto(nombreCompleto) {
+      if (!nombreCompleto) return "";
+      const partes = nombreCompleto.trim().split(" ");
+      if (partes.length === 1) return partes[0];
+      return partes[0] + " " + partes[1];
+    }
+
+    // Función para mostrar una notificación (Toast)
+    function mostrarToast(mensaje, tipo = "info") {
+      const toastContainer = document.getElementById("toastContainer");
+
+      // Crear toast
+      const toast = document.createElement("div");
+      toast.className = `toast align-items-center text-white bg-${tipo} border-0 show`;
+      toast.role = "alert";
+      toast.ariaLive = "assertive";
+      toast.ariaAtomic = "true";
+      toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${mensaje}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        `;
+
+      toastContainer.appendChild(toast);
+
+      // Mostrar el toast
+      const bsToast = new bootstrap.Toast(toast);
+      bsToast.show();
+
+      // Eliminar el toast después de 5 segundos
+      setTimeout(() => {
+        bsToast.hide();
+        setTimeout(() => toast.remove(), 500);
+      }, 5000);
+    }
+
+
+    // Variables para saber qué usuario vamos a eliminar
+    let usuarioEliminarId = null;
+
+    // Delegación para todos los botones de eliminar usuario
+    document.querySelector("#tablaUsuarios tbody").addEventListener("click", function (e) {
+      const btn = e.target.closest(".btnEliminarUsuario");
+      if (btn) {
+        const fila = btn.closest('tr');
+        const nombreUsuario = fila.querySelector('td').textContent.trim();
+        const correoUsuario = fila.querySelectorAll('td')[1].textContent.trim();
+        const usuarioEliminarId = btn.dataset.id;
+
+        Swal.fire({
+          title: '¿Eliminar usuario?',
+          html: `<strong>${nombreUsuario}</strong><br><span class="text-muted">${correoUsuario}</span>`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Sí, eliminar',
+          cancelButtonText: 'Cancelar',
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#6c757d',
+          focusCancel: true,
+          customClass: {
+            confirmButton: 'btn btn-danger',
+            cancelButton: 'btn btn-secondary'
+          },
+          buttonsStyling: false
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            try {
+              const usuarioRef = ref(db, 'usuarios/' + usuarioEliminarId);
+              await remove(usuarioRef);
+              Swal.fire({
+                title: '¡Eliminado!',
+                text: 'Usuario eliminado correctamente.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#28a745',
+                customClass: { confirmButton: 'btn btn-success' },
+                buttonsStyling: false
+              });
+              if (typeof cargarUsuariosTabla === "function") cargarUsuariosTabla();
+            } catch (error) {
+              Swal.fire({
+                title: 'Error',
+                text: 'Error al eliminar el usuario.',
+                icon: 'error',
+                confirmButtonText: 'Cerrar',
+                confirmButtonColor: '#d33',
+                customClass: { confirmButton: 'btn btn-danger' },
+                buttonsStyling: false
+              });
+              console.error("❌ Error eliminando usuario:", error);
+            }
+          }
+        });
+      }
+    });
+
+    // Listener para abrir el modal de edición con datos cargados
+    document.querySelector("#tablaUsuarios tbody").addEventListener("click", async function (e) {
+      const btn = e.target.closest(".btnEditarUsuario");
+      if (!btn) return;
+      const correoKey = btn.dataset.id;
+
+      // Busca los datos del usuario
+      const usuarioRef = ref(db, 'usuarios/' + correoKey);
+      const snapshot = await get(usuarioRef);
+      if (!snapshot.exists()) {
+        Swal.fire("No encontrado", "No se encontró el usuario en la base de datos.", "error");
+        return;
+      }
+      const usuario = snapshot.val();
+
+      // Llena los campos del modal
+      document.getElementById("editarCorreoKey").value = correoKey;
+      document.getElementById("editarNombre").value = usuario.nombre || "";
+      document.getElementById("editarArea").value = usuario.area || "";
+
+      // Rellenar roles en select (multi)
+      const roles = Array.isArray(usuario.roles) ? usuario.roles : [];
+      const selectRoles = document.getElementById("editarRoles");
+      Array.from(selectRoles.options).forEach(opt => {
+        opt.selected = roles.includes(opt.value);
+      });
+
+      // Mostrar modal
+      const modal = new bootstrap.Modal(document.getElementById("modalEditarUsuario"));
+      modal.show();
+    });
+
+    // ---------- Helpers básicos ----------
+    const btnGuardarEdit = document.getElementById("btnGuardarEditarUsuario");
+
+    function sanitizeKey(email) { return (email || "").replace(/\./g, "_"); }
+    function rolesFromSelect(select) { return Array.from(select.selectedOptions).map(o => o.value); }
+    function setSelectRoles(select, roles) { Array.from(select.options).forEach(o => { o.selected = roles.includes(o.value); }); }
+    function renderRolesChips(roles) {
+      const cont = document.getElementById("rolesChips");
+      if (!cont) return;
+      cont.innerHTML = roles.length
+        ? roles.map(r => `<span class="badge bg-primary">${r}</span>`).join("")
+        : '<span class="text-muted">Sin roles seleccionados</span>';
+    }
+    function poblarDatalistAreas() {
+      const dl = document.getElementById("listaAreas");
+      if (!dl) return;
+      const areas = [...new Set((usuariosList || []).map(u => u.area).filter(Boolean))].sort();
+      dl.innerHTML = areas.map(a => `<option value="${a}">`).join("");
+    }
+
+    // ---------- Estado de edición ----------
+    let initialEditState = null;
+    let editingCorreoKey = null;
+
+    function currentEditState() {
+      const selectRoles = document.getElementById("editarRoles");
+      return {
+        nombre: document.getElementById("editarNombre").value.trim(),
+        area: document.getElementById("editarArea").value.trim(),
+        roles: [...new Set(rolesFromSelect(selectRoles))],
+        activo: document.getElementById("editarActivo").checked
+      };
+    }
+    function statesEqual(a, b) {
+      if (!a || !b) return false;
+      if (a.nombre !== b.nombre) return false;
+      if (a.area !== b.area) return false;
+      if (a.activo !== b.activo) return false;
+      if (a.roles.length !== b.roles.length) return false;
+      const sa = [...a.roles].sort().join("|");
+      const sb = [...b.roles].sort().join("|");
+      return sa === sb;
+    }
+
+    // ---------- Abrir modal y cargar datos ----------
+    async function openEditarUsuarioModal(correoKey) {
+      try {
+        const usuarioRef = ref(db, 'usuarios/' + correoKey);
+        const snap = await get(usuarioRef);
+
+        if (!snap.exists()) {
+          Swal.fire("No encontrado", "No se encontró el usuario en la base de datos.", "error");
+          return;
+        }
+
+        const u = snap.val();
+        editingCorreoKey = correoKey;
+
+        document.getElementById("editarCorreoKey").value = correoKey;
+        document.getElementById("editarCorreo").value = u.correo || correoKey.replace(/_/g, ".");
+        document.getElementById("editarNombre").value = u.nombre || "";
+        document.getElementById("editarArea").value = u.area || "";
+
+        const roles = Array.isArray(u.roles) ? [...new Set(u.roles)] : [];
+        setSelectRoles(document.getElementById("editarRoles"), roles);
+        renderRolesChips(roles);
+
+        document.getElementById("editarActivo").checked = (u.activo !== false); // default true
+
+        initialEditState = {
+          nombre: u.nombre || "",
+          area: u.area || "",
+          roles,
+          activo: (u.activo !== false)
+        };
+
+        poblarDatalistAreas();
+        btnGuardarEdit.disabled = true;
+
+        const modal = new bootstrap.Modal(document.getElementById("modalEditarUsuario"));
+        modal.show();
+      } catch (err) {
+        console.error(err);
+        Swal.fire("Error", "No fue posible cargar los datos del usuario.", "error");
+      }
+    }
+
+    // ---------- Habilitar / deshabilitar Guardar al cambiar algo ----------
+    ["editarNombre", "editarArea", "editarActivo", "editarRoles"].forEach(id => {
+      const ev = (id === "editarRoles") ? "change" : "input";
+      document.getElementById(id).addEventListener(ev, () => {
+        const cur = currentEditState();
+        btnGuardarEdit.disabled = statesEqual(initialEditState, cur);
+        if (id === "editarRoles") renderRolesChips(cur.roles);
+      });
+    });
+
+    // ---------- Acciones rápidas de roles ----------
+    document.getElementById("btnRolesTodos").addEventListener("click", () => {
+      const sel = document.getElementById("editarRoles");
+      Array.from(sel.options).forEach(o => o.selected = true);
+      sel.dispatchEvent(new Event("change"));
+    });
+    document.getElementById("btnRolesNinguno").addEventListener("click", () => {
+      const sel = document.getElementById("editarRoles");
+      Array.from(sel.options).forEach(o => o.selected = false);
+      sel.dispatchEvent(new Event("change"));
+    });
+    document.getElementById("btnRolesNormal").addEventListener("click", () => {
+      const sel = document.getElementById("editarRoles");
+      Array.from(sel.options).forEach(o => o.selected = (o.value === "normal"));
+      sel.dispatchEvent(new Event("change"));
+    });
+
+    // ---------- Enviar email de restablecimiento ----------
+    document.getElementById("btnEnviarReset").addEventListener("click", async () => {
+      const correo = (document.getElementById("editarCorreo").value || "").trim();
+      if (!correo) {
+        (typeof mostrarToast === "function") ? mostrarToast("Correo inválido.", "warning") : Swal.fire("Atención", "Correo inválido.", "warning");
+        return;
+      }
+      try {
+        await sendPasswordResetEmail(auth, correo);
+        (typeof mostrarToast === "function") ? mostrarToast("Se envió el correo de restablecimiento.", "success") : Swal.fire("Listo", "Se envió el correo de restablecimiento.", "success");
+      } catch (err) {
+        console.error(err);
+        (typeof mostrarToast === "function") ? mostrarToast("No se pudo enviar el correo de restablecimiento.", "danger") : Swal.fire("Error", "No se pudo enviar el correo de restablecimiento.", "error");
+      }
+    });
+
+    // ---------- Atajo Ctrl/Cmd + S dentro del modal ----------
+    document.getElementById("modalEditarUsuario").addEventListener("keydown", (ev) => {
+      if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "s") {
+        ev.preventDefault();
+        document.getElementById("formEditarUsuario").requestSubmit();
+      }
+    });
+
+    document.getElementById("formEditarUsuario").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const correoKey = document.getElementById("editarCorreoKey").value;
+      const btn = document.getElementById("btnGuardarEditarUsuario");
+      const spin = btn.querySelector(".spinner-border");
+
+      const { nombre, area, roles, activo } = currentEditState();
+
+      if (!nombre) {
+        Swal.fire("Campo requerido", "El nombre no puede estar vacío.", "warning");
+        return;
+      }
+      if (roles.length === 0) {
+        Swal.fire("Roles requeridos", "Debes asignar al menos un rol.", "warning");
+        return;
+      }
+
+      // Si el usuario que edita es el mismo y se quita todos los admin-roles, advertir
+      const selfKey = auth?.currentUser?.email ? sanitizeKey(auth.currentUser.email) : null;
+      const quitarTodosAdminsPropio =
+        (selfKey && selfKey === correoKey &&
+          (initialEditState?.roles || []).some(r => r.startsWith("admin-")) &&
+          !roles.some(r => r.startsWith("admin-")));
+
+      if (quitarTodosAdminsPropio) {
+        const conf = await Swal.fire({
+          title: "¿Quitar permisos de administrador?",
+          text: "Estás quitando todos tus roles de administrador. Podrías perder acceso a esta pantalla.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Sí, continuar",
+          cancelButtonText: "Cancelar"
+        });
+        if (!conf.isConfirmed) return;
+      }
+
+      try {
+        btn.disabled = true;
+        spin.classList.remove("d-none");
+
+        const usuarioRef = ref(db, 'usuarios/' + correoKey);
+        await update(usuarioRef, {
+          nombre,
+          area: area || null,
+          roles: [...new Set(roles)],
+          activo
+        });
+
+        initialEditState = { nombre, area, roles: [...new Set(roles)], activo };
+        if (typeof mostrarToast === "function") { Swal.fire("Actualizado", "Se guardaron los cambios.", "success");}
+
+        bootstrap.Modal.getInstance(document.getElementById("modalEditarUsuario")).hide();
+        if (typeof cargarUsuariosTabla === "function") cargarUsuariosTabla();
+      } catch (error) {
+        console.error(error);
+        (typeof mostrarToast === "function")
+          ? mostrarToast("No se pudieron guardar los cambios.", "danger")
+          : Swal.fire("Error", "No se pudieron guardar los cambios.", "error");
+      } finally {
+        spin.classList.add("d-none");
+        btn.disabled = false;
+      }
+    });
+
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../assets/js/polariscore-charts.js"></script>
+
+  <style>
+    /* Aplicar estilos solo a la tabla con el id tableObjetivos_ */
+    #tableObjetivos_ {
+      width: 100%;
+      /* Hacer que la tabla ocupe el 100% del ancho del contenedor */
+      table-layout: fixed;
+      /* Hacer que las celdas tengan un ancho fijo */
+      border-collapse: collapse;
+      /* Combina bordes adyacentes entre celdas */
+    }
+
+    #tableObjetivos_ th,
+    #tableObjetivos_ td {
+      padding: 8px;
+      /* Espaciado interno (padding) */
+      text-align: justify;
+      /* Justificar el texto */
+      vertical-align: top;
+      /* Alinear el texto en la parte superior */
+      border: 1px solid #ddd;
+      /* Aplicar bordes entre las celdas */
+      border-top: none;
+      /* Eliminar el borde superior */
+      border-left: none;
+      /* Eliminar el borde izquierdo */
+      word-wrap: break-word;
+      /* Permitir que las palabras largas se rompan y ajusten */
+      white-space: normal;
+      /* Permitir saltos de línea en el texto */
+      font-size: 0.8em;
+    }
+
+    /* Estilos para las cabeceras */
+    #tableObjetivos_ th {
+      background-color: #f2f2f2;
+      /* Color de fondo de los encabezados */
+      border: 1px solid #ddd;
+      /* Aplicar bordes internos para las cabeceras */
+      border-left: none;
+      /* Sin borde izquierdo */
+      border-top: none;
+      /* Sin borde superior */
+    }
+
+
+
+    #tableObjetivos_ td:last-child,
+    #tableObjetivos_ th:last-child {
+      border-right: none;
+      /* Eliminar el borde derecho de la última columna */
+    }
+
+    #tableObjetivos_ tr {
+      line-height: 1.5;
+      /* Ajustar la altura de línea */
+    }
+
+    /* Agrega un overlay con el degradado */
+    #carrusel_img .carousel-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 50%);
+      z-index: 1;
+    }
+
+    /* Imágenes del carrusel */
+    #carrusel_img .carousel-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      opacity: 1;
+      z-index: 0;
+      /* Asegura que la imagen esté detrás del overlay */
+    }
+
+    /* Texto en el carrusel */
+    #carrusel_img .carousel-caption {
+      position: absolute;
+      z-index: 2;
+      /* Asegura que el texto esté sobre el overlay */
+      color: white;
+    }
+
+    #progresoContainer {
+      width: 100%;
+      max-width: 600px;
+      /* Ajusta según sea necesario */
+      margin: auto;
+      /* Centrar */
+
+    }
+
+    .fixed-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #00594e;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+
+    .fixed-btn:hover {
+      background-color: #00453e;
+      /* Un tono más oscuro al hacer hover */
+    }
+
+    .sort-icon {
+      cursor: pointer;
+      margin-left: 5px;
+      color: #6c757d;
+      /* Color gris inicial */
+      transition: color 0.3s ease;
+      font-size: 0.7rem;
+      /* o el tamaño que prefieras */
+      margin-left: 3px;
+    }
+
+    .sort-icon:hover {
+      color: #b5a160;
+      /* Color primary en hover */
+    }
+  </style>
+
+</body>
+
+</html>

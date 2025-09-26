@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/polariscore/icono.png">
+  <title>
+    Lista de politicas
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --uni-verde: #00594E;
+      --uni-dorado: #B5A160;
+    }
+
+    /* Fondo superior */
+    .bg-top {
+      background: url('../assets/img/polariscore/bg-gradient.png') no-repeat center center/cover;
+      min-height: 300px;
+    }
+
+    /* KPIs */
+    .kpi-row-dashboard .kpi-card {
+      border-radius: 1.15em;
+      transition: box-shadow .19s;
+      background: #ffffff62;
+      min-height: 120px;
+    }
+
+    .kpi-row-dashboard .kpi-card:hover {
+      box-shadow: 0 7px 28px #07d6bc44, 0 2px 10px #b5a16010;
+    }
+
+    .kpi-icon {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: #f7fafc;
+      border-radius: 50%;
+      margin-bottom: .5em;
+    }
+
+    .kpi-label {
+      font-size: 1.02em;
+      color: #495057;
+      font-weight: 500;
+      letter-spacing: .01em;
+    }
+
+    .kpi-value {
+      font-size: 2.1em;
+      font-weight: 800;
+      color: #222;
+    }
+
+    .kpi-progress {
+      border-radius: 4px;
+      background: #eaf2f6;
+    }
+
+    /* Navbar responsive helpers */
+    @media (max-width:768px) {
+      .ocultar {
+        display: none !important
+      }
+
+      .resaltar {
+        background-color: #00594e;
+        border-radius: 0
+      }
+
+      .fecha_actualizacion {
+        font-size: .9rem
+      }
+    }
+
+    /* ===== Dock derecho ===== */
+    .right-dock {
+      position: fixed;
+      right: 18px;
+      top: 25%;
+      z-index: 3;
+      /* > modal backdrop (1050) y sidenav */
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+
+    .dock-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+      transition: transform .15s, box-shadow .15s, background .15s, color .15s;
+    }
+
+    .dock-btn.active,
+    .dock-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
+      background: linear-gradient(135deg, var(--uni-verde), #0e8675);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .dock-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: var(--uni-dorado);
+      color: #fff;
+      border-radius: 20px;
+      padding: 2px 6px;
+      font-size: .7rem;
+      font-weight: 600;
+      border: 2px solid #fff;
+    }
+
+    /* ===== Panel de tabs dentro del flujo ===== */
+    .side-tabs {
+      position: relative;
+      /* Ya no es fixed */
+      right: auto;
+      top: auto;
+      bottom: auto;
+      width: 100%;
+      max-width: 100%;
+      background: #ffffff00;
+      border-radius: 20px;
+      border: 0px solid #e9ecef;
+      overflow: hidden;
+      z-index: 1;
+      display: block;
+      /* siempre visible dentro del container */
+      margin-top: 1rem;
+    }
+
+    .side-tabs .header {
+      background: transparent;
+      color: #fff;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .side-tabs .body {
+      height: auto;
+      overflow: auto;
+      padding: 16px;
+      background: transparent;
+    }
+
+    .tag {
+      font-size: .7rem;
+      border-radius: 999px;
+      padding: .2rem .5rem;
+      background: #eef5f3;
+      color: #1f5d57;
+    }
+
+    .mini-title {
+      font-weight: 700;
+      font-size: .9rem;
+      color: #133c38;
+    }
+
+    .progress {
+      height: .5rem;
+    }
+
+    /* ===== Ajuste de padding para que el dock no tape el contenido ===== */
+    .has-dock-padding {
+      padding-right: 110px;
+    }
+
+    /* ===== Mobile: dock inferior ===== */
+    @media (max-width:768px) {
+      .right-dock {
+        right: 50%;
+        transform: translateX(50%);
+        bottom: 10px;
+        top: auto;
+        flex-direction: row;
+        background: #fff;
+        padding: .5rem;
+        border-radius: 16px;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, .15);
+      }
+
+      .side-tabs {
+        margin-top: .5rem;
+        border-radius: 16px;
+      }
+
+      .has-dock-padding {
+        padding-right: 0;
+      }
+    }
+
+    /* ===== Cards de Políticas Suscritas ===== */
+    .policy-card {
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+    }
+
+    .policy-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
+    }
+
+    /* Contenedor del banner con overlay */
+    .policy-card .banner-container {
+      position: relative;
+    }
+
+    .policy-card .banner {
+      height: 160px;
+      /* Altura ajustada */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    /* Overlay oscuro para el banner */
+    .policy-card .banner .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      /* Overlay oscuro */
+      border-radius: 16px 16px 0 0;
+      z-index: 1;
+    }
+
+    /* Contenido del banner: título y oficina superpuestos en la parte inferior */
+    .policy-card .banner .banner-content {
+      position: absolute;
+      bottom: 15px;
+      /* Ajustado para alinearlo en la parte inferior */
+      left: 20px;
+      transform: translateY(0);
+      /* Eliminado el translateY para alinear al fondo */
+      z-index: 1;
+    }
+
+    .policy-card .banner .banner-content h6 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: .25rem;
+    }
+
+    .policy-card .banner .banner-content .tag {
+      font-size: .7rem;
+      border-radius: 999px;
+      padding: .2rem .5rem;
+      background: #eef5f3;
+      color: #1f5d57;
+    }
+
+    /* Cuerpo */
+    .policy-card .card-body {
+      padding: 1rem;
+    }
+
+    .policy-card h6 {
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .policy-card .tag {
+      font-size: .7rem;
+      border-radius: 999px;
+      padding: .2rem .5rem;
+      background: #eef5f3;
+      color: #1f5d57;
+    }
+
+    .policy-card .progress {
+      height: .5rem;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .policy-card .progress-bar {
+      transition: width .25s ease;
+    }
+
+    .policy-card .btn-icon {
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border-radius: .5rem;
+    }
+
+    /* Botón de opciones: posición y estilo */
+    .card-toolbar {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: .25rem;
+      z-index: 2;
+    }
+
+    .card-toolbar .btn-icon {
+      background-color: rgba(255, 255, 255, .8);
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+      transition: box-shadow .15s ease;
+    }
+
+    .card-toolbar .btn-icon:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+    }
+
+    /* Porcentaje: ajustado para mejor visibilidad */
+    .policy-card .small {
+      font-size: 0.8rem;
+      color: #3e4a4b;
+    }
+
+    .policy-card .progress .progress-bar {
+      border-radius: 10px;
+    }
+
+
+
+
+    /* Hover tablas (si se usan) */
+    #tablaPoliticas tr {
+      cursor: pointer;
+    }
+
+    #tablaPoliticas tr:hover {
+      background-color: hsla(214, 83%, 48%, .233);
+      color: #000;
+      font-weight: 500;
+    }
+
+    #tablaPoliticas2 tr:hover {
+      background-color: hsla(173, 100%, 17%, .233);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <div class="min-height-300 position-absolute w-100"
+    style="background: url('../assets/img/polariscore/bg-gradient.png') no-repeat center center/cover;">
+  </div>
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+    id="sidenav-main" style="z-index:1040;">
+    <div class="sidenav-header mb-3">
+      <a class="navbar-brand m-0 d-flex flex-column align-items-center" href="../index.html">
+        <!-- Logo institucional Argon -->
+        <img src="../assets/img/polariscore/logo.png" class="navbar-brand-img mb-0" style="max-height:60px;"
+          alt="main_logo">
+
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0 mb-2">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- INICIO -->
+
+        <li class="nav-item ">
+          <a class="nav-link active d-flex align-items-center gap-2" href="index.html">
+            <i class="fa-solid fa-home text-primary"></i>
+            <span class="nav-link-text text-primary">Inicio</span>
+          </a>
+
+        </li>
+
+        <!-- Políticas -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="#" data-bs-toggle="collapse"
+            data-bs-target="#submenuPoliticas" aria-expanded="false">
+            <i class="fa-solid fa-landmark text-success"></i>
+            <span class="nav-link-text">Políticas</span>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+            <li><a class="nav-link" href="../polariscore/dashboard.html"><i
+                  class="fa-solid fa-chart-pie text-success"></i> Análisis General</a></li>
+            <li><a class="nav-link" href="../polariscore/politicas.html"><i
+                  class="fa-solid fa-list-ul text-primary"></i> Lista de Políticas</a></li>
+            <li class="admin-responsable-only" style="display: none;"><a class="nav-link"
+                href="../polariscore/politicas.html?t="><i class="fa-regular fa-folder-open text-info"></i> Mis
+                Políticas</a></li>
+            <li><a class="nav-link" href="../polariscore/observaciones.html"><i
+                  class="fa-regular fa-comment-dots text-info"></i> Observaciones</a></li>
+          </ul>
+        </li>
+
+        <!-- Seleccionar Política -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2" href="#" data-bs-toggle="collapse"
+            data-bs-target="#cargarPoliticas" aria-expanded="true">
+            <i class="fa-solid fa-gavel text-warning"></i>
+            <span class="nav-link-text">Seleccionar política</span>
+          </a>
+          <ul class="collapse show list-unstyled ms-4" id="cargarPoliticas"></ul>
+        </li>
+
+        <!-- Otras Apps -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 collapsed" href="#" data-bs-toggle="collapse"
+            data-bs-target="#submenuPdi" aria-expanded="false">
+            <i class="fa-solid fa-rocket text-danger"></i>
+            <span class="nav-link-text">Otras Apps</span>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi">
+            <li>
+              <a class="nav-link" href="https://sigunitropico.com" target="_blank">
+                <i class="fa-solid fa-globe text-danger"></i> SIG Unitrópico
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="https://sigunitropico.com/planeacion" target="_blank">
+                <i class="fa-solid fa-chart-line text-info"></i> Planeación
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Admin (solo visible para admins) -->
+        <li class="nav-item mt-3 admin-only admin-polariscore" style="display: none;">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Administración</h6>
+        </li>
+        <li class="nav-item admin-only admin-polariscore" style="display: none;">
+          <a class="nav-link d-flex align-items-center gap-2" href="../pages/usuarios.html" target="_blank">
+            <i class="fa-solid fa-users text-danger"></i>
+            <span class="nav-link-text">Usuarios</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Login/Logout Aside: centrado y sin overlap -->
+    <div class="sidenav-footer w-100 text-center mt-auto pb-3">
+
+      <div class="card card-plain shadow-none mb-2" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-2 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <div id="asideAuthBtn" class="mb-2 d-flex flex-column align-items-center"></div>
+      <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank"
+        class="btn btn-dark btn-sm w-70 mb-2"><i class="fa-solid fa-book me-2"></i>Manual de uso</a>
+      <a class="btn btn-primary btn-sm w-70 mb-0" href="mailto:innovacionplaneacion@unitropico.edu.co" type="button">
+        <i class="fa-solid fa-envelope me-2"></i> Soporte técnico
+      </a>
+
+    </div>
+  </aside>
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <style>
+      @media (max-width: 768px) {
+        .ocultar {
+          display: none !important;
+        }
+
+        .margin-top-5 {
+          margin-top: 5%;
+        }
+
+        .resaltar {
+          background-color: #00594e;
+          border-radius: 0px;
+          margin: 0px auto !important;
+        }
+
+        .busqueda {
+          margin-top: 15%;
+        }
+      }
+    </style>
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl resaltar " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Políticas</a></li>
+            <li class="breadcrumb-item text-sm text-white active ocultar" aria-current="page">Lista de politicas</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0 ocultar">Políticas Institucionales</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <div id="perfilUsuario" class="d-flex align-items-center gap-2" data-bs-toggle="dropdown" role="button"
+                aria-expanded="false">
+                <img id="imgPerfilUsuario" src="https://ui-avatars.com/api/?name=Usuario" alt="Foto"
+                  class="rounded-circle border" width="40" height="40" style="object-fit:cover;">
+              </div>
+              <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="perfilUsuario">
+                <li>
+                  <a class="dropdown-item border-radius-md" href="../pages/profile.html">
+                    <div class="d-flex py-1 align-items-center">
+                      <div class="my-auto">
+                        <img id="imgPerfilUsuarioDropdown" src="https://ui-avatars.com/api/?name=Usuario"
+                          class="avatar avatar-sm me-3 rounded-circle border" style="object-fit:cover;">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center text-dark">
+                        <h6 class="mb-0 text-sm text-default fw-bold" id="nombrePerfilUsuario" style="color: #000!important;"> Usuario</h6>
+                        <small class="text-xs text-muted mb-0" id="correoPerfilUsuario">Correo</small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" id="rolesUsuario">
+                    <i class="fas fa-user-circle text-primary me-2"></i> Mi perfil
+                  </a>
+                </li>
+                <li>
+                  <button id="logButton" class="dropdown-item border-radius-md text-danger d-flex align-items-center">
+                    <span><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</span>
+                  </button>
+                  <style>
+                    /* Soluciona contraste para botón rojo dentro de dropdown Bootstrap */
+                    #logButton.dropdown-item.text-danger:hover,
+                    #logButton.dropdown-item.text-danger:focus {
+                      background-color: #dc3545 !important;
+                      /* danger */
+                      color: #fff !important;
+                      /* blanco */
+                      border-radius: .5rem;
+                    }
+
+                    #logButton.dropdown-item.text-danger:hover i,
+                    #logButton.dropdown-item.text-danger:focus i {
+                      color: #fff !important;
+                    }
+                  </style>
+                </li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- ===== CONTENIDO ===== -->
+    <div class="container-fluid py-1 has-dock-padding">
+
+      <!-- ==== BOTONERA LATERAL ==== -->
+      <div class="right-dock" id="rightDock" aria-label="Accesos rápidos">
+        <button class="dock-btn active position-relative" data-bs-target="#tab-politicas" aria-label="Políticas"
+          data-title="Políticas">
+          <i class="fa-solid fa-scroll fa-lg" aria-hidden="true"></i>
+        </button>
+        <button class="dock-btn position-relative" data-bs-target="#tab-notificaciones" aria-label="Notificaciones"
+          data-title="Notificaciones">
+          <span class="dock-badge">3</span>
+          <i class="fa-solid fa-bell fa-lg" aria-hidden="true"></i>
+        </button>
+        <button class="dock-btn position-relative" data-bs-target="#tab-observaciones" aria-label="Observaciones"
+          data-title="Observaciones">
+          <i class="fa-solid fa-comments fa-lg" aria-hidden="true"></i>
+        </button>
+        <button class="dock-btn position-relative" data-bs-target="#tab-carga" aria-label="Ambiente de carga"
+          data-title="Ambiente de carga">
+          <i class="fa-solid fa-cloud-arrow-up fa-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- ==== PANEL LATERAL ==== -->
+      <div class="side-tabs show" id="sideTabs" aria-live="polite">
+        <div class="header">
+
+          <div class="ms-auto">
+            <button class="btn btn-sm btn-light text-dark" id="btnClosePanel" aria-label="Cerrar panel">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="body">
+          <div class="tab-content" id="dockTabContent">
+            <!-- POLÍTICAS -->
+            <div class="tab-pane fade show active" id="tab-politicas" role="tabpanel" tabindex="0">
+              <div id="dockBlock">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="badge bg-white mini-title text-muted" id="tituloMisPoliticas">Mis políticas </span>
+                  <span class="tag"><i class="fa-solid fa-eye me-1"></i>Cantidad: <span
+                      id="cantidadMisPoliticas">4</span></span>
+                </div>
+                <div class="row g-3 mb-4" id="rowMisPoliticas">
+                  <div id="spinner" class="spinner-border text-primary" role="status"
+                    style="margin: 20px auto; display: block;">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="badge bg-white mini-title text-muted">Políticas suscritas</span>
+                <span class="tag"><i class="fa-solid fa-eye me-1"></i>Cantidad: <span
+                    id="cantidadMisSuscripciones">4</span></span>
+              </div>
+
+              <div class="row g-3" id="rowMisSuscripciones">
+                <div id="spinner" class="spinner-border text-primary" role="status"
+                  style="margin: 20px auto; display: block;">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- NOTIFICACIONES -->
+            <div class="tab-pane fade" id="tab-notificaciones" role="tabpanel" tabindex="0">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="mini-title">Notificaciones recientes</span>
+                <span class="tag"><i class="fa-solid fa-bell me-1"></i>3 nuevas</span>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex align-items-start gap-3">
+                  <i class="fa-solid fa-circle-exclamation text-warning mt-1"></i>
+                  <div>
+                    <div class="fw-semibold">Acción vencida</div>
+                    <small class="text-muted">La acción <b>AI-03</b> superó su fecha de entrega.</small>
+                  </div>
+                  <span class="ms-auto small text-muted">hace 2h</span>
+                </li>
+                <li class="list-group-item d-flex align-items-start gap-3">
+                  <i class="fa-solid fa-clipboard-check text-success mt-1"></i>
+                  <div>
+                    <div class="fw-semibold">Evidencia aprobada</div>
+                    <small class="text-muted">Se aprobó la evidencia <b>EV-112</b> en Integridad.</small>
+                  </div>
+                  <span class="ms-auto small text-muted">ayer</span>
+                </li>
+                <li class="list-group-item d-flex align-items-start gap-3">
+                  <i class="fa-solid fa-message text-primary mt-1"></i>
+                  <div>
+                    <div class="fw-semibold">Nuevo comentario</div>
+                    <small class="text-muted">Hay observaciones en la acción <b>AC-21</b>.</small>
+                  </div>
+                  <span class="ms-auto small text-muted">hace 3d</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- OBSERVACIONES -->
+            <div class="tab-pane fade" id="tab-observaciones" role="tabpanel" tabindex="0">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="mini-title">Observaciones</span>
+                <span class="tag"><i class="fa-solid fa-filter me-1"></i>Filtradas por política</span>
+              </div>
+
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="d-flex gap-2 align-items-start mb-3">
+                    <img src="https://i.pravatar.cc/40?img=13" class="rounded-circle" width="36" height="36"
+                      alt="Supervisor">
+                    <div class="p-2 rounded-3" style="background:#eef5f3;max-width:85%;">
+                      <div class="fw-semibold small">Supervisor</div>
+                      <div class="small">Por favor, adjuntar acta de socialización de la acción AC-21.</div>
+                      <div class="small text-muted">hoy, 09:12</div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-2 align-items-start justify-content-end mb-3">
+                    <div class="p-2 rounded-3 bg-light" style="max-width:85%;">
+                      <div class="fw-semibold small text-end">Responsable</div>
+                      <div class="small">Se cargará en el transcurso del día. ¿Requiere firma digital?</div>
+                      <div class="small text-muted text-end">hoy, 09:20</div>
+                    </div>
+                    <img src="https://i.pravatar.cc/40?img=5" class="rounded-circle" width="36" height="36"
+                      alt="Responsable">
+                  </div>
+
+                  <div class="input-group">
+                    <span class="input-group-text bg-white"><i class="fa-regular fa-face-smile"></i></span>
+                    <input type="text" class="form-control" placeholder="Escribe una observación…">
+                    <button class="btn btn-success"><i class="fa-solid fa-paper-plane me-1"></i>Enviar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AMBIENTE DE CARGA -->
+            <div class="tab-pane fade" id="tab-carga" role="tabpanel" tabindex="0">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="mini-title">Ambiente de carga</span>
+                <span class="tag"><i class="fa-solid fa-shield-check me-1"></i>Validación básica</span>
+              </div>
+
+              <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                  <div class="border rounded-3 p-4 text-center bg-light">
+                    <i class="fa-solid fa-cloud-arrow-up fa-2x mb-2 text-success"></i>
+                    <h6 class="mb-1">Arrastra tus archivos aquí</h6>
+                    <small class="text-muted d-block mb-3">PDF, DOCX, XLSX, PNG • Máx. 20MB</small>
+                    <button class="btn btn-outline-success"><i class="fa-solid fa-folder-open me-1"></i>Seleccionar
+                      archivos</button>
+                  </div>
+
+                  <div class="mt-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="mini-title">Cargas recientes</span>
+                      <button class="btn btn-sm btn-outline-secondary"><i
+                          class="fa-solid fa-rotate-right me-1"></i>Reintentar fallidas</button>
+                    </div>
+                    <ul class="list-group list-group-flush mt-2">
+                      <li class="list-group-item d-flex align-items-center gap-3">
+                        <i class="fa-regular fa-file-pdf text-danger"></i>
+                        <div class="flex-grow-1">
+                          <div class="d-flex justify-content-between">
+                            <span>Acta-AC21.pdf</span><small class="text-muted">1.2 MB</small>
+                          </div>
+                          <div class="progress mt-1">
+                            <div class="progress-bar bg-success" style="width:100%">100%</div>
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-light" aria-label="Ver"><i class="fa-solid fa-eye"></i></button>
+                        <button class="btn btn-sm btn-light" aria-label="Eliminar"><i
+                            class="fa-solid fa-trash"></i></button>
+                      </li>
+                      <li class="list-group-item d-flex align-items-center gap-3">
+                        <i class="fa-regular fa-file-excel text-success"></i>
+                        <div class="flex-grow-1">
+                          <div class="d-flex justify-content-between">
+                            <span>Indicadores_2025.xlsx</span><small class="text-muted">456 KB</small>
+                          </div>
+                          <div class="progress mt-1">
+                            <div class="progress-bar" style="width:60%; background:var(--uni-dorado);">60%</div>
+                          </div>
+                        </div>
+                        <button class="btn btn-sm btn-light" aria-label="Pausar"><i
+                            class="fa-solid fa-pause"></i></button>
+                        <button class="btn btn-sm btn-light" aria-label="Cancelar"><i
+                            class="fa-solid fa-xmark"></i></button>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /tab-content -->
+        </div><!-- /body -->
+      </div><!-- /side-tabs -->
+    </div><!-- /container -->
+
+
+
+    <div class="input-group mb-3 busqueda" style="max-width: 60%; margin: 5% auto;">
+      <span class="input-group-text text-body">
+        <i class="fas fa-search" id="iconBuscar"></i>
+      </span>
+      <input type="text" class="form-control " id="inputBuscarPoliticas" placeholder="¿Qué política estás buscando?...">
+    </div>
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Seguimiento de las Políticas Institucionales</h6>
+              <p class="text-xs text-muted mt-1" id="contadorResultados"></p>
+              <div class="form-check mb-3 admin-responsable-only" style="display: none;">
+                <input class="form-check-input" type="checkbox" value="" id="checkMisPoliticas">
+                <label class="form-check-label" for="checkMisPoliticas">
+                  Ver solo mis políticas
+                </label>
+              </div>
+
+
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0" id="tableContainer">
+
+                <!-- La tabla se oculta inicialmente -->
+                <table class="table align-items-center mb-0" id="tablaPoliticasTable" style="display: none;">
+
+                  <thead id="politicasTh"></thead>
+                  <tbody id="tablaPoliticas"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--- FIN DEL CONTENIDO ---->
+    </div>
+
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link pe-0 text-muted" target="_blank">Licencia</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </main>
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="fa fa-cog py-2"> </i>
+    </a>
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary"
+              onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+            onclick="sidebarType(this)">White</button>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+            onclick="sidebarType(this)">Dark</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="d-flex my-3">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <div class="mt-2 mb-5 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+          Download</a>
+        <a class="btn btn-outline-dark w-100"
+          href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+            data-icon="octicon-star" data-size="large" data-show-count="true"
+            aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    .sort-icon {
+      cursor: pointer;
+      margin-left: 5px;
+      color: #6c757d;
+      /* Color gris inicial */
+      transition: color 0.3s ease;
+    }
+
+    .sort-icon:hover {
+      color: #00594e;
+      /* Color primary en hover */
+    }
+
+    .form-control:focus {
+      border-color: #00594f00;
+      box-shadow: 0 0 0 0.2rem rgba(0, 89, 79, 0);
+      transition: all 0.3s;
+    }
+  </style>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+
+  <script type="module">
+    import { getFirestore, collection, query, where, getDocs, getDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get, onValue } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+    const dbFS = getFirestore();
+
+    let idResponsable = null;
+
+
+    let politicasData = []; // Array global para almacenar los datos
+
+    // Referencias a los elementos del DOM
+    const tablaPoliticas = document.getElementById('tablaPoliticas');
+    const politicasTh = document.getElementById('politicasTh');
+
+    // Configurar encabezado con eventos de ordenamiento
+    politicasTh.innerHTML = `
+        <tr>
+            <th>ID 
+                <i class="fa-solid fa-arrow-up sort-icon" data-sort="id" data-order="asc"></i>
+                <i class="fa-solid fa-arrow-down sort-icon" data-sort="id" data-order="desc"></i>
+            </th>
+            <th>Política</th>
+            <th>Cumplimiento 
+                <i class="fa-solid fa-arrow-up sort-icon" data-sort="cumplimiento" data-order="asc"></i>
+                <i class="fa-solid fa-arrow-down sort-icon" data-sort="cumplimiento" data-order="desc"></i>
+            </th>
+            <th>Fecha 
+                <i class="fa-solid fa-arrow-up sort-icon" data-sort="fecha" data-order="asc"></i>
+                <i class="fa-solid fa-arrow-down sort-icon" data-sort="fecha" data-order="desc"></i>
+            </th>
+        </tr>
+    `;
+
+    const iconosPoliticas = {
+      "P-001": "fas fa-chalkboard-teacher text-primary",         // Formación Profesoral
+      "P-002": "fas fa-flask text-success",                      // Investigación y Convocatorias
+      "P-003": "fas fa-tasks text-info",                         // Autoevaluación, Autorregulación y Mejoramiento
+      "P-004": "fas fa-lightbulb text-warning",                  // Propiedad Intelectual
+      "P-005": "fas fa-university text-danger",                  // Académica
+      "P-006": "fas fa-graduation-cap text-secondary",           // Innovación Educativa y Buenas Prácticas Pedagógicas
+      "P-007": "fas fa-leaf text-success",                       // Ambiental
+      "P-008": "fas fa-language text-primary",                   // Lingüística
+      "P-009": "fas fa-users text-info",                         // Inclusiva e Intercultural (PESII)
+      "P-010": "fas fa-heart text-danger",                       // Bienestar Universitario
+      "P-011": "fas fa-user-graduate text-warning",               // Egresados
+      "P-012": "fas fa-globe-americas text-primary",              // Internacionalización
+      "P-013": "fas fa-user-tie text-dark",                       // Gestión Estratégica de Talento Humano
+      "P-014": "fas fa-award text-warning",                       // Incentivos y Estímulos del Personal
+      "P-015": "fas fa-chart-bar text-success",                   // Gestión de la Información Estadística
+      "P-016": "fas fa-balance-scale text-danger",                 // Transparencia y Lucha contra la Corrupción
+      "P-017": "fas fa-headset text-info",                        // Atención al Ciudadano
+      "P-018": "fas fa-archive text-secondary",                   // Gestión Documental
+      "P-019": "fas fa-tools text-dark",                          // Mantenimiento y Renovación de Infraestructura
+      "P-020": "fas fa-handshake text-success",                   // Integridad
+      "P-021": "fas fa-hands-helping text-primary"                 // Proyección Social
+    };
+
+    let _politicasCargadas = false;
+
+
+    // Función para obtener las políticas desde Firebase
+    async function cargarPoliticas() {
+      const spinner = document.getElementById('spinner');
+      spinner.style.display = "block"; // Mostrar spinner
+
+      try {
+        const snapshot = await get(ref(db, 'PolariScore/politicas'));
+
+        if (!snapshot.exists()) {
+          console.warn("⚠️ No hay políticas registradas.");
+          spinner.style.display = "none";
+          return;
+        }
+
+        const data = snapshot.val();
+        politicasData = []; // Resetear array
+
+        Object.keys(data).forEach((idPolitica) => {
+          const politica = data[idPolitica];
+
+          const cumplimientoPolitica = politica.totalPolitica !== undefined
+            ? parseFloat(politica.totalPolitica).toFixed(2)
+            : 0;
+
+          politicasData.push({
+            id: politica.id,
+            titulo: politica.titulo,
+            cumplimiento: politica.totalPolitica !== undefined
+              ? parseFloat(politica.totalPolitica)
+              : 0,
+            fecha: politica.fecha_politica,
+            responsable: politica.responsables,
+            banner: politica.imgUrl
+          });
+        });
+
+        const ulPoliticas = document.getElementById('cargarPoliticas');
+        ulPoliticas.innerHTML = "";
+
+        for (const idPolitica in data) {
+          const politica = data[idPolitica];
+          const nombrePolitica = politica.titulo || "Sin nombre";
+
+          // Obtener el icono o usar uno por defecto
+          const icono = iconosPoliticas[idPolitica] || "fas fa-file-alt text-secondary";
+
+          const li = document.createElement("li");
+          li.className = "nav-item";
+
+          li.innerHTML = `
+                <a class="nav-link d-flex align-items-center" href="#" title="${nombrePolitica}" data-id="${idPolitica}">
+                  <i class="${icono} me-2"></i> 
+                  ${limitarTexto(nombrePolitica, 23)}
+                </a>
+              `;
+
+          li.querySelector("a").addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = `politica.html?id=${idPolitica}`;
+          });
+
+          ulPoliticas.appendChild(li);
+        }
+
+        renderizarTabla(politicasData);
+
+      } catch (error) {
+        console.error("❌ Error obteniendo políticas:", error);
+        mostrarToast("Error cargando las políticas", "danger");
+      }
+
+      spinner.style.display = "none"; // Ocultar spinner
+      document.getElementById('tablaPoliticasTable').style.display = 'table';
+      _politicasCargadas = true;
+      // Si ya hay usuario, repinta suscripciones ahora que politicasData está listo
+      if (window.currentUser) {
+        renderMisSuscripciones(window.currentUser);
+      }
+    }
+
+
+    // Función para renderizar la tabla
+    function renderizarTabla(data) {
+      tablaPoliticas.innerHTML = '';
+
+      data.forEach(politica => {
+        let row = document.createElement('tr');
+        row.style.cursor = "pointer";
+        row.innerHTML = `
+                <td class="text-center">${politica.id}</td>
+                <td class="text-start">${limitarTexto(politica.titulo, 80)}</td>
+                <td class="text-center"><div class="progressBarContainerPolicy"></div></td>
+                <td class="text-center">${politica.fecha}</td>
+            `;
+        row.addEventListener('click', () => {
+          window.location.href = `politica.html?id=${politica.id}`;
+        });
+
+        tablaPoliticas.appendChild(row);
+
+        // Se crea e inserta la barra de progreso
+        const progressContainerPolicy = row.querySelector('.progressBarContainerPolicy');
+        const progresoDivPolicy = document.createElement("div");
+        progresoDivPolicy.classList.add("d-flex", "align-items-center", "justify-content-center", "w-100");
+
+        const progresoTextoPolicy = document.createElement("span");
+        progresoTextoPolicy.classList.add("me-2", "text-xs", "font-weight-bold");
+        progresoTextoPolicy.textContent = `${politica.cumplimiento.toFixed(2)}%`;
+
+        const progressBarContainerPolicy = document.createElement("div");
+        progressBarContainerPolicy.classList.add("progress", "w-100");
+
+        const progressBarPolicy = document.createElement("div");
+        let progressBarClassPolicy = getColorClase(politica.cumplimiento);
+        progressBarPolicy.classList.add("progress-bar", progressBarClassPolicy);
+        progressBarPolicy.style.width = `${politica.cumplimiento}%`;
+
+        progressBarContainerPolicy.appendChild(progressBarPolicy);
+        progresoDivPolicy.appendChild(progresoTextoPolicy);
+        progresoDivPolicy.appendChild(progressBarContainerPolicy);
+        progressContainerPolicy.appendChild(progresoDivPolicy);
+      });
+    }
+
+    // Función para asignar colores a la barra de progreso
+    function getColorClase(porcentaje) {
+      if (porcentaje <= 29) return "bg-gradient-danger";
+      if (porcentaje <= 60) return "bg-gradient-warning";
+      if (porcentaje <= 99.9) return "bg-gradient-info";
+      return "bg-gradient-success";
+    }
+
+    // 🔥 Llamar `cargarPoliticas()` inmediatamente al cargar la página
+    cargarPoliticas();
+    renderMisPoliticas();
+
+    // Función para ordenar tabla de políticas
+    document.querySelectorAll(".sort-icon").forEach(icon => {
+      icon.addEventListener("click", () => {
+        const sortKey = icon.dataset.sort;
+        const order = icon.dataset.order;
+
+        politicasData.sort((a, b) => {
+          const valorA = a[sortKey];
+          const valorB = b[sortKey];
+
+          if (typeof valorA === "number" && typeof valorB === "number") {
+            // Ordenar numérico
+            return order === "asc" ? valorA - valorB : valorB - valorA;
+          } else {
+            // Ordenar alfabético
+            return order === "asc"
+              ? valorA.toString().localeCompare(valorB.toString())
+              : valorB.toString().localeCompare(valorA.toString());
+          }
+        });
+
+        renderizarTabla(politicasData);
+      });
+    });
+
+
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+    // Verificar si el usuario está autenticado
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+
+
+
+        // Mostrar foto y nombre de perfil
+        const nombreCompleto = user.displayName || user.email || "Usuario";
+        const nombreCorto = obtenerNombreCorto(nombreCompleto);
+        const foto = user.photoURL
+          ? user.photoURL
+          : `https://ui-avatars.com/api/?name=${encodeURIComponent(nombreCorto)}&background=0D8ABC&color=fff&rounded=true&size=64`;
+
+        if (document.getElementById("nombrePerfilUsuario")) {
+          document.getElementById("nombrePerfilUsuario").textContent = nombreCompleto;
+          document.getElementById("nombrePerfilUsuario").classList.add("text-dark");
+          document.getElementById("nombrePerfilUsuario").classList.remove("text-white");
+          document.getElementById("correoPerfilUsuario").textContent = user.email;
+
+        }
+
+
+        if (document.getElementById("imgPerfilUsuario")) {
+          document.getElementById("imgPerfilUsuario").src = foto;
+          document.getElementById("imgPerfilUsuario").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuario").title = nombreCorto;
+        }
+
+        if (document.getElementById("imgPerfilUsuarioDropdown")) {
+          document.getElementById("imgPerfilUsuarioDropdown").src = foto;
+          document.getElementById("imgPerfilUsuarioDropdown").alt = nombreCorto;
+          document.getElementById("imgPerfilUsuarioDropdown").title = nombreCorto;
+        }
+
+        const q = query(
+          collection(dbFS, "responsables"),
+          where("correo", "==", user.email)
+        );
+
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0];
+          idResponsable = doc.id; // este es el ID del documento en la colección
+          console.log("ID del responsable:", idResponsable);
+        } else {
+          console.warn("No se encontró responsable con el correo:", user.email);
+        }
+
+        // Prevenir múltiples listeners
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            const confirmBtn = document.getElementById("confirmLogout");
+            const clonedBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+
+            clonedBtn.addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "https://sigunitropico.com/plan-it-one/pages/sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+              });
+            });
+          });
+
+          logoutListenerAdded = true;
+        }
+
+        // Buscar por correo sanitizado
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+
+            // Detectar si es admin (si cualquier rol contiene "admin", case-insensitive)
+            let esAdmin = roles.some(r => r.toLowerCase().includes('admin'));
+            window.esAdmin = esAdmin;
+
+            // Detectar si es admin (si cualquier rol contiene "responsable", case-insensitive)
+            let esResponsable = roles.some(r => r.toLowerCase().includes('responsable-polariscore'));
+            window.esResponsable = esResponsable;
+
+            renderMisPoliticas();
+
+
+            console.log("Roles del usuario:", roles);
+
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+              document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+            }
+
+          } else {
+            console.warn("Usuario autenticado pero no registrado en la base de datos.");
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+        });
+
+      } else {
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.remove("text-danger");
+        logButton.classList.add("btn-primary");
+        logButton.classList.add("text-white");
+
+        logButton.style.backgroundColor = "#00594e";
+        logButton.style.color = "#fff!important";
+        logButton.addEventListener("click", () => {
+          window.location.href = "../pages/sign-in.html";
+        });
+      }
+      window.currentUser = user;
+      renderMisSuscripciones(window.currentUser); // ✅ aquí sí
+
+      if (!user) {
+        document.getElementById('tab-politicas').style.display = 'none';
+      }
+    });
+
+
+    // ===== Dock interactions =====
+    // Tooltips (igual)
+    document.querySelectorAll('.dock-btn').forEach(btn => {
+      new bootstrap.Tooltip(btn, { title: btn.dataset.title, placement: 'left' });
+    });
+
+    const sideTabs = document.getElementById('sideTabs');
+    const sideTitle = document.getElementById('sideTitle');
+
+    document.querySelectorAll('.dock-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.dock-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const iconMap = {
+          "#tab-politicas": 'fa-scroll',
+          "#tab-notificaciones": 'fa-bell',
+          "#tab-observaciones": 'fa-comments',
+          "#tab-carga": 'fa-cloud-arrow-up'
+        };
+        const target = btn.getAttribute('data-bs-target');
+
+        // ✅ Solo si existe sideTitle
+        if (sideTitle) sideTitle.textContent = btn.dataset.title || '';
+
+        const headerIcon = sideTabs.querySelector('.header .fa');
+        if (headerIcon) headerIcon.className = 'fa ' + (iconMap[target] || 'fa-ellipsis');
+
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('show', 'active'));
+        const pane = document.querySelector(target);
+        if (pane) pane.classList.add('show', 'active');
+      });
+    });
+
+
+    // (Opcional) El botón “cerrar panel” ya no es necesario; puedes ocultarlo:
+    const btnClose = document.getElementById('btnClosePanel');
+    if (btnClose) btnClose.classList.add('d-none');
+
+    function obtenerNombreCorto(nombreCompleto) {
+      if (!nombreCompleto) return "";
+      const partes = nombreCompleto.trim().split(" ");
+      if (partes.length === 1) return partes[0];
+      return partes[0] + " " + partes[1];
+    }
+
+
+    const $chkMisPoliticas = document.getElementById("checkMisPoliticas");
+
+    if ($chkMisPoliticas) {
+      $chkMisPoliticas.addEventListener("change", function () {
+        // Si no hay responsable, no filtramos
+        if (!idResponsable) {
+          renderizarTabla(politicasData);
+          return;
+        }
+
+        const norm = v => String(v ?? "").trim().toLowerCase();
+        const responsableActual = norm(idResponsable);
+
+        const tieneResponsable = (resp) => {
+          // Array de ids/emails/objetos
+          if (Array.isArray(resp)) {
+            return resp.some(r => {
+              // Si es objeto (p.ej. {id, uid, email})
+              if (r && typeof r === "object") {
+                const posibles = [r.id, r.uid, r.correo, r.email];
+                return posibles.some(x => norm(x) === responsableActual);
+              }
+              // Si es string
+              return norm(r).includes(responsableActual);
+            });
+          }
+
+          // Objeto simple
+          if (resp && typeof resp === "object") {
+            const posibles = [resp.id, resp.uid, resp.correo, resp.email];
+            return posibles.some(x => norm(x) === responsableActual);
+          }
+
+          // String simple
+          return norm(resp).includes(responsableActual);
+        };
+
+        if (this.checked) {
+          const politicasFiltradas = (politicasData || []).filter(politica =>
+            tieneResponsable(politica?.responsable)
+          );
+          renderizarTabla(politicasFiltradas);
+        } else {
+          renderizarTabla(politicasData);
+        }
+      });
+    }
+
+
+
+    const inputBuscar = document.getElementById('inputBuscarPoliticas');
+    const iconBuscar = document.getElementById('iconBuscar');
+    const contadorResultados = document.getElementById('contadorResultados');
+    const placeholders = [
+      "¿Qué política estás buscando?...",
+      "Buscar por código, título o palabra clave...",
+      "Filtra acciones, indicadores o fechas...",
+      "Explora fácilmente las políticas institucionales..."
+    ];
+
+    // Animar placeholders cada 3 segundos
+    let i = 0;
+    setInterval(() => {
+      inputBuscar.setAttribute('placeholder', placeholders[i]);
+      i = (i + 1) % placeholders.length;
+    }, 3000);
+
+    // Filtro dinámico en tiempo real
+    inputBuscar.addEventListener('input', function () {
+      const valorBusqueda = this.value.toLowerCase();
+      const filas = document.querySelectorAll('#tablaPoliticasTable tbody tr');
+      let visibles = 0;
+
+      filas.forEach(fila => {
+        const textoFila = fila.innerText.toLowerCase();
+        const visible = textoFila.includes(valorBusqueda);
+        fila.style.display = visible ? '' : 'none';
+        if (visible) visibles++;
+      });
+
+      contadorResultados.innerText = visibles === filas.length
+        ? `Mostrando todas las políticas (${visibles})`
+        : `Mostrando ${visibles} de ${filas.length} políticas`;
+
+      iconBuscar.className = valorBusqueda ? 'fas fa-times' : 'fas fa-search';
+    });
+
+    // Limpiar búsqueda con icono
+    iconBuscar.addEventListener('click', function () {
+      if (inputBuscar.value) {
+        inputBuscar.value = '';
+        inputBuscar.dispatchEvent(new Event('input'));
+      }
+    });
+
+
+
+
+    // ========= Mis Políticas: helpers =========
+    const norm = v => String(v ?? '').trim().toLowerCase();
+
+    function tieneResponsable(resp, responsableActual) {
+      // Array de ids/emails/objetos
+      if (Array.isArray(resp)) {
+        return resp.some(r => {
+          if (r && typeof r === 'object') {
+            const posibles = [r.id, r.uid, r.correo, r.email];
+            return posibles.some(x => norm(x) === responsableActual);
+          }
+          return norm(r).includes(responsableActual);
+        });
+      }
+      // Objeto simple
+      if (resp && typeof resp === 'object') {
+        const posibles = [resp.id, resp.uid, resp.correo, resp.email];
+        return posibles.some(x => norm(x) === responsableActual);
+      }
+      // String simple / primitivos
+      return norm(resp).includes(responsableActual);
+    }
+
+    function getProgressClass(pct) {
+      if (pct <= 29) return 'bg-gradient-danger';
+      if (pct <= 60) return 'bg-gradient-warning';
+      if (pct <= 99.9) return 'bg-gradient-info';
+      return 'bg-gradient-success';
+    }
+
+    function limitarTexto(texto, limite) {
+      return (texto || '').length > limite ? texto.substring(0, limite) + '…' : (texto || '');
+    }
+
+    // ========= Render principal =========
+    // Asegúrate de tener importado getAreaByResponsable del mensaje anterior
+    // y que dbFS esté inicializado.
+
+    async function renderMisPoliticas() {
+      // 1) buscar contenedores
+      const $rowMisPoliticas = document.getElementById('rowMisPoliticas');
+      const $cantidadMisPoliticas = document.getElementById('cantidadMisPoliticas');
+      const $dockBlock = document.getElementById('dockBlock');
+
+      if (!$rowMisPoliticas || !$cantidadMisPoliticas) {
+        console.warn('[renderMisPoliticas] Contenedores no encontrados aún. Esperando DOM…');
+        return;
+      }
+
+      // 2) datos listos?
+      if (!Array.isArray(politicasData) || politicasData.length === 0) {
+        $rowMisPoliticas.innerHTML = '';
+        $cantidadMisPoliticas.textContent = '0';
+        return;
+      }
+
+      // 3) roles
+      if (!window.esAdmin && !window.esResponsable) {
+        $rowMisPoliticas.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-light border d-flex align-items-center mb-0">
+          <i class="fa-regular fa-circle-info me-2"></i>
+          <div>No tienes políticas asignadas para mostrar aquí.</div>
+        </div>
+      </div>`;
+
+        $dockBlock.style.display = 'none';
+
+        $cantidadMisPoliticas.textContent = '0';
+        return;
+      }
+
+      $dockBlock.style.display = 'block';
+      // helpers locales
+      const norm = v => String(v ?? '').trim().toLowerCase();
+      const tieneResponsable = (resp, responsableActual) => {
+        if (Array.isArray(resp)) {
+          return resp.some(r => {
+            if (r && typeof r === 'object') {
+              return [r.id, r.uid, r.correo, r.email].some(x => norm(x) === responsableActual);
+            }
+            return norm(r).includes(responsableActual);
+          });
+        }
+        if (resp && typeof resp === 'object') {
+          return [resp.id, resp.uid, resp.correo, resp.email].some(x => norm(x) === responsableActual);
+        }
+        return norm(resp).includes(responsableActual);
+      };
+      const getProgressClass = pct => (pct <= 29) ? 'bg-gradient-danger'
+        : (pct <= 60) ? 'bg-gradient-warning'
+          : (pct <= 99.9) ? 'bg-gradient-info'
+            : 'bg-gradient-success';
+      const limitarTexto = (t, n) => (t || '').length > n ? (t || '').substring(0, n) + '…' : (t || '');
+
+      // 4) lista base — SOLO mostrar si (admin o responsable) y además tenemos idResponsable
+      let lista = [];
+
+      const puedeVer = (window.esAdmin || window.esResponsable);
+      const tieneId = Boolean(idResponsable);
+
+      if (puedeVer && tieneId) {
+        const responsableActual = norm(idResponsable);
+        lista = (politicasData || []).filter(p =>
+          tieneResponsable(p?.responsable, responsableActual)
+        );
+      } else {
+        // si no cumple, no mostramos nada aquí (mensaje más abajo)
+        lista = [];
+      }
+
+      // Si no hay resultados, muestra mensaje y (opcional) oculta el dock
+      if (!lista.length) {
+        $rowMisPoliticas.innerHTML = `
+    <div class="col-12">
+      <div class="alert alert-light border d-flex align-items-center mb-0">
+        <i class="fa-regular fa-face-smile-wink me-2"></i>
+        <div>Sin resultados en “Mis políticas”.</div>
+      </div>
+    </div>`;
+        $cantidadMisPoliticas.textContent = '0';
+        if ($dockBlock) $dockBlock.style.display = 'none'; // opcional: ocultar el panel si no hay nada
+
+        return;
+      }
+
+
+      // Si hay resultados, asegúrate de mostrar el dock
+      if ($dockBlock) $dockBlock.style.display = 'block';
+
+
+      // 5) construir las cards en paralelo (resolviendo área desde Firestore)
+      const cardsPromises = lista.map(async (p) => {
+        const pct = Number(p.cumplimiento || 0);
+        const pctStr = `${pct.toFixed(0)}%`;
+        const pctClass = getProgressClass(pct);
+        const bannerUrl = p.banner || 'https://sigunitropico.com/wp-content/uploads/2025/08/politica-7.png';
+        const oficina = await getAreaByResponsable(p.responsable) || 'Dependencia';
+
+        const titulo = limitarTexto(p.titulo || `Política ${p.id || ''}`, 60);
+        const id = p.id || '';
+
+        return `
+      <div class="col-12 col-md-4">
+        <div class="card policy-card">
+          <div class="card-toolbar">
+            <div class="dropdown">
+              <button class="btn btn-light btn-icon" data-bs-toggle="dropdown" aria-label="Opciones">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <a class="dropdown-item" 
+                    href="politica.html?id=${encodeURIComponent(id)}" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    <i class="fa-regular fa-eye me-2"></i> Abrir
+                  </a>
+                </li>
+                <li><a class="dropdown-item" href="#"><i class="fa-regular fa-copy me-2"></i> Duplicar</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="#"><i class="fa-regular fa-trash-can me-2"></i> Eliminar</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="banner-container">
+            <div class="banner" style="background-image:url('${bannerUrl}');">
+              <div class="overlay"></div>
+              <div class="banner-content">
+                <h6 class="text-white mb-0">${titulo}</h6>
+                <div class="tag"><i class="fa-solid fa-building-columns me-1"></i> ${limitarTexto(oficina, 36)}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-2">
+              <div class="progress w-100" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Avance ${pctStr}">
+                <div class="progress-bar ${pctClass}" style="width:${pct}%"></div>
+              </div>
+              <span class="small text-muted">${pctStr}</span>
+              <i class="fa-solid fa-circle-info text-muted" data-bs-toggle="tooltip" title="${pctStr}"></i>
+              <button class="btn btn-outline-success btn-sm btn-icon" 
+                      aria-label="Ver acciones" 
+                      title="Ver acciones"
+                      onclick="window.open('politica.html?id=${encodeURIComponent(id)}#acciones', '_blank')">
+                <i class="fa-solid fa-list-check"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+      });
+
+      const htmlCards = await Promise.all(cardsPromises);
+
+      // 6) inyectar y contar
+      $rowMisPoliticas.innerHTML = htmlCards.join('');
+      $cantidadMisPoliticas.textContent = String(lista.length);
+
+      // 7) reactivar tooltips
+      if (window.bootstrap) {
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+          try { new bootstrap.Tooltip(el); } catch (_) { }
+        });
+      }
+    }
+
+
+    // Cache simple para evitar lecturas repetidas a Firestore
+    const _cacheAreasResponsables = new Map();
+
+    /**
+     * Obtiene el área del primer responsable de un string con IDs separados por coma
+     * @param {string} responsablesStr - String de IDs separados por coma (ej: "H50JN8,R12,X33")
+     * @returns {Promise<string|null>} área (o null si no existe/no se pudo resolver)
+     */
+    export async function getAreaByResponsable(responsablesStr = "") {
+      try {
+        if (!responsablesStr || typeof responsablesStr !== "string") {
+          console.warn("[getAreaByResponsable] Valor inválido:", responsablesStr);
+          return null;
+        }
+
+        // Tomar solo el primer ID
+        const primero = responsablesStr.split(",")[0].trim();
+        if (!primero) {
+          console.warn("[getAreaByResponsable] No se pudo resolver un ID válido en:", responsablesStr);
+          return null;
+        }
+
+        // Cache hit
+        if (_cacheAreasResponsables.has(primero)) {
+          const cached = _cacheAreasResponsables.get(primero);
+          console.log(`[getAreaByResponsable] (cache) ${primero} ->`, cached);
+          return cached;
+        }
+
+        // Firestore: /responsables/{id}
+        const refResp = doc(dbFS, "responsables", primero);
+        const snap = await getDoc(refResp);
+
+        if (!snap.exists()) {
+          console.warn(`[getAreaByResponsable] No existe /responsables/${primero}`);
+          _cacheAreasResponsables.set(primero, null);
+          return null;
+        }
+
+        const data = snap.data() || {};
+        // Campos posibles donde pueda estar el área
+        const area = data.area || data.dependencia || data.oficina || null;
+
+        console.log(`[getAreaByResponsable] ${primero} ->`, area, data);
+        _cacheAreasResponsables.set(primero, area);
+        return area ?? null;
+
+      } catch (err) {
+        console.error("[getAreaByResponsable] Error:", err);
+        return null;
+      }
+    }
+
+
+
+
+    // ====== Mis Suscripciones (RTDB) ======
+
+
+    /**
+     * Recibe un string con IDs separados por comas y devuelve el área del primer ID resolvible.
+     * Ruta: /responsables/{id} en Firestore
+     */
+    async function getAreaByResponsableString(responsablesStr = '') {
+      try {
+        const s = String(responsablesStr || '').trim();
+        if (!s) return null;
+
+        const id = s.split(',').map(x => x.trim()).filter(Boolean)[0];
+        if (!id) return null;
+
+        if (_cacheAreasResponsables.has(id)) {
+          return _cacheAreasResponsables.get(id);
+        }
+
+        // usa dbFS que ya tienes inicializado
+        const refDoc = doc(dbFS, 'responsables', id);
+        const snap = await getDoc(refDoc);
+        if (!snap.exists()) {
+          _cacheAreasResponsables.set(id, null);
+          return null;
+        }
+
+        const data = snap.data() || {};
+        const area = data.area || data.dependencia || data.oficina || null;
+        _cacheAreasResponsables.set(id, area);
+        return area ?? null;
+      } catch (e) {
+        console.error('[getAreaByResponsableString] Error:', e);
+        return null;
+      }
+    }
+
+
+    // Estado local para ids suscritos
+    const _suscripcionesState = {
+      ids: [],
+      onValueAttached: false
+    };
+
+    // Sanitiza correo para ruta de RTDB
+    const sanitizeEmail = (email) => String(email || '').replace(/\./g, '_');
+
+    // Dibuja las cards de suscripciones
+    async function pintarSuscripciones(ids) {
+      const $row = document.getElementById('rowMisSuscripciones');
+      const $cantidad = document.getElementById('cantidadMisSuscripciones');
+
+      if (!$row || !$cantidad) {
+        console.warn('[renderMisSuscripciones] Contenedores no encontrados (#rowMisSuscripciones / #cantidadMisSuscripciones).');
+        return;
+      }
+
+      // Si aún no tienes politicasData, espera a que cargue
+      if (!Array.isArray(politicasData) || politicasData.length === 0) {
+        $row.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-light border d-flex align-items-center mb-0">
+          <i class="fa-regular fa-hourglass-half me-2"></i>
+          <div>Cargando políticas…</div>
+        </div>
+      </div>`;
+        $cantidad.textContent = '0';
+
+        return;
+      }
+
+      // Normaliza ids y filtra
+      const setIds = new Set(
+        (Array.isArray(ids) ? ids : [])
+          .map(x => String(x || '').trim())
+          .filter(Boolean)
+      );
+
+      const lista = politicasData.filter(p => setIds.has(String(p.id || '').trim()));
+
+      if (lista.length === 0) {
+        $row.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-light border d-flex align-items-center mb-0">
+          <i class="fa-regular fa-bell-slash me-2"></i>
+          <div>No tienes suscripciones activas.</div>
+        </div>
+      </div>`;
+        $cantidad.textContent = '0';
+        return;
+      }
+
+      // Helper de color progreso
+      const getProgressClass = (pct) => {
+        if (pct <= 29) return 'bg-gradient-danger';
+        if (pct <= 60) return 'bg-gradient-warning';
+        if (pct <= 99.9) return 'bg-gradient-info';
+        return 'bg-gradient-success';
+      };
+
+      const limitarTexto = (t, n) => (t || '').length > n ? (t || '').substring(0, n) + '…' : (t || '');
+
+      // Resolvemos áreas (primer responsable del string con comas)
+      const cardsHtml = await Promise.all(
+        lista.map(async (p) => {
+          const pct = Number(p.cumplimiento || 0);
+          const pctStr = `${pct.toFixed(0)}%`;
+          const pctClass = getProgressClass(pct);
+          const bannerUrl = p.banner || 'https://sigunitropico.com/wp-content/uploads/2025/08/politica-7.png';
+          // p.responsable podría ser string con ids separados por comas
+          const oficina = (await getAreaByResponsableString(p.responsable)) || p.dependencia || 'Dependencia';
+          const titulo = limitarTexto(p.titulo || `Política ${p.id || ''}`, 60);
+          const id = p.id || '';
+
+          return `
+        <div class="col-12 col-md-4">
+          <div class="card policy-card">
+            <div class="card-toolbar">
+              <div class="dropdown">
+                <button class="btn btn-light btn-icon" data-bs-toggle="dropdown" aria-label="Opciones">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <a class="dropdown-item" 
+                      href="politica.html?id=${encodeURIComponent(id)}" 
+                      target="_blank" 
+                      rel="noopener noreferrer">
+                      <i class="fa-regular fa-eye me-2"></i> Abrir
+                    </a>
+                  </li>
+                  <li><a class="dropdown-item" href="#"><i class="fa-regular fa-copy me-2"></i> Duplicar</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-danger" href="#"><i class="fa-regular fa-trash-can me-2"></i> Eliminar</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="banner-container">
+              <div class="banner" style="background-image:url('${bannerUrl}');">
+                <div class="overlay"></div>
+                <div class="banner-content">
+                  <h6 class="text-white mb-0">${titulo}</h6>
+                  <div class="tag"><i class="fa-solid fa-building-columns me-1"></i> ${limitarTexto(oficina, 36)}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2">
+                <div class="progress w-100" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="Avance ${pctStr}">
+                  <div class="progress-bar ${pctClass}" style="width:${pct}%"></div>
+                </div>
+                <span class="small text-muted">${pctStr}</span>
+                <i class="fa-solid fa-circle-info text-muted" data-bs-toggle="tooltip" title="${pctStr}"></i>
+                <button class="btn btn-outline-success btn-sm btn-icon" 
+                      aria-label="Ver acciones" 
+                      title="Ver acciones"
+                    onclick="window.open('politica.html?id=${encodeURIComponent(id)}#acciones', '_blank')">
+                  <i class="fa-solid fa-list-check"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+        })
+      );
+
+      $row.innerHTML = cardsHtml.join('');
+      $cantidad.textContent = String(lista.length);
+
+      // Re-activar tooltips
+      if (window.bootstrap) {
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+          try { new bootstrap.Tooltip(el); } catch (_) { }
+        });
+      }
+    }
+
+    /**
+     * Se suscribe (RTDB onValue) a las suscripciones del usuario y re-renderiza cada cambio.
+     * Llamar cuando haya usuario autenticado y (mejor) después de cargar politicasData.
+     */
+    function renderMisSuscripciones(user) {
+      const $row = document.getElementById('rowMisSuscripciones');
+      const $cantidad = document.getElementById('cantidadMisSuscripciones');
+
+      if (!$row || !$cantidad) {
+        console.warn('[renderMisSuscripciones] Contenedores no encontrados.');
+        return;
+      }
+
+      if (!user) {
+        // Limpia si no hay sesión
+        $row.innerHTML = `
+      <div class="col-12">
+        <div class="alert alert-light border d-flex align-items-center mb-0">
+          <i class="fa-regular fa-user-lock me-2"></i>
+          <div>Inicia sesión para ver tus políticas suscritas.</div>
+        </div>
+      </div>`;
+        $cantidad.textContent = '0';
+        return;
+      }
+
+      const correoSan = sanitizeEmail(user.email);
+      const path = `usuarios/${correoSan}/PolariScore/politicas-suscritas`;
+      const r = ref(db, path);
+
+      // Muestra un estado de carga mientras llega la primera lectura
+      $row.innerHTML = `
+    <div class="col-12">
+      <div class="d-flex align-items-center gap-2 small text-muted">
+        <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+        <span>Cargando tus suscripciones…</span>
+      </div>
+    </div>`;
+      $cantidad.textContent = '0';
+
+      if (!_suscripcionesState.onValueAttached) {
+        onValue(r, (snap) => {
+          let value = snap.val();
+
+          // Puede ser un array (['P-001','P-016']) o un objeto tipo lista {0:'P-001',1:'P-016'}
+          let ids = [];
+          if (Array.isArray(value)) {
+            ids = value.filter(Boolean);
+          } else if (value && typeof value === 'object') {
+            ids = Object.values(value).filter(Boolean);
+          }
+
+          _suscripcionesState.ids = ids;
+          // Re-pintar con lo que tengamos (politicasData puede o no estar aún)
+          pintarSuscripciones(ids);
+        });
+
+        _suscripcionesState.onValueAttached = true;
+      } else {
+        // Si ya hay listener, solo repintamos con los ids actuales
+        pintarSuscripciones(_suscripcionesState.ids);
+      }
+    }
+
+  </script>
+</body>
+<style>
+  /* Estilo para las filas de la tabla */
+  #tablaPoliticas tr {
+    cursor: pointer;
+    /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+  }
+
+  /* Cambia el color de fondo de la fila al pasar el cursor */
+  #tablaPoliticas tr:hover {
+    background-color: hsla(145, 83%, 48%, 0);
+    /* Color verde oscuro al pasar el cursor */
+    color: #000;
+    font-weight: 500;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+
+  #tablaPoliticas2 tr:hover {
+    background-color: hsla(173, 100%, 17%, 0);
+    /* Color verde oscuro al pasar el cursor */
+    color: #ffffff;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+</style>
+
+</html>

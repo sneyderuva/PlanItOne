@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/s-plan/icono.png">
+    <title id="pageTitle">
+        Proyecto -
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+    <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+    <div class="min-height-300 position-absolute w-100"
+        style="background: url('../assets/img/s-plan/bg-splan.png') no-repeat center center/cover;"></div>
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+        id="sidenav-main" style="z-index:1040;">
+        <div class="sidenav-header mb-3">
+            <a class="navbar-brand m-0 d-flex flex-column align-items-center" href="../index.html">
+                <!-- Logo institucional Argon -->
+                <img src="../assets/img/s-plan/logo.png" class="navbar-brand-img mb-0" style="max-height:60px;"
+                    alt="main_logo">
+
+            </a>
+        </div>
+        <hr class="horizontal dark mt-0 mb-2">
+        <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <!-- INICIO -->
+
+                <li class="nav-item ">
+                    <a class="nav-link d-flex align-items-center gap-2" href="index.html">
+                        <i class="fa-solid fa-home text-muted"></i>
+                        <span class="nav-link-text">Inicio</span>
+                    </a>
+
+                </li>
+
+                <!-- PDI 2024-2028 -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+                        data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="true">
+                        <!-- Cambié aria-expanded a true -->
+                        <div class="d-flex align-items-center">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">S-Plan</span>
+                        </div>
+                    </a>
+                    <ul class="collapse list-unstyled ms-4 show" id="submenuPdi"> <!-- Agregué la clase "show" -->
+                        <li class="nav-item "><a class="nav-link active" href="../s-plan/dashboard.html"><i
+                                    class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../s-plan/ejes.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Ejes</span></a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../s-plan/programas.html"><i
+                                    class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de
+                                    Programas</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                                    class="ni ni-single-copy-04 text-info"></i> <span
+                                    class="ms-1">Observaciones</span></a></li>
+                    </ul>
+                </li>
+
+
+
+                <!-- Buscar / Seleccionar (abre modal) -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2" href="#" data-bs-toggle="modal"
+                        data-bs-target="#modalBusquedaPolitica">
+                        <i class="fa-solid fa-magnifying-glass text-warning"></i>
+                        <span class="nav-link-text">Buscar / Seleccionar</span>
+                    </a>
+                </li>
+
+                <!-- Otras Apps -->
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center gap-2 collapsed" href="#" data-bs-toggle="collapse"
+                        data-bs-target="#submenuPdi" aria-expanded="false">
+                        <i class="fa-solid fa-rocket text-danger"></i>
+                        <span class="nav-link-text">Otras Apps</span>
+                    </a>
+                    <ul class="collapse list-unstyled ms-4" id="submenuPdi">
+                        <li>
+                            <a class="nav-link" href="https://sigunitropico.com" target="_blank">
+                                <i class="fa-solid fa-globe text-danger"></i> SIG Unitrópico
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="https://sigunitropico.com/planeacion" target="_blank">
+                                <i class="fa-solid fa-chart-line text-info"></i> Planeación
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Admin (solo visible para admins) -->
+                <li class="nav-item mt-3 admin-only admin-polariscore" style="display: none;">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Administración</h6>
+                </li>
+                <li class="nav-item admin-only admin-polariscore" style="display: none;">
+                    <a class="nav-link d-flex align-items-center gap-2" href="../pages/usuarios.html" target="_blank">
+                        <i class="fa-solid fa-users text-danger"></i>
+                        <span class="nav-link-text">Usuarios</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Login/Logout Aside: centrado y sin overlap -->
+        <div class="sidenav-footer w-100 text-center mt-auto pb-3">
+
+            <div class="card card-plain shadow-none mb-2" id="sidenavCard">
+                <img class="w-80 mx-auto" src="../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+                    alt="sidebar_illustration">
+                <div class="card-body text-center p-2 w-100 pt-0">
+                    <div class="docs-info">
+                        <h6 class="mb-0">¿Necesitas ayuda?</h6>
+                        <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+                    </div>
+                </div>
+            </div>
+            <div id="asideAuthBtn" class="mb-2 d-flex flex-column align-items-center"></div>
+            <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank"
+                class="btn btn-dark btn-sm w-70 mb-2"><i class="fa-solid fa-book me-2"></i>Manual de uso</a>
+            <a class="btn btn-primary btn-sm w-70 mb-0" href="mailto:innovacionplaneacion@unitropico.edu.co"
+                type="button">
+                <i class="fa-solid fa-envelope me-2"></i> Soporte técnico
+            </a>
+
+        </div>
+    </aside>
+    <main class="main-content position-relative border-radius-lg ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+            data-scroll="false">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" id="id_eje_nav">EJE-</a>
+                        </li>
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white"
+                                id="id_programa_nav">PROG-001</a>
+                        </li>
+
+                        <li class="breadcrumb-item text-sm dropdown">
+                            <a href="#" class="dropdown-toggle" id="id_proyecto_nav" data-bs-toggle="dropdown"
+                                style="color: #fff;" aria-expanded="false" role="button">P1</a>
+
+                            <div class="dropdown-menu dropdown-menu-dark p-3 proyectos-grid-container">
+                                <div class="proyectos-grid" id="containerProyectosDropdown">
+                                    <!-- Se llena dinámicamente -->
+                                </div>
+                            </div>
+
+                            <style>
+                                .proyectos-grid-container {
+                                    min-width: 300px;
+                                    border-radius: .75rem;
+                                    border: 1px solid rgba(255, 255, 255, 0.2);
+                                    backdrop-filter: blur(10px);
+                                    background-color: rgba(255, 255, 255, 0.85);
+                                }
+
+                                .proyectos-grid {
+                                    display: grid;
+                                    grid-template-columns: repeat(4, 1fr);
+                                    gap: 8px;
+                                }
+
+                                .proyecto-item {
+                                    display: block;
+                                    padding: 8px;
+                                    border-radius: 6px;
+                                    color: #333 !important;
+                                    text-align: center;
+                                    background-color: rgba(0, 0, 0, 0.05);
+                                    transition: background-color .2s, transform .2s;
+                                    font-size: .85rem;
+                                    font-weight: 500;
+                                }
+
+                                .proyecto-item:hover {
+                                    background-color: rgba(0, 0, 0, 0.2);
+                                    color: #fff !important;
+                                    transform: translateY(-2px);
+                                }
+
+                                .proyecto-item.active {
+                                    background-color: #00594e;
+                                    color: #fff !important;
+                                    font-weight: 700;
+                                }
+                            </style>
+                        </li>
+
+                    </ol>
+                    <h6 class="font-weight-bolder text-white mb-0">última actualización <p
+                            class="font-weight-normal text-white mb-0" id="fecha_actualizacion">calculando...</p>
+                    </h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item px-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0">
+                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell cursor-pointer"></i>
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                                aria-labelledby="dropdownMenuButton">
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="my-auto">
+                                                <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    <span class="font-weight-bold">New message</span> from Laur
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    13 minutes ago
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="my-auto">
+                                                <img src="../assets/img/small-logos/logo-spotify.svg"
+                                                    class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    <span class="font-weight-bold">New album</span> by Travis Scott
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    1 day
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                                                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <title>credit-card</title>
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-2169.000000, -745.000000)"
+                                                            fill="#FFFFFF" fill-rule="nonzero">
+                                                            <g transform="translate(1716.000000, 291.000000)">
+                                                                <g transform="translate(453.000000, 454.000000)">
+                                                                    <path class="color-background"
+                                                                        d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                                                        opacity="0.593633743"></path>
+                                                                    <path class="color-background"
+                                                                        d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                                    </path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    Payment successfully completed
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    2 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                            <div id="perfilUsuario" class="d-flex align-items-center gap-2" data-bs-toggle="dropdown"
+                                role="button" aria-expanded="false">
+                                <img id="imgPerfilUsuario" src="https://ui-avatars.com/api/?name=Usuario" alt="Foto"
+                                    class="rounded-circle border" width="40" height="40" style="object-fit:cover;">
+                            </div>
+                            <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
+                                aria-labelledby="perfilUsuario">
+                                <li>
+                                    <a class="dropdown-item border-radius-md" href="../pages/profile.html">
+                                        <div class="d-flex py-1 align-items-center">
+                                            <div class="my-auto">
+                                                <img id="imgPerfilUsuarioDropdown"
+                                                    src="https://ui-avatars.com/api/?name=Usuario"
+                                                    class="avatar avatar-sm me-3 rounded-circle border"
+                                                    style="object-fit:cover;">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="mb-0 text-sm text-default fw-semibold"
+                                                    id="nombrePerfilUsuario"> Usuario</h6>
+                                                <small class="text-xs text-muted mb-0"
+                                                    id="correoPerfilUsuario">Correo</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item border-radius-md" id="rolesUsuario">
+                                        <i class="fas fa-user-circle text-primary me-2"></i> Mi perfil
+                                    </a>
+                                </li>
+                                <li>
+                                    <button id="logButton"
+                                        class="dropdown-item border-radius-md text-danger d-flex align-items-center">
+                                        <span><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</span>
+                                    </button>
+                                    <style>
+                                        /* Soluciona contraste para botón rojo dentro de dropdown Bootstrap */
+                                        #logButton.dropdown-item.text-danger:hover,
+                                        #logButton.dropdown-item.text-danger:focus {
+                                            background-color: #dc3545 !important;
+                                            /* danger */
+                                            color: #fff !important;
+                                            /* blanco */
+                                            border-radius: .5rem;
+                                        }
+
+                                        #logButton.dropdown-item.text-danger:hover i,
+                                        #logButton.dropdown-item.text-danger:focus i {
+                                            color: #fff !important;
+                                        }
+                                    </style>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+        <!---  CONTENIDO ---->
+
+        <style>
+            /* ======== Tema y utilidades ======== */
+            :root {
+                --brand: #00594E;
+                /* verde Unitrópico */
+                --accent: #B5A160;
+                /* dorado */
+                --ink: #0d0f11;
+                --muted: #6c757d;
+                --card-radius: 1rem;
+            }
+
+            .text-brand {
+                color: var(--brand) !important
+            }
+
+            .bg-brand {
+                background-color: var(--brand) !important
+            }
+
+            .bg-ink {
+                background-color: var(--ink) !important
+            }
+
+            .rounded-2xl {
+                border-radius: var(--card-radius)
+            }
+
+            .shadow-soft {
+                box-shadow: 0 10px 24px rgba(0, 0, 0, .10), 0 2px 6px rgba(0, 0, 0, .04)
+            }
+
+            .card {
+                border: 0;
+                border-radius: var(--card-radius)
+            }
+
+            .card-header {
+                border-top-left-radius: var(--card-radius);
+                border-top-right-radius: var(--card-radius)
+            }
+
+            .card-footer {
+                border-bottom-left-radius: var(--card-radius);
+                border-bottom-right-radius: var(--card-radius)
+            }
+
+            .card-hover:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 30px rgba(0, 0, 0, .12), 0 4px 10px rgba(0, 0, 0, .06)
+            }
+
+            .smallcaps {
+                letter-spacing: .06em;
+                text-transform: uppercase;
+                font-weight: 600
+            }
+
+            /* ======== HERO del proyecto ======== */
+            #proyectoContainer {
+                position: relative;
+                overflow: hidden;
+                background: none !important;
+                min-height: clamp(220px, 28vh, 360px);
+                border: 0;
+            }
+
+            #proyectoContainer::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                background-image: var(--bg-url, url('https://sigunitropico.com/wp-content/uploads/2025/08/politica-6.png'));
+                background-size: cover;
+                background-position: center;
+                filter: blur(3px) brightness(.65) saturate(.95);
+                transform: scale(1.07);
+            }
+
+            #proyectoContainer::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 0;
+                background: linear-gradient(180deg, rgba(0, 0, 0, .25), rgba(0, 0, 0, .35));
+                backdrop-filter: saturate(120%);
+            }
+
+            #proyectoContainer>.card-body {
+                position: relative;
+                z-index: 1
+            }
+
+            #proyectoContainer .hero-wrap {
+                display: flex;
+                gap: 1rem;
+                align-items: flex-start;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            #proyectoContainer .hero-title {
+                max-width: min(100%, 820px);
+                padding: .5rem .75rem;
+                border-radius: .75rem;
+                background: rgba(13, 15, 17, .25);
+                backdrop-filter: blur(4px) saturate(140%);
+            }
+
+            #proyectoContainer h6 {
+                opacity: .85;
+                margin-bottom: .25rem
+            }
+
+            #proyectoContainer h4 {
+                margin: 0;
+                line-height: 1.2
+            }
+
+            #lblSubMsg {
+                opacity: .85
+            }
+
+            /* Acciones dentro del fondo oscuro */
+            #chkSubPolitica.form-check-input {
+                width: 2.6em;
+                height: 1.3em;
+                cursor: pointer;
+                border-color: #e9ecef;
+            }
+
+            #chkSubPolitica.form-check-input:checked {
+                background-color: var(--accent);
+                border-color: var(--accent);
+            }
+
+            #accionesPolitica .btn.btn-sm {
+                padding: .4rem .65rem;
+                border-radius: .6rem
+            }
+
+            #accionesPolitica .btn-brand {
+                background: var(--accent);
+                border-color: var(--accent);
+                color: #1b1b1b
+            }
+
+            #accionesPolitica .btn-brand:hover {
+                filter: brightness(.95)
+            }
+
+            /* ======== Stats y Documentos en portada ======== */
+            #proyectoContainer .hero-stats {
+                display: grid;
+                gap: .75rem;
+                margin-top: 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            }
+
+            #proyectoContainer .stat-card {
+                display: flex;
+                align-items: center;
+                gap: .75rem;
+                background: rgba(255, 255, 255, .08);
+                border: 1px solid rgba(255, 255, 255, .16);
+                border-radius: .9rem;
+                padding: .8rem .95rem;
+                backdrop-filter: saturate(130%);
+            }
+
+            #proyectoContainer .stat-card i {
+                color: #fff;
+                opacity: .95;
+                font-size: 2rem;
+                /* íconos grandes */
+            }
+
+            #proyectoContainer .stat-card .label {
+                color: rgba(255, 255, 255, .85);
+                font-size: .72rem;
+                letter-spacing: .06em;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+
+            #proyectoContainer .stat-card .value {
+                color: #fff;
+                font-weight: 800;
+                line-height: 1.1;
+                font-size: 1.05rem;
+            }
+
+            #proyectoContainer .docs-strip {
+                display: flex;
+                gap: .5rem;
+                overflow: auto;
+                padding: .6rem 0 .2rem;
+                scroll-snap-type: x proximity;
+            }
+
+            #proyectoContainer .doc-chip {
+                scroll-snap-align: start;
+                display: inline-flex;
+                align-items: center;
+                gap: .45rem;
+                background: rgba(255, 255, 255, .10);
+                border: 1px solid rgba(255, 255, 255, .18);
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+                padding: .45rem .7rem;
+                border-radius: 999px;
+                white-space: nowrap;
+            }
+
+            #proyectoContainer .doc-chip:hover {
+                background: rgba(255, 255, 255, .18)
+            }
+
+            #proyectoContainer .doc-chip i {
+                font-size: 1rem;
+                color: #fff
+            }
+
+            /* Scrollbar sutil */
+            #proyectoContainer .docs-strip::-webkit-scrollbar {
+                height: 8px
+            }
+
+            #proyectoContainer .docs-strip::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, .25);
+                border-radius: 999px
+            }
+
+            #proyectoContainer .docs-strip::-webkit-scrollbar-track {
+                background: transparent
+            }
+
+            /* ======== Tarjetas de métricas y gráfica ======== */
+            .metric-card .card-body {
+                padding: 1.1rem
+            }
+
+            #grafica_comparacion_metas {
+                height: clamp(260px, 42vh, 420px);
+                width: 100%
+            }
+
+            /* ======== Tabla de metas ======== */
+            .table-wrap {
+                max-height: 380px;
+                overflow: auto
+            }
+
+            .table thead th {
+                position: sticky;
+                top: 0;
+                z-index: 2;
+                background: #f8fafb
+            }
+
+            #tablaResumenMetas th,
+            #tablaResumenMetas td {
+                vertical-align: middle
+            }
+
+            #tablaResumenMetas td:nth-child(1),
+            #tablaResumenMetas td:nth-child(4) {
+                text-align: center;
+                white-space: nowrap
+            }
+
+            #tablaResumenMetas td:nth-child(3) {
+                text-align: right
+            }
+
+            /* Barra de progreso genérica por si el JS inyecta una */
+            .progress {
+                height: .65rem;
+                border-radius: 999px;
+                background: #eef2f3
+            }
+
+            .progress .progress-bar {
+                background: var(--brand)
+            }
+
+            /* ======== Scrollbar sutil general ======== */
+            .table-wrap::-webkit-scrollbar {
+                height: 10px;
+                width: 10px
+            }
+
+            .table-wrap::-webkit-scrollbar-thumb {
+                background: #cfd6dc;
+                border-radius: 999px
+            }
+
+            .table-wrap::-webkit-scrollbar-track {
+                background: transparent
+            }
+
+            /* ======== Espaciados responsivos ======== */
+            @media (max-width: 576px) {
+                #proyectoContainer {
+                    min-height: 240px
+                }
+
+                #proyectoContainer .hero-title {
+                    padding: .4rem .6rem
+                }
+            }
+        </style>
+
+        <div class="container-fluid px-4 mt-4">
+            <!-- HERO / portada del proyecto -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card shadow-soft rounded-2xl" id="proyectoContainer">
+                        <div class="card-body">
+                            <div class="hero-wrap">
+                                <div class="hero-title">
+                                    <h6 class="smallcaps text-white mb-1">Título del proyecto</h6>
+                                    <h4 class="text-white fw-bold" id="tituloProyecto">Cargando...</h4>
+                                </div>
+
+                                <!-- Acciones: Suscripción + Cambiar foto (rellenadas por JS) -->
+                                <div class="d-flex justify-content-end align-items-center gap-2 flex-wrap"
+                                    id="accionesPolitica">
+                                    <!-- tus controles JS aparecen aquí; estilos mejorados arriba -->
+                                </div>
+                            </div>
+
+                            <!-- Resumen en portada -->
+                            <div class="hero-stats" role="group" aria-label="Resumen del proyecto">
+                                <div class="stat-card">
+                                    <i class="fa-solid fa-barcode" aria-hidden="true"></i>
+                                    <div>
+                                        <div class="label">Código</div>
+                                        <div class="value" id="id_proyecto_title">—</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+                                    <div>
+                                        <div class="label">Metas</div>
+                                        <div class="value"><span id="cantidadMetas">0</span></div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="fa-solid fa-calendar-day" aria-hidden="true"></i>
+                                    <div>
+                                        <div class="label">Inicio</div>
+                                        <div class="value" id="fechaInicioProyecto">—</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                                    <div>
+                                        <div class="label">Responsable</div>
+                                        <div class="value"><span id="cantidadDocs">0</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documentos del proyecto -->
+                            <div class="docs-strip" id="docsProyecto" aria-label="Documentos del proyecto">
+                                <!-- Ejemplos (puedes reemplazar o dejar que tu JS inyecte) -->
+                                <a class="doc-chip" href="#" target="_blank" rel="noopener">
+                                    <i class="fa-solid fa-file-lines"></i><span>Acta de inicio</span>
+                                </a>
+                                <a class="doc-chip" href="#" target="_blank" rel="noopener">
+                                    <i class="fa-solid fa-file-pdf"></i><span>Marco normativo</span>
+                                </a>
+                                <a class="doc-chip" href="#" target="_blank" rel="noopener">
+                                    <i class="fa-solid fa-database"></i><span>Matriz de metas</span>
+                                </a>
+                            </div>
+
+                            <small id="lblSubMsg" class="d-block text-end text-white-50 mt-2"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métricas + Gráfica -->
+            <div class="row g-3">
+                <!-- Avance general del proyecto -->
+                <div class="col-lg-3">
+                    <div class="card shadow-soft card-hover h-100 metric-card">
+                        <div class="card-header bg-gradient-warning text-white fw-semibold py-2 smallcaps">Estado</div>
+                        <div class="card-body">
+                            <div id="AvanceGeneralProyecto" class="text-center"><!-- JS --></div>
+                        </div>
+                        <div class="card-footer bg-white py-3">
+                            <h6 class="text-center text-brand fw-bold mb-0">Avance general del proyecto</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráfica de comparación de metas -->
+                <div class="col-lg-9">
+                    <div class="card shadow-soft card-hover h-100">
+                        <div class="card-header bg-white smallcaps fw-semibold py-2">
+                            Comparación de metas
+                        </div>
+                        <div class="card-body">
+                            <div id="grafica_comparacion_metas" role="img" aria-label="Gráfica de comparación de metas">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de metas -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-soft card-hover h-100">
+                        <div class="card-header bg-brand text-white fw-semibold smallcaps">
+                            Resumen de metas del proyecto
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-wrap" role="region" aria-label="Tabla de metas con desplazamiento">
+                                <table class="table table-sm table-striped table-hover mb-0" id="tablaResumenMetas">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th style="width:6%;">#</th>
+                                            <th style="width:54%;">Meta</th>
+                                            <th style="width:20%;">Inversión realizada</th>
+                                            <th style="width:10%;">Avance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Filas generadas por JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <small class="text-muted">* Los valores se actualizan automáticamente.</small>
+                            <span class="badge rounded-pill" style="background:var(--accent);color:#fff">PDI
+                                2024–2028</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--- FIN DEL CONTENIDO ---->
+
+        <footer class="footer pt-3  ">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-lg-between">
+                    <div class="col-lg-6 mb-lg-0 mb-4">
+                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>,
+                            desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de
+                                Planeación</a> - Unitrópico
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                            <li class="nav-item">
+                                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris
+                                    Corp</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted"
+                                    target="_blank">About
+                                    Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted"
+                                    target="_blank">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                                    target="_blank">License</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+    </main>
+    <div class="fixed-plugin">
+        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                <path
+                    d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+            </svg>
+        </a>
+        <div class="card shadow-lg">
+            <div class="card-header pb-0 pt-3 ">
+                <div class="float-start">
+                    <h5 class="mt-3 mb-0">Argon Configurator</h5>
+                    <p>See our dashboard options.</p>
+                </div>
+                <div class="float-end mt-4">
+                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                        <i class="fa fa-close"></i>
+                    </button>
+                </div>
+                <!-- End Toggle Button -->
+            </div>
+            <hr class="horizontal dark my-1">
+            <div class="card-body pt-sm-3 pt-0 overflow-auto">
+                <!-- Sidebar Backgrounds -->
+                <div>
+                    <h6 class="mb-0">Sidebar Colors</h6>
+                </div>
+                <a href="javascript:void(0)" class="switch-trigger background-color">
+                    <div class="badge-colors my-2 text-start">
+                        <span class="badge filter bg-gradient-primary active" data-color="primary"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-dark" data-color="dark"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-info" data-color="info"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-success" data-color="success"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-warning" data-color="warning"
+                            onclick="sidebarColor(this)"></span>
+                        <span class="badge filter bg-gradient-danger" data-color="danger"
+                            onclick="sidebarColor(this)"></span>
+                    </div>
+                </a>
+                <!-- Sidenav Type -->
+                <div class="mt-3">
+                    <h6 class="mb-0">Sidenav Type</h6>
+                    <p class="text-sm">Choose between 2 different sidenav types.</p>
+                </div>
+                <div class="d-flex">
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+                        onclick="sidebarType(this)">White</button>
+                    <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+                        onclick="sidebarType(this)">Dark</button>
+                </div>
+                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+                <!-- Navbar Fixed -->
+                <div class="d-flex my-3">
+                    <h6 class="mb-0">Navbar Fixed</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed"
+                            onclick="navbarFixed(this)">
+                    </div>
+                </div>
+                <hr class="horizontal dark my-sm-4">
+                <div class="mt-2 mb-5 d-flex">
+                    <h6 class="mb-0">Light / Dark</h6>
+                    <div class="form-check form-switch ps-0 ms-auto my-auto">
+                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
+                            onclick="darkMode(this)">
+                    </div>
+                </div>
+                <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+                    Download</a>
+                <a class="btn btn-outline-dark w-100"
+                    href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View
+                    documentation</a>
+                <div class="w-100 text-center">
+                    <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+                        data-icon="octicon-star" data-size="large" data-show-count="true"
+                        aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+                    <h6 class="mt-3">Thank you for sharing!</h6>
+                    <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+                        class="btn btn-dark mb-0 me-2" target="_blank">
+                        <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+                        class="btn btn-dark mb-0 me-2" target="_blank">
+                        <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Cierre de Sesión -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <p>¿Estás seguro de que quieres cerrar sesión?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Librería ECharts oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+    <!-- Tu theme personalizado -->
+    <script src="../assets/js/s-plan-charts.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+        import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+        // Configuración de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+            authDomain: "sigunitropico.firebaseapp.com",
+            projectId: "sigunitropico",
+            storageBucket: "sigunitropico.appspot.com",
+            messagingSenderId: "32992004482",
+            appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        // Obtener el botón de login/logout
+        const logButton = document.getElementById("logButton");
+
+        // Variable para evitar agregar múltiples event listeners
+        let logoutListenerAdded = false;
+
+
+        // Variables de control para listeners
+        let logoutListenerAddedNavbar = false;
+        let logoutListenerAddedAside = false;
+
+        onAuthStateChanged(auth, (user) => {
+            // 1. Navbar
+            const logButton = document.getElementById("logButton");
+            // 2. Aside
+            const asideAuthDiv = document.getElementById('asideAuthBtn');
+
+            // ---- SI ESTÁ AUTENTICADO ----
+            if (user) {
+                // --- NAVBAR ---
+                if (logButton) {
+                    logButton.textContent = "Cerrar sesión";
+                    logButton.classList.remove("btn-primary");
+                    logButton.classList.add("btn-danger");
+                    // Solo agrega el evento una vez
+                    if (!logoutListenerAddedNavbar) {
+                        logButton.addEventListener("click", () => {
+                            const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                            logoutModal.show();
+                            // Listener de confirmación (evita duplicidad)
+                            const confirmBtn = document.getElementById("confirmLogout");
+                            const clonedBtn = confirmBtn.cloneNode(true);
+                            confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+                            clonedBtn.addEventListener("click", () => {
+                                signOut(auth).catch((error) => {
+                                    console.error("Error al cerrar sesión:", error);
+                                });
+                            });
+                        });
+                        logoutListenerAddedNavbar = true;
+                    }
+                }
+
+                // --- ASIDE ---
+                if (asideAuthDiv) {
+                    asideAuthDiv.innerHTML = `
+        <button id="btnLogoutAside" class="btn btn-outline-danger btn-sm w-75 mb-1 fw-semibold rounded-pill shadow-sm">
+          <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Cerrar sesión
+        </button>`;
+                    // Agrega listener SÓLO una vez (usa bandera)
+                    if (!logoutListenerAddedAside) {
+                        asideAuthDiv.addEventListener("click", function asideLogoutEvent(e) {
+                            if (e.target && (e.target.id === "btnLogoutAside" || e.target.closest('#btnLogoutAside'))) {
+                                const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+                                logoutModal.show();
+                                // Listener de confirmación para aside
+                                const confirmBtn = document.getElementById("confirmLogout");
+                                const clonedBtn = confirmBtn.cloneNode(true);
+                                confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+                                clonedBtn.addEventListener("click", () => {
+                                    signOut(auth).catch((error) => {
+                                        console.error("Error al cerrar sesión:", error);
+                                    });
+                                });
+                            }
+                        });
+                        logoutListenerAddedAside = true;
+                    }
+                }
+
+                // --- PERFIL USUARIO ---
+                const nombreCompleto = user.displayName || user.email || "Usuario";
+                const nombreCorto = obtenerNombreCorto(nombreCompleto);
+                const foto = user.photoURL
+                    ? user.photoURL
+                    : `https://ui-avatars.com/api/?name=${encodeURIComponent(nombreCorto)}&background=0D8ABC&color=fff&rounded=true&size=64`;
+
+                if (document.getElementById("nombrePerfilUsuario")) {
+                    document.getElementById("nombrePerfilUsuario").textContent = nombreCompleto;
+                    document.getElementById("nombrePerfilUsuario").classList.add("text-dark");
+                    document.getElementById("nombrePerfilUsuario").classList.remove("text-white");
+                    document.getElementById("correoPerfilUsuario").textContent = user.email;
+                }
+                if (document.getElementById("imgPerfilUsuario")) {
+                    document.getElementById("imgPerfilUsuario").src = foto;
+                    document.getElementById("imgPerfilUsuario").alt = nombreCorto;
+                    document.getElementById("imgPerfilUsuario").title = nombreCorto;
+                }
+                if (document.getElementById("imgPerfilUsuarioDropdown")) {
+                    document.getElementById("imgPerfilUsuarioDropdown").src = foto;
+                    document.getElementById("imgPerfilUsuarioDropdown").alt = nombreCorto;
+                    document.getElementById("imgPerfilUsuarioDropdown").title = nombreCorto;
+                }
+
+                // --- ROLES ---
+                const correoSanitizado = user.email.replace(/\./g, "_");
+                const userRef = ref(db, 'usuarios/' + correoSanitizado);
+                get(userRef).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const userData = snapshot.val();
+                        const roles = userData.roles || [];
+                        if (roles.includes("admin")) {
+                            document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+                        }
+                        if (roles.includes("admin-polariscore")) {
+                            document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+                        }
+                        if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+                            document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+                        }
+                        if (document.getElementById("rolesUsuario")) {
+                            let rolSimplificado = "Usuario";
+                            const rolesMinusculas = roles.map(r => r.toLowerCase());
+                            if (rolesMinusculas.some(r => r.includes("admin"))) {
+                                rolSimplificado = "Admin";
+                            } else if (rolesMinusculas.some(r => r.includes("responsable"))) {
+                                rolSimplificado = "Responsable";
+                            } else if (rolesMinusculas.some(r => r.includes("observador"))) {
+                                rolSimplificado = "Observador";
+                            }
+                            document.getElementById("rolesUsuario").textContent = rolSimplificado;
+                        }
+                    } else {
+                        console.warn("Usuario autenticado pero no registrado en la base de datos.");
+                    }
+                }).catch((error) => {
+                    console.error("Error al obtener datos del usuario:", error);
+                });
+
+                // ---- SI NO ESTÁ AUTENTICADO ----
+            } else {
+                // Navbar
+                if (logButton) {
+                    logButton.textContent = "Iniciar Sesión";
+                    logButton.classList.remove("btn-danger", "text-danger");
+                    logButton.classList.add("btn-primary", "text-white");
+                    logButton.style.backgroundColor = "#00594e";
+                    logButton.style.color = "#fff!important";
+                    logButton.onclick = () => window.location.href = "../pages/sign-in.html";
+                }
+                // Aside
+                if (asideAuthDiv) {
+                    asideAuthDiv.innerHTML = `
+        <a href="../pages/sign-in.html" class="btn btn-outline-success btn-sm w-65 mb-1 fw-semibold rounded-pill shadow-sm">
+          <i class="fa-solid fa-sign-in-alt me-2"></i> Iniciar sesión
+        </a>`;
+                }
+            }
+        });
+
+
+        function obtenerNombreCorto(nombreCompleto) {
+            if (!nombreCompleto) return "";
+            const partes = nombreCompleto.trim().split(" ");
+            if (partes.length === 1) return partes[0];
+            return partes[0] + " " + partes[1];
+        }
+
+
+        // Obtener parámetros desde la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        let idProyecto = urlParams.get('id');
+        const idPrograma = urlParams.get('programa');
+        const idEje = urlParams.get('eje');
+
+        // Referencias HTML
+        const pageTitle = document.getElementById('pageTitle');
+        const proyectoTitle = document.getElementById('proyectoTitle');
+        const container = document.getElementById('contenedorProyecto');
+        const tablaMetas = document.querySelector('#tablaResumenMetas tbody');
+
+        // Redirigir si falta algo
+        if (!idProyecto || !idPrograma || !idEje) {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Obtener directamente el proyecto
+
+        const fechaRef = ref(db, `S-PLAN/fecha_actualizacion`);
+
+        get(fechaRef).then(snapshot => {
+            if (snapshot.exists()) {
+                const timestamp = snapshot.val(); // valor en milisegundos
+
+                const fecha = new Date(timestamp);
+
+                const opcionesFecha = {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                };
+
+                const fechaFormateada = fecha.toLocaleString('es-CO', opcionesFecha);
+
+                document.getElementById('fecha_actualizacion').textContent = fechaFormateada;
+            } else {
+                document.getElementById('fecha_actualizacion').textContent = "No disponible";
+            }
+        }).catch(error => {
+            console.error("❌ Error al obtener la fecha:", error);
+            document.getElementById('fecha_actualizacion').textContent = "Error al cargar";
+        });
+
+        // dd-mm-aaaa → timestamp (para ordenar por fecha)
+        function parseDMYToTs(s) {
+            const m = /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})$/.exec(String(s || ''));
+            if (!m) return -Infinity;
+            const d = +m[1], mm = +m[2], y = +m[3];
+            return new Date(y, mm - 1, d).getTime();
+        }
+
+        // Último avance (0..1) de una meta por su fecha más reciente en avance_meta
+        function ultimoAvanceMeta(meta = {}) {
+            const mapa = meta.avance_meta || {};
+            let ultimaClave = null, maxTs = -Infinity;
+            for (const k in mapa) {
+                const ts = parseDMYToTs(k);
+                if (ts > maxTs) { maxTs = ts; ultimaClave = k; }
+            }
+            return ultimaClave ? (parseFloat(mapa[ultimaClave]) || 0) : 0; // 0..1
+        }
+
+        // Promedio del avance de todas las metas (en %)
+        function calcularAvanceProyectoDesdeMetas(metasObj = {}) {
+            let suma = 0, count = 0;
+            for (const idMeta in metasObj) {
+                const meta = metasObj[idMeta] || {};
+                const v = ultimoAvanceMeta(meta); // 0..1
+                suma += v;
+                count++;
+            }
+            const avancePct = count ? (suma / count) * 100 : 0; // → %
+            return avancePct;
+        }
+
+
+
+
+        async function cargarProyecto() {
+            try {
+                const dbRef = ref(db, `S-PLAN/ejes/${idEje}/programas/${idPrograma}/proyectos/${idProyecto}`);
+                const snapshot = await get(dbRef);
+
+                if (!snapshot.exists()) {
+                    proyectoTitle.textContent = 'Proyecto no encontrado';
+                    return;
+                }
+
+                const proyectoEncontrado = snapshot.val();
+                const metas = proyectoEncontrado.metas || {};
+                pageTitle.textContent = `Proyecto - ${idProyecto}`;
+
+                // Título
+                document.getElementById('tituloProyecto').textContent =
+                    proyectoEncontrado.nombre_proyecto || "Proyecto";
+
+                // 🔢 NUEVO CÁLCULO: promedio de avance_meta (último valor por meta)
+                const avance = calcularAvanceProyectoDesdeMetas(metas); // % (0..100)
+
+                // ... usa `avance` donde antes usabas avance_proyecto*100
+                // p.ej. para tu gauge:
+                const valAvance = avance;
+
+                guardarAvanceProyecto(idEje, idPrograma, idProyecto, valAvance);
+
+                animarCumplimientoConChart(avance);
+
+                function animarCumplimientoConChart(valorFinal) {
+                    // Busca el contenedor de la gráfica en el HTML.
+
+
+                    const chartContainer = document.getElementById('AvanceGeneralProyecto');
+                    const fondoURL = 'https://sigunitropico.com/wp-content/uploads/2025/09/Identidad-Visual-PlanItOne-28.png';
+
+                    const getBgSize = () => {
+                        const w = chartContainer.clientWidth || 320;
+                        const h = chartContainer.clientHeight || w;
+                        return Math.floor(Math.min(w, h) * 0.80); // 95% del lado menor
+                    };
+                    const bgSize = getBgSize();
+                    if (!chartContainer) {
+                        console.error('Error: No se encontró el contenedor con id "AvanceGeneralProyecto".');
+                        return;
+                    }
+                    // Aseguramos que el contenedor tenga una altura para que la gráfica sea visible.
+                    chartContainer.style.height = '300px';
+
+                    // Inicializa la instancia de ECharts.
+                    const chart = echarts.init(chartContainer, 'S-PLAN');
+
+                    // Nos aseguramos que el valor esté en el rango de 0 a 100.
+                    const avanceReal = Math.max(0, Math.min(100, valorFinal));
+
+                    // Opciones de configuración para la gráfica.
+                    const option = {
+
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: (p) => `Avance: <b>${(p.value ?? 0).toFixed(2)}%</b>`
+                        },
+                        graphic: [
+                            {
+                                id: 'bg',
+                                type: 'image',
+                                left: 'center',
+                                top: 'middle',
+                                z: -2,
+                                silent: true,
+                                style: {
+                                    image: fondoURL,
+                                    width: bgSize,
+                                    height: bgSize,
+                                    opacity: 0.9
+                                }
+                            }],
+                        series: [
+                            {
+                                name: 'Avance',
+                                type: 'gauge',
+                                radius: '100%', // Tamaño del anillo
+                                startAngle: 90,
+                                endAngle: -270,
+                                // --- Anillo base (fondo gris) ---
+                                axisLine: {
+                                    lineStyle: {
+                                        width: 16,
+                                        color: [[1, '#d3d3d3']] // Color gris para el fondo
+                                    }
+                                },
+                                // --- Líneas y etiquetas de los ejes (no las necesitamos) ---
+                                splitLine: { show: false },
+                                axisTick: { show: false },
+                                axisLabel: { show: false },
+                                pointer: { show: false },
+
+                                // --- Barra de progreso (el color cambia según el valor) ---
+                                progress: {
+                                    show: true,
+                                    roundCap: true,
+                                    width: 16,
+                                    itemStyle: {
+                                        // Colores dinámicos: Rojo -> Amarillo -> Verde
+                                        color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                            { offset: 0.6, color: '#ffde59' }, // Amarillo (Medio)
+                                            { offset: 1, color: '#ff914d' }    // Verde (Alto)
+                                        ])
+                                    }
+                                },
+
+                                // --- Detalle (el texto del porcentaje en el centro) ---
+                                detail: {
+                                    valueAnimation: true, // ¡Animación integrada!
+                                    formatter: (v) => `${(v ?? 0).toFixed(2)}%`,
+                                    color: '#fff',
+                                    fontSize: 25,
+                                    fontWeight: 'bold',
+                                    offsetCenter: [0, '38%']
+                                },
+
+                                // --- Dato inicial (comienza en 0 para la animación) ---
+                                data: [{
+                                    value: 0
+                                }]
+                            }
+                        ]
+                    };
+
+                    // Aplica la configuración a la gráfica.
+                    chart.setOption(option);
+
+                    // --- Efecto de animación: Carga la gráfica en 0 y luego la anima al valor real ---
+                    setTimeout(() => {
+                        chart.setOption({
+                            series: [{
+                                data: [{
+                                    value: avanceReal
+                                }]
+                            }]
+                        });
+                    }, 500); // Un pequeño retraso para un efecto más dramático.
+
+                    // Ajusta el tamaño de la gráfica si la ventana cambia de tamaño.
+                    window.addEventListener('resize', () => {
+                        chart.resize();
+                    });
+                }
+
+                // Navegación jerárquica
+                document.getElementById('id_eje_nav').textContent = idEje;
+                document.getElementById('id_eje_nav').href = `eje.html?id=${idEje}`;
+
+                document.getElementById('id_programa_nav').textContent = idPrograma;
+                document.getElementById('id_programa_nav').href = `programa.html?id=${idPrograma}&eje=${idEje}`;
+
+                document.getElementById('id_proyecto_nav').textContent = idProyecto;
+                document.getElementById('id_proyecto_title').textContent = idProyecto;
+
+
+
+                // === Dropdown dinámico de PROYECTOS (P#) ===========================
+                const proyectosContainer = document.getElementById('containerProyectosDropdown');
+                const proyectosToggler = document.getElementById('id_proyecto_nav');
+
+                // Normaliza y ordena (ej: P1, P2, P10)
+                function parseP(s) {
+                    const m = /^P(\d+)$/i.exec((s || '').trim());
+                    return m ? { p: +m[1] } : null;
+                }
+                function sortP(a, b) {
+                    const pa = parseP(a), pb = parseP(b);
+                    if (pa && pb) return pa.p - pb.p;
+                    return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' });
+                }
+                function extractCodes(val) {
+                    if (!val) return [];
+                    if (Array.isArray(val)) return val.filter(Boolean);
+                    if (typeof val === 'object') {
+                        const out = [];
+                        for (const [k, v] of Object.entries(val)) {
+                            if (v && typeof v === 'object') out.push(v.codigo || v.alias || k);
+                            else out.push(k);
+                        }
+                        return out;
+                    }
+                    return [];
+                }
+                function storageKeyForProyectos(ids) {
+                    return `splan.proyecto.activo.${ids.idEje}.${ids.idPrograma}`;
+                }
+
+                function renderProyectosGrid(codes, active) {
+                    proyectosContainer.innerHTML = codes.map(c =>
+                        `<a href="#" class="proyecto-item ${c === active ? 'active' : ''}" data-proyecto="${c}">${c}</a>`
+                    ).join('');
+                }
+
+                function setActiveProyecto(code, ids, { silent = false, persist = true, reload = true } = {}) {
+                    // UI activa
+                    proyectosContainer.querySelector('.proyecto-item.active')?.classList.remove('active');
+                    proyectosContainer.querySelector(`.proyecto-item[data-proyecto="${code}"]`)?.classList.add('active');
+
+                    // Breadcrumb
+                    if (proyectosToggler) proyectosToggler.textContent = code;
+                    const sub2 = document.getElementById('id_proyecto_sub2');
+                    if (sub2) sub2.textContent = code;
+
+                    // Actualiza global
+                    idProyecto = code;
+                    if (reload && typeof cargarProyecto === 'function') cargarProyecto();
+
+                    // Cierra el dropdown
+                    try {
+                        if (window.bootstrap && proyectosToggler) {
+                            (bootstrap.Dropdown.getInstance(proyectosToggler) || new bootstrap.Dropdown(proyectosToggler)).hide();
+                        }
+                    } catch { }
+
+                    // Persistencia
+                    if (persist) localStorage.setItem(storageKeyForProyectos(ids), code);
+
+                    // Evento/callback
+                    proyectosContainer.dispatchEvent(new CustomEvent('proyecto-change', { detail: { code, ids } }));
+                    if (!silent && typeof window.onProyectoChange === 'function') window.onProyectoChange(code, ids);
+                }
+
+                async function initProyectosDropdown(ids, proyectoDefault) {
+                    if (!proyectosContainer) return;
+                    proyectosContainer.dataset.ids = JSON.stringify(ids);
+                    proyectosContainer.innerHTML = `<div class="text-center py-2 small text-muted">Cargando proyectos…</div>`;
+
+                    const refPrograma = ref(db, `S-PLAN/ejes/${ids.idEje}/programas/${ids.idPrograma}/proyectos_indices`);
+                    try {
+                        const snap = await get(refPrograma);
+                        const codes = extractCodes(snap.val()).filter(Boolean).sort(sortP);
+
+                        if (!codes.length) {
+                            proyectosContainer.innerHTML = `<div class="text-center py-2 small text-muted">Sin proyectos para mostrar</div>`;
+                            if (proyectosToggler) proyectosToggler.textContent = '—';
+                            return;
+                        }
+
+                        const stored = localStorage.getItem(storageKeyForProyectos(ids));
+                        const initial = (stored && codes.includes(stored))
+                            ? stored
+                            : (proyectoDefault && codes.includes(proyectoDefault) ? proyectoDefault : codes[0]);
+
+                        renderProyectosGrid(codes, initial);
+                        setActiveProyecto(initial, ids, { silent: true, reload: false, persist: true });
+                    } catch (err) {
+                        console.error('[Dropdown proyectos] Error cargando proyectos:', err);
+                        proyectosContainer.innerHTML = `<div class="text-danger small">Error cargando proyectos</div>`;
+                    }
+                }
+
+                // Delegación de clics
+                proyectosContainer?.addEventListener('click', (e) => {
+                    const a = e.target.closest('.proyecto-item');
+                    if (!a) return;
+                    e.preventDefault();
+                    let ids = {};
+                    try { ids = JSON.parse(proyectosContainer.dataset.ids || '{}'); } catch { }
+                    setActiveProyecto(a.dataset.proyecto, ids);
+                });
+
+                async function ensureProyectosIndices({ idEje, idPrograma }, { reconstruir = false } = {}) {
+                    if (!idEje || !idPrograma) {
+                        console.warn('[ensureProyectosIndices] Faltan IDs (eje/programa).');
+                        return { created: false, count: 0, reason: 'ids_invalidos' };
+                    }
+
+                    const basePath = `S-PLAN/ejes/${idEje}/programas/${idPrograma}`;
+                    const idxRef = ref(db, `${basePath}/proyectos_indices`);
+
+                    try {
+                        // 1) Si ya existen y no queremos reconstruir, salir rápido
+                        const idxSnap = await get(idxRef);
+                        if (idxSnap.exists() && !reconstruir) {
+                            const existing = idxSnap.val() || {};
+                            return { created: false, count: Object.keys(existing).length, reason: 'ya_existian' };
+                        }
+
+                        // 2) Leer proyectos reales
+                        const proyectosRef = ref(db, `${basePath}/proyectos`);
+                        const proyectosSnap = await get(proyectosRef);
+                        if (!proyectosSnap.exists()) {
+                            console.warn('[ensureProyectosIndices] No hay proyectos para indexar.');
+                            return { created: false, count: 0, reason: 'sin_proyectos' };
+                        }
+
+                        const proyectos = proyectosSnap.val() || {};
+                        const indices = {};
+
+                        // 3) Construir un índice mínimo por cada proyecto
+                        for (const [proyectoId, proyecto] of Object.entries(proyectos)) {
+                            indices[proyectoId] = {
+                                codigo: proyectoId,
+                                nombre: proyecto?.nombre_proyecto || '',
+                                avance_proyecto: proyecto?.avance_proyecto || 0,
+                                total_metas: proyecto?.metas ? Object.keys(proyecto.metas).length : 0
+                                // 🔑 Agrega otros campos livianos si los necesitas en la UI
+                            };
+                        }
+
+                        // 4) Guardar (un solo write)
+                        await update(ref(db), { [`${basePath}/proyectos_indices`]: indices });
+
+                        if (typeof mostrarToast === 'function') {
+                            mostrarToast(`proyectos_indices creados: ${Object.keys(indices).length}`, 'success');
+                        }
+
+                        return { created: true, count: Object.keys(indices).length };
+                    } catch (err) {
+                        console.error('[ensureProyectosIndices] Error:', err);
+                        if (typeof mostrarToast === 'function') {
+                            mostrarToast('No se pudieron crear los índices de proyectos.', 'danger');
+                        }
+                        return { created: false, count: 0, error: String(err) };
+                    }
+                }
+
+
+                await ensureProyectosIndices({ idEje, idPrograma });
+
+                // Luego inicializas el dropdown
+                initProyectosDropdown({ idEje, idPrograma }, idProyecto);
+
+                // Cargar tabla resumen de metas
+                tablaMetas.innerHTML = '';
+                Object.entries(metas).forEach(([idMeta, meta], i) => {
+                    const nombreMeta = meta.titulo_meta || `Meta ${i + 1}`;
+                    const valorMeta = meta.inversion_realizada || 0;
+                    const avanceMeta = obtenerUltimoAvance(meta.avance_meta);
+
+                    const fila = document.createElement('tr');
+                    fila.style.cursor = 'pointer';
+                    fila.onclick = () => {
+                        // 1. Construye la cadena de parámetros original.
+                        const params = `id=${idMeta}&programa=${idPrograma}&eje=${idEje}&proyecto=${idProyecto}`;
+
+                        // 2. Codifica la cadena de parámetros a Base64.
+                        const paramsCodificados = btoa(params);
+
+                        // 3. Redirige usando el parámetro 'data' con la cadena codificada.
+                        window.location.href = `meta.html?data=${paramsCodificados}`;
+                    };
+
+                    fila.innerHTML = `
+                        <td class="align-middle small">${idMeta}</td>
+                        <td class="align-middle">${limitarTexto(nombreMeta, 110)}</td>
+                        <td class="align-middle text-start">${valorMeta.toLocaleString('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 })}</td>
+                        <td class="align-middle">
+                            <div class="progress" style="height: 20px; background: #d3d3d3;" title="Avance: ${avanceMeta.toFixed(2)}%">
+                                <div class="progress-bar ${getProgressBarColor(avanceMeta)}" 
+                                    role="progressbar" 
+                                    style="width: ${avanceMeta}%;" 
+                                    aria-valuenow="${avanceMeta}" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100">
+                                    ${avanceMeta.toFixed(1)}%
+                                </div>
+                            </div>
+                        </td>
+                    `;
+                    tablaMetas.appendChild(fila);
+                });
+
+            } catch (error) {
+                console.error("Error al obtener el proyecto:", error);
+                proyectoTitle.textContent = 'Error al cargar proyecto';
+            }
+        }
+
+        cargarProyecto();
+
+
+
+
+
+
+
+
+        function obtenerUltimoAvance(mapaAvance) {
+            // Si no hay historial de avances, retorna 0.
+            if (!mapaAvance || Object.keys(mapaAvance).length === 0) {
+                return 0;
+            }
+
+            // Parsea una fecha DD-MM-YYYY a un objeto Date para poder compararlas.
+            const parsearFecha = (fechaStr) => {
+                const [dia, mes, anio] = fechaStr.split('-').map(Number);
+                // Ojo: en JavaScript, los meses van de 0 a 11.
+                return new Date(anio, mes - 1, dia);
+            };
+
+            // Obtiene la clave de la fecha más reciente.
+            const ultimaFechaKey = Object.keys(mapaAvance).sort((a, b) => {
+                // Ordena las fechas de la más antigua a la más reciente.
+                return parsearFecha(a) - parsearFecha(b);
+            }).pop(); // .pop() extrae el último elemento, que es la fecha más reciente.
+
+            // Obtiene el valor (0-1), lo convierte a porcentaje (0-100) y lo retorna.
+            const avanceFraccion = mapaAvance[ultimaFechaKey] || 0;
+            return avanceFraccion * 100;
+        }
+
+
+        // Función para obtener el color de la barra de progreso según el porcentaje
+        const getProgressBarColor = (progreso) => {
+            if (progreso <= 40) return "#ff5c5c";  // Rojo
+            if (progreso <= 75) return "#ffa500";  // Naranja
+            return "#4caf50";  // Verde
+        };
+
+
+
+        // **Función para limitar texto**
+        function limitarTexto(texto, limite) {
+            return texto.length > limite ? texto.substring(0, limite) + "..." : texto;
+        }
+
+
+        function exportarGrafica(idCanvas, nombreArchivo = "grafica.png", scaleFactor = 4) {
+            const canvas = document.getElementById(idCanvas);
+            if (!canvas) {
+                console.error("El canvas no se encontró.");
+                return;
+            }
+
+            // Crear un canvas temporal con mayor resolución
+            const canvasExport = document.createElement("canvas");
+            const ctxExport = canvasExport.getContext("2d");
+
+            // Ajustar tamaño del nuevo canvas para mayor resolución
+            canvasExport.width = canvas.width * scaleFactor;
+            canvasExport.height = canvas.height * scaleFactor;
+
+            // Mejorar la calidad del renderizado
+            ctxExport.imageSmoothingEnabled = true;
+            ctxExport.imageSmoothingQuality = "high";
+
+            // Dibujar la gráfica en el nuevo canvas con mayor resolución
+            ctxExport.scale(scaleFactor, scaleFactor);
+            ctxExport.drawImage(canvas, 0, 0);
+
+            // Convertir a imagen en formato PNG con calidad máxima
+            const imagen = canvasExport.toDataURL("image/png", 1.0);
+
+            // Crear un enlace de descarga
+            const link = document.createElement("a");
+            link.href = imagen;
+            link.download = nombreArchivo;
+
+            // Simular clic para descargar la imagen
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        window.exportarGrafica = exportarGrafica;
+
+        function exportarDatosAGrafica(labels, datos, nombreColumnas = ["Etiqueta", "Valor"], nombreArchivo = "datos_grafica.xlsx") {
+            if (!labels || !datos || labels.length !== datos.length) {
+                console.error("Error: Los datos y etiquetas deben tener la misma longitud.");
+                return;
+            }
+
+            // Crear los datos para el archivo Excel
+            let datosExcel = labels.map((label, index) => ({
+                [nombreColumnas[0]]: label,
+                [nombreColumnas[1]]: datos[index].toFixed(2) // Formatear a dos decimales
+            }));
+
+            // Convertir datos a hoja de Excel
+            const ws = XLSX.utils.json_to_sheet(datosExcel);
+
+            // Crear libro de trabajo
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Datos");
+
+            // Descargar el archivo
+            XLSX.writeFile(wb, nombreArchivo);
+        }
+        window.exportarDatosAGrafica = exportarDatosAGrafica;
+
+
+
+        window.fechaFormateada = '';
+
+
+        async function cargarGraficaMetasDelProyecto() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let idProyecto = urlParams.get('id');
+            const idPrograma = urlParams.get('programa');
+            const idEje = urlParams.get('eje');
+
+            if (!idProyecto || !idPrograma || !idEje) {
+                console.error("❌ Faltan parámetros en la URL");
+                return;
+            }
+
+            const refMetas = ref(db, `S-PLAN/ejes/${idEje}/programas/${idPrograma}/proyectos/${idProyecto}/metas`);
+            const snapshot = await get(refMetas);
+
+            // Usamos el contenedor del HTML
+            const chartContainer = document.getElementById('grafica_comparacion_metas');
+            // Le damos una altura fija para asegurar que sea visible
+            chartContainer.style.height = '350px';
+            const chart = echarts.init(chartContainer, 'S-PLAN'); // 'S-PLAN' puede ser un tema predefinido
+
+            if (!snapshot.exists()) {
+                chart.setOption({
+                    title: {
+                        text: 'No hay datos de metas para este proyecto',
+                        left: 'center',
+                        top: 'center'
+                    }
+                });
+                return;
+            }
+
+            const metasData = snapshot.val();
+            const metas = [];
+            let metasCount = [];
+
+            /* Helpers */
+            const clampPct = v => Math.max(0, Math.min(100, Number(v) || 0));
+            const fmtCOP = v => new Intl.NumberFormat('es-CO', {
+                style: 'currency', currency: 'COP', maximumFractionDigits: 0
+            }).format(Number(v) || 0);
+
+            if (!metasData) {
+                // No hay datos
+                document.getElementById('cantidadMetas').textContent = '0';
+            } else if (Array.isArray(metasData)) {
+                // Arreglo (posibles huecos null/undefined)
+                metasCount = metasData
+                    .filter(Boolean)
+                    .map((m, i) => ({ _key: m.id ?? String(i), ...m }));
+                document.getElementById('cantidadMetas').textContent = String(metasCount.length);
+            } else if (typeof metasData === 'object') {
+                // Objeto tipo {key1: meta1, key2: meta2, ...}
+                metasCount = Object.entries(metasData)
+                    .filter(([, m]) => m && typeof m === 'object')
+                    .map(([key, m]) => ({ _key: key, ...m }));
+                document.getElementById('cantidadMetas').textContent = String(metasCount.length);
+            } else {
+                // Formato inesperado
+                document.getElementById('cantidadMetas').textContent = '0';
+            }
+
+            for (const idMeta in metasData) {
+                const meta = metasData[idMeta];
+                const acciones = meta.acciones || {};
+                const acumulado = { año1: 0, año2: 0, año3: 0, año4: 0 };
+                for (const idAccion in acciones) {
+                    const accion = acciones[idAccion];
+                    const avancesAnuales = accion.avance_accion_anual || {};
+                    const fechas = Object.keys(avancesAnuales).sort();
+                    const ultimaFecha = fechas.at(-1);
+                    if (!ultimaFecha) continue;
+                    const avance = avancesAnuales[ultimaFecha];
+                    acumulado.año1 += parseFloat(avance.año1 || 0) * 100;
+                    acumulado.año2 += parseFloat(avance.año2 || 0) * 100;
+                    acumulado.año3 += parseFloat(avance.año3 || 0) * 100;
+                    acumulado.año4 += parseFloat(avance.año4 || 0) * 100;
+                }
+                metas.push({
+                    nombre: idMeta,
+                    año1: +acumulado.año1.toFixed(2),
+                    año2: +acumulado.año2.toFixed(2),
+                    año3: +acumulado.año3.toFixed(2),
+                    año4: +acumulado.año4.toFixed(2),
+                    inversion: meta.inversion_realizada || 0
+                });
+            }
+
+            const metasLabels = metas.map(m => m.nombre);
+            const año1Data = metas.map(m => m.año1);
+            const año2Data = metas.map(m => m.año2);
+            const año3Data = metas.map(m => m.año3);
+            const año4Data = metas.map(m => m.año4);
+            const inversionData = metas.map(m => m.inversion / 1_000_000); // En millones
+
+            // --- ✨ AQUÍ COMIENZA LA MAGIA: LA NUEVA CONFIGURACIÓN VISUAL ---
+            const option = {
+                // Paleta de colores profesional y alineada con la temática
+                color: ['#00594E', '#07d6bc', '#B5A160', '#E67E22', '#ffde59'],
+
+                title: {
+                    text: 'Comparativo de Avance e Inversión por Meta',
+                    subtext: `Proyecto: ${idProyecto}`,
+                    left: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'bold'
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: { type: 'shadow' },
+                    backgroundColor: 'rgba(50,50,50,0.8)',
+                    borderColor: '#ccc',
+                    borderWidth: 1,
+                    textStyle: { color: '#fff' },
+                    // Formato personalizado para mostrar los datos de forma clara
+                    formatter: (params) => {
+                        let tooltipHtml = `<strong>${params[0].name}</strong><br/>`;
+                        params.forEach(param => {
+                            const color = param.color;
+                            let value = param.value.toFixed(2);
+                            if (param.seriesName.includes('Inversión')) {
+                                tooltipHtml += `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color};"></span> ${param.seriesName}: <strong>$ ${value.replace('.', ',')} M</strong><br/>`;
+                            } else {
+                                tooltipHtml += `<span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:${color};"></span> ${param.seriesName}: <strong>${value}%</strong><br/>`;
+                            }
+                        });
+                        return tooltipHtml;
+                    }
+                },
+                legend: {
+                    data: ['Año 1', 'Año 2', 'Año 3', 'Año 4', 'Inversión (Millones)'],
+                    bottom: 10, // Posicionada abajo para dar espacio a la gráfica
+                    itemWidth: 15,
+                    itemHeight: 15
+                },
+                toolbox: {
+                    show: true,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false, title: "Ver Datos" },
+                        magicType: { show: true, type: ['line', 'bar', 'stack'], title: { line: 'Líneas', bar: 'Barras', stack: 'Apilado' } },
+                        restore: { show: true, title: "Restaurar" },
+                        saveAsImage: { show: true, title: "Guardar Imagen" }
+                    }
+                },
+                // Más espacio para que la gráfica respire
+                grid: {
+                    left: '8%',
+                    right: '8%',
+                    bottom: '12%',
+                    containLabel: true
+                },
+                xAxis: [{
+                    type: 'category',
+                    data: metasLabels,
+                    axisTick: { alignWithLabel: true },
+                    axisLabel: {
+                        interval: 0,
+                        rotate: 30, // Rota las etiquetas para que no se superpongan
+                        color: '#333'
+                    }
+                }],
+                yAxis: [
+                    {
+                        type: 'value',
+                        name: 'Avance Anual (%)',
+                        position: 'left',
+                        min: 0,
+                        max: 100, // El avance no debería superar el 100%
+                        axisLabel: { formatter: '{value} %' },
+                        splitLine: { lineStyle: { type: 'dashed' } }
+                    },
+                    {
+                        type: 'value',
+                        name: 'Inversión (Millones COP)',
+                        position: 'right',
+                        axisLabel: { formatter: '$ {value} M' },
+                        splitLine: { show: false } // Oculta la grilla para no sobrecargar
+                    }
+                ],
+                // Control deslizante para navegar si hay muchas metas
+                dataZoom: [{
+                    type: 'slider',
+                    show: metas.length > 8, // Solo aparece si hay más de 8 metas
+                    start: 0,
+                    end: metas.length > 8 ? (8 / metas.length) * 100 : 100, // Muestra 8 metas a la vez
+                    bottom: 60
+                }],
+                series: [
+                    { name: 'Año 1', type: 'bar', barMaxWidth: 40, emphasis: { focus: 'series' }, data: año1Data },
+                    { name: 'Año 2', type: 'bar', barMaxWidth: 40, emphasis: { focus: 'series' }, data: año2Data },
+                    { name: 'Año 3', type: 'bar', barMaxWidth: 40, emphasis: { focus: 'series' }, data: año3Data },
+                    { name: 'Año 4', type: 'bar', barMaxWidth: 40, itemStyle: { borderRadius: [5, 5, 0, 0] }, emphasis: { focus: 'series' }, data: año4Data },
+                    {
+                        name: 'Inversión (Millones)',
+                        type: 'line',
+                        yAxisIndex: 1, // Usa el segundo eje Y (derecha)
+                        smooth: true,   // Línea suavizada
+                        symbol: 'circle',
+                        symbolSize: 8,
+                        lineStyle: { width: 3 },
+                        data: inversionData
+                    }
+                ]
+            };
+
+            chart.setOption(option);
+            aplicarFirmaSPlan(chart, window.fechaFormateada);
+
+            // Ajusta la gráfica al cambiar el tamaño de la ventana
+            window.addEventListener('resize', () => {
+                chart.resize();
+            });
+        }
+
+        // Llama a tu función para que se ejecute
+        cargarGraficaMetasDelProyecto();
+
+        async function guardarAvanceProyecto(idEje, idPrograma, idProyecto, avance) {
+            try {
+                const db = getDatabase();
+                const dbRef = ref(db, `S-PLAN/ejes/${idEje}/programas/${idPrograma}/proyectos/${idProyecto}`);
+
+                const valAvance = avance / 100; // Guardar como decimal (0.85 = 85%)
+
+                // Primero leemos el valor actual
+                const snapshot = await get(dbRef);
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    const avanceActual = parseFloat(data.avance_proyecto ?? 0);
+
+                    // Solo actualizar si realmente cambió (ej. diferencia > 0.001)
+                    if (Math.abs(avanceActual - valAvance) > 0.001) {
+                        await update(dbRef, { avance_proyecto: valAvance });
+                        console.log(`✅ Avance actualizado: ${avanceActual} → ${valAvance}`);
+                    } else {
+                        console.log("ℹ️ El avance no cambió, no se actualiza.");
+                    }
+                } else {
+                    // Si no existe, lo creamos
+                    await update(dbRef, { avance_proyecto: valAvance });
+                    console.log(`✅ Avance creado: ${valAvance}`);
+                }
+            } catch (error) {
+                console.error("❌ Error al guardar el avance:", error);
+            }
+        }
+
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+
+</body>
+<style>
+    /* Estilo para las filas de la tabla */
+    #tablaPoliticas tr {
+        cursor: pointer;
+        /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+    }
+
+    /* Cambia el color de fondo de la fila al pasar el cursor */
+    #tablaPoliticas tr:hover {
+        background-color: hsla(214, 83%, 48%, 0.233);
+        /* Color verde oscuro al pasar el cursor */
+        color: #000;
+        font-weight: 500;
+        /* Opcional: cambia el color del texto al blanco para mejor contraste */
+    }
+
+    #tablaPoliticas2 tr:hover {
+        background-color: hsla(173, 100%, 17%, 0.233);
+        /* Color verde oscuro al pasar el cursor */
+        color: #ffffff;
+        /* Opcional: cambia el color del texto al blanco para mejor contraste */
+    }
+</style>
+
+</html>

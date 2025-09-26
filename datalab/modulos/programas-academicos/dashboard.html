@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../../../assets/img/datalab/icono.png">
+  <title>
+    DATALAB
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../../../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../../../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <!-- Pantalla de Carga -->
+  <div id="loader" class="loader-container">
+    <img src="../../../assets/img/datalab/animacion.gif" alt="S-PLAN" style="width: 40%;">
+  </div>
+
+  <style>
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999999;
+    }
+
+    .loader-img {
+      width: 35%;
+      animation: zoomIn 2s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1);
+        opacity: 0;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ocultar {
+        display: none !important;
+      }
+      .margin-top-5{
+        margin-top: 5%;
+      }
+    }
+  </style>
+
+  <script type="module">
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        document.getElementById('loader').style.display = 'none';
+      }, 1500); // Duración exacta de la animación
+    });
+
+  </script>
+
+
+  <div class="min-height-300 position-absolute w-100"
+    style="background: url('../../../assets/img/datalab/bg-gradient.png') no-repeat center center/cover;"></div>
+  <aside
+    class="sidenav card-glass bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0 d-flex justify-content-center" href="../../../index.html">
+        <img src="../../../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- Políticas -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPoliticas" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-collection text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">PolariScore</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/politicas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Políticas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../polariscore/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- PDI 2024-2028 -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="true">
+            <!-- Cambié aria-expanded a true -->
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">S-Plan</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi"> <!-- Agregué la clase "show" -->
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/ejes.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Ejes</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/programas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Programas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../s-plan/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Proyectos -->
+        <li class="nav-item admin-only" style="display: none;">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuProyectos" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-archive-2 text-sm opacity-10" style="color: #003d6a;"></i>
+              </div>
+              <span class="nav-link-text ms-1">UniProy</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuProyectos">
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/proyectos.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../uniproy/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- DATA LAB -->
+        <li class="nav-item ">
+          <a class="nav-link active collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuCifras" aria-expanded="true">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-chart-bar-32 text-secondary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">DataLab</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4 show" id="submenuCifras">
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Cifras</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../../../datalab/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Cuenta</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com/planeacion"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Planeación</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">SIG Unitrópico</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let navLinks = document.querySelectorAll(".nav-link[data-bs-toggle='collapse']");
+
+          navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+              let target = document.querySelector(this.getAttribute("data-bs-target"));
+
+              // Cierra todos los submenús excepto el que se está abriendo
+              document.querySelectorAll(".collapse.show").forEach(openMenu => {
+                if (openMenu !== target) {
+                  new bootstrap.Collapse(openMenu, { toggle: false }).hide();
+                }
+              });
+            });
+          });
+        });
+      </script>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../../../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://synariscorp.com" target="_blank" class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="mailto:innovacionplaneacion@unitropico.edu.co"
+        type="button">Contactar al equipo técnico</a>
+    </div>
+  </aside>
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb ocultar">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm text-white active ocultar" aria-current="page">Dashboard</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0 ocultar">última actualización <p
+              class="font-weight-normal text-white mb-0 ocultar" id="fecha_actualizacion">calculando...</p>
+          </h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+
+            <li class="nav-item d-flex align-items-center ">
+              <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary ocultar"><i
+                  class="fa fa-user me-sm-1"></i>Iniciar
+                sesión</button>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center " title="Zona de Filtros">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../../../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../../../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!---  CONTENIDO ---->
+
+    <!-- DASHBOARD INTERNACIONALIZACIÓN - DISTRIBUCIÓN ELEGANTE -->
+    <div class="container mt-5">
+
+      <div class="row mb-4" >
+        <div class="col-12">
+          <div class="card card-glass shadow-lg border-0 rounded-4 margin-top-5" >
+            <div class="card-body py-5 px-5 text-center text-md-start">
+              <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                <div class="mb-3 mb-md-0">
+                  <h2 class="text-white fw-bold mb-3" style="text-shadow: 0 1px 3px rgba(0,0,0,0.4);">
+                    <i class="fas fa-globe-americas me-2"></i> INTERNACIONALIZACIÓN
+                  </h2>
+                  <p class="lead text-dark-50 mb-0" style="max-width: 900px;">
+                    Contribuir a la formación integral de profesionales globales, así como a la visibilidad e
+                    interacción nacional e internacional de la institución con lineamientos estratégicos para la
+                    internacionalización de las funciones sustantivas respondiendo a los retos de la Educación Superior.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- KPIs principales -->
+      <div class="row mb-4">
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Movilidades Internacionales</h6>
+              <h1 class="text-primary fw-bold" id="kpiMovilidades">--</h1>
+              <p class="text-muted">Total registradas</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Convenios Activos</h6>
+              <h1 class="text-success fw-bold" id="kpiConvenios">--</h1>
+              <p class="text-muted">Vigentes</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Países Asociados</h6>
+              <h1 class="text-info fw-bold" id="kpiPaises">--</h1>
+              <p class="text-muted">Con convenios</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
+          <div class="card card-glass shadow-sm text-center">
+            <div class="card-body">
+              <h6 class="text-muted">Extranjeros</h6>
+              <h1 class="text-warning fw-bold" id="kpiExtranjeros">--</h1>
+              <p class="text-muted">Recibidos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda fila: Gráficas principales -->
+      <div class="row mb-4">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-calendar-alt me-2"></i>Movilidades por Semestre
+              </h5>
+              <div id="graficaMovilidadesPorSemestre" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-handshake me-2"></i>Evolución de Convenios por Año</h5>
+              <div id="graficaConveniosAnuales" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Tercera fila: Análisis detallado -->
+      <div class="row mb-2">
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-chart-line me-2"></i>Movilidades Entrantes vs.
+                Salientes por Año</h5>
+              <div id="graficaTendenciaMovilidades" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-2">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><i class="fas fa-university me-2"></i>Movilidades Entrantes vs.
+                Salientes por Semestre</h5>
+              <div id="graficaTopInstituciones" style="height: 350px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mapa de Convenios Globales + Gráfica de Movilidades por País (lado a lado) -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+
+              <!-- Título general -->
+              <h5 class="card-title mb-4">
+                <i class="fas fa-globe me-2"></i>Movilidades Internacionales
+              </h5>
+
+              <!-- Estructura lado a lado -->
+              <div class="row">
+
+                <!-- Mapa (lado izquierdo) -->
+                <div class="col-lg-7 col-md-12 mb-4">
+                  <div id="mapaConvenios" style="height: 500px; width: 100%;"></div>
+                </div>
+
+                <!-- Gráfica de barras (lado derecho) -->
+                <div class="col-lg-5 col-md-12">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="card-title mb-0">
+                      <i class="fas fa-globe-americas me-2"></i>Movilidades por País
+                    </h5>
+                    <div>
+                      <button id="btnEntrantes" class="btn btn-sm btn-primary me-1">Entrantes</button>
+                      <button id="btnSalientes" class="btn btn-sm btn-secondary">Salientes</button>
+                    </div>
+                  </div>
+
+                  <div id="graficaMovilidadesPorPais" style="height: 450px;"></div>
+                </div>
+
+              </div> <!-- end row -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Cuarta fila: Tabla de detalles -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card card-glass shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="card-title mb-0"><i class="fas fa-table me-2"></i>Detalle de Movilidades Registradas</h5>
+                <div class="form-group d-flex align-items-center">
+                  <label class="me-2 mb-0">Mostrar:</label>
+                  <select id="selectCantidadRegistros" class="form-select form-select-sm" style="width: auto;">
+                    <option value="25" selected>25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="0">Todos</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="table-default">
+                    <tr>
+                      <th>Semestre</th>
+                      <th>Tipo</th>
+                      <th>Estamento</th>
+                      <th>Origen</th>
+                      <th>Destino</th>
+                      <th>Duración (días)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaMovilidades">
+                    <!-- Se cargan dinámicamente -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--- FIN DEL CONTENIDO ---->
+
+
+
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+            <div class="copyright text-center text-sm text-muted text-lg-start">
+              ©
+              <script>
+                document.write(new Date().getFullYear())
+              </script>,
+              desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
+                  Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
+                  target="_blank">License</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+  </main>
+
+
+
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="fa fa-filter fixed-plugin-button-nav cursor-pointer"></i>
+    </a>
+
+
+    <div class="card card-glass shadow-lg">
+
+      <div class="mt-2 mb-2 d-flex">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0 text-default">Zona de filtros</h5>
+          <p>Personaliza la vista del Dashboard</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <hr class="horizontal dark my-1">
+
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+
+        <!-- Filtros MOVILIDADES -->
+        <h6 class="text-uppercase text-default">Movilidades</h6>
+
+        <!-- Rango de Años (Movilidades) -->
+        <div class="mb-3">
+          <label class="form-label">Rango de Años (Movilidades)</label>
+          <div id="sliderRangoAniosMovilidades" style="margin: 10px 0;"></div>
+          <small>Años seleccionados: <span id="labelRangoAniosMovilidades"></span></small>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+
+
+        <!-- Tipo de Movilidad -->
+        <div class="mb-3">
+          <label class="form-label">Tipo de Movilidad</label>
+          <select id="filtroTipoMovilidad" class="form-select">
+            <option value="">Todos</option>
+            <option value="ENTRANTE">Entrantes</option>
+            <option value="SALIENTE">Salientes</option>
+
+          </select>
+        </div>
+
+        <!-- País Destino -->
+        <div class="mb-3">
+          <label class="form-label">País Destino</label>
+          <select id="filtroPaisDestino" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- País Origen -->
+        <div class="mb-3">
+          <label class="form-label">País Origen</label>
+          <select id="filtroPaisOrigen" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- Convenio -->
+        <div class="mb-3">
+          <label class="form-label">Convenio</label>
+          <select id="filtroConvenio" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- Estamento -->
+        <div class="mb-3">
+          <label class="form-label">Estamento</label>
+          <select id="filtroEstamento" class="form-select">
+            <option value="">Todos</option>
+            <option value="ESTUDIANTE">Estudiantes</option>
+            <option value="PROFESOR">Profesores</option>
+            <option value="ADMINISTRATIVO">Administrativos</option>
+          </select>
+        </div>
+
+        <!-- Sexo -->
+        <div class="mb-3">
+          <label class="form-label">Sexo</label>
+          <select id="filtroSexo" class="form-select">
+            <option value="">Todos</option>
+            <option value="MASCULINO">Masculino</option>
+            <option value="FEMENINO">Femenino</option>
+            <option value="Otro">Otro</option>
+          </select>
+        </div>
+
+        <hr class="horizontal dark my-4">
+
+        <!-- Filtros CONVENIOS -->
+        <h6 class="text-uppercase text-info">Convenios</h6>
+
+        <!-- Rango de Años (Convenios) -->
+        <div class="mb-3">
+          <label class="form-label">Rango de Años (Convenios)</label>
+          <div id="sliderRangoAniosConvenios" style="margin: 10px 0;"></div>
+          <small>Años seleccionados: <span id="labelRangoAniosConvenios"></span></small>
+        </div>
+
+        <!-- Tipo de Convenio -->
+        <div class="mb-3">
+          <label class="form-label">Tipo de Convenio</label>
+          <select id="filtroTipoConvenio" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+        <!-- Estado -->
+        <div class="mb-3">
+          <label class="form-label">Estado</label>
+          <select id="filtroEstadoConvenio" class="form-select">
+            <option value="">Todos</option>
+            <option value="VIGENTE">Vigente</option>
+            <option value="EXPIRADO">Expirado</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+        </div>
+
+        <!-- País (Convenio) -->
+        <div class="mb-3">
+          <label class="form-label">País</label>
+          <select id="filtroPaisConvenio" class="form-select">
+            <option value="">Todos</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor de notificaciones (Toasts) -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+    <div id="toastContainer"></div>
+  </div>
+
+  <!-- Modal de Confirmación de Cierre de Sesión -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutLabel">Cerrar sesión</h5>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Estás seguro de que quieres cerrar sesión?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmLogout">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes shrinkAndFade {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .shrink-fade-out {
+      animation: shrinkAndFade 0.4s ease forwards;
+    }
+  </style>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9/firebase-storage.js"></script>
+  <!--   Core JS Files   -->
+  <script src="../../../assets/js/core/popper.min.js"></script>
+  <script src="../../../assets/js/core/bootstrap.min.js"></script>
+  <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <!-- Librería ECharts oficial -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <!-- Tu theme personalizado -->
+  <script src="../../../assets/js/s-plan-charts.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b"
+    };
+
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Obtener el botón de login/logout
+    const logButton = document.getElementById("logButton");
+    // Variable para evitar agregar múltiples event listeners
+    let logoutListenerAdded = false;
+
+    // Verificar si el usuario está autenticado
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        logButton.textContent = "Cerrar sesión";
+        logButton.classList.remove("btn-primary");
+        logButton.classList.add("btn-danger");
+
+        // Prevenir múltiples listeners
+        if (!logoutListenerAdded) {
+          logButton.addEventListener("click", () => {
+            const logoutModal = new bootstrap.Modal(document.getElementById("logoutModal"));
+            logoutModal.show();
+
+            const confirmBtn = document.getElementById("confirmLogout");
+            const clonedBtn = confirmBtn.cloneNode(true);
+            confirmBtn.parentNode.replaceChild(clonedBtn, confirmBtn);
+
+            clonedBtn.addEventListener("click", () => {
+              signOut(auth).then(() => {
+                window.location.href = "../../../pages/sign-in.html";
+              }).catch((error) => {
+                console.error("Error al cerrar sesión:", error);
+              });
+            });
+          });
+
+          logoutListenerAdded = true;
+        }
+
+        // Buscar por correo sanitizado
+        const correoSanitizado = user.email.replace(/\./g, "_");
+        const userRef = ref(db, 'usuarios/' + correoSanitizado);
+
+        get(userRef).then((snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.val();
+            const roles = userData.roles || [];
+
+            console.log("Roles del usuario:", roles);
+
+            if (roles.includes("admin")) {
+              document.querySelectorAll(".admin-only").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore")) {
+              document.querySelectorAll(".admin-polariscore").forEach(el => el.style.display = "block");
+            }
+
+            if (roles.includes("admin-polariscore") || roles.includes("responsable-polariscore")) {
+              document.querySelectorAll(".admin-responsable-only").forEach(el => el.style.display = "block");
+            }
+
+          } else {
+            console.warn("Usuario autenticado pero no registrado en la base de datos.");
+          }
+        }).catch((error) => {
+          console.error("Error al obtener datos del usuario:", error);
+        });
+
+      } else {
+        logButton.textContent = "Iniciar Sesión";
+        logButton.classList.remove("btn-danger");
+        logButton.classList.add("btn-primary");
+
+        logButton.addEventListener("click", () => {
+          window.location.href = "../../../pages/sign-in.html";
+        });
+      }
+    });
+
+
+
+    function limitarTexto(texto, limite) {
+      return texto.length > max ? texto.slice(0, max) + '...' : texto;
+    }
+
+
+
+    // Definir el rango de años
+    const minAnioMov = 2022;
+    const maxAnioMov = 2025;
+
+    // Función para convertir un número a formato "2022-A" o "2022-B"
+    function convertirAnioSemestre(valor) {
+      const anio = Math.floor(valor);
+      const decimal = valor - anio;
+      const semestre = (decimal === 0) ? 'A' : 'B';
+      return `${anio}-${semestre}`;
+    }
+
+    // Inicializar el slider
+    const sliderMovilidades = document.getElementById('sliderRangoAniosMovilidades');
+
+    noUiSlider.create(sliderMovilidades, {
+      start: [minAnioMov, maxAnioMov],
+      connect: true,
+      step: 0.5,
+      range: {
+        'min': minAnioMov,
+        'max': maxAnioMov + 0.5
+      },
+      tooltips: true,
+      format: {
+        // Mostramos directamente en la tooltip el formato "2022-A" o "2022-B"
+        to: value => convertirAnioSemestre(value),
+        // Convertimos de vuelta "2022-A" → 2022.0, "2022-B" → 2022.5 (para que el slider lo entienda)
+        from: value => {
+          const [anio, semestre] = value.split('-');
+          return parseInt(anio) + (semestre === 'B' ? 0.5 : 0);
+        }
+      }
+    });
+
+    // Actualizar el label debajo del slider con el rango actual
+    const labelRangoMovilidades = document.getElementById('labelRangoAniosMovilidades');
+
+    sliderMovilidades.noUiSlider.on('update', function (values) {
+      labelRangoMovilidades.textContent = `${values[0]} - ${values[1]}`;
+
+      // Aquí podrías llamar a una función para filtrar el dashboard con estos valores:
+      // filtrarDashboardPorSemestre(values[0], values[1]);
+    });
+
+    // Definir rango de años de convenios (personalizable)
+    const minAnioConvenios = 2013;
+    const maxAnioConvenios = 2025;
+
+    // Inicializar el slider de convenios
+    const sliderConvenios = document.getElementById('sliderRangoAniosConvenios');
+
+    noUiSlider.create(sliderConvenios, {
+      start: [minAnioConvenios, maxAnioConvenios],
+      connect: true,
+      step: 1,
+      range: {
+        'min': minAnioConvenios,
+        'max': maxAnioConvenios
+      },
+      tooltips: true,
+      format: {
+        to: value => Math.round(value),
+        from: value => parseInt(value)
+      }
+    });
+
+    // Actualizar label cuando cambia
+    const labelRangoConvenios = document.getElementById('labelRangoAniosConvenios');
+
+    sliderConvenios.noUiSlider.on('update', function (values) {
+      labelRangoConvenios.textContent = `${values[0]} - ${values[1]}`;
+
+      // Aquí luego llamarás la función de filtrar:
+      // filtrarDashboard();
+    });
+
+
+
+    // 🔁 Ruta base general (NO incluye semestre)
+    const RUTA_BASE_INTERNACIONALIZACION = '/DataLab/ciclos_de_carga/internacionalizacion';
+
+    // 🧩 Arrays globales que consolidarán todos los datos
+    let movilidadesRaw = [];
+    let conveniosRaw = [];
+
+    /**
+     * 🧠 Función principal para cargar todos los datos de internacionalización
+     * - Recorre todos los semestres disponibles (nodos como 2025_1, 2025_2...)
+     * - Extrae los arreglos de convenios y movilidades de cada ciclo
+     * - Almacena todos los registros sin duplicar la lógica del semestre
+     */
+    async function cargarDataInternacionalizacion() {
+      try {
+        // Obtener todos los ciclos de carga
+        const snapshot = await get(ref(db, RUTA_BASE_INTERNACIONALIZACION));
+
+        if (!snapshot.exists()) {
+          console.warn('⚠️ No hay ciclos de carga en internacionalización.');
+          return;
+        }
+
+        const ciclos = snapshot.val();
+        const ciclosKeys = Object.keys(ciclos); // Ej: ["2022_1", "2022_2", "2023_1", "2025_2"]
+
+        // Recorremos todos los semestres cargados
+        for (const ciclo of ciclosKeys) {
+          const dataPath = `${RUTA_BASE_INTERNACIONALIZACION}/${ciclo}/data`;
+          const dataSnap = await get(ref(db, dataPath));
+
+          if (!dataSnap.exists()) continue;
+
+          const data = dataSnap.val();
+
+          // 🟢 MOVILIDADES
+          if (Array.isArray(data.movilidades)) {
+            movilidadesRaw.push(...data.movilidades.map(mov => ({
+              ...mov,
+              __ciclo: ciclo // 🔎 útil para trazabilidad del ciclo que cargó esa movilidad
+            })));
+          }
+
+          // 🔵 CONVENIOS
+          if (Array.isArray(data.convenios)) {
+            conveniosRaw.push(...data.convenios.map(conv => ({
+              ...conv,
+              __ciclo: ciclo // 🔎 igual para convenios
+            })));
+          }
+        }
+
+        console.log(`✅ Movilidades cargadas: ${movilidadesRaw.length}`);
+        console.log(`✅ Convenios cargados: ${conveniosRaw.length}`);
+
+        // ✅ FILTRAR CONVENIOS VIGENTES
+        const conveniosVigentes = conveniosRaw.filter(conv => {
+          return (conv.estado || '').toUpperCase() === 'VIGENTE';
+        });
+
+        // ✅ CALCULAR PAISES ASOCIADOS
+        const paisesAsociadosSet = new Set();
+
+        conveniosVigentes.forEach(conv => {
+          const pais = (conv.pais || '').trim();
+          if (pais !== '') {
+            paisesAsociadosSet.add(pais.toUpperCase()); // Opcional: .toUpperCase() para unificar variantes
+          }
+        });
+
+        const totalPaisesAsociados = paisesAsociadosSet.size;
+
+        // ✅ CALCULAR ESTUDIANTES EXTRANJEROS (ENTRANTES + ESTUDIANTE)
+        const estudiantesExtranjeros = movilidadesRaw.filter(mov => {
+          const tipoMovilidad = (mov.tipo_movilidad || '').trim().toUpperCase();
+
+          return (tipoMovilidad === 'ENTRANTE');
+        });
+
+        const totalExtranjeros = estudiantesExtranjeros.length;
+
+        // 🧮 Actualizar los KPI
+        document.getElementById("kpiMovilidades").textContent = movilidadesRaw.length;
+        document.getElementById("kpiConvenios").textContent = conveniosVigentes.length;
+        document.getElementById("kpiPaises").textContent = totalPaisesAsociados;
+        document.getElementById("kpiExtranjeros").textContent = totalExtranjeros;
+
+
+        // 🎯 Aquí puedes continuar con inicializar los filtros o renderizar dashboard
+        //inicializarFiltros(); // <- en el siguiente paso
+        //filtrarDashboard();   // <- en el siguiente paso
+
+        //GRÁFICAS 🧮
+        generarGraficaMovilidadesPorSemestre(movilidadesRaw); // o movilidadesFiltradas
+        generarGraficaConveniosPorAnio(conveniosRaw); // o conveniosFiltrados
+        generarGraficaTendenciaEntrantesVsSalientes(movilidadesRaw);
+        generarGraficaTendenciaInstitucionesPorSemestre(movilidadesRaw);
+        generarMapaMovilidadesGoogle(movilidadesRaw);
+        generarTablaMovilidades(movilidadesRaw);
+
+
+
+        // generarGraficaTopInstituciones(movilidadesFiltradas);
+
+      } catch (error) {
+        console.error('❌ Error al cargar datos de internacionalización:', error);
+      }
+    }
+
+    cargarDataInternacionalizacion();
+
+
+    //FUNCIONES DE LAS GRÁFICAS
+
+    function generarGraficaMovilidadesPorSemestre(movilidadesArray) {
+      var chart = echarts.init(document.getElementById('graficaMovilidadesPorSemestre'), 'DATALAB');
+
+      const conteoMovilidadesPorSemestre = {};
+
+      movilidadesArray.forEach(mov => {
+        const anioSemestre = obtenerAnioSemestre(mov.fecha);
+
+        if (anioSemestre) {
+          if (!conteoMovilidadesPorSemestre[anioSemestre]) {
+            conteoMovilidadesPorSemestre[anioSemestre] = 0;
+          }
+
+          conteoMovilidadesPorSemestre[anioSemestre]++;
+        }
+      });
+
+      const etiquetasSemestres = Object.keys(conteoMovilidadesPorSemestre).sort();
+      const valoresMovilidades = etiquetasSemestres.map(sem => conteoMovilidadesPorSemestre[sem]);
+
+      var option = {
+        title: {
+          text: 'Movilidades realizadas'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          data: etiquetasSemestres
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: 'Movilidades',
+            type: 'bar',
+            data: valoresMovilidades,
+            barWidth: '60%'
+          }
+        ],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645',
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path d="M17.431,2.156h-3.715c-0.228,0-0.413,0.186-0.413,0.413v6.973h-2.89V6.687c0-0.229-0.186-0.413-0.413-0.413H6.285c-0.228,0-0.413,0.184-0.413,0.413v6.388H2.569c-0.227,0-0.413,0.187-0.413,0.413v3.942c0,0.228,0.186,0.413,0.413,0.413h14.862c0.228,0,0.413-0.186,0.413-0.413V2.569C17.844,2.342,17.658,2.156,17.431,2.156 M5.872,17.019h-2.89v-3.117h2.89V17.019zM9.587,17.019h-2.89V7.1h2.89V17.019z M13.303,17.019h-2.89v-6.651h2.89V17.019z M17.019,17.019h-2.891V2.982h2.891V17.019z"'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                // Aquí llamamos a la función de generación de Excel
+                descargarExcel();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+      // Aplicar la firma institucional DATALAB
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    //Gráfica de Convenios Por Año:
+
+    function generarGraficaConveniosPorAnio(conveniosArray) {
+      // Inicializamos la gráfica con el theme "DATALAB"
+      const chart2 = echarts.init(document.getElementById('graficaConveniosAnuales'), 'DATALAB');
+
+      const conteoPorAnio = {};
+
+      conveniosArray.forEach(conv => {
+        const anio = obtenerAnioDesdeFecha(conv.fecha_suscripcion);
+
+        if (anio) {
+          if (!conteoPorAnio[anio]) {
+            conteoPorAnio[anio] = 0;
+          }
+          conteoPorAnio[anio]++;
+        }
+      });
+
+      const anios = Object.keys(conteoPorAnio).sort((a, b) => a - b);
+      const valores = anios.map(anio => conteoPorAnio[anio]);
+
+      const option = {
+        title: {
+          text: 'Convenios por Año',
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        xAxis: {
+          type: 'category',
+          data: anios
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: 'Convenios',
+            type: 'bar',
+            data: valores,
+            barWidth: '60%'
+          }
+        ],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645',
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path d="M17.431,2.156h-3.715c-0.228,0-0.413,0.186-0.413,0.413v6.973h-2.89V6.687c0-0.229-0.186-0.413-0.413-0.413H6.285c-0.228,0-0.413,0.184-0.413,0.413v6.388H2.569c-0.227,0-0.413,0.187-0.413,0.413v3.942c0,0.228,0.186,0.413,0.413,0.413h14.862c0.228,0,0.413-0.186,0.413-0.413V2.569C17.844,2.342,17.658,2.156,17.431,2.156 M5.872,17.019h-2.89v-3.117h2.89V17.019zM9.587,17.019h-2.89V7.1h2.89V17.019z M13.303,17.019h-2.89v-6.651h2.89V17.019z M17.019,17.019h-2.891V2.982h2.891V17.019z"'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                // Aquí llamamos a la función de generación de Excel
+                descargarExcel();
+              }
+            }
+          }
+        }
+      };
+
+      // Renderizar la gráfica
+      chart2.setOption(option);
+
+      // Aplicar la firma institucional S-PLAN
+      aplicarFirmaDatalab(chart2, obtenerFechaHoy());
+    }
+
+    function generarGraficaTendenciaEntrantesVsSalientes(movilidadesArray) {
+      const chart = echarts.init(document.getElementById('graficaTendenciaMovilidades'), 'DATALAB');
+
+      const conteoPorAnio = {};
+
+      movilidadesArray.forEach(mov => {
+        const anio = obtenerAnioDesdeFecha(mov.fecha);
+        const tipoMovilidad = (mov.tipo_movilidad || '').trim().toUpperCase();
+
+        if (!anio) return;
+
+        if (!conteoPorAnio[anio]) {
+          conteoPorAnio[anio] = { entrantes: 0, salientes: 0 };
+        }
+
+        if (tipoMovilidad === 'ENTRANTE') {
+          conteoPorAnio[anio].entrantes++;
+        } else if (tipoMovilidad === 'SALIENTE') {
+          conteoPorAnio[anio].salientes++;
+        }
+      });
+
+      // Organizar los datos para la gráfica
+      const anios = Object.keys(conteoPorAnio).sort((a, b) => a - b);
+      const valoresEntrantes = anios.map(anio => conteoPorAnio[anio].entrantes);
+      const valoresSalientes = anios.map(anio => conteoPorAnio[anio].salientes);
+
+      const option = {
+        title: {
+          text: '',
+        },
+
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['Entrantes', 'Salientes']
+        },
+        xAxis: {
+          type: 'category',
+          data: anios
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [
+          {
+            name: 'Entrantes',
+            type: 'line',
+            data: valoresEntrantes,
+            smooth: true,
+            symbolSize: 8
+          },
+          {
+            name: 'Salientes',
+            type: 'line',
+            data: valoresSalientes,
+            smooth: true,
+            symbolSize: 8
+          }
+        ],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645',
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path d="M17.431,2.156h-3.715c-0.228,0-0.413,0.186-0.413,0.413v6.973h-2.89V6.687c0-0.229-0.186-0.413-0.413-0.413H6.285c-0.228,0-0.413,0.184-0.413,0.413v6.388H2.569c-0.227,0-0.413,0.187-0.413,0.413v3.942c0,0.228,0.186,0.413,0.413,0.413h14.862c0.228,0,0.413-0.186,0.413-0.413V2.569C17.844,2.342,17.658,2.156,17.431,2.156 M5.872,17.019h-2.89v-3.117h2.89V17.019zM9.587,17.019h-2.89V7.1h2.89V17.019z M13.303,17.019h-2.89v-6.651h2.89V17.019z M17.019,17.019h-2.891V2.982h2.891V17.019z"'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                // Aquí llamamos a la función de generación de Excel
+                descargarExcel();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+
+      // Aplicar la firma institucional DATALAB
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    function generarGraficaTendenciaInstitucionesPorSemestre(movilidadesArray) {
+      const chart = echarts.init(document.getElementById('graficaTopInstituciones'), 'DATALAB');
+
+      const conteoPorSemestre = {};
+
+      movilidadesArray.forEach(mov => {
+        const anioSemestre = obtenerAnioSemestre(mov.fecha);
+        if (!anioSemestre) return;
+
+        if (!conteoPorSemestre[anioSemestre]) {
+          conteoPorSemestre[anioSemestre] = { entrantes: 0, salientes: 0 };
+        }
+
+        // ✅ Contar según tipo de movilidad
+        const tipoMovilidad = (mov.tipo_movilidad || '').trim().toUpperCase();
+
+        if (tipoMovilidad === 'ENTRANTE') {
+          conteoPorSemestre[anioSemestre].entrantes++;
+        } else if (tipoMovilidad === 'SALIENTE') {
+          conteoPorSemestre[anioSemestre].salientes++;
+        }
+      });
+
+      const etiquetasSemestres = Object.keys(conteoPorSemestre).sort();
+      const valoresEntrantes = etiquetasSemestres.map(sem => conteoPorSemestre[sem].entrantes);
+      const valoresSalientes = etiquetasSemestres.map(sem => conteoPorSemestre[sem].salientes);
+
+      const option = {
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['Entrantes', 'Salientes']
+        },
+        xAxis: [
+          {
+            type: 'category',
+            data: etiquetasSemestres
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value',
+            name: 'Entrantes',
+            position: 'left',
+          },
+          {
+            type: 'value',
+            name: 'Salientes',
+            position: 'right',
+          }
+        ],
+        series: [
+          {
+            name: 'Entrantes',
+            type: 'bar',
+            data: valoresEntrantes,
+            yAxisIndex: 0,
+            barWidth: '30%'
+          },
+          {
+            name: 'Salientes',
+            type: 'bar',
+            data: valoresSalientes,
+            yAxisIndex: 1,
+            barWidth: '30%'
+          }
+        ],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645',
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path d="M17.431,2.156h-3.715c-0.228,0-0.413,0.186-0.413,0.413v6.973h-2.89V6.687c0-0.229-0.186-0.413-0.413-0.413H6.285c-0.228,0-0.413,0.184-0.413,0.413v6.388H2.569c-0.227,0-0.413,0.187-0.413,0.413v3.942c0,0.228,0.186,0.413,0.413,0.413h14.862c0.228,0,0.413-0.186,0.413-0.413V2.569C17.844,2.342,17.658,2.156,17.431,2.156 M5.872,17.019h-2.89v-3.117h2.89V17.019zM9.587,17.019h-2.89V7.1h2.89V17.019z M13.303,17.019h-2.89v-6.651h2.89V17.019z M17.019,17.019h-2.891V2.982h2.891V17.019z"'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                // Aquí llamamos a la función de generación de Excel
+                descargarExcel();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+
+      // Aplicar firma institucional DATALAB
+      aplicarFirmaDatalab(chart, obtenerFechaHoy());
+    }
+
+    function generarMapaMovilidadesGoogle(movilidadesArray) {
+      console.log(`🔎 Total de movilidadesRaw: ${movilidadesArray.length}`);
+
+      const conteoEntrantes = {};
+      const conteoSalientes = {};
+
+      movilidadesArray.forEach((mov, index) => {
+        const tipoMovilidad = (mov.tipo_movilidad || '').trim().toUpperCase();
+        const paisOrigen = (mov.pais_origen || '').trim();
+        const paisDestino = (mov.pais_destino || '').trim();
+
+        const origen = toTitleCase(paisOrigen);
+        const destino = toTitleCase(paisDestino);
+
+        console.log(`[${index}] Tipo: ${tipoMovilidad} | pais_destino: "${destino}" | pais_origen: "${origen}"`);
+
+        if (tipoMovilidad === 'ENTRANTE') {
+          if (origen.toUpperCase() !== 'COLOMBIA') {
+            conteoEntrantes[origen] = (conteoEntrantes[origen] || 0) + 1;
+            console.log(`[ENTRANTE] País origen detectado: "${origen}"`);
+          }
+        } else if (tipoMovilidad === 'SALIENTE') {
+          if (destino.toUpperCase() !== 'COLOMBIA') {
+            conteoSalientes[destino] = (conteoSalientes[destino] || 0) + 1;
+            console.log(`[SALIENTE] País destino detectado: "${destino}"`);
+          }
+        }
+      });
+
+      const allPaises = new Set([
+        ...Object.keys(conteoEntrantes),
+        ...Object.keys(conteoSalientes)
+      ]);
+
+      const paisToCode = {
+        'United States': 'US',
+        'Estados Unidos': 'US',
+        'Mexico': 'MX',
+        'México': 'MX',
+        'Spain': 'ES',
+        'España': 'ES',
+        'Germany': 'DE',
+        'Alemania': 'DE',
+        'Peru': 'PE',
+        'Perú': 'PE',
+        'Argentina': 'AR',
+        'Brazil': 'BR',
+        'Brasil': 'BR',
+        'France': 'FR',
+        'Francia': 'FR',
+        'Portugal': 'PT',
+        'Austria': 'AT',
+        'Switzerland': 'CH',
+        'Suiza': 'CH',
+        'Italy': 'IT',
+        'Italia': 'IT',
+        'China': 'CN',
+        'Chile': 'CL',
+        'Costa Rica': 'CR',
+        'Qatar': 'QA',
+        'Catar': 'QA',
+        'Cuba': 'CU',
+        'Bolivia': 'BO',
+        'Paraguay': 'PY',
+        'Paises Bajos': 'NL',  // Netherlands
+        'Países Bajos': 'NL',  // Añadir esta variante también, por si acaso
+        'Corea Del Sur': 'KR', // South Korea
+        'Corea del Sur': 'KR', // Variante más frecuente en español
+        'Japón': 'JP',
+        'Japon': 'JP', // Variante sin tilde
+        'Reino Unido': 'GB',
+        'United Kingdom': 'GB',
+        'Inglaterra': 'GB',
+        'Escocia': 'GB',
+        'Gales': 'GB',
+        'Irlanda del Norte': 'GB'
+      };
+
+
+      // Ahora la dataArray tiene: [Country code, Balance, Custom Tooltip]
+      const dataArray = [['Country', 'Balance Movilidades', { type: 'string', role: 'tooltip' }]];
+
+      allPaises.forEach(pais => {
+        const entrantes = conteoEntrantes[pais] || 0;
+        const salientes = conteoSalientes[pais] || 0;
+        const balance = entrantes - salientes;
+
+        const countryCode = paisToCode[pais];
+        if (countryCode) {
+          const tooltip = `País: ${pais}\nMovilidades Entrantes: ${entrantes}\nMovilidades Salientes: ${salientes}\nBalance: ${balance}`;
+
+          console.log(`✅ País: ${pais} (${countryCode}) | Entrantes: ${entrantes} | Salientes: ${salientes} | Balance: ${balance}`);
+
+          dataArray.push([countryCode, balance, tooltip]);
+        } else {
+          console.warn(`❌ País sin code en paisToCode: "${pais}"`);
+        }
+      });
+
+      // Carga de Google Charts
+      google.charts.load('current', {
+        'packages': ['geochart'],
+        'mapsApiKey': 'AIzaSyAXd7IKuytZylvajOVG3K0JC-6VoQS9ZN0'
+      });
+
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        const data = google.visualization.arrayToDataTable(dataArray);
+
+        const options = {
+          colorAxis: {
+            colors: ['#b5a160', '#00594e']
+          },
+          legend: { textStyle: { color: '#555', fontSize: 12 } },
+          datalessRegionColor: '#f0f0f0',
+          backgroundColor: '#ffffff',
+          defaultColor: '#f0f0f0',
+          tooltip: { isHtml: false } // usa texto plano
+        };
+
+        const chart = new google.visualization.GeoChart(document.getElementById('mapaConvenios'));
+
+        chart.draw(data, options);
+      }
+
+      // Después de generar el mapa, llama esta función:
+      generarGraficaMovilidadesPorPais(conteoEntrantes, conteoSalientes);
+    }
+
+    // Función para generar la gráfica de barras
+    function generarGraficaMovilidadesPorPais(conteoEntrantes, conteoSalientes) {
+      const chart = echarts.init(document.getElementById('graficaMovilidadesPorPais'), 'DATALAB');
+
+      // Función auxiliar para preparar los datos
+      function prepararData(conteo) {
+        const paises = Object.keys(conteo);
+        // Ordenamos de mayor a menor
+        paises.sort((a, b) => conteo[b] - conteo[a]);
+
+        const valores = paises.map(pais => conteo[pais]);
+
+        return {
+          paises,
+          valores
+        };
+      }
+
+      // Inicial: mostramos Entrantes
+      let currentTipo = 'ENTRANTES';
+      let data = prepararData(conteoEntrantes);
+
+      const option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' },
+          formatter: params => {
+            const p = params[0];
+            return `${p.name}<br/>Movilidades: ${p.value}`;
+          }
+        },
+        grid: {
+          left: '10%',
+          right: '10%',
+          bottom: '5%',
+          top: '5%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          axisLabel: {
+            fontSize: 12
+          }
+        },
+        yAxis: {
+          type: 'category',
+          data: data.paises,
+          axisLabel: {
+            fontSize: 12
+          }
+        },
+        series: [{
+          type: 'bar',
+          data: data.valores,
+          barWidth: '50%',
+          itemStyle: {
+            color: currentTipo === 'ENTRANTES' ? '#00594e' : '#b5a160'
+          }
+        }],
+        toolbox: {
+          feature: {
+            saveAsImage: {
+              title: 'Descargar PNG',
+              icon: 'path d="M18.555,15.354V4.592c0-0.248-0.202-0.451-0.45-0.451H1.888c-0.248,0-0.451,0.203-0.451,0.451v10.808c0,0.559,0.751,0.451,0.451,0.451h16.217h0.005C18.793,15.851,18.478,14.814,18.555,15.354 M2.8,14.949l4.944-6.464l4.144,5.419c0.003,0.003,0.003,0.003,0.003,0.005l0.797,1.04H2.8z M13.822,14.949l-1.006-1.317l1.689-2.218l2.688,3.535H13.822z M17.654,14.064l-2.791-3.666c-0.181-0.237-0.535-0.237-0.716,0l-1.899,2.493l-4.146-5.42c-0.18-0.237-0.536-0.237-0.716,0l-5.047,6.598V5.042h15.316V14.064z M12.474,6.393c-0.869,0-1.577,0.707-1.577,1.576s0.708,1.576,1.577,1.576s1.577-0.707,1.577-1.576S13.343,6.393,12.474,6.393 M12.474,8.645c-0.371,0-0.676-0.304-0.676-0.676s0.305-0.676,0.676-0.676c0.372,0,0.676,0.304,0.676,0.676S12.846,8.645,12.474,8.645',
+            },
+            dataView: {
+              title: 'Ver Datos',
+              readOnly: true,
+              icon: 'path d="M17.431,2.156h-3.715c-0.228,0-0.413,0.186-0.413,0.413v6.973h-2.89V6.687c0-0.229-0.186-0.413-0.413-0.413H6.285c-0.228,0-0.413,0.184-0.413,0.413v6.388H2.569c-0.227,0-0.413,0.187-0.413,0.413v3.942c0,0.228,0.186,0.413,0.413,0.413h14.862c0.228,0,0.413-0.186,0.413-0.413V2.569C17.844,2.342,17.658,2.156,17.431,2.156 M5.872,17.019h-2.89v-3.117h2.89V17.019zM9.587,17.019h-2.89V7.1h2.89V17.019z M13.303,17.019h-2.89v-6.651h2.89V17.019z M17.019,17.019h-2.891V2.982h2.891V17.019z"'
+            },
+            myDownloadExcel: {
+              show: true,
+              title: 'Descargar en XLSX',
+              icon: 'path://M3 3h18v18H3z',
+              onclick: function () {
+                // Aquí llamamos a la función de generación de Excel
+                descargarExcel();
+              }
+            }
+          }
+        }
+      };
+
+      chart.setOption(option);
+
+      // Event listeners de los botones
+      document.getElementById('btnEntrantes').addEventListener('click', () => {
+        currentTipo = 'ENTRANTES';
+        document.getElementById('btnEntrantes').classList.add('active');
+        document.getElementById('btnSalientes').classList.remove('active');
+
+        const newData = prepararData(conteoEntrantes);
+        chart.setOption({
+          yAxis: { data: newData.paises },
+          series: [{
+            data: newData.valores,
+            itemStyle: { color: '#00594e' }
+          }]
+        });
+      });
+
+      document.getElementById('btnSalientes').addEventListener('click', () => {
+        currentTipo = 'SALIENTES';
+        document.getElementById('btnEntrantes').classList.remove('active');
+        document.getElementById('btnSalientes').classList.add('active');
+
+        const newData = prepararData(conteoSalientes);
+        chart.setOption({
+          yAxis: { data: newData.paises },
+          series: [{
+            data: newData.valores,
+            itemStyle: { color: '#b5a160' }
+          }]
+        });
+      });
+    }
+
+    // Variable global para mantener el array filtrado actual
+    let movilidadesFiltradasActual = [];
+
+    function generarTablaMovilidades(movilidadesArray) {
+      movilidadesFiltradasActual = movilidadesArray; // Guardamos para cambios en el dropdown
+      renderTablaMovilidades(); // Renderizamos inicialmente
+    }
+
+    function renderTablaMovilidades() {
+      const tablaBody = document.getElementById('tablaMovilidades');
+      tablaBody.innerHTML = '';
+
+      // Obtener cantidad seleccionada en el dropdown
+      const cantidadSelect = document.getElementById('selectCantidadRegistros');
+      const cantidadMostrar = parseInt(cantidadSelect.value);
+
+      // Determinar el array a renderizar
+      const arrayParaMostrar = (cantidadMostrar === 0)
+        ? movilidadesFiltradasActual
+        : movilidadesFiltradasActual.slice(0, cantidadMostrar);
+
+      arrayParaMostrar.forEach(mov => {
+        const fila = document.createElement('tr');
+
+        const celdaFecha = document.createElement('td');
+        celdaFecha.textContent = obtenerAnioSemestre(mov.fecha) || '-';
+
+        const celdaEstamento = document.createElement('td');
+        celdaEstamento.textContent = toTitleCase(mov.estamento) || '-';
+
+        const celdaTipo = document.createElement('td');
+        celdaTipo.textContent = toTitleCase(mov.tipo_movilidad) || '-';
+
+        const celdaOrigen = document.createElement('td');
+        celdaOrigen.textContent = toTitleCase(mov.pais_origen) || '-';
+
+        const celdaDestino = document.createElement('td');
+        celdaDestino.textContent = toTitleCase(mov.pais_destino) || '-';
+
+        const celdaDuracion = document.createElement('td');
+        celdaDuracion.textContent = mov.duracion || '-';
+
+        fila.appendChild(celdaFecha);
+        fila.appendChild(celdaTipo);
+        fila.appendChild(celdaEstamento);
+        fila.appendChild(celdaOrigen);
+        fila.appendChild(celdaDestino);
+        fila.appendChild(celdaDuracion);
+
+        tablaBody.appendChild(fila);
+      });
+    }
+
+    let conveniosFiltrados = [];
+
+
+    // Listener para el dropdown (cuando cambie el valor)
+    document.getElementById('selectCantidadRegistros').addEventListener('change', () => {
+      renderTablaMovilidades(); // Volvemos a renderizar con el nuevo límite
+    });
+
+    function obtenerFechaHoy() {
+      const hoy = new Date();
+      const dia = String(hoy.getDate()).padStart(2, '0');
+      const mes = String(hoy.getMonth() + 1).padStart(2, '0');
+      const anio = hoy.getFullYear();
+      return `${dia}/${mes}/${anio}`;
+    }
+
+
+    function obtenerAnioSemestre(fechaStr) {
+      // Ejemplo de fechaStr: "05/03/2024"
+      if (!fechaStr) return null; // si está vacío o undefined
+
+      const partes = fechaStr.split('/');
+      if (partes.length !== 3) return null; // formato inesperado
+
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const anio = parseInt(partes[2], 10);
+
+      if (isNaN(dia) || isNaN(mes) || isNaN(anio)) return null; // datos inválidos
+
+      // Determinar el semestre
+      const semestre = (mes <= 6) ? 'A' : 'B';
+
+      return `${anio}-${semestre}`;
+    }
+
+    function obtenerAnioDesdeFecha(fechaStr) {
+      if (!fechaStr) return null;
+
+      const partes = fechaStr.split('/');
+      if (partes.length !== 3) return null;
+
+      const anio = parseInt(partes[2], 10);
+      return isNaN(anio) ? null : anio;
+    }
+
+    function esUnitropico(entidad) {
+      const entidadNormalizada = entidad.toUpperCase();
+
+      return entidadNormalizada.includes('UNITRÓPICO') ||
+        entidadNormalizada.includes('UNITROPICO') ||
+        entidadNormalizada.includes('UNIVERSIDAD INTERNACIONAL DEL TRÓPICO AMERICANO');
+    }
+
+    function toTitleCase(str) {
+      return str.toLowerCase().split(' ').map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }).join(' ');
+    }
+
+    function filtrarDashboard() {
+      // Obtener valores de los filtros
+      const rangoSemestres = sliderMovilidades.noUiSlider.get(); // Ej: ["2022-A", "2024-B"]
+      const tipoMovilidadFiltro = document.getElementById('filtroTipoMovilidad').value.trim();
+      const paisDestinoFiltro = document.getElementById('filtroPaisDestino').value.trim();
+      const paisOrigenFiltro = document.getElementById('filtroPaisOrigen').value.trim();
+      const convenioFiltro = document.getElementById('filtroConvenio').value.trim();
+      const estamentoFiltro = document.getElementById('filtroEstamento').value.trim();
+      const sexoFiltro = document.getElementById('filtroSexo').value.trim();
+
+      const rangoAniosConvenios = sliderConvenios.noUiSlider.get(); // ["2022", "2025"]
+      const tipoConvenioFiltro = document.getElementById('filtroTipoConvenio').value.trim();
+      const estadoConvenioFiltro = document.getElementById('filtroEstadoConvenio').value.trim();
+      const paisConvenioFiltro = document.getElementById('filtroPaisConvenio').value.trim();
+
+      // Función auxiliar para convertir "2023-A"/"2023-B" → 2023.0 o 2023.5
+      function anioSemestreToNumber(anioSemestreStr) {
+        if (!anioSemestreStr) return -Infinity; // para valores faltantes
+        const [anio, semestre] = anioSemestreStr.split('-');
+        return parseInt(anio) + (semestre === 'B' ? 0.5 : 0);
+      }
+
+      // Convertir rangos
+      const minSemestreNum = anioSemestreToNumber(rangoSemestres[0]);
+      const maxSemestreNum = anioSemestreToNumber(rangoSemestres[1]);
+
+      // Filtrar movilidades
+      movilidadesFiltradasActual = movilidadesRaw.filter(mov => {
+        const anioSemestre = obtenerAnioSemestre(mov.fecha);
+        const anioSemestreNum = anioSemestreToNumber(anioSemestre);
+
+        const tipoMovilidad = (mov.tipo_movilidad || '').trim();
+        const paisDestino = (mov.pais_destino || '').trim();
+        const paisOrigen = (mov.pais_origen || '').trim();
+        const convenio = (mov.nombre_convenio || '').trim();
+        const estamento = (mov.estamento || '').trim();
+        const sexo = (mov.sexo || '').trim();
+
+        // Validar rango semestre (convertido a número)
+        if (anioSemestreNum < minSemestreNum || anioSemestreNum > maxSemestreNum) return false;
+
+        // Aplicar cada filtro si está activo
+        if (tipoMovilidadFiltro && tipoMovilidad !== tipoMovilidadFiltro) return false;
+        if (paisDestinoFiltro && paisDestino !== paisDestinoFiltro) return false;
+        if (paisOrigenFiltro && paisOrigen !== paisOrigenFiltro) return false;
+        if (convenioFiltro && convenio !== convenioFiltro) return false;
+        if (estamentoFiltro && estamento !== estamentoFiltro) return false;
+        if (sexoFiltro && sexo !== sexoFiltro) return false;
+
+        return true;
+      });
+
+      // Filtrar convenios
+      conveniosFiltrados = conveniosRaw.filter(conv => {
+        const anio = obtenerAnioDesdeFecha(conv.fecha_suscripcion);
+        const tipoConvenio = (conv.tipo_convenio || '').trim();
+        const estado = (conv.estado || '').trim();
+        const pais = (conv.pais || '').trim();
+
+        // Validar rango años
+        if (anio < parseInt(rangoAniosConvenios[0]) || anio > parseInt(rangoAniosConvenios[1])) return false;
+
+        if (tipoConvenioFiltro && tipoConvenio !== tipoConvenioFiltro) return false;
+        if (estadoConvenioFiltro && estado !== estadoConvenioFiltro) return false;
+        if (paisConvenioFiltro && pais !== paisConvenioFiltro) return false;
+
+        return true;
+      });
+
+      // Actualizar gráficas y tabla con arrays filtrados
+      generarGraficaMovilidadesPorSemestre(movilidadesFiltradasActual);
+      generarGraficaConveniosPorAnio(conveniosFiltrados);
+      generarGraficaTendenciaEntrantesVsSalientes(movilidadesFiltradasActual);
+      generarGraficaTendenciaInstitucionesPorSemestre(movilidadesFiltradasActual);
+      generarMapaMovilidadesGoogle(movilidadesFiltradasActual);
+      generarTablaMovilidades(movilidadesFiltradasActual);
+
+      // Actualizar KPIs también
+      actualizarKPIs(movilidadesFiltradasActual, conveniosFiltrados);
+    }
+
+
+
+    document.getElementById('filtroTipoMovilidad').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroPaisDestino').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroPaisOrigen').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroConvenio').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroEstamento').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroSexo').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroTipoConvenio').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroEstadoConvenio').addEventListener('change', filtrarDashboard);
+    document.getElementById('filtroPaisConvenio').addEventListener('change', filtrarDashboard);
+
+    // Asignar eventos a sliders
+    sliderMovilidades.noUiSlider.on('change', filtrarDashboard);
+    sliderConvenios.noUiSlider.on('change', filtrarDashboard);
+
+    function actualizarKPIs(movilidadesFiltradas, conveniosFiltrados) {
+      // KPI Movilidades
+      document.getElementById("kpiMovilidades").textContent = movilidadesFiltradas.length;
+
+      // KPI Convenios (solo vigentes)
+      const conveniosVigentes = conveniosFiltrados.filter(conv => (conv.estado || '').toUpperCase() === 'VIGENTE');
+      document.getElementById("kpiConvenios").textContent = conveniosVigentes.length;
+
+      // KPI Paises Asociados
+      const paisesAsociadosSet = new Set();
+      conveniosVigentes.forEach(conv => {
+        const pais = (conv.pais || '').trim();
+        if (pais !== '') {
+          paisesAsociadosSet.add(pais.toUpperCase());
+        }
+      });
+      document.getElementById("kpiPaises").textContent = paisesAsociadosSet.size;
+
+      // KPI Estudiantes Extranjeros
+      const extranjeros = movilidadesFiltradas.filter(mov => {
+        const tipoMovilidad = (mov.tipo_movilidad || '').trim().toUpperCase();
+
+        return (tipoMovilidad === 'ENTRANTE');
+      });
+      document.getElementById("kpiExtranjeros").textContent = extranjeros.length;
+    }
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+  <!-- Tu theme personalizado -->
+  <script src="../../../assets/js/datalab-charts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../../../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+</body>
+<style>
+  /* Estilo para las filas de la tabla */
+  #tablaPoliticas tr {
+    cursor: pointer;
+    /* Cambia el cursor a pointer cuando se pasa sobre la fila */
+  }
+
+  /* Cambia el color de fondo de la fila al pasar el cursor */
+  #tablaPoliticas tr:hover {
+    background-color: hsla(214, 83%, 48%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #000;
+    font-weight: 500;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+
+  #tablaPoliticas2 tr:hover {
+    background-color: hsla(173, 100%, 17%, 0.233);
+    /* Color verde oscuro al pasar el cursor */
+    color: #ffffff;
+    /* Opcional: cambia el color del texto al blanco para mejor contraste */
+  }
+</style>
+
+</html>

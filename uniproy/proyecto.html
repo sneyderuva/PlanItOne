@@ -1,0 +1,1380 @@
+<!--
+=========================================================
+* Argon Dashboard 2 - v2.0.4
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    Seguimiento
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/aa4ade8d2d.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show   bg-gray-100">
+  <div class="min-height-300 bg-gradient-info position-absolute w-100"></div>
+  <aside
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0 d-flex justify-content-center" href="../index.html">
+        <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- Políticas -->
+        <li class="nav-item">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPoliticas" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-collection text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">PolariScore</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPoliticas">
+            <li class="nav-item"><a class="nav-link" href="../polariscore/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../polariscore/politicas.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Políticas</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../polariscore/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- PDI 2024-2028 -->
+        <li class="nav-item">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuPdi" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-warning text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">S-Plan</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuPdi">
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../s-plan/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Proyectos -->
+        <li class="nav-item">
+          <a class="nav-link active collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuProyectos" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-archive-2 text-sm opacity-10" style="color: #003d6a;"></i>
+              </div>
+              <span class="nav-link-text ms-1">UniProy</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuProyectos">
+            <li class="nav-item"><a class="nav-link" href="../uniproy/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../uniproy/proyectos.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Proyectos</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../uniproy/observaciones.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Unitrópico en Cifras -->
+        <li class="nav-item">
+          <a class="nav-link collapsed d-flex justify-content-between align-items-center" href="#"
+            data-bs-toggle="collapse" data-bs-target="#submenuCifras" aria-expanded="false">
+            <div class="d-flex align-items-center">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-chart-bar-32 text-secondary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">DataLab</span>
+            </div>
+          </a>
+          <ul class="collapse list-unstyled ms-4" id="submenuCifras">
+            <li class="nav-item"><a class="nav-link" href="../datalab/dashboard.html"><i
+                  class="ni ni-chart-pie-35 text-success"></i> <span class="ms-1">Dashboard</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../datalab/dashboard.html"><i
+                  class="ni ni-bullet-list-67 text-primary"></i> <span class="ms-1">Lista de Cifras</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="../datalab/dashboard.html"><i
+                  class="ni ni-single-copy-04 text-info"></i> <span class="ms-1">Observaciones</span></a></li>
+          </ul>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Cuenta</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com/planeacion"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-chart-bar-32 text-info text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Planeación</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://sigunitropico.com"
+            onclick="window.open(this.href, '_blank'); return false;">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">SIG Unitrópico</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          let navLinks = document.querySelectorAll(".nav-link[data-bs-toggle='collapse']");
+
+          navLinks.forEach(link => {
+            link.addEventListener("click", function () {
+              let target = document.querySelector(this.getAttribute("data-bs-target"));
+
+              // Cierra todos los submenús excepto el que se está abriendo
+              document.querySelectorAll(".collapse.show").forEach(openMenu => {
+                if (openMenu !== target) {
+                  new bootstrap.Collapse(openMenu, { toggle: false }).hide();
+                }
+              });
+            });
+          });
+        });
+      </script>
+
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-plain shadow-none" id="sidenavCard">
+        <img class="w-80 mx-auto" src="../assets/img/illustrations/logo-simbolo-unitropico-1.png"
+          alt="sidebar_illustration">
+        <div class="card-body text-center p-3 w-100 pt-0">
+          <div class="docs-info">
+            <h6 class="mb-0">¿Necesitas ayuda?</h6>
+            <p class="text-xs font-weight-bold mb-0">Por favor revisa nuestras guías</p>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard" target="_blank"
+        class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
+      <a class="btn btn-primary btn-sm mb-0 w-100" href="mailto:innovacionplaneacion@unitropico.edu.co"
+        type="button">Contactar a un Minero</a>
+    </div>
+  </aside>
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+      data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="tables.html">Lista de
+                proyectos</a></li>
+            <li class="breadcrumb-item text-sm text-white active" id="idName" aria-current="page"> BPU-0000000</li>
+
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0">Detalles del proyecto</h6>
+        </nav>
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          <button title="Ir al Anterior Proyecto" class="btn bg-transparent text-white btn-sm" id="anteriorBtn"
+            class="text-sm text-white" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+            </svg></button>
+          <button title="Ir al siguiente Proyecto" class="btn bg-transparent text-white btn-sm" id="siguienteBtn"
+            class="text-sm text-white" href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+            </svg></button>
+        </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#DocumentosModal">
+          Ver Documentos
+        </button>
+
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="¿Qué estás buscando?...">
+            </div>
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <button id="logButton" class="btn btn-sm mb-0 me-1 btn-primary"><i class="fa fa-user me-sm-1"></i>Iniciar
+                sesión</button>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item px-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg"
+                          class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background"
+                                    d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                    opacity="0.593633743"></path>
+                                  <path class="color-background"
+                                    d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                  </path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          2 days
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers" id="card1">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Presupuesto</p>
+                    <h5 class="font-weight-bolder">
+                      Calculando...
+                    </h5>
+                    <p class="mb-0">
+                      <span class="text-success text-sm font-weight-bolder">Fuente del Recurso</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                    <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers" id="card2">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Población Beneficiada</p>
+                    <h5 class="font-weight-bolder">
+                      Calculando...
+                    </h5>
+                    <p class="mb-0">
+                      <span class="text-success text-sm font-weight-bolder">--%</span>
+                      de la población total
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers" id="card3">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Plazo</p>
+                    <h5 class="font-weight-bolder">
+                      Calculando...
+                    </h5>
+                    <p class="mb-0">
+                      Proyecto radicado el
+                      <span class="text-success text-sm font-weight-bolder">--/--/----</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                    <i class="ni ni-calendar-grid-58 text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers" id="card4">
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Formulador</p>
+                    <h5 class="font-weight-bolder">
+                      Calculando...
+                    </h5>
+
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                    <i class="ni ni-book-bookmark text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-lg-7 mb-lg-0 mb-4">
+          <div class="card z-index-2 h-100">
+            <div class="card-header pb-0 pt-3 bg-transparent">
+
+              <p class="text-sm mb-0">
+              <div id="proyectoDetalles">
+                <!-- Aquí se mostrarán los detalles del proyecto -->
+
+              </div>
+              </p>
+            </div>
+            <div class="card-body p-3">
+
+              <div class="chart">
+                <canvas id="chart-pie" class="chart-canvas" height="200"></canvas>
+              </div>
+              <h5 class="text text-sm" id="t_poblacion">Población Beneficiada </h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card card-carousel overflow-hidden h-100 p-0">
+            <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
+              <div class="carousel-inner border-radius-lg h-100" id="carrusel_img">
+                <div class="carousel-item h-100 active" style="background-image: url('../assets/img/carousel-1.jpg');
+                  background-size: cover;">
+                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                      <i class="ni ni-camera-compact text-dark opacity-10"></i>
+                    </div>
+                    <h5 class="text-white mb-1">Get started with Argon</h5>
+                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                  </div>
+                </div>
+                <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-2.jpg');
+                  background-size: cover;">
+                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                      <i class="ni ni-bulb-61 text-dark opacity-10"></i>
+                    </div>
+                    <h5 class="text-white mb-1">Faster way to create web </h5>
+                    <p>That’s my skill. I’m not really specifically talented at anything except for the ability to
+                      learn.</p>
+                  </div>
+                </div>
+                <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-3.jpg');
+                  background-size: cover;">
+                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                      <i class="ni ni-trophy text-dark opacity-10"></i>
+                    </div>
+                    <h5 class="text-white mb-1">Share with us your design tips!</h5>
+                    <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-lg-7 mb-lg-0 mb-4">
+          <div class="card ">
+
+            <div class="table-responsive">
+
+              <table id="tableObjetivos_">
+                <tr>
+                  <th>Objetivos Específicos</th>
+                  <th>Resultados Esperados</th>
+                  <th>Resultados Obtenidos</th>
+                  <th>% de Cumplimiento</th>
+                </tr>
+                <tbody id="tableObjetivos">
+
+                </tbody>
+              </table>
+              <br>
+              <div style="padding-left: 15px;" id="proyectoDetalles3">hola</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card">
+            <div class="card-header pb-0 p-3">
+              <h6 class="mb-0">Resumen</h6>
+            </div>
+            <div class="card-body p-3">
+              <div id="proyectoDetalles2">
+                <!-- Aquí se mostrarán los detalles del proyecto -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                desarrollado por la <a style="font-weight: 600; color: #00584e;"
+                  href="https://sigunitropico.com/planeacion-estrategica">Oficina Asesora de Planeación</a> - Unitrópico
+
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                <li class="nav-item">
+                  <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Synaris Corp</a>
+                </li>
+                <li class="nav-item">
+                  <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                  <a href="synariscorp.com" class="nav-link text-muted" target="_blank">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a href="synariscorp.com" class="nav-link pe-0 text-muted" target="_blank">Licencia</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+  <div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+      <i class="fa fa-cog py-2"> </i>
+    </a>
+    <div class="card shadow-lg">
+      <div class="card-header pb-0 pt-3 ">
+        <div class="float-start">
+          <h5 class="mt-3 mb-0">Argon Configurator</h5>
+          <p>See our dashboard options.</p>
+        </div>
+        <div class="float-end mt-4">
+          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+            <i class="fa fa-close"></i>
+          </button>
+        </div>
+        <!-- End Toggle Button -->
+      </div>
+      <hr class="horizontal dark my-1">
+      <div class="card-body pt-sm-3 pt-0 overflow-auto">
+        <!-- Sidebar Backgrounds -->
+        <div>
+          <h6 class="mb-0">Sidebar Colors</h6>
+        </div>
+        <a href="javascript:void(0)" class="switch-trigger background-color">
+          <div class="badge-colors my-2 text-start">
+            <span class="badge filter bg-gradient-primary active" data-color="primary"
+              onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
+            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
+          </div>
+        </a>
+        <!-- Sidenav Type -->
+        <div class="mt-3">
+          <h6 class="mb-0">Sidenav Type</h6>
+          <p class="text-sm">Choose between 2 different sidenav types.</p>
+        </div>
+        <div class="d-flex">
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active me-2" data-class="bg-white"
+            onclick="sidebarType(this)">White</button>
+          <button class="btn bg-gradient-primary w-100 px-3 mb-2" data-class="bg-default"
+            onclick="sidebarType(this)">Dark</button>
+        </div>
+        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+        <!-- Navbar Fixed -->
+        <div class="d-flex my-3">
+          <h6 class="mb-0">Navbar Fixed</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
+          </div>
+        </div>
+        <hr class="horizontal dark my-sm-4">
+        <div class="mt-2 mb-5 d-flex">
+          <h6 class="mb-0">Light / Dark</h6>
+          <div class="form-check form-switch ps-0 ms-auto my-auto">
+            <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
+          </div>
+        </div>
+        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard">Free
+          Download</a>
+        <a class="btn btn-outline-dark w-100"
+          href="https://www.creative-tim.com/learning-lab/bootstrap/license/argon-dashboard">View documentation</a>
+        <div class="w-100 text-center">
+          <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard"
+            data-icon="octicon-star" data-size="large" data-show-count="true"
+            aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
+          <h6 class="mt-3">Thank you for sharing!</h6>
+          <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard"
+            class="btn btn-dark mb-0 me-2" target="_blank">
+            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="DocumentosModal" tabindex="-1" role="dialog" aria-labelledby="DocumentosLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DocumentosLabel">Documentos</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido de la tarjeta aquí -->
+
+
+
+          <div class="col-lg-12">
+            <div class="card h-100">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="col-6 d-flex align-items-center">
+                    <h6 class="mb-0">Documentos del proyecto</h6>
+                  </div>
+                  <div class="col-6 text-end">
+                    <button class="btn btn-outline-primary btn-sm mb-0" id="descargar_todo">Descargar todo</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body p-3 pb-0" id="modalDocumentos">
+                <ul class="list-group">
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                    <div class="d-flex flex-column">
+                      <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
+                      <span class="text-xs">#MS-415646</span>
+                    </div>
+                    <div class="d-flex align-items-center text-sm">
+                      $180
+                      <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i
+                          class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script>
+
+  </script>
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example /pages etc -->
+  <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
+  <script type="module">
+    // Importar funciones de Firebase
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js";
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyADKfjkB9LO1k1smRJ31sOb-7rrxOrQ7lc",
+      authDomain: "sigunitropico.firebaseapp.com",
+      projectId: "sigunitropico",
+      storageBucket: "sigunitropico.appspot.com",
+      messagingSenderId: "32992004482",
+      appId: "1:32992004482:web:bd4d5e9a2b7a8b976e279b",
+      measurementId: "G-B95VYWYDJT"
+    };
+
+    // Inicializar Firebase y Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+
+    // Función para obtener el parámetro 'id' de la URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    // Función para formatear las mayusculas como nombres propíos
+    function toTitleCase(str) {
+      return str.toLowerCase().replace(/(^|\s)\S/g, function (char) {
+        return char.toUpperCase();
+      });
+    }
+
+    // Función para cargar los detalles del proyecto
+    async function cargarDetallesProyecto() {
+      try {
+        // Obtener el ID del proyecto de la URL
+        const id = getQueryParam('id');
+        if (!id) {
+          console.error("ID del proyecto no encontrado en la URL.");
+          return;
+        }
+
+        // Obtener los objetos del documento
+        const proyectoDoc = doc(db, "Proyectus", "Proyectos", "Lista", id);
+        const docSnapshot = await getDoc(proyectoDoc);
+        const idName = document.getElementById("idName");
+        const tableObjetivos = document.getElementById('tableObjetivos');
+        const t_poblacion = document.getElementById('t_poblacion');
+        const card1 = document.getElementById('card1');
+        const card2 = document.getElementById('card2');
+        const card3 = document.getElementById('card3');
+        const card4 = document.getElementById('card4');
+        const carouselInner = document.getElementById('carrusel_img');
+        const anteriorProyecto = document.getElementById('anteriorBtn');
+        const siguienteProyecto = document.getElementById('siguienteBtn');
+        const modalDocumentos = document.getElementById('modalDocumentos');
+
+        // Límites de proyectos para cada año
+        const limites = {
+          2023: { inicio: 1, fin: 11 }, // Proyectos 2023 van de 001 a 011
+          2024: { inicio: 1, fin: 999 } // Proyectos 2024 (o más) comienzan desde 001
+        };
+
+        // Función para obtener el número del ID y el año
+        function obtenerNumeroId(id) {
+          const ano = parseInt(id.slice(4, 8)); // Extrae el año (2023 o 2024)
+          const numero = parseInt(id.slice(8)); // Extrae el número del proyecto (3 dígitos)
+          return { ano, numero };
+        }
+
+        // Función para generar el nuevo ID con el número actualizado
+        function generarNuevoId(ano, numero) {
+          return `BPU-${ano}${String(numero).padStart(3, '0')}`; // Asegura que el número tenga 3 dígitos
+        }
+
+        // Navegar al proyecto anterior
+        anteriorProyecto.addEventListener('click', () => {
+          let { ano, numero } = obtenerNumeroId(id);
+
+          if (numero > limites[ano].inicio) {
+            numero--; // Va al anterior dentro del mismo año
+          } else if (ano > 2023) {
+            // Si es el primer proyecto del año actual, va al último del año anterior
+            ano--;
+            numero = limites[ano].fin;
+          }
+
+          const nuevoId = generarNuevoId(ano, numero);
+          window.location.href = `/proyectus/pages/proyecto.html?id=${nuevoId}`;
+        });
+
+        // Navegar al siguiente proyecto
+        siguienteProyecto.addEventListener('click', () => {
+          let { ano, numero } = obtenerNumeroId(id);
+
+          if (numero < limites[ano].fin) {
+            numero++; // Va al siguiente dentro del mismo año
+          } else if (ano < 2024) {
+            // Si es el último proyecto del año actual, va al primer proyecto del año siguiente
+            ano++;
+            numero = limites[ano].inicio;
+          }
+
+          const nuevoId = generarNuevoId(ano, numero);
+          window.location.href = `/proyectus/pages/proyecto.html?id=${nuevoId}`;
+        });
+
+        // Crear constantes
+        const poblacion_total = 8322;
+        idName.textContent = id;
+
+        // Limpiar antes de cargar nueva data
+        carouselInner.innerHTML = '';
+        card1.innerHTML = '';
+        card2.innerHTML = '';
+        card3.innerHTML = '';
+        card4.innerHTML = '';
+        modalDocumentos.innerHTML = '';
+        tableObjetivos.innerHTML = '';
+
+        if (docSnapshot.exists()) {
+          const proyecto = docSnapshot.data();
+          // Convertir timestamp a fecha (si existe)
+          const fechaInicio = proyecto.fecha_inicio && typeof proyecto.fecha_inicio.toDate === 'function'
+            ? proyecto.fecha_inicio.toDate()
+            : proyecto.fecha_inicio || null;
+
+          let fechaFormateada = '';
+          if (fechaInicio) {
+            // Función para formatear la fecha en formato numérico dd/mm/aaaa
+            function formatearFecha(fechaInicio) {
+              const fecha = new Date(fechaInicio); // Convertir a objeto Date si no lo es
+              const dia = fecha.getDate().toString().padStart(2, '0');
+              const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+              const año = fecha.getFullYear();
+              return `${dia}/${mes}/${año}`;
+            }
+
+
+            // Formatear la fecha si está disponible
+            fechaFormateada = formatearFecha(fechaInicio);
+          }
+
+          // Verificar si hay documentos en el proyecto
+          if (proyecto.documentos) {
+            // Iterar sobre cada documento
+            Object.keys(proyecto.documentos).forEach(docKey => {
+              const documento = proyecto.documentos[docKey];
+              const titulo = documento.titulo;
+              const link = documento.link;
+
+              // Crear la estructura HTML para cada documento
+              const docHTML = `
+            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+              <div class="d-flex flex-column">
+                <h6 class="mb-1 text-dark font-weight-bold text-sm">${titulo}</h6>
+              </div>
+              <div class="d-flex align-items-center text-sm">
+                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+                  <a href="${link}" target="_blank"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</a>
+                </button>
+              </div>
+            </li>
+          `;
+
+              // Añadir el documento al contenedor
+              modalDocumentos.innerHTML += docHTML;
+            });
+          } else {
+            modalDocumentos.innerHTML = '<p>No hay documentos disponibles.</p>';
+          }
+
+          // Torta Estamentos
+          const poblacion = proyecto.poblacion_beneficiada;
+          var comunidad_general = poblacion["comunidad_general"] || 0;
+
+          // Si "Comunidad en General" es mayor que 0, restarla del total
+          var total_universitario = poblacion["total"] || 0;
+          if (comunidad_general > 0) {
+            total_universitario -= comunidad_general;
+          }
+
+          // Mostrar los detalles del proyecto en el HTML
+          const detallesDiv = document.getElementById('proyectoDetalles');
+          const detallesDiv2 = document.getElementById('proyectoDetalles2');
+          const detallesDiv3 = document.getElementById('proyectoDetalles3');
+          const total = document.getElementById("mostrarTotal");
+
+          // Cálculo del porcentaje de población sin incluir a "Comunidad en General" si es mayor a 0
+          var porcentaje_poblacion = (total_universitario * 100) / poblacion_total;
+          // Formatear el número a dos decimales y usar comas como separadores de miles
+          const porcentaje_formateado = porcentaje_poblacion.toFixed(2).toLocaleString('es-CO', { style: 'decimal' }) + '%';
+          t_poblacion.innerText = "Población beneficiada: " + proyecto.poblacion_beneficiada["total"];
+
+          card1.innerHTML = `
+                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Presupuesto</p>
+                  
+                  <h5 class="font-weight-bolder">
+                    ${proyecto.presupuesto ?
+              new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(proyecto.presupuesto) :
+              "Sin presupuesto"}
+                  </h5>
+                  <p class="mb-0"> 
+                    <span class="text-success text-sm font-weight-bolder">${proyecto.fuente}</span>
+                  </p>
+                `;
+
+          card2.innerHTML = `
+                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Población Beneficiada</p>
+                  <h5 class="font-weight-bolder">
+                    ${proyecto.poblacion_beneficiada["total"] || "Sin información"}
+                  </h5>
+                  <p class="mb-0">
+                    <span class="text-success text-sm font-weight-bolder">${porcentaje_formateado || "0%"}</span>
+                    de la universidad
+                  </p>
+               `;
+
+          card3.innerHTML = `
+                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Plazo</p>
+                  <h5 class="font-weight-bolder">
+                    ${proyecto.plazo || "Sin información"}
+                  </h5>
+                  <p class="mb-0">
+                    Radicado el 
+                    <span class="text-success text-sm font-weight-bolder">${fechaFormateada || "dd/mm/aaaa"}</span>
+                  </p>
+                `;
+
+          card4.innerHTML = `
+                  <p class="text-sm mb-0 text-uppercase font-weight-bold">Responsable</p>
+                  <h5 class="font-weight-bolder">
+                    ${toTitleCase(proyecto.oficina_responsable)}
+                  </h5>
+                  
+                `;
+
+          detallesDiv.innerHTML = `
+              <p class="text-sm mb-0 font-weight-bold">Estado</p>
+              <h4 class="${proyecto.estado ? 'text-success' : 'text-warning'}">
+                  ${proyecto.estado ? 'Finalizado' : 'En ejecución'}
+              </h4>
+              <h2>${proyecto.nombre || "Nombre del Proyecto"}</h2>
+              
+              <p><strong>Progreso:</strong></p> 
+              <div id="progresoContainer"></div>
+          `;
+          detallesDiv2.innerHTML = `
+                    <p><strong>Código de Registro BPU:</strong> ${id || "0"}</p>
+                    <p><strong>Progreso:</strong> ${proyecto.progreso || "0"}%</p>
+                    <p><strong>Periodo PDI:</strong> ${proyecto.periodo || "Sin periodo"}</p>
+                    <p><strong>Plazo:</strong> ${proyecto.plazo || "Sin periodo"}</p>
+                    <p><strong>Año:</strong> ${proyecto.año || "Sin periodo"}</p>
+                    <p><strong>Fecha de inicio:</strong> ${fechaFormateada || "dd/mm/aaaa"}</p>
+                    <p><strong>Meta del PDI:</strong> ${proyecto.meta || "Sin meta"}</p>
+                    <p><strong>Descripción Meta:</strong> ${proyecto.descripcion_meta || "Sin meta"}</p>
+                    <p><strong>Eje estratégico:</strong> ${proyecto.eje || "Sin eje"}</p>
+                    <p><strong>Título Eje estratégico:</strong> ${proyecto.descripcion_eje || "sin eje"}</p>
+                    <p><strong>Contrato:</strong> ${proyecto.contrato || "Sin contrato"}</p>
+                    <p><strong>Oficina Responsable:</strong> ${toTitleCase(proyecto.oficina_responsable) || "Sin Información"}</p>
+                    <p><strong>Presupuesto:</strong> ${proyecto.presupuesto ?
+              new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(proyecto.presupuesto) :
+              "Sin presupuesto"}</p>
+                `;
+
+          // Verificar si hay evidencias en el proyecto
+          if (proyecto.evidencias) {
+            let imgActive = false; // Controla cuál será la evidencia activa
+
+            // Recorrer cada evidencia
+            Object.keys(proyecto.evidencias).forEach(async (evidenciaKey) => {
+              const evidencia = proyecto.evidencias[evidenciaKey];
+              const { titulo, subtitulo, link_img, isActiveSet } = evidencia;
+
+              try {
+                // Obtener el enlace del archivo de Firebase Storage
+                const storageRef = ref(storage, link_img);
+                const imageUrl = await getDownloadURL(storageRef);
+                imgActive = isActiveSet;
+                // Crear el HTML de la evidencia en el carrusel
+                carouselInner.innerHTML += `
+                              <div class="carousel-item h-100 ${!imgActive ? 'active' : ''}" style="background-image: url('${imageUrl}'); background-size: cover;">
+                                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                                      <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                                          <i class="ni ni-trophy text-dark opacity-10"></i>
+                                      </div>
+                                      <h5 class="text-white mb-1">${titulo}</h5>
+                                      <p>${subtitulo}</p>
+                                  </div>
+                              </div>
+                          `;
+
+
+              } catch (error) {
+                console.error("Error al obtener el archivo de Firebase Storage: ", error);
+              }
+            });
+          } else {
+            carouselInner.innerHTML = `<div class="carousel-item h-100 active" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/sigunitropico.appspot.com/o/Imagenes_proyectos%2FOso.jpg?alt=media&token=85186aa7-2a75-4cf1-9f6c-479bc8f74994');
+                  background-size: cover;">
+                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                      <i class="ni ni-camera-compact text-dark opacity-10"></i>
+                    </div>
+                    <h5 class="text-white mb-1">Lo sentimos</h5>
+                    <p>Aún no hay evidencias disponibles</p>
+                  </div>
+                </div>`;
+          }
+
+          proyecto.obj_especificos.forEach((objetivo, index) => {
+            tableObjetivos.innerHTML += `
+                    <tr>
+                      <td>${objetivo || ""}</td>
+                      <td>${proyecto.res_esperados[index] || ""}</td>
+                      <td>${proyecto.res_obtenidos[index] || ""}</td>
+                      <td style="text-align:center;">${proyecto.cumplimiento_objetivos[index] || 0}%</td>
+                    </tr>
+                  `;
+
+            detallesDiv3.innerHTML = `
+                      <p><strong>Plazo:</strong> ${proyecto.plazo || "Sin periodo"}</p>
+                      <p><strong>Año:</strong> ${proyecto.año || "Sin periodo"}</p>
+                      <p><strong>Fecha de inicio:</strong> ${fechaFormateada}</p>
+                  `;
+
+
+          });
+
+          // Crear el contenido del progreso con barra
+          const progreso = proyecto.progreso || 0; // Asegurarse de que progreso tenga un valor
+          const progresoContainer = document.getElementById("progresoContainer");
+          progresoContainer.innerHTML = ''; // Limpiar contenido previo del contenedor
+
+          // Crear el elemento de la barra de progreso
+          const progresoDiv = document.createElement("div");
+          progresoDiv.classList.add("d-flex", "align-items-center", "justify-content-center", "w-100");
+
+          // Texto con el porcentaje de progreso
+          const progresoTexto = document.createElement("span");
+          progresoTexto.classList.add("me-2", "text-xs", "font-weight-bold");
+          progresoTexto.textContent = `${progreso}%`; // Mostrar el porcentaje de progreso
+
+          // Contenedor de la barra de progreso
+          const progressBarContainer = document.createElement("div");
+          progressBarContainer.classList.add("progress", "w-100"); // Clase "progress" y ancho al 100%
+
+          // Crear la barra de progreso
+          const progressBar = document.createElement("div");
+          let progressBarClass = "bg-gradient-info";
+          if (progreso >= 0 && progreso <= 29) {
+            progressBarClass = "bg-gradient-danger"; // Rojo
+          } else if (progreso >= 30 && progreso <= 60) {
+            progressBarClass = "bg-gradient-warning"; // Amarillo
+          } else if (progreso >= 61 && progreso <= 99.9) {
+            progressBarClass = "bg-gradient-info"; // Azul
+          } else if (progreso === 100) {
+            progressBarClass = "bg-gradient-success"; // Verde
+          }
+
+          progressBar.classList.add("progress-bar", progressBarClass);
+          progressBar.setAttribute("role", "progressbar");
+          progressBar.setAttribute("aria-valuenow", progreso);
+          progressBar.setAttribute("aria-valuemin", "0");
+          progressBar.setAttribute("aria-valuemax", "100");
+          progressBar.style.width = `${progreso}%`; // Establecer el ancho de la barra de progreso
+
+          // Añadir la barra al contenedor
+          progressBarContainer.appendChild(progressBar);
+          progresoDiv.appendChild(progresoTexto);
+          progresoDiv.appendChild(progressBarContainer);
+
+          // Añadir todo al contenedor principal
+          progresoContainer.appendChild(progresoDiv);
+
+          //torta Estamentos
+          var poblacion_beneficiada = {
+            "Estudiantes": poblacion["estudiantes"] || 0,
+            "Administrativos": poblacion["administrativos"] || 0,
+            "Profesores": poblacion['profesores'] || 0,
+            "Comunidad en General": poblacion["comunidad_general"] || 0,
+            "Egresados": poblacion["egresados"] || 0,
+            "total": poblacion["total"] || 0,  // Este elemento no se utilizará en el gráfico
+          };
+
+          // Extraer los datos para el gráfico, omitiendo el "total"
+          var labels = [];
+          var data = [];
+
+          for (var key in poblacion_beneficiada) {
+            if (key !== "total") {
+              labels.push(key);
+              data.push(poblacion_beneficiada[key]);
+            }
+          }
+
+          var ctx2 = document.getElementById("chart-pie").getContext("2d");
+
+          new Chart(ctx2, {
+            type: "pie", // Gráfico de torta
+            data: {
+              labels: labels, // Etiquetas de los estamentos
+              datasets: [{
+                label: "Población Beneficiada",
+                data: data, // Datos de población
+                backgroundColor: [
+                  '#00594e',
+                  '#68b6ef',
+                  '#f7bd56',
+                  'rgba(75, 192, 192, 0.6)',
+                  '#b5a160',
+                ],
+                hoverOffset: 4 // Para dar efecto al pasar el mouse
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  display: true,
+                  position: 'top',
+                },
+                tooltip: {
+                  callbacks: {
+                    label: function (tooltipItem) {
+                      return tooltipItem.label + ': ' + tooltipItem.raw; // Mostrar valor en tooltip
+                    }
+                  }
+                },
+
+
+              },
+            }
+          });
+
+
+
+
+        } else {
+          console.error("Documento del proyecto no encontrado.");
+        }
+
+
+      } catch (error) {
+        console.error("Error al cargar los detalles del proyecto: ", error);
+      }
+    }
+    document.getElementById("descargar_todo").addEventListener("click", async function () {
+      try {
+        const id = getQueryParam('id');
+        if (!id) {
+          console.error("ID del proyecto no encontrado en la URL.");
+          return;
+        }
+
+        // Obtener los documentos del proyecto de Firebase
+        const proyectoDoc = doc(db, "Proyectus", "Proyectos", "Lista", id);
+        const docSnapshot = await getDoc(proyectoDoc);
+
+        if (docSnapshot.exists()) {
+          const proyecto = docSnapshot.data();
+          if (proyecto.documentos) {
+            const zip = new JSZip();
+            const folder = zip.folder("documentos"); // Crear una carpeta dentro del archivo ZIP
+
+            // Iterar sobre los documentos
+            for (const docKey in proyecto.documentos) {
+              const documento = proyecto.documentos[docKey];
+              const link = documento.link;
+
+              try {
+                // Descargar cada archivo usando fetch
+                const response = await fetch(link);
+                const blob = await response.blob();
+
+                // Añadir el archivo al ZIP
+                folder.file(`${documento.titulo}.pdf`, blob);
+              } catch (error) {
+                console.error(`Error al descargar el documento ${documento.titulo}: `, error);
+              }
+            }
+
+            // Generar el archivo ZIP y ofrecerlo para su descarga
+            zip.generateAsync({ type: "blob" }).then(function (content) {
+              const element = document.createElement("a");
+              element.href = URL.createObjectURL(content);
+              element.download = "documentos_proyecto.zip";
+              document.body.appendChild(element);
+              element.click();
+              document.body.removeChild(element);
+            });
+
+          } else {
+            console.error("No hay documentos disponibles para descargar.");
+          }
+        } else {
+          console.error("Documento del proyecto no encontrado.");
+        }
+
+      } catch (error) {
+        console.error("Error al descargar todos los documentos: ", error);
+      }
+    });
+
+
+
+
+
+    // Cargar los detalles del proyecto al cargar la página
+    window.onload = cargarDetallesProyecto;
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+  <style>
+    /* Aplicar estilos solo a la tabla con el id tableObjetivos_ */
+    #tableObjetivos_ {
+      width: 100%;
+      /* Hacer que la tabla ocupe el 100% del ancho del contenedor */
+      table-layout: fixed;
+      /* Hacer que las celdas tengan un ancho fijo */
+      border-collapse: collapse;
+      /* Combina bordes adyacentes entre celdas */
+    }
+
+    #tableObjetivos_ th,
+    #tableObjetivos_ td {
+      padding: 8px;
+      /* Espaciado interno (padding) */
+      text-align: justify;
+      /* Justificar el texto */
+      vertical-align: top;
+      /* Alinear el texto en la parte superior */
+      border: 1px solid #ddd;
+      /* Aplicar bordes entre las celdas */
+      border-top: none;
+      /* Eliminar el borde superior */
+      border-left: none;
+      /* Eliminar el borde izquierdo */
+      word-wrap: break-word;
+      /* Permitir que las palabras largas se rompan y ajusten */
+      white-space: normal;
+      /* Permitir saltos de línea en el texto */
+      font-size: 0.8em;
+    }
+
+    /* Estilos para las cabeceras */
+    #tableObjetivos_ th {
+      background-color: #f2f2f2;
+      /* Color de fondo de los encabezados */
+      border: 1px solid #ddd;
+      /* Aplicar bordes internos para las cabeceras */
+      border-left: none;
+      /* Sin borde izquierdo */
+      border-top: none;
+      /* Sin borde superior */
+    }
+
+
+
+    #tableObjetivos_ td:last-child,
+    #tableObjetivos_ th:last-child {
+      border-right: none;
+      /* Eliminar el borde derecho de la última columna */
+    }
+
+    #tableObjetivos_ tr {
+      line-height: 1.5;
+      /* Ajustar la altura de línea */
+    }
+
+    /* Agrega un overlay con el degradado */
+    #carrusel_img .carousel-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 50%);
+      z-index: 1;
+    }
+
+    /* Imágenes del carrusel */
+    #carrusel_img .carousel-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      opacity: 1;
+      z-index: 0;
+      /* Asegura que la imagen esté detrás del overlay */
+    }
+
+    /* Texto en el carrusel */
+    #carrusel_img .carousel-caption {
+      position: absolute;
+      z-index: 2;
+      /* Asegura que el texto esté sobre el overlay */
+      color: white;
+    }
+
+    #progresoContainer {
+      width: 100%;
+      max-width: 600px;
+      /* Ajusta según sea necesario */
+      margin: auto;
+      /* Centrar */
+
+    }
+
+    .fixed-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background-color: #00594e;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+
+    .fixed-btn:hover {
+      background-color: #00453e;
+      /* Un tono más oscuro al hacer hover */
+    }
+  </style>
+
+</body>
+
+</html>

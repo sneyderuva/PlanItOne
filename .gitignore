@@ -1,0 +1,19 @@
+# Ignorar dependencias
+node_modules/
+
+# Ignorar carpeta de Firebase functions
+functions/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de logs
+*.log
+
+# Archivos temporales
+dist/
+build/
+node_modules/
+functions/
+*.exe
